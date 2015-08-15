@@ -29,7 +29,6 @@
 
 			   		Question:
 			   		<select name="<?php echo $this->get_field_name('Question'); ?>" class="widefat" > 
-				   			
 				   		<?php
 
 				   			global $wpdb;
@@ -37,7 +36,6 @@
 				   			$table_name=$wpdb->prefix . "poll_wp_Questions";	
 
 				   			$questions=$wpdb->get_results($wpdb->prepare("SELECT Question FROM $table_name WHERE id > %d", 0));
-				   			//$questions=$wpdb->get_results("SELECT Question FROM $table_name");
 
 				   			foreach ($questions as $quest)
 				   			{
@@ -60,9 +58,9 @@
  		 	echo $before_widget;
 
  		 	?> 		 	
- 		 	<form method="post" onload="MyFunction()" id="WidgetForm" onsubmit="return false;"  action=<?php echo plugins_url('/count.php',__FILE__); ?>>
+ 		 	<form method="post" onload="MyFunction()" id="WidgetForm" onsubmit="return false;"  action=''>
 
- 		 	<div id="widgetDiv" class="widget_div"  style="position:relative;  float:left; width:320px; border-color: <?php echo  GetSettingsDataFromMySQL('border_color',$instance); ?>; background-color: <?php echo  GetSettingsDataFromMySQL('bg_color',$instance); ?>; ">
+ 		 	<div id="widgetDiv" class="widget_div"  style="position:relative;  float:left; width: <?php echo  GetSettingsDataFromMySQL('widget_div_width',$instance) . 'px'; ?>; border-color: <?php echo  GetSettingsDataFromMySQL('border_color',$instance); ?>; background-color: <?php echo  GetSettingsDataFromMySQL('bg_color',$instance); ?>; ">
 
  		 	<section id="QuestionDiv" style="margin-bottom:0px; text-align:center; ">	
  		 	<span id="ActiveQuestion" class="Question" 	style="margin-bottom:0px; font-weight: bold; 
@@ -82,21 +80,16 @@
 					$q=addslashes($Question);
 
 					$selected_quest=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name1 WHERE Question= %s", $q));
-				   	//$selected_quest=$wpdb->get_results("SELECT * FROM $table_name1 WHERE Question='$q'");
-
+				   
 				   	$selected_quest=$selected_quest[0]->id;
 
 				   	$answers=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name WHERE QuestionID= %s", $selected_quest));
-				   	//$answers=$wpdb->get_results("SELECT * FROM $table_name WHERE QuestionID='$selected_quest'");
 				   
 				   	$sum=$wpdb->get_var($wpdb->prepare("SELECT Sum(Count) FROM $table_name3 WHERE QuestionID=(SELECT id FROM $table_name1 WHERE Question= %s)", $q));
-				   	//$sum=$wpdb->get_var("SELECT Sum(Count) FROM  $table_name3 WHERE QuestionID=(SELECT id FROM $table_name1 WHERE Question='$q')");
 
 				   	$result_data=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name3 WHERE QuestionID=(SELECT id FROM $table_name1 WHERE Question= %s)", $q));
- 		 		 	//$result_data=$wpdb->get_results("SELECT * from $table_name3 where QuestionID=(SELECT id from $table_name1 where Question='$q')");
 
  		 		 	$plugintype=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name1 WHERE Question= %s", $q));
- 		 		 	//$plugintype=$wpdb->get_results("SELECT * FROM $table_name1 WHERE Question='$q'");
  		 		 	?>
  		 		 		<p id="p_id" style="display:none;"><?php echo $plugintype[0]->PluginType; ?></p>
  		 		 	<?php
@@ -118,10 +111,10 @@
 	 		 		 	 <?php  
 					    for($i=0; $i<count($answers); $i++)
 					    {
-					   		 ?>
-					   		<input type="radio" id="<?php echo 'answer' . ($i+1); ?>" name="answer"  
-					   		value="<?php echo $answers[$i]->Answer; ?>" > <span id="span_ans_id" style="font-family: <?php echo  GetSettingsDataFromMySQL('font_family',$instance); ?>; 
-					   				 color:<?php echo  GetSettingsDataFromMySQL('answer_color',$instance); ?>;"> <?php echo $answers[$i]->Answer; ?> </span> </input> <br>  
+					   		?>
+						   		<input type="radio" id="<?php echo 'answer' . ($i+1); ?>" name="answer"  
+						   		value="<?php echo $answers[$i]->Answer; ?>" > <span id="span_ans_id" style="font-family: <?php echo  GetSettingsDataFromMySQL('font_family',$instance); ?>; 
+						   				color:<?php echo  GetSettingsDataFromMySQL('answer_color',$instance); ?>;"> <?php echo $answers[$i]->Answer; ?> </span> </input> <br>  
 					   				<script>
 	 		 		 					var cook =document.cookie;
 	 		 		 				
@@ -131,23 +124,54 @@
 	 		 		 							jQuery('#answers_div').css('display','none');
 	 		 		 					} 		 		 				
  		 		 					</script>		
-					   		 <?php 
+					   		<?php 
 					   	 }
 					    ?>	
- 		 			<input type="submit" value="vote" id="voteButton" onclick="Vote_Click()" style="border-radius:7px; position:relative; height:40px; margin-bottom:5px; margin-top:8px; margin-left:70%; " />
+ 		 			<input type="submit" value="vote" id="voteButton" onclick="Vote_Click()" style="border-radius:7px; position:relative; height:40px; margin-bottom:5px; margin-top:8px; margin-left:50%; " />
 
  		 				</div> 
  		 				<?php
  		 		 	}
- 		 		 	
 
- 		 		 		else if($plugintype[0]->PluginType==3)
+ 		 		 	else if($plugintype[0]->PluginType==2)
+ 		 		 	{ 		 		 		
+ 		 		 		?>
+ 		 		 		<script>
+					   		var cook =document.cookie;					   	
+ 		 		 					var cookie_question = jQuery('#ActiveQuestion').html();
+ 		 		 					
+ 		 		 					if(cook.indexOf(cookie_question.trim())>=0 && cook.indexOf('customer2')>=0)
+ 		 		 					{ 		
+ 		 		 						jQuery('#widgetDiv').css('display','none');
+ 		 		 						jQuery('answers_div').css('display','none');
+ 		 		 					}
+ 		 		 		</script>		
+ 		 		 		<input id="hover_color" type="text" style="display:none;" value=<?php  echo GetHoverColor($instance); ?>>
+ 		 		 		<div id="answers_div" style="position:relative; margin-top:0px;   " > 
+	 		 		 	 <?php  
+					    for($i=1; $i<=count($answers); $i++)
+					    {
+					   		 ?>
+					   		 <section onmouseover="P2_answerHover(<?php echo $i; ?>)" onmouseout="P2_answerHoverOut(<?php echo $i; ?>)" onclick="F(<?php echo $i; ?>)" id="<?php echo "div_ans" . $i; ?>" style=" margin-top:5%; border:1px; border-style:dotted; border-color:<?php echo GetSettingsDataFromMySQL('border_color',$instance); ?>; border-radius:5px; background-color:<?php echo $answers[$i-1]->Answer_bg_color; ?>; width:100%; height:40px;"> <span id="<?php echo "span_ans" . $i; ?>" style="height:40px; line-height:40px; text-align:center;  float:left; text-align:center; width:100%; color:<?php echo GetSettingsDataFromMySQL('answer_color', $instance); ?>;"> <?php echo $answers[$i-1]->Answer; ?> </span> </section> 				   		
+					   		 <?php 
+					   	}	
+					   	?> </div> 
+					   	<script>
+					   		var cook =document.cookie;
+ 		 		 					var cookie_question = jQuery('#ActiveQuestion').html();
+ 		 		 					if(cook.indexOf(cookie_question.trim())>=0 && cook.indexOf('customer2')>=0)
+ 		 		 					{ 		
+ 		 		 						jQuery('#widgetDiv').css('display','none');
+ 		 		 						jQuery('answers_div').css('display','none');
+ 		 		 					}
+ 		 		 		</script>		
+					   	<?php				    
+ 		 		 	}
+ 		 		 	else if($plugintype[0]->PluginType==3)
  		 		 		{
  		 		 			$col=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name4 WHERE QuestionID=(SELECT id FROM $table_name1 WHERE Question= %s)",$q));
- 		 		 			//$col=$wpdb->get_results("SELECT * FROM $table_name4 WHERE QuestionID=(SELECT id FROM $table_name1 WHERE Question='$q')");
 
  		 		 			$images=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name WHERE QuestionID=(SELECT id FROM $table_name1 WHERE Question= %s)",$q));
- 		 		 			//$images=$wpdb->get_results("SELECT * FROM $table_name WHERE QuestionID=(SELECT id FROM $table_name1 WHERE Question='$q')");
  		 		 			
  		 		 			?>
 	 		 		 			<script type="text/javascript">
@@ -186,22 +210,92 @@
  		 		 		 	}
  		 		 		 	?> </div> <?php
  		 		 		}
- 		 		 		
+ 		 		 	else if($plugintype[0]->PluginType==4)
+ 		 		 		{
+ 		 		 			?>
+ 		 		 			<script>
+ 		 		 				var cook =document.cookie;
+ 		 		 				
+	 		 		 					var cookie_question = jQuery('#ActiveQuestion').html();
+	 		 		 					cookie_question=cookie_question.trim();
+	 		 		 					if(cook.indexOf(cookie_question)>=0  && cook.indexOf('customer4')>=0)
+	 		 		 					{ 	 		 		 						
+	 		 		 						jQuery('#widgetDiv').css('display','none');
+	 		 		 						jQuery('answers_div').css('display','none');
+	 		 		 					}
+
+ 		 		 			</script>
+ 		 		 			<div id="answers_div" style="position:relative; margin:0 auto; width:100%; margin-top:0px;  " > 
+	 		 		 			<?php   		 		 			 
+			 		 			 	
+								    for($i=1; $i<=count($answers); $i++)
+								    {
+								   		?>
+									   		<div id="<?php echo "p4_div".$i; ?>"  onclick="p4_mouseClick(<?php echo $i; ?>)" style=" width:100%;   height:40px; border:1px; border-style:dotted; border-color:<?php echo $answers[$i-1]->Answer_bg_color; ?>;; margin-top:5%;"> 
+									   		<span id="<?php echo "p4_span".$i; ?>" style="float:left; padding-left:10px; font-size:14px; margin-left:0%;  color:<?php echo  GetSettingsDataFromMySQL('answer_color',$instance); ?>;"> <?php echo $answers[$i-1]->Answer; ?> </span> 
+									   		<section id="<?php echo "p4_section".$i; ?>" style="position:relative; float:right; width:15%; height:100%; background-color:<?php echo $answers[$i-1]->Answer_bg_color; ?>;">  </section>
+									   		</div>
+
+								   		<?php 
+								   	}
+								   		
+								?>
+
+ 		 		 			</div>
+ 		 		 			<script>
+ 		 		 				var cook =document.cookie;
+	 		 		 					var cookie_question = jQuery('#ActiveQuestion').html();
+	 		 		 					cookie_question=cookie_question.trim();
+	 		 		 					if(cook.indexOf(cookie_question)>=0  && cook.indexOf('customer4')>=0)
+	 		 		 					{ 		
+	 		 		 						jQuery('#widgetDiv').css('display','none');
+	 		 		 						jQuery('answers_div').css('display','none');
+	 		 		 					}
+
+ 		 		 			</script>
+ 		 		 			<?php
+ 		 		 		}
  		 		 	?>
- 		 	
  		 	</div>
  		 	<div id="chartDiv" style="display:none; width:300px; height: 400px;">  </div> 		
  		 		
  		 	</form>
 
-
-
  		 	<?php		 	
 
  		 	echo $after_widget;
  		 }			
-
  	}
 
+ 	function  GetHoverColor($instance)
+		{
+			global $wpdb;
 
+			$table_name4 =  $wpdb->prefix . "poll_wp_Settings";
+			$table_name  =  $wpdb->prefix . "poll_wp_Questions";
+
+			$Question =$instance['Question'];
+			$q=addslashes($Question);
+
+			$results=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name4 WHERE QuestionID=(SELECT id FROM $table_name WHERE Question= %s)", $q));
+
+			$color=$results[0]->answer_hover_color;
+
+			return $color;
+		}
+
+	function GetSettingsDataFromMySQL($col, $instance)
+		{
+			global $wpdb;
+
+			$Question=empty($instance['Question']) ? '' : $instance['Question'];
+			$q=addslashes($Question);
+
+ 		 	$table_name1=$wpdb->prefix . "poll_wp_Questions";	
+ 		 	$table_name2=$wpdb->prefix . "poll_wp_Settings";
+
+ 		 	$settings=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE QuestionID=(SELECT id FROM $table_name1 WHERE Question= %s)",$q));
+
+ 		 	return $settings[0]->$col;	 		
+		}
 ?>

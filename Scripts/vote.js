@@ -1,6 +1,5 @@
-	
 	jQuery(document).ready(function(){
-				
+
 		var cook=document.cookie;
 		var f=cook.indexOf("customer");
 		if(cook.indexOf("customer")>=0)
@@ -78,8 +77,8 @@
 					 	}				
 							
 					 	jQuery('#widgetDiv').empty();
-					 	
-					 	jQuery('#widgetDiv').append("<div style='text-align:center; '><span style='font-family: " + ques_font_family +"; font-size:"+ ques_font_size +";font-weight: bold; color: "+ques_color+";'>"+ quest  +"</span> </div> ");
+					 						 	
+					 	jQuery('#widgetDiv').append("<div style='text-align:center; '><span style='font-family: " + ques_font_family +"; font-size:"+ ques_font_size +";font-weight: bold; color:"+ ques_color +"'>"+ quest +"</span></div>");
 
 					 	for(i=1; i<=k; i++)
 						 	{
@@ -87,127 +86,127 @@
 						 	}	
 					}
 
-		// 			else if(jQuery('#p_id').html()=='2' && cook[f+8]=='2')
-		// 			{
-		// 				var bgColor=jQuery('#widgetDiv').css("background-color");
+					else if(jQuery('#p_id').html()=='2' && cook[f+8]=='2')
+					{
+						var bgColor=jQuery('#widgetDiv').css("background-color");
 
-		// 				var k=0;
-		// 				jQuery('#answers_div').find("span").each(function() {
-		// 					k++;
-		// 				})	
+						var k=0;
+						jQuery('#answers_div').find("span").each(function() {
+							k++;
+						})	
 
-		// 				var answers = [];
+						var answers = [];
 
-		// 		 	for(i=1; i<=k; i++)
-		// 		 	{
-		// 		 		answers[answers.length]=jQuery('#span_ans'+i).html();
+				 	for(i=1; i<=k; i++)
+				 	{
+				 		answers[answers.length]=jQuery('#span_ans'+i).html();
 
-		// 		 	}	
+				 	}	
 
-		// 		 	/* Results Data from Ajax */
+				 	/* Results Data from Ajax */
 
-		// 		 	var counts=response.split("^");	
+				 	var counts=response.split("^");	
 
-		// 		 	var results=[];
+				 	var results=[];
 
-		// 		 	for(i=0; i<counts.length; i++)
-		// 		 	{
-		// 		 		if(counts[i]=="")
-		// 		 		{
-		// 		 			continue;
-		// 		 		}
-		// 		 		else
-		// 		 		{
-		// 		 			results[results.length]=counts[i];
-		// 		 		}
-		// 		 	}	
-		// 		 	var sum=0;
-		// 		 	var widths = [];
-		// 		 	for(i=0; i<results.length; i++)
-		// 		 	{
-		// 		 		sum=sum+parseInt(results[i]);
-		// 		 	}
+				 	for(i=0; i<counts.length; i++)
+				 	{
+				 		if(counts[i]=="")
+				 		{
+				 			continue;
+				 		}
+				 		else
+				 		{
+				 			results[results.length]=counts[i];
+				 		}
+				 	}	
+				 	var sum=0;
+				 	var widths = [];
+				 	for(i=0; i<results.length; i++)
+				 	{
+				 		sum=sum+parseInt(results[i]);
+				 	}
 
-		// 		 	if(sum==0) sum=1;					
+				 	if(sum==0) sum=1;					
 					
-		// 		 	for(i=0; i<results.length; i++)
-		// 		 	{			
-		// 		 		widths[widths.length]=(results[i]*100)/sum;						
-		// 		 	}	
+				 	for(i=0; i<results.length; i++)
+				 	{			
+				 		widths[widths.length]=(results[i]*100)/sum;						
+				 	}	
 
-		// 			var colors =[];
+					var colors =[];
 					
-		// 				for(i=1; i<=k; i++)
-		// 				{
-		// 					colors[colors.length]=jQuery('#div_ans'+i).css('background-color');
-		// 				}
+						for(i=1; i<=k; i++)
+						{
+							colors[colors.length]=jQuery('#div_ans'+i).css('background-color');
+						}
 					
-		// 			var dataSource= [];					
+					var dataSource= [];					
 
-		// 			for(i=0; i<k; i++)
-		// 			{	
-		// 				dataSource[dataSource.length]= {name: answers[i],  y: widths[i], sliced: false, selected: true, color: colors[i]};
-		// 			}	
+					for(i=0; i<k; i++)
+					{	
+						dataSource[dataSource.length]= {name: answers[i],  y: widths[i], sliced: false, selected: true, color: colors[i]};
+					}	
 
-		// 			setTimeout(function() {
+					setTimeout(function() {
 
-		// 			/* Drawing a chart */
+					/* Drawing a chart */
 					
-		// 		jQuery('#chartDiv').css({"display":"inline"});
+				jQuery('#chartDiv').css({"display":"inline"});
 
-		// 		jQuery('#chartDiv').highcharts({
-		//         chart: {
-		//             type: 'pie',
-		//             height: 500,
-		//             backgroundColor: bgColor,		            
-		//             options3d: {
-		//                 enabled: true,
-		//                 alpha: 45,
-		//                 beta: 0
-		//             }
-		//         },
-		//          legend:
-  //                   {
-  //                   	 	align: 'left',
-		// 				    layout: 'horizontal',
-		// 				    verticalAlign: 'bottom',
-		// 				    x: 20,
-		// 				    y: 20,
-		// 				    itemMarginTop: 10,
-  //           				itemMarginBottom: 10
-  //                   } ,   
-		//         title: {
-		//             text: quest
-		//         },
-		//         tooltip: {
-		//             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-		//         },
-		//         plotOptions: {
-		//             pie: {
-		//                 allowPointSelect: true,
-		//                 cursor: 'pointer',
-		//                 depth: 35,
-		//           dataLabels: {
-  //                   enabled: true,
-  //                   distance: -50,
-  //                     format: ' {point.percentage:.1f} %',
-  //                   style: {
-  //                       fontWeight: 'bold',
-  //                       color: 'white',
-  //                       textShadow: '0px 1px 2px black'
-  //                   } ,
-  //               },
-  //               showInLegend: true
-		//             }
-		//         },
-		//         series: [{
-		//             type: 'pie',
-		//             name: 'Browser share',
-		//             data: dataSource
-		//         }]
-		//     });
-		// 		}, 500);
-		// }
+				jQuery('#chartDiv').drawdiagram({
+		        chart: {
+		            type: 'pie',
+		            height: 500,
+		            backgroundColor: bgColor,		            
+		            options3d: {
+		                enabled: true,
+		                alpha: 45,
+		                beta: 0
+		            }
+		        },
+		         legend:
+                    {
+                    	 	align: 'left',
+						    layout: 'horizontal',
+						    verticalAlign: 'bottom',
+						    x: 20,
+						    y: 20,
+						    itemMarginTop: 10,
+            				itemMarginBottom: 10
+                    } ,   
+		        title: {
+		            text: quest
+		        },
+		        tooltip: {
+		            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		        },
+		        plotOptions: {
+		            pie: {
+		                allowPointSelect: true,
+		                cursor: 'pointer',
+		                depth: 35,
+		          dataLabels: {
+                    enabled: true,
+                    distance: -50,
+                      format: ' {point.percentage:.1f} %',
+                    style: {
+                        fontWeight: 'bold',
+                        color: 'white',
+                        textShadow: '0px 1px 2px black'
+                    } ,
+                },
+                showInLegend: true
+		            }
+		        },
+		        series: [{
+		            type: 'pie',
+		            name: 'Browser share',
+		            data: dataSource
+		        }]
+		    });
+				}, 500);
+		}
 
 			else if(jQuery('#p_id').html()=='3' && cook[f+8]=='3' )
 			{
@@ -269,137 +268,137 @@
 
 			}
 
-			// else if(jQuery('#p_id').html()=='4' && cook[f+8]=='4')
-			// {
+			else if(jQuery('#p_id').html()=='4' && cook[f+8]=='4')
+			{
 					
-	 	// 		 var Active_question=document.getElementById('ActiveQuestion').innerHTML;
+	 			 var Active_question=document.getElementById('ActiveQuestion').innerHTML;
 
-			// 		 var k=0;
-			// 					jQuery('#answers_div').find("span").each(function() {
-			// 						k++;
-			// 					})	
+					 var k=0;
+								jQuery('#answers_div').find("span").each(function() {
+									k++;
+								})	
 
-			// 		var OldColors= [];
+					var OldColors= [];
 
-			// 		for(i=1;i<=k;i++)
-			// 		{
-			// 			OldColors[OldColors.length]=jQuery('#p4_section'+i).css('background-color');
-			// 		}
+					for(i=1;i<=k;i++)
+					{
+						OldColors[OldColors.length]=jQuery('#p4_section'+i).css('background-color');
+					}
 
-			// 		var answers = [];
+					var answers = [];
 
-			// 	 	for(i=1; i<=k; i++)
-			// 	 	{
-			// 	 		answers[answers.length]=jQuery('#p4_span'+i).html();
-			// 	 	}	
+				 	for(i=1; i<=k; i++)
+				 	{
+				 		answers[answers.length]=jQuery('#p4_span'+i).html();
+				 	}	
 
-			// 	 	/* Results Data from Ajax */
+				 	/* Results Data from Ajax */
 
-			// 	 	var counts=response.split("^");
+				 	var counts=response.split("^");
 
-			// 	 	var results=[];
+				 	var results=[];
 
-			// 	 	for(i=0; i<counts.length; i++)
-			// 	 	{
-			// 	 		if(counts[i]=="")
-			// 	 		{
-			// 	 			continue;
-			// 	 		}
-			// 	 		else
-			// 	 		{
-			// 	 			results[results.length]=counts[i];
-			// 	 		}
-			// 	 	}
+				 	for(i=0; i<counts.length; i++)
+				 	{
+				 		if(counts[i]=="")
+				 		{
+				 			continue;
+				 		}
+				 		else
+				 		{
+				 			results[results.length]=counts[i];
+				 		}
+				 	}
 
-			// 		var sum=0;
-			// 	 	var widths = [];
-			// 	 	for(i=0; i<results.length; i++)
-			// 	 	{
-			// 	 		sum=sum+parseInt(results[i]);
-			// 	 	}
+					var sum=0;
+				 	var widths = [];
+				 	for(i=0; i<results.length; i++)
+				 	{
+				 		sum=sum+parseInt(results[i]);
+				 	}
 
-			// 	 	if(sum==0) sum=1;
+				 	if(sum==0) sum=1;
 						
-			// 	 	for(i=0; i<results.length; i++)
-			// 	 	{			
-			// 	 		widths[widths.length]=(results[i]*100)/sum;						
-			// 	 	}			 	
+				 	for(i=0; i<results.length; i++)
+				 	{			
+				 		widths[widths.length]=(results[i]*100)/sum;						
+				 	}			 	
 
-			// 	 	/* data that will be shown in the widget */
+				 	/* data that will be shown in the widget */
 
-			// 	 	var colors =[];					
+				 	var colors =[];					
 
-			// 		for(i=1; i<=k; i++)
-			// 		{
-			// 			colors[colors.length]=jQuery('#p4_section'+i).css('background-color');
-			// 		}
+					for(i=1; i<=k; i++)
+					{
+						colors[colors.length]=jQuery('#p4_section'+i).css('background-color');
+					}
 
-			// 		var dataSource= [];					
+					var dataSource= [];					
 
-			// 		for(i=0; i<k; i++)
-			// 		{	
-			// 			dataSource[dataSource.length]= {name: answers[i],  y: widths[i], color: OldColors[i]};
-			// 		}	
+					for(i=0; i<k; i++)
+					{	
+						dataSource[dataSource.length]= {name: answers[i],  y: widths[i], color: OldColors[i]};
+					}	
 
-			// 		setTimeout(function() {
-			// 		jQuery('#widgetDiv').hide();	
+					setTimeout(function() {
+					jQuery('#widgetDiv').hide();	
 
-			// 		/* Drawing a chart */
+					/* Drawing a chart */
 
-			// 			jQuery('#chartDiv').css({"display":"inline"});
+						jQuery('#chartDiv').css({"display":"inline"});
 
-			// 			   jQuery('#chartDiv').highcharts({
-			// 			        chart: {
-			// 			            type: 'column'
-			// 			        },
-			// 			        title: {
-			// 			            text: Active_question
-			// 			        },						        
-			// 			        xAxis: {
-			// 			            type: 'category',
-			// 			            labels: {
-			// 			                rotation: -45,
-			// 			                style: {
-			// 			                    fontSize: '12px',
-			// 			                    fontFamily: 'Verdana, sans-serif'		                    
-			// 			                }
-			// 			            }
-			// 			        },
-			// 			        yAxis: {
-			// 			            min: 0,						           
-			// 			            enabled: false,
-			// 			            title: {
+						   jQuery('#chartDiv').drawdiagram({
+						        chart: {
+						            type: 'column'
+						        },
+						        title: {
+						            text: Active_question
+						        },						        
+						        xAxis: {
+						            type: 'category',
+						            labels: {
+						                rotation: -45,
+						                style: {
+						                    fontSize: '12px',
+						                    fontFamily: 'Verdana, sans-serif'		                    
+						                }
+						            }
+						        },
+						        yAxis: {
+						            min: 0,						           
+						            enabled: false,
+						            title: {
 						               
-			// 			            }
-			// 			        },
-			// 			        legend: {
-			// 			            enabled: false
-			// 			        },
-			// 			        tooltip: {
-			// 			            pointFormat: 'Counts: <b>{point.y:.1f} %</b>'
-			// 			        },
-			// 			        series: [{
-			// 			            name: 'Results',
-			// 			            colorByPoint: true,
-			// 			            data: dataSource,
-			// 			            dataLabels: {
-			// 			                enabled: true,
-			// 			                rotation: -90,
-			// 			                color: 'white',
-			// 			                align: 'right',
-			// 			                format: '{point.y:.1f}', // one decimal
-			// 			                y: 10, // 10 pixels down from the top
-			// 			                style: {
-			// 			                    fontSize: '10px',
-			// 			                    fontFamily: 'Verdana, sans-serif',
-			// 			                }
-			// 			            }
-			// 	        }]
-   //   });
+						            }
+						        },
+						        legend: {
+						            enabled: false
+						        },
+						        tooltip: {
+						            pointFormat: 'Counts: <b>{point.y:.1f} %</b>'
+						        },
+						        series: [{
+						            name: 'Results',
+						            colorByPoint: true,
+						            data: dataSource,
+						            dataLabels: {
+						                enabled: true,
+						                rotation: -90,
+						                color: 'white',
+						                align: 'right',
+						                format: '{point.y:.1f}', // one decimal
+						                y: 10, // 10 pixels down from the top
+						                style: {
+						                    fontSize: '10px',
+						                    fontFamily: 'Verdana, sans-serif',
+						                }
+						            }
+				        }]
+     });
 
-			// 	},1);
+				},1);
 
-			// }
+			}
 
 				
 			});
@@ -516,154 +515,152 @@
 
 	var p2_hover=false;
 
-	// function F(x)
-	// {	
-	// 	var bgColor=jQuery('#widgetDiv').css("background-color");
+	function F(x)
+	{	
+		var bgColor=jQuery('#widgetDiv').css("background-color");
 	
-	// 	var Active_question=document.getElementById('ActiveQuestion').innerHTML;
+		var Active_question=document.getElementById('ActiveQuestion').innerHTML;
 
-	// 	var selectedDiv=jQuery('#span_ans'+x).html();
+		var selectedDiv=jQuery('#span_ans'+x).html();
 
-	// 	var t=Active_question+'^'+selectedDiv;
+		var t=Active_question+'^'+selectedDiv;
 
-	// 	var form = jQuery('#WidgetForm');
-
-	// var ajaxurl = object.ajaxurl;
-	// 	  	var data = {
-	// 	    	action: 'Vote_Click', // wp_ajax_my_action / wp_ajax_nopriv_my_action in ajax.php. Can be named anything.
-	// 			foobar: t, // translates into $_POST['foobar'] in PHP				
-	// 		};
-	// 		jQuery.post(ajaxurl, data, function(response) {
-	// 			 var k=0;
-	// 				jQuery('#answers_div').find("span").each(function() {
-	// 					k++;
-	// 				})				
+	var ajaxurl = object.ajaxurl;
+		  	var data = {
+		    	action: 'Vote_Click', // wp_ajax_my_action / wp_ajax_nopriv_my_action in ajax.php. Can be named anything.
+				foobar: t, // translates into $_POST['foobar'] in PHP				
+			};
+			jQuery.post(ajaxurl, data, function(response) {
+				 var k=0;
+					jQuery('#answers_div').find("span").each(function() {
+						k++;
+					})				
 					
-	// 			 	var answers = [];
+				 	var answers = [];
 
-	// 			 	for(i=1; i<=k; i++)
-	// 			 	{
-	// 			 		answers[answers.length]=jQuery('#span_ans'+i).html();
-	// 			 	}	
+				 	for(i=1; i<=k; i++)
+				 	{
+				 		answers[answers.length]=jQuery('#span_ans'+i).html();
+				 	}	
 
-	// 			 	/* Results Data from Ajax */
+				 	/* Results Data from Ajax */
 
-	// 			 	var counts=response.split("^");
+				 	var counts=response.split("^");
 					
-	// 			 	var results=[];
+				 	var results=[];
 
-	// 			 	for(i=0; i<counts.length; i++)
-	// 			 	{
-	// 			 		if(counts[i]=="")
-	// 			 		{
-	// 			 			continue;
-	// 			 		}
-	// 			 		else
-	// 			 		{
-	// 			 			results[results.length]=counts[i];
-	// 			 		}
-	// 			 	}				 
+				 	for(i=0; i<counts.length; i++)
+				 	{
+				 		if(counts[i]=="")
+				 		{
+				 			continue;
+				 		}
+				 		else
+				 		{
+				 			results[results.length]=counts[i];
+				 		}
+				 	}				 
 
-	// 			 	/* data that will be shown in the widget */
+				 	/* data that will be shown in the widget */
 				 	
-	// 				var sum=0;
-	// 			 	var widths = [];
-	// 			 	for(i=0; i<results.length; i++)
-	// 			 	{
-	// 			 		sum=sum+parseInt(results[i]);
-	// 			 	}
+					var sum=0;
+				 	var widths = [];
+				 	for(i=0; i<results.length; i++)
+				 	{
+				 		sum=sum+parseInt(results[i]);
+				 	}
 
-	// 			 	if(sum==0) sum=1;
+				 	if(sum==0) sum=1;
 					
-	// 			 	for(i=0; i<results.length; i++)
-	// 			 	{			
-	// 			 		widths[widths.length]=(results[i]*100)/sum;						
-	// 			 	}			 	
+				 	for(i=0; i<results.length; i++)
+				 	{			
+				 		widths[widths.length]=(results[i]*100)/sum;						
+				 	}			 	
 						
-	// 				var colors =[];					
+					var colors =[];					
 
-	// 				if(p2_hover==true)
-	// 				{
-	// 					colors=hinGuyner;
-	// 				}
-	// 				else
-	// 				{
-	// 					for(i=1; i<=k; i++)
-	// 					{
-	// 						colors[colors.length]=jQuery('#div_ans'+i).css('background-color');
-	// 					}
-	// 				}
+					if(p2_hover==true)
+					{
+						colors=hinGuyner;
+					}
+					else
+					{
+						for(i=1; i<=k; i++)
+						{
+							colors[colors.length]=jQuery('#div_ans'+i).css('background-color');
+						}
+					}
 					
-	// 				var dataSource= [];					
+					var dataSource= [];					
 
-	// 				for(i=0; i<k; i++)
-	// 				{	
-	// 					dataSource[dataSource.length]= {name: answers[i],  y: widths[i], sliced: false, selected: true, color: colors[i]};
-	// 				}				
+					for(i=0; i<k; i++)
+					{	
+						dataSource[dataSource.length]= {name: answers[i],  y: widths[i], sliced: false, selected: true, color: colors[i]};
+					}				
 
-	// 				setTimeout(function() {
-	// 				jQuery('#widgetDiv').hide();	
+					setTimeout(function() {
+					jQuery('#widgetDiv').hide();	
 
-	// 				/* Drawing a chart */
-	// 					jQuery('#chartDiv').css({"display":"inline"});
-	// 					 jQuery('#chartDiv').highcharts({
-	// 	        chart: {
-	// 	            type: 'pie',
-	// 	            height: 500,
-	// 	            backgroundColor: bgColor,		            
-	// 	            options3d: {
-	// 	                enabled: true,
-	// 	                alpha: 45,
-	// 	                beta: 0
-	// 	            }
-	// 	        },
-	// 	         legend:
- //                    {
- //                    	 align: 'left',
-	// 					    layout: 'horizontal',
-	// 					    verticalAlign: 'bottom',
-	// 					    x: 20,
-	// 					    y: 20,
-	// 					    itemMarginTop: 10,
- //            				itemMarginBottom: 10
- //                    } ,   
-	// 	        title: {
-	// 	            text: Active_question
-	// 	        },
-	// 	        tooltip: {
-	// 	            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-	// 	        },
-	// 	        plotOptions: {
-	// 	            pie: {
-	// 	                allowPointSelect: true,
-	// 	                cursor: 'pointer',
-	// 	                depth: 35,
-	// 	          dataLabels: {
- //                    enabled: true,
- //                    distance: -50,
- //                      format: ' {point.percentage:.1f} %',
- //                    style: {
- //                        fontWeight: 'bold',
- //                        color: 'white',
- //                        textShadow: '0px 1px 2px black'
- //                    } ,
- //                },
+					/* Drawing a chart */
+						jQuery('#chartDiv').css({"display":"inline"});
+						 jQuery('#chartDiv').drawdiagram({
+		        chart: {
+		            type: 'pie',
+		            height: 500,
+		            backgroundColor: bgColor,		            
+		            options3d: {
+		                enabled: true,
+		                alpha: 45,
+		                beta: 0
+		            }
+		        },
+		         legend:
+                    {
+                    	 align: 'left',
+						    layout: 'horizontal',
+						    verticalAlign: 'bottom',
+						    x: 20,
+						    y: 20,
+						    itemMarginTop: 10,
+            				itemMarginBottom: 10
+                    } ,   
+		        title: {
+		            text: Active_question
+		        },
+		        tooltip: {
+		            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		        },
+		        plotOptions: {
+		            pie: {
+		                allowPointSelect: true,
+		                cursor: 'pointer',
+		                depth: 35,
+		          dataLabels: {
+                    enabled: true,
+                    distance: -50,
+                      format: ' {point.percentage:.1f} %',
+                    style: {
+                        fontWeight: 'bold',
+                        color: 'white',
+                        textShadow: '0px 1px 2px black'
+                    } ,
+                },
                 
- //                showInLegend: true
-	// 	            }
-	// 	        },
-	// 	        series: [{
-	// 	            type: 'pie',
-	// 	            name: 'Browser share',
-	// 	            data: dataSource
-	// 	        }]
-	// 	    });
+                showInLegend: true
+		            }
+		        },
+		        series: [{
+		            type: 'pie',
+		            name: 'Browser share',
+		            data: dataSource
+		        }]
+		    });
 
-	// 			},200);
+				},200);
 
-	// 			 	document.cookie="username=customer2"+Active_question+";";
-			// });
-	// }
+				 	document.cookie="username=customer2"+Active_question+";";
+			});
+	}
 
 	var hinGuyner = [];
 
@@ -695,153 +692,152 @@
 		jQuery('#div_ans' + answerID).css('background-color',hinGuyner[parseInt(answerID-1)]);
 	}
 
-	// function  p4_mouseClick(answerID)
-	// {		
-	//  	var Active_question=document.getElementById('ActiveQuestion').innerHTML;
-	// 	var answer=jQuery('#p4_span'+answerID).html();
+	function  p4_mouseClick(answerID)
+	{		
+	 	var Active_question=document.getElementById('ActiveQuestion').innerHTML;
+		var answer=jQuery('#p4_span'+answerID).html();
 
-	// 	var t=Active_question+'^'+answer;
+		var t=Active_question+'^'+answer;
 
-	// 	var form = jQuery('#WidgetForm');			
-	// 	jQuery('#p4_span'+answerID).css('display','none');
-	// 	jQuery('#p4_section'+answerID).animate({width: '285px', opacity: '1'}, "slow");
+		jQuery('#p4_span'+answerID).css('display','none');
+		jQuery('#p4_section'+answerID).animate({width: '285px', opacity: '1'}, "slow");
 
-	// 	 var k=0;
-	// 				jQuery('#answers_div').find("span").each(function() {
-	// 					k++;
-	// 				})	
+		 var k=0;
+					jQuery('#answers_div').find("span").each(function() {
+						k++;
+					})	
 
-	// 	var OldColors= [];
+		var OldColors= [];
 
-	// 	for(i=1;i<=k;i++)
-	// 	{
-	// 		OldColors[OldColors.length]=jQuery('#p4_section'+i).css('background-color');
-	// 	}
+		for(i=1;i<=k;i++)
+		{
+			OldColors[OldColors.length]=jQuery('#p4_section'+i).css('background-color');
+		}
 
 
-	// var ajaxurl = object.ajaxurl;
-	// 	  	var data = {
-	// 	    	action: 'Vote_Click', // wp_ajax_my_action / wp_ajax_nopriv_my_action in ajax.php. Can be named anything.
-	// 			foobar: t, // translates into $_POST['foobar'] in PHP				
-	// 		};
-	// 		jQuery.post(ajaxurl, data, function(response) {
+	var ajaxurl = object.ajaxurl;
+		  	var data = {
+		    	action: 'Vote_Click', // wp_ajax_my_action / wp_ajax_nopriv_my_action in ajax.php. Can be named anything.
+				foobar: t, // translates into $_POST['foobar'] in PHP				
+			};
+			jQuery.post(ajaxurl, data, function(response) {
 
-	//				var answers = [];
+					var answers = [];
 
-	// 			 	for(i=1; i<=k; i++)
-	// 			 	{
-	// 			 		answers[answers.length]=jQuery('#p4_span'+i).html();
-	// 			 	}	
+				 	for(i=1; i<=k; i++)
+				 	{
+				 		answers[answers.length]=jQuery('#p4_span'+i).html();
+				 	}	
 
-	// 			 	/* Results Data from Ajax */
+				 	/* Results Data from Ajax */
 
-	// 			 	var counts=response.split("^");
+				 	var counts=response.split("^");
 
-	// 			 	var results=[];
+				 	var results=[];
 
-	// 			 	for(i=0; i<counts.length; i++)
-	// 			 	{
-	// 			 		if(counts[i]=="")
-	// 			 		{
-	// 			 			continue;
-	// 			 		}
-	// 			 		else
-	// 			 		{
-	// 			 			results[results.length]=counts[i];
-	// 			 		}
-	// 			 	}
+				 	for(i=0; i<counts.length; i++)
+				 	{
+				 		if(counts[i]=="")
+				 		{
+				 			continue;
+				 		}
+				 		else
+				 		{
+				 			results[results.length]=counts[i];
+				 		}
+				 	}
 
-	// 				var sum=0;
-	// 			 	var widths = [];
-	// 			 	for(i=0; i<results.length; i++)
-	// 			 	{
-	// 			 		sum=sum+parseInt(results[i]);
-	// 			 	}
+					var sum=0;
+				 	var widths = [];
+				 	for(i=0; i<results.length; i++)
+				 	{
+				 		sum=sum+parseInt(results[i]);
+				 	}
 
-	// 			 	if(sum==0) sum=1;
+				 	if(sum==0) sum=1;
 					
-	// 			 	for(i=0; i<results.length; i++)
-	// 			 	{			
-	// 			 		widths[widths.length]=(results[i]*100)/sum;						
-	// 			 	}			 	
+				 	for(i=0; i<results.length; i++)
+				 	{			
+				 		widths[widths.length]=(results[i]*100)/sum;						
+				 	}			 	
 
-	// 			 	/* data that will be shown in the widget */
+				 	/* data that will be shown in the widget */
 
-	// 			 	var colors =[];					
+				 	var colors =[];					
 
-	// 				for(i=1; i<=k; i++)
-	// 				{
-	// 					colors[colors.length]=jQuery('#p4_section'+i).css('background-color');
-	// 				}
+					for(i=1; i<=k; i++)
+					{
+						colors[colors.length]=jQuery('#p4_section'+i).css('background-color');
+					}
 
-	// 				var dataSource= [];					
+					var dataSource= [];					
 
-	// 				for(i=0; i<k; i++)
-	// 				{	
-	// 					dataSource[dataSource.length]= {name: answers[i],  y: widths[i], color: OldColors[i]};
-	// 				}	
+					for(i=0; i<k; i++)
+					{	
+						dataSource[dataSource.length]= {name: answers[i],  y: widths[i], color: OldColors[i]};
+					}	
 
-	// 				setTimeout(function() {
-	// 				jQuery('#widgetDiv').hide();	
+					setTimeout(function() {
+					jQuery('#widgetDiv').hide();	
 
-	// 				/* Drawing a chart */
-	// 					jQuery('#chartDiv').css({"display":"inline"});
+					/* Drawing a chart */
+						jQuery('#chartDiv').css({"display":"inline"});
 
-	// 					   jQuery('#chartDiv').highcharts({
-	// 					        chart: {
-	// 					            type: 'column'
-	// 					        },
-	// 					        title: {
-	// 					            text: Active_question
-	// 					        },						        
-	// 					        xAxis: {
-	// 					            type: 'category',
-	// 					            labels: {
-	// 					                rotation: -45,
-	// 					                style: {
-	// 					                    fontSize: '12px',
-	// 					                    fontFamily: 'Verdana, sans-serif'		                    
-	// 					                }
-	// 					            }
-	// 					        },
-	// 					        yAxis: {
-	// 					            min: 0,						           
-	// 					            enabled: false,
-	// 					            title: {
+						   jQuery('#chartDiv').drawdiagram({
+						        chart: {
+						            type: 'column'
+						        },
+						        title: {
+						            text: Active_question
+						        },						        
+						        xAxis: {
+						            type: 'category',
+						            labels: {
+						                rotation: -45,
+						                style: {
+						                    fontSize: '12px',
+						                    fontFamily: 'Verdana, sans-serif'		                    
+						                }
+						            }
+						        },
+						        yAxis: {
+						            min: 0,						           
+						            enabled: false,
+						            title: {
 						               
-	// 					            }
-	// 					        },
-	// 					        legend: {
-	// 					            enabled: false
-	// 					        },
-	// 					        tooltip: {
-	// 					            pointFormat: 'Counts: <b>{point.y:.1f} %</b>'
-	// 					        },
-	// 					        series: [{
-	// 					            name: 'Results',
-	// 					            colorByPoint: true,
-	// 					            data: dataSource,
-	// 					            dataLabels: {
-	// 					                enabled: true,
-	// 					                rotation: -90,
-	// 					                color: 'white',
-	// 					                align: 'right',
-	// 					                format: '{point.y:.1f}', // one decimal
-	// 					                y: 10, // 10 pixels down from the top
-	// 					                style: {
-	// 					                    fontSize: '10px',
-	// 					                    fontFamily: 'Verdana, sans-serif',
-	// 					                }
-	// 					            }
-	// 			        }]
- //     });
-	// 			},200);
+						            }
+						        },
+						        legend: {
+						            enabled: false
+						        },
+						        tooltip: {
+						            pointFormat: 'Counts: <b>{point.y:.1f} %</b>'
+						        },
+						        series: [{
+						            name: 'Results',
+						            colorByPoint: true,
+						            data: dataSource,
+						            dataLabels: {
+						                enabled: true,
+						                rotation: -90,
+						                color: 'white',
+						                align: 'right',
+						                format: '{point.y:.1f}', // one decimal
+						                y: 10, // 10 pixels down from the top
+						                style: {
+						                    fontSize: '10px',
+						                    fontFamily: 'Verdana, sans-serif',
+						                }
+						            }
+				        }]
+     });
+				},200);
 
-	// 			document.cookie="username=customer4"+Active_question.trim()+";";
+				document.cookie="username=customer4"+Active_question.trim()+";";
 
-	// });
+	});
 
-	// }
+	}
 		
 	function GetWidgetBorderColor()
 	{

@@ -5,8 +5,6 @@
 		die('Access Denied');
 	}
 
-	
-
 	global $wpdb;
 
 		$table_name  =  $wpdb->prefix . "poll_wp_Questions";
@@ -15,17 +13,15 @@
 		$table_name4 =  $wpdb->prefix . "poll_wp_Settings";	
 
 	$questions=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name WHERE id > %d ", 0));	
-	//$questions=$wpdb->get_results("SELECT * from $table_name");
 
 	if($_SERVER["REQUEST_METHOD"]=="POST")
 	{
 		$quest=sanitize_text_field($_POST["Question"]);
 
 		$results=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name3 WHERE QuestionID=(SELECT id FROM $table_name WHERE Question= %s)", $quest));
-		//$results=$wpdb->get_results("SELECT * from $table_name3 WHERE QuestionID=(SELECT id from $table_name Where Question='$quest')");
-
+		
 		$answers=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE QuestionID=(SELECT id FROM $table_name WHERE Question= %s)", $quest));
-		//$answers=$wpdb->get_results("SELECT * from $table_name2 Where QuestionID=(Select id from $table_name Where Question='$quest')");
+
 		$quest=sanitize_text_field(stripcslashes($_POST["Question"]));
 
 	}
@@ -129,3 +125,4 @@
 			}
 		 ?>
 	</form>
+	

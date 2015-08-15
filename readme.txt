@@ -1,14 +1,14 @@
 === Poll ===
 Contributors: Juna IT Poll
 Donate link: http://juna-it.com/index.php/features/elements/juna-it-plugin/
-Tags: poll, wordpress poll, create poll, custom poll, online poll, poll plugin, polling, polls, voting, yop poll, polldaddy, wppolls, wp polls, WordPress polls, Poll poll,
+Tags: poll, wordpress poll, create poll, custom poll, online poll, poll plugin, polling, polls, voting, yop poll, polldaddy, wppolls, wp polls, WordPress polls, Poll poll, pol,
 Requires at least: 3.0.1
-Tested up to: 4.2.3
-Stable tag: 1.0.0
+Tested up to: 4.2.4
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Juna IT Poll - Wordpress Plugin is an instrument for understanding visitor 's opinions.
+Juna IT Poll - WordPress Plugin is an instrument for understanding visitor 's opinions. You can use this plugin for explaining what your users think about your web-page or a new page and or about any question.
 
 == Description ==
 
@@ -32,6 +32,8 @@ Please ask us if you have any problems. We will try to solve your problem as soo
 
 If you think, that you found a bug in our [WordPress Juna IT Poll](http://juna-it.com/index.php/features/elements/juna-it-plugin/) plugin or have any question contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com).
 
+== Installation ==
+
 == Screenshots ==
     
 1.  WordPress Juna IT Poll
@@ -40,3 +42,16 @@ If you think, that you found a bug in our [WordPress Juna IT Poll](http://juna-i
 23.  WordPress Juna IT Poll
 24.  WordPress Juna IT Poll
 25.  WordPress Juna IT Poll
+26.  WordPress Juna IT Poll
+27.  WordPress Juna IT Poll
+28.  WordPress Juna IT Poll
+29.  WordPress Juna IT Poll
+3.  WordPress Juna IT Poll
+32.  WordPress Juna IT Poll
+33.  WordPress Juna IT Poll
+34.  WordPress Juna IT Poll
+
+== Changelog ==
+
+= 1.0.1 =
+*  Bug fixed in Poll.

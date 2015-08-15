@@ -18,9 +18,57 @@
 
 	
 		src=jQuery('#img1').attr('src');		
-		 index = jQuery('#img1').attr('src').indexOf('.');
+		index = jQuery('#img1').attr('src').indexOf('.');
 		sub=src.substring(0,index-2);	
+
+		jQuery('#fonts_div').append("<input type='submit'  id='Save_button' style='margin-left: 40px; float: right;' value='Save Changes' />");
+
+		var text=document.getElementById('copy').value;
+				
+				var ajaxurl = object.ajaxurl;
+			  	var data = {
+			    	action: 'GetOptionForShortcode', // wp_ajax_my_action / wp_ajax_nopriv_my_action in ajax.php. Can be named anything.
+					foobar:  text, // translates into $_POST['foobar'] in PHP				
+				};
+				
+				jQuery.post(ajaxurl, data, function(response) {	
+
+				var a=response.split('^');
+												
+				for(i=1;i<a.length-1;i++)
+				{
+					jQuery('#shortcode_select').append("<option value="+a[i]+">"+a[i]+"</option>");
+				}
+
+			})
 	})
+
+	function myF()
+	{	
+		var sel=document.getElementById('shortcode_select').value;
+
+		var a=sel+'^';
+
+		var ajaxurl = object.ajaxurl;
+
+		var data = {
+		action: 'GetIdForShortcode', // wp_ajax_my_action / wp_ajax_nopriv_my_action in ajax.php. Can be named anything.
+		foobar:  a, // translates into $_POST['foobar'] in PHP				
+		};
+				
+		jQuery.post(ajaxurl, data, function(response) {
+
+			var old_id=document.getElementById('shortcode_id').value;
+
+			var b=old_id.substr(0,18);
+
+			var new_id=b+response+'"]';
+
+			document.getElementById('shortcode_id').value="";
+			document.getElementById('shortcode_id').value=new_id;
+			
+		})
+	}
 
 	function add_answers()
 	{
@@ -115,17 +163,16 @@
 					jQuery('#HoverCheck').css({"opacity":"0"});
 			}
 
-			if(image[image.length-1]==2 || image[image.length-1]==4)
+			if(image[image.length-1]==1 )
 			{
-				jQuery("#Save_button").prop('disabled','true');
-				jQuery("#coming_soon").css({"display":"inline"});
+				jQuery('#Save_button').remove();
+				jQuery('#fonts_div').append("<input type='submit'  id='Save_button' style='margin-left: 40px; float: right;' value='Save Changes' />");
 			}
-			 else
+			else
 			{
-				jQuery("#Save_button").removeAttr('disabled');
-				jQuery("#coming_soon").css({"display":"none"});
+				jQuery('#Save_button').remove();
 			}
-
+			
 			if(image[image.length-1]==3)
 			{
 				jQuery('#hoverColor_label').html('Bg-color for Question: ');
@@ -428,7 +475,6 @@
 				if(pickerID=='1')
 					{
 						var col=jQuery('#color_div'+pickerID).val();
-						alert(col);
 						jQuery('#color'+pickerID).val(col);
 					}
 				if(pickerID=='2')
@@ -500,6 +546,21 @@
 					{
 						var col=jQuery('#colorPickerhover').val();
 						jQuery('#selectedHoverColor').val(col);
+					}
+				if (pickerID=='vote_button_color') 
+					{
+						var col=jQuery('#vote_button_div').val();
+						jQuery('#vote_button_color').val(col);
+					}
+				if (pickerID=='buttons_text_color') 
+					{
+						var col=jQuery('#buttons_text_div').val();
+						jQuery('#buttons_text_color').val(col);
+					}
+				if (pickerID=='results_color') 
+					{
+						var col=jQuery('#results_color_div').val();
+						jQuery('#results_color').val(col);
 					}
 			}
 			else
@@ -870,6 +931,81 @@
 									if(k[0]==text)
 									{	
 										jQuery('#colorPickerhover').val(k[1]);
+										break;
+									}
+									else
+									{
+										continue;
+									}
+								}
+						}		
+					}
+				if(pickerID=='vote_button_color')
+					{
+						var text=jQuery('#vote_button_color').val().toLowerCase();
+
+						if(text[0]=="#")
+						{
+							jQuery('#vote_button_div').val(text);
+						}	
+						else
+						{
+							for(i=0; i<colors.length;i++)
+								{
+									var k=colors[i].split(':');
+									if(k[0]==text)
+									{	
+										jQuery('#vote_button_div').val(k[1]);
+										break;
+									}
+									else
+									{
+										continue;
+									}
+								}
+						}		
+					}
+				if(pickerID=='buttons_text_color')
+					{
+						var text=jQuery('#buttons_text_color').val().toLowerCase();
+
+						if(text[0]=="#")
+						{
+							jQuery('#buttons_text_div').val(text);
+						}	
+						else
+						{
+							for(i=0; i<colors.length;i++)
+								{
+									var k=colors[i].split(':');
+									if(k[0]==text)
+									{	
+										jQuery('#buttons_text_div').val(k[1]);
+										break;
+									}
+									else
+									{
+										continue;
+									}
+								}
+						}		
+					}
+				if(pickerID=='results_color')
+					{
+						var text=jQuery('#results_color').val().toLowerCase();
+
+						if(text[0]=="#")
+						{
+							jQuery('#results_color_div').val(text);
+						}	
+						else
+						{
+							for(i=0; i<colors.length;i++)
+								{
+									var k=colors[i].split(':');
+									if(k[0]==text)
+									{	
+										jQuery('#results_color_div').val(k[1]);
 										break;
 									}
 									else

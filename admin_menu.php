@@ -21,10 +21,18 @@
  		<img id="img4" style="width:120px; margin-left:10px; height:120px; " src=<?php echo $path_site . '/Images/poll-4.png'; ?> onclick="SelectType('img4')" >
 
  	</section>
- 		<img id="coming_soon" style="float:right; width:300px; margin-right:550px; height:300px; display:none; " src=<?php echo $path_site . '/Images/coming_soon.png'; ?>  >
+ 	<section id="shortcode_section"  style="position:relative; float:right; margin-right:200px; width:300px; height:200px; padding:10px; border: 1px solid whitesmoke;border-radius:10px; background-color: white;">
+ 		<p style="font-size:16px; float:right;"><b>Shortcode</b></p><br><br>
+ 		<p style="font-size:14px;" id="copy">Copy & paste the shortcode directly into any WordPress post or page.</p>
+ 		<input type="text" style="font-size:14px;" id="shortcode_id" readonly value='[Juna_IT_Poll id="1"]'>
+ 		<select id="shortcode_select" onchange="myF()" style="margin-top:15px;">
+			<option value="Do You Like Our plugin?">Do You Like Our plugin?</option> 			
+ 		</select>
+ 	</section>
+ 		<img id="coming_soon" style="float:right; width:300px; margin-right:550px; height:300px; display:none; " src=<?php echo $path_site . '/Images/coming_soon.png'; ?>  > 
 
 		<label style="font-size:14px;"> Question: </label> <br>
-		<input type="text" name="question" id="question_id" style="width:500px;"/> <span id="span_question" style="color: red"></span> <br><br><br>
+		<input type="text" name="question" id="question_id" style="width:500px;" onchange="changed_question()" /> <span id="span_question" style="color: red"></span> <br><br><br>
 		<label style="font-size:14px;"> Answers: </label> <br>
 
 	 	<select name="AnswersCount" id="AnswersCount" onchange="add_answers()"> 		
@@ -47,78 +55,78 @@
 		 		<label id="bg_color1" style="display:none; font-size:14px;  "> Choose Background Color</label>  <br>
 
 		 		<input type="file" disabled="true" name="upload1" id="upload1" style="display:none; padding: 0; height: 27px;" accept="image/*"/> 
-		 		<input type="text" disabled="true" value="#000000" name="color1" id="color1" style="display:none; width: 170px; " onchange="ColorPicker('1',false);">
-		 		<input type="color" disabled="true" id="color_div1" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('1',true)"> <br> 
+		 		<input type="text" disabled="true" value="#c0c0c0" name="color1" id="color1" style="display:none; width: 170px; " onchange="ColorPicker('1',false);">
+		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div1" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('1',true)"> <br> 
 
 		 		<label id="labelUpload2" style="display:none; font-size:14px;  "> Include File</label>  
 		 		<label id="bg_color2"  style="display:none; font-size:14px;  "> Choose Background Color</label> <br>
 
 			 	<input type="file" disabled="true" name="upload2" id="upload2" style="display:none; padding: 0; height: 27px;" accept="image/*"/> 
-		 		<input type="text" disabled="true" value="#000000" name="color2" id="color2" style="display:none; width: 170px; " onchange="ColorPicker('2',false);">
-		 		<input type="color" disabled="true" id="color_div2" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('2',true)"> <br> 
+		 		<input type="text" disabled="true" value="#c0c0c0" name="color2" id="color2" style="display:none; width: 170px; " onchange="ColorPicker('2',false);">
+		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div2" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('2',true)"> <br> 
 
 		 		<label id="labelUpload3" style="display:none; font-size:14px;  "> Include File</label>  
 		 		<label id="bg_color3" style="display:none; font-size:14px;  "> Choose Background Color</label> <br>
 		 	
 		 		<input disabled="true" type="file" name="upload3" id="upload3" style=" display:none; padding: 0; height: 27px;" accept="image/*"/> 
-		 		<input type="text" disabled="true" value="#000000" name="color3" id="color3" style="display:none; width: 170px; " onchange="ColorPicker('3',false);">
-		 		<input type="color" disabled="true" id="color_div3" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('3',true)"> <br> 
+		 		<input type="text" disabled="true" value="#c0c0c0" name="color3" id="color3" style="display:none; width: 170px; " onchange="ColorPicker('3',false);">
+		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div3" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('3',true)"> <br> 
 
 		 		<label id="labelUpload4" style="display:none; font-size:14px;  "> Include File</label>  
 		 		<label id="bg_color4" style="display:none; font-size:14px;  "> Choose Background Color</label> <br>
 
 		 		<input disabled="true" type="file" name="upload4" id="upload4" style=" display:none; padding: 0; height: 27px;" accept="image/*"/> 
-		 		<input type="text" disabled="true" value="#000000" name="color4" id="color4" style="display:none; width: 170px; " onchange="ColorPicker('4',false);">
-		 		<input type="color" disabled="true" id="color_div4" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('4',true)"> <br>
+		 		<input type="text" disabled="true" value="#c0c0c0" name="color4" id="color4" style="display:none; width: 170px; " onchange="ColorPicker('4',false);">
+		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div4" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('4',true)"> <br>
 
 		 		<label id="labelUpload5" style="display:none; font-size:14px;  "> Include File</label>  
 		 		<label id="bg_color5" style="display:none; font-size:14px;  "> Choose Background Color</label> <br>
 
 		 		<input disabled="true" type="file" name="upload5" id="upload5" style=" display:none; padding: 0; height: 27px;" accept="image/*"/> 
-		 		<input type="text" disabled="true" value="#000000" name="color5" id="color5" style="display:none; width: 170px; " onchange="ColorPicker('5',false);">
-		 		<input type="color" disabled="true" id="color_div5" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('5',true)"> <br> 
+		 		<input type="text" disabled="true" value="#c0c0c0" name="color5" id="color5" style="display:none; width: 170px; " onchange="ColorPicker('5',false);">
+		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div5" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('5',true)"> <br> 
 
 		 		<label id="labelUpload6" style="display:none; font-size:14px;  "> Include File</label>  
 		 		<label id="bg_color6" style="display:none; font-size:14px;  "> Choose Background Color</label><br>
 
 		 		<input disabled="true" type="file" name="upload6" id="upload6" style=" display:none; padding: 0; height: 27px;" accept="image/*"/> 
-		 		<input type="text" disabled="true" value="#000000" name="color6" id="color6" style="display:none; width: 170px; " onchange="ColorPicker('6',false);">
-		 		<input type="color" disabled="true" id="color_div6" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('6',true)"> <br> 
+		 		<input type="text" disabled="true" value="#c0c0c0" name="color6" id="color6" style="display:none; width: 170px; " onchange="ColorPicker('6',false);">
+		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div6" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('6',true)"> <br> 
 
 		 		<label id="labelUpload7" style="display:none; font-size:14px;  "> Include File</label>  
 		 		<label id="bg_color7" style="display:none; font-size:14px;  "> Choose Background Color</label><br>
 
 		 		<input disabled="true" type="file" name="upload7" id="upload7" style=" display:none; padding: 0; height: 27px;" accept="image/*"/> 
-		 		<input type="text" disabled="true" value="#000000" name="color7" id="color7" style="display:none; width: 170px; " onchange="ColorPicker('7',false);">
-		 		<input type="color" disabled="true" id="color_div7" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('7',true)"> <br>
+		 		<input type="text" disabled="true" value="#c0c0c0" name="color7" id="color7" style="display:none; width: 170px; " onchange="ColorPicker('7',false);">
+		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div7" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('7',true)"> <br>
 
 		 		<label id="labelUpload8" style="display:none; font-size:14px;  "> Include File</label>  
 		 		<label id="bg_color8" style="display:none; font-size:14px;  "> Choose Background Color</label> <br>
 
 		 		<input disabled="true" type="file" name="upload8" id="upload8" style=" display:none; padding: 0; height: 27px;" accept="image/*"/> 
-		 		<input type="text" disabled="true" value="#000000" name="color8" id="color8" style="display:none; width: 170px; " onchange="ColorPicker('8',false);">
-		 		<input type="color" disabled="true" id="color_div8" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('8',true)"> <br>
+		 		<input type="text" disabled="true" value="#c0c0c0" name="color8" id="color8" style="display:none; width: 170px; " onchange="ColorPicker('8',false);">
+		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div8" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('8',true)"> <br>
 
 		 		<label id="labelUpload9" style="display:none; font-size:14px;  "> Include File</label>  
 		 		<label id="bg_color9" style="display:none; font-size:14px;  "> Choose Background Color</label>  <br>
 
 		 		<input disabled="true" type="file" name="upload9" id="upload9" style=" display:none; padding: 0; height: 27px;" accept="image/*"/> 
-		 		<input type="text" disabled="true" value="#000000" name="color9" id="color9" style="display:none; width: 170px; " onchange="ColorPicker('9',false);">
-		 		<input type="color" disabled="true" id="color_div9" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('9',true)"> <br>
+		 		<input type="text" disabled="true" value="#c0c0c0" name="color9" id="color9" style="display:none; width: 170px; " onchange="ColorPicker('9',false);">
+		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div9" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('9',true)"> <br>
 
 		 		<label id="labelUpload10" style="display:none; font-size:14px; "> Include File</label>  
 		 		<label id="bg_color10" style="display:none; font-size:14px; "> Choose Background Color</label><br>
 
 		 		<input disabled="true" type="file" name="upload10" id="upload10" style=" display:none; padding: 0; height: 27px;" accept="image/*"/>
-		 		<input type="text" disabled="true" value="#000000" name="color10" id="color10" style="display:none; width: 170px; " onchange="ColorPicker('10',false);">
-		 		<input type="color" disabled="true" id="color_div10" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('10',true)"> <br> 
+		 		<input type="text" disabled="true" value="#c0c0c0" name="color10" id="color10" style="display:none; width: 170px; " onchange="ColorPicker('10',false);">
+		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div10" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('10',true)"> <br> 
 			
 			</div>
 
-		<label id="labelAnswer1" style="font-size:14px; "> Answer 1: </label> <br>
+		<label id="labelAnswer1" style="font-size:14px;"> Answer 1: </label> <br>
  		<input type="text" name="answer1" id="answer1" style=" width:400px;"/>  <span id="span_answer1" style="color: red"></span><br>
 
-	 	<label id="labelAnswer2" style="font-size:14px;   width:50px; "> Answer 2: </label> <br>
+	 	<label id="labelAnswer2" style="font-size:14px;"> Answer 2: </label> <br>
 	 	<input type="text" name="answer2" id="answer2" style=" width:400px; "/> <span id="span_answer2" style="color: red"></span><br> 
  		 
 	 	<label id="labelAnswer3" style="font-size:14px;"> Answer 3: </label>  <br>
@@ -151,22 +159,31 @@
  		<h3> Widget Style </h3><br>
 
  		<label style="font-size:14px;">Background Color:  </label> 
- 		<input type="color"  id="bg_div" style="float:right; height: 23px; padding: 1px 3px;" onchange="ColorPicker('bg',true)">
- 		<input type="text" value="#000000" name="bg_color" id="bg_color" style="width: 170px; float:right; margin-right:10px;" onchange="ColorPicker('bg',false)"> <br><br>		
+ 		<input type="color" value="#ffffff" id="bg_div" style="float:right; height: 23px; padding: 1px 3px;" onchange="ColorPicker('bg',true)">
+ 		<input type="text" value="#ffffff" name="bg_color" id="bg_color" style="width: 170px; float:right; margin-right:10px;" onchange="ColorPicker('bg',false)"> <br><br>		
  		
  		<label style="font-size:14px;">Border Color:  </label>
- 		<input type="color"  id="border_div" style="float:right; height: 23px; padding: 1px 3px;" onchange="ColorPicker('border',true)"> 
- 		<input type="text"  value="#000000" name="border_color" id="border_color" style="width: 170px; float:right; margin-right:10px;" onchange="ColorPicker('border',false)"><br><br>
+ 		<input type="color" value="#c0c0c0" id="border_div" style="float:right; height: 23px; padding: 1px 3px;" onchange="ColorPicker('border',true)"> 
+ 		<input type="text" value="#c0c0c0" name="border_color" id="border_color" style="width: 170px; float:right; margin-right:10px;" onchange="ColorPicker('border',false)"><br><br>
  		
  		<label style="font-size:14px;">Answer Color:   </label> 
- 		<input type="color"  id="answer_div" style="float:right; height: 23px; padding: 1px 3px;" onchange="ColorPicker('answer',true)">
- 		<input type="text"  value="#000000" name="answer_color" id="answer_color" style="width: 170px; float:right; margin-right:10px;" onchange="ColorPicker('answer',false)"><br><br>
+ 		<input type="color" value="#c0c0c0" id="answer_div" style="float:right; height: 23px; padding: 1px 3px;" onchange="ColorPicker('answer',true)">
+ 		<input type="text" value="#c0c0c0" name="answer_color" id="answer_color" style="width: 170px; float:right; margin-right:10px;" onchange="ColorPicker('answer',false)"><br><br>
  		
-
  		<label style="font-size:14px;">Question Color:  </label>
- 		<input type="color"  id="quest_div" style="float:right; height: 23px; padding: 1px 3px;" onchange="ColorPicker('question',true)"> 
- 		<input type="text"  value="#000000" name="Question_color" id="Question_color" style="width: 170px; float:right; margin-right:10px;" onchange="ColorPicker('question',false)"><br><br>
+ 		<input type="color" value="#c0c0c0" id="quest_div" style="float:right; height: 23px; padding: 1px 3px;" onchange="ColorPicker('question',true)"> 
+ 		<input type="text" value="#c0c0c0" name="Question_color" id="Question_color" style="width: 170px; float:right; margin-right:10px;" onchange="ColorPicker('question',false)"><br><br>
+ 		 
+ 		<label style="font-size:14px;"> Vote Button Color:  </label>
+ 		<input type="color"  id="vote_button_div" style="float:right; height: 23px; padding: 1px 3px;" onchange="ColorPicker('vote_button_color',true)"> 
+ 		<input type="text" value="#000000" name="vote_button_color" id="vote_button_color" style="width: 170px; float:right; margin-right:10px;" onchange="ColorPicker('vote_button_color',false)"><br><br>
+ 		 	
+ 		<label style="font-size:14px;">Button`s Text Color:  </label>
+ 		<input type="color" value="#ffffff" id="buttons_text_div" style="float:right; height: 23px; padding: 1px 3px;" onchange="ColorPicker('buttons_text_color',true)"> 
+ 		<input type="text" value="#ffffff" name="buttons_text" id="buttons_text_color" style="width: 170px; float:right; margin-right:10px;" onchange="ColorPicker('buttons_text_color',false)"><br><br>
  		 		 
+ 		<label>Widget's width: </label> <input type="text" name="widg_width" id="widg_width" value="200"  style="margin-left:78px; width:80px;" /> <span> px </span> <br>		 
+ 	
  	</div>
 
  	<div style="position:relative; margin-top: 25px; width:448px;">
@@ -179,7 +196,7 @@
 
  	</div>
 
- 	<div style="position: relative; width: 600px; margin: 0 auto 0 0; ">
+ 	<div id="fonts_div" style="position: relative; width: 600px; margin: 0 auto 0 0; ">
  	<h3> Fonts </h3>
  	<div style="float: left; width: 600px; height: 23px;">
  	<label> Select Text Font: </label>
@@ -318,14 +335,11 @@
  	</div>
  	<br> <br>
  	<label> Question's Font-Size: </label> <input type="number" min=12 max=20 name="fontSize" id="fontSize" value="14" style="margin-left:40px; width:50px;" onchange="ChangeFont('true');" /> <span> px </span> <br>
- 	<br> <br> <input type="submit" enabled id="Save_button" style="margin-left: 40px; float: right;" value="Save Changes" /> 
  	</div>
 
 
  </form>
 <?php
-
- 	
 
 	 global $wpdb;		
 
@@ -357,7 +371,7 @@
 				}
 			}		
 
-			if($image!=3)
+			if($image==1)
 			{
 					//insert data to poll_wp_Question	
 
@@ -371,15 +385,10 @@
 				{
 					return false;
 				}	
-				//$wpdb->insert($table_name,array('id'=>'','Question'=>$question,'PluginType'=>$image));	
 
 				//insert data to poll_wp_Answers
 
 				$count=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name  WHERE id > %d order by id desc limit 1  ", 0));
-
-
-				//$count=$wpdb->get_var("SELECT id FROM $table_name order by id desc limit 1");
-			
 
 				$answers_array=array();
 
@@ -400,16 +409,11 @@
 						return false;
 					}
 
-					//$wpdb->insert($table_name2, array('id'=>'','Answer'=>$answers_array[$i], 'File'=>'','Answer_bg_color'=>$answerColors[$i],'QuestionID'=>$count));
 					$answers_array[$i]=addslashes($answers_array[$i]);
 
 					$ans_id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name2 WHERE Answer= %s and QuestionID=(SELECT id FROM $table_name WHERE Question= %s) ", $answers_array[$i],$question ));
 
-					//$ans_id=$wpdb->get_var("SELECT id FROM $table_name2 WHERE Answer='$answers_array[$i]' and QuestionID=(SELECT id FROM $table_name WHERE Question='$question')");
-					
 					$ques_id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Question= %s",$question));
-
-					//$ques_id=$wpdb->get_var("SELECT id FROM $table_name WHERE Question='$question'");
 
 					//insert data to poll_wp_Results
 					if(strlen($ques_id)>0 && strlen($ans_id)>0) 
@@ -421,7 +425,6 @@
 						return false;	
 					}	
 
-					//$wpdb->insert($table_name3, array('id'=>'','QuestionID'=>$ques_id, 'AnswerID'=>$ans_id, 'count'=>'0'));
 				}
 
 					//insert data to poll_wp_Settings
@@ -433,141 +436,24 @@
 						$answerColor=sanitize_text_field($_POST['answer_color']);
 						$answerHoverColor=sanitize_text_field($_POST['selectedHoverColor']);
 						$questionColor=sanitize_text_field($_POST['Question_color']);
+						$vote_button_color=sanitize_text_field($_POST['vote_button_color']);
+						$buttons_text=sanitize_text_field($_POST['buttons_text']);
+						//$results=sanitize_text_field($_POST['results']);
+						$widg_width=sanitize_text_field($_POST['widg_width']);
 
-						//if(strlen($bgColor)>0 && strlen($borderColor)>0 && strlen($fontFamily)>0 && strlen($fontSize)>0 && strlen($answerColor)>0 && strlen($answerHoverColor)>0 && strlen($questionColor)>0)
-						//{	
-						 	$wpdb->query($wpdb->prepare("INSERT INTO $table_name4 (id, border_color, bg_color, font_family, font_size, answer_color, answer_hover_color, question_color, QuestionID) VALUES (%d,%s,%s,%s,%d,%s,%s,%s,%d)", '', $borderColor, $bgColor, $fontFamily, $fontSize, $answerColor, $answerHoverColor, $questionColor, $count));
- 						//}
- 						//else
- 						//{
- 						//	return false;
- 						//}
 
-						//$wpdb->insert($table_name4, array('id'=>'','border_color'=>$borderColor, 'bg_color'=>$bgColor, 'font_family'=>$fontFamily, 'font_size'=>$fontSize, 'answer_color'=>$answerColor, 'answer_hover_color'=>$answerHoverColor, 'question_color'=>$questionColor, 'QuestionID'=>$count));		
-
+						if(strlen($bgColor)>0 && strlen($borderColor)>0 && strlen($fontFamily)>0 && strlen($fontSize)>0 && strlen($answerColor)>0 && strlen($questionColor)>0 && strlen($vote_button_color)>0 && strlen($buttons_text)>0 && strlen($widg_width)>0)
+						{	
+						 	$wpdb->query($wpdb->prepare("INSERT INTO $table_name4 (id, border_color, bg_color, font_family, font_size, answer_color, answer_hover_color, question_color, vote_button_color, buttons_text_color, widget_div_width, QuestionID) VALUES (%d,%s,%s,%s,%d,%s,%s,%s,%s,%s,%s,%d)", '', $borderColor, $bgColor, $fontFamily, $fontSize, $answerColor, $answerHoverColor, $questionColor, $vote_button_color, $buttons_text, $widg_width, $count));
+ 						}
+ 						else
+ 						{
+ 							return false;
+ 						}
 			}
-				else
+			else
 			{
-				
-				$MyFiles=array();
-				$allowedTypes=array('jpg','gif','png');
-				$currentFiles=array();
-				for($i=1; $i<=$k; $i++)
-				{
-					if(isset($_FILES['upload'.$i]))
-					{
-						$MyFiles[$i]=$_FILES['upload'.$i];
-					}					
-				}
-
-				//insert data to poll_wp_Question	
-
-				delete($question);
-
-				if(strlen($question)>0 && strlen($image)>0) 
-				{	
-					$wpdb->query($wpdb->prepare("INSERT INTO $table_name (id,Question,PluginType) VALUES (%d,%s,%s)", '', $question, $image));	
-				}
-					else
-				{
-					return false;
-				}
-				//$wpdb->insert($table_name,array('id'=>'','Question'=>$question,'PluginType'=>$image));
-
-				$question=addslashes($question);
-
-				$ques_id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Question= %s",$question));
-				 
-				//$ques_id=$wpdb->get_var("SELECT id FROM $table_name WHERE Question='$question'");
-								
-				$count=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE id > %d order by id desc limit 1",0));
-			
-				//$count=$wpdb->get_var("SELECT id FROM $table_name order by id desc limit 1");
-
-				for($i=1; $i<=$k; $i++)
-				{
-					$Currentfile=$_FILES['upload'.$i];
-					$CurrentFile_Name=$Currentfile['name'];
-					$currentFile_tmpName=$Currentfile['tmp_name'];
-					$Currentfile_ext=explode('.',$CurrentFile_Name);
-
-					$Currentfile_ext=strtolower(end($Currentfile_ext));
-
-					if(in_array($Currentfile_ext, $allowedTypes))
-					{
-						$currentFile_newName=uniqid() . '.' . $Currentfile_ext;
-
-						$currentFiles[$i]=$currentFile_newName;
-						
-						$file_destination=plugin_dir_path(__FILE__) ."Images\Uploads\ " . $currentFile_newName;
-						$file_destination=trim($file_destination);
-						
-						 if(move_uploaded_file($currentFile_tmpName, $file_destination))
-						 	{	
-						 		//insert data to poll_wp_Answers
-				
-								$answers_array=array();
-
-								$answers_array[0]=null;
-								
-									$answers_array[$i]=sanitize_text_field(stripslashes($_POST['answer' . $i]));
-
-									if(strlen($answers_array[$i])>0 && strlen($currentFiles[$i])>0 && strlen($answerColors[$i])>0 && strlen($count)>0) 
-									{
-										$wpdb->query($wpdb->prepare("INSERT INTO $table_name2 (id, Answer, File, Answer_bg_color, QuestionID) VALUES (%d,%s,%s,%s,%d)",'',$answers_array[$i],$currentFiles[$i],$answerColors[$i],$count));
-									}
-										else
-									{
-										return false;
-									}
-									//$wpdb->insert($table_name2, array('id'=>'','Answer'=>$answers_array[$i], 'File'=>$currentFiles[$i],'Answer_bg_color'=>$answerColors[$i],'QuestionID'=>$count));
-									
-									$answers_array[$i]=addslashes($answers_array[$i]);
-
-									$ans_id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name2 WHERE Answer= %s and QuestionID=(SELECT id FROM $table_name WHERE Question= %s) ", $answers_array[$i],$question ));
-									
-								//$ans_id=$wpdb->get_var("SELECT id FROM $table_name2 WHERE Answer='$answers_array[$i]' and QuestionID=(SELECT id FROM $table_name WHERE Question='$question')");
-
-									//insert data to poll_wp_Results
-									
-									
-								if(strlen($ques_id)>0 && strlen($ans_id)>0) 
-								{
-									$wpdb->query($wpdb->prepare("INSERT INTO $table_name3 (id, QuestionID, AnswerID, count) VALUES (%d,%d,%d,%d)",'', $ques_id, $ans_id, 0));
-								}
-									else
-								{
-									return false;
-								}
-								//$wpdb->insert($table_name3, array('id'=>'','QuestionID'=>$ques_id, 'AnswerID'=>$ans_id, 'count'=>'0'));								
-							}
-
-								
-						 	}
-
-					}
-				
-								//insert data to poll_wp_Settings
-
-								$bgColor=sanitize_text_field($_POST['bg_color']);
-								$borderColor=sanitize_text_field($_POST['border_color']);
-								$fontFamily=sanitize_text_field($_POST['Text_Font']);
-								$fontSize=sanitize_text_field($_POST['fontSize']);
-								$answerColor=sanitize_text_field($_POST['answer_color']);
-								$answerHoverColor=sanitize_text_field($_POST['selectedHoverColor']);
-								$questionColor=sanitize_text_field($_POST['Question_color']);
-								$bgColorQuest=sanitize_text_field($_POST['selectedHoverColor']);
-								
-
-								if(strlen($borderColor)>0 && strlen($bgColor)>0 && strlen($fontFamily)>0 && strlen($fontSize)>0 && strlen($answerColor)>0 && strlen($bgColorQuest)>0 && strlen($questionColor)>0 && strlen($count)>0) 
-								{
-								$wpdb->query($wpdb->prepare("INSERT INTO $table_name4 (id, border_color, bg_color, font_family, font_size, answer_color, answer_hover_color, question_color, QuestionID) VALUES (%d,%s,%s,%s,%d,%s,%s,%s,%d)", '', $borderColor, $bgColor, $fontFamily, $fontSize, $answerColor, $bgColorQuest, $questionColor, $count));
-								}
-									else
-								{
-									return false;
-								}
-								//$wpdb->insert($table_name4, array('id'=>'','border_color'=>$borderColor, 'bg_color'=>$bgColor, 'font_family'=>$fontFamily, 'font_size'=>$fontSize, 'answer_color'=>$answerColor, 'answer_hover_color'=>$bgColorQuest, 'question_color'=>$questionColor, 'QuestionID'=>$count));		
+				return false;
 			}
 
 			
@@ -584,42 +470,29 @@
 
 					$count=$wpdb->get_var($wpdb->prepare("SELECT count(*) FROM  $table_name WHERE Question= %s", $sql_question));
 
-					//$count=$wpdb->get_var("SELECT count(*) FROM  $table_name WHERE Question='$sql_question'");
-
 					$id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Question= %s limit 1",$sql_question));
-
-					//$id=$wpdb->get_var("SELECT id FROM $table_name WHERE Question='$sql_question' limit 1");
 
 					if($count!=0)
 					{
 
 						$wpdb->query($wpdb->prepare("DELETE FROM $table_name WHERE id= %d", $id));
 
-						//$wpdb->delete($table_name,array('id'=>$id));
-
 						$results=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE QuestionID= %d", $id));
-
-						//$results=$wpdb->get_results("SELECT * FROM $table_name2 WHERE QuestionID='$id'");
 
 						for($i=0;$i<count($results);$i++)
 						{		
 							$wpdb->query($wpdb->prepare("DELETE FROM $table_name2 WHERE id= %d", $results[$i]->id));
-							//$wpdb->delete($table_name2,array('id'=>$results[$i]->id));
 						}
 
 						$set_id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name4 WHERE QuestionID= %d", $id));
-						//$set_id=$wpdb->get_var("SELECT id FROM $table_name4 WHERE QuestionID='$id'");
 
 						$wpdb->query($wpdb->prepare("DELETE FROM $table_name4 WHERE id= %d",$set_id));
-						//$wpdb->delete($table_name4,array('id'=>$set_id));
 
 						$result_s=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name3 WHERE QuestionID= %d",$id));
-						//$result_s=$wpdb->get_results("SELECT * FROM $table_name3 WHERE QuestionID='$id'");
 
 						for($i=0;$i<count($result_s);$i++)
 						{		
 							$wpdb->query($wpdb->prepare("DELETE FROM $table_name3 WHERE id= %d", $result_s[$i]->id));				
-							//$wpdb->delete($table_name3,array('id'=>$result_s[$i]->id));
 						}
 
 					}
@@ -629,6 +502,4 @@
 					}
 					
 				}
-
-
 ?>
