@@ -34,6 +34,13 @@ If you think, that you found a bug in our [WordPress Juna IT Poll](http://juna-i
 
 == Installation ==
 
+First download the WordPress Polls plugin ZIP file.
++Go to Plugins page, and add new plugin.
++Then go to Plugins page Add New > Upload Plugin
+Click "Choose file" then select the - poll-wp zip file.
++Then Install and activate the plugin.
+That's all, now you can build Polls and Survey forms. If any problem occurs, contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com)
+
 == Screenshots ==
     
 1.  WordPress Juna IT Poll
