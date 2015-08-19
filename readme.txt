@@ -21,6 +21,8 @@ Juna IT Poll lets you  add standart and social questions in your profile easily.
 variants in our Poll Plugin, which are necessary for each profile/web-site. And it will be improved for you every time and will also  
 increase the variants of the questions . You can rule any question and answer.
 
+https://www.youtube.com/watch?v=dOTYWDvjYws
+
 Please ask us if you have any problems. We will try to solve your problem as soon as possible. Because we are trying to keep our collaboration in this way through these methods.
 
 * easy placing and using - Poll
@@ -36,10 +38,10 @@ If you think, that you found a bug in our [WordPress Juna IT Poll](http://juna-i
 
 ### First download the WordPress Polls plugin ZIP file.
 
-1. +Go to Plugins page, and add new plugin.
-2. +Then go to Plugins page Add New > Upload Plugin
+1. Go to Plugins page, and add new plugin.
+2. Then go to Plugins page Add New > Upload Plugin
 3. Click "Choose file" then select the - poll-wp zip file.
-4. +Then Install and activate the plugin.
+4. Then Install and activate the plugin.
 5. That's all, now you can build Polls and Survey forms. If any problem occurs, contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com)
 
 == Screenshots ==
