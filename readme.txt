@@ -1,7 +1,7 @@
 === Poll ===
 Contributors: Juna IT Poll
 Donate link: http://juna-it.com/index.php/features/elements/juna-it-plugin/
-Tags: poll, wordpress poll, create poll, custom poll, online poll, poll plugin, polling, polls, voting, yop poll, polldaddy, wppolls, wp polls, WordPress polls, Poll poll, pol,
+Tags: poll, post, democracy,wordpress poll, create poll, custom poll, online poll, poll plugin, polling, polls,  free user polls, voting, yop poll, polldaddy, wppolls, flash poll, wp polls, WordPress polls, Poll poll, pol.
 Requires at least: 3.0.1
 Tested up to: 4.2.4
 Stable tag: 1.0.1
