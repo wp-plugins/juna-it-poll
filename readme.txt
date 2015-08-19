@@ -1,7 +1,7 @@
 === Poll ===
 Contributors: Juna IT Poll
 Donate link: http://juna-it.com/index.php/features/elements/juna-it-plugin/
-Tags: poll, post, democracy,wordpress poll, create poll, custom poll, online poll, poll plugin, polling, polls,  free user polls, voting, yop poll, polldaddy, wppolls, flash poll, wp polls, WordPress polls, Poll poll, pol.
+Tags: poll, post, democracy,wordpress poll, create poll, custom poll, flash poll, free user polls, online poll, poll plugin, polling, polls, responsive, shortcode, qualaroo, free user polls, voting, yop poll, polldaddy, wppolls, flash poll, wp polls, WordPress polls, Poll poll, pol.
 Requires at least: 3.0.1
 Tested up to: 4.2.4
 Stable tag: 1.0.1
@@ -33,6 +33,10 @@ Please ask us if you have any problems. We will try to solve your problem as soo
 * It lets you to create or interfere the inquiry any time if you find that it is necessary - Poll
 
 If you think, that you found a bug in our [WordPress Juna IT Poll](http://juna-it.com/index.php/features/elements/juna-it-plugin/) plugin or have any question contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com).
+
+Get results without ruining the user experience of your site.
+
+Install and enjoy!
 
 == Installation ==
 
