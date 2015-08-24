@@ -15,10 +15,10 @@
 	<section style="position:relative;  width:800px; margin-bottom:15px; ">
 
  		<label id="spt"> Select Plugin Type: </label> <input type="text"  id="img_id" name="img_name" style="display:none; " value="1" /> <br><br>
- 		<img id="img1" style="width:130px; margin-left:10px; height:130px; " src=<?php echo $path_site . '/Images/poll-11.png'; ?> onclick="SelectType('img1')" >
- 		<img id="img2" style="width:120px; margin-left:10px; height:120px; " src=<?php echo $path_site . '/Images/poll-2.png'; ?> onclick="SelectType('img2')" >
- 		<img id="img3" style="width:120px; margin-left:10px; height:120px; " src=<?php echo $path_site . '/Images/poll-3.png'; ?> onclick="SelectType('img3')" >
- 		<img id="img4" style="width:120px; margin-left:10px; height:120px; " src=<?php echo $path_site . '/Images/poll-4.png'; ?> onclick="SelectType('img4')" >
+ 		<img id="img1" style="width:130px; margin-left:10px; height:130px; " src="http://juna-it.com/image/poll-11.png" onclick="SelectType('img1')" >
+ 		<img id="img2" style="width:120px; margin-left:10px; height:120px; " src="http://juna-it.com/image/poll-2.png" onclick="SelectType('img2')" >
+ 		<img id="img3" style="width:120px; margin-left:10px; height:120px; " src="http://juna-it.com/image/poll-3.png" onclick="SelectType('img3')" >
+ 		<img id="img4" style="width:120px; margin-left:10px; height:120px; " src="http://juna-it.com/image/poll-4.png" onclick="SelectType('img4')" >
 
  	</section>
  	<section id="shortcode_section"  style="position:relative; float:right; margin-right:200px; width:300px; height:200px; padding:10px; border: 1px solid whitesmoke;border-radius:10px; background-color: white;">

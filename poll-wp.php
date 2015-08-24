@@ -1,13 +1,12 @@
 <?php
-
 /*
-Plugin Name: Juna IT Poll
-Plugin URI: http://juna-it.com/index.php/features/elements/juna-it-plugin/
-Description: Juna IT Poll - Wordpress Plugin is an instrument for understanding visitor 's opinions.
-Version: 1.0.1
-Author: Juna IT
-Author: http://juna-it.com/
-License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+	Plugin name: Juna IT Poll
+	Plugin URI: http://juna-it.com/index.php/features/elements/juna-it-plugin/
+	Description: Juna IT Poll - Wordpress Plugin is an instrument for understanding visitor's opinions.
+	Version: 1.0.1
+	Author: Juna-IT
+	Author URI: http://juna-it.com/
+	License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */	
 	
  	require_once('poll-wp_widget.php');
@@ -32,7 +31,7 @@ License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 
 	add_action("admin_menu", function() {
 
-		add_menu_page('poll-wp_Admin_Menu','Juna_IT_Poll', 'manage_options','Juna_IT_Poll', 'Add_Poll',plugins_url("/Images/Admin.png", __FILE__));
+		add_menu_page('poll-wp_Admin_Menu','Juna_IT_Poll', 'manage_options','Juna_IT_Poll', 'Add_Poll','http://juna-it.com/image/admin.png');
  		add_submenu_page('Juna_IT_Poll', 'poll-wp_Admin_Menu', 'Add Poll', 'manage_options', 'Juna_IT_Poll', 'Add_Poll');
 		add_submenu_page('Juna_IT_Poll', 'poll-wp_Admin_Menu_Results', 'Results', 'manage_options', 'Admin_Menu_Results', 'See_Results');
 
