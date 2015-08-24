@@ -209,16 +209,15 @@
 			var PrimalSrc=[];
 			var ChangedSrc=[];				
 			
+				PrimalSrc[0]='http://juna-it.com/image/poll-1.png';
+				PrimalSrc[1]='http://juna-it.com/image/poll-2.png';
+				PrimalSrc[2]='http://juna-it.com/image/poll-3.png';
+				PrimalSrc[3]='http://juna-it.com/image/poll-4.png';
 
-				PrimalSrc[0]=sub+'1.png';
-				PrimalSrc[1]=sub+'2.png';
-				PrimalSrc[2]=sub+'3.png';
-				PrimalSrc[3]=sub+'4.png';
-
-				ChangedSrc[0]=sub+'11.png';
-				ChangedSrc[1]=sub+'22.png';					
-				ChangedSrc[2]=sub+'33.png';					
-				ChangedSrc[3]=sub+'44.png';	
+				ChangedSrc[0]='http://juna-it.com/image/poll-11.png';
+				ChangedSrc[1]='http://juna-it.com/image/poll-22.png';					
+				ChangedSrc[2]='http://juna-it.com/image/poll-33.png';					
+				ChangedSrc[3]='http://juna-it.com/image/poll-44.png';	
 
 			if(jQuery('#'+image).css('width')=="130px")
 			{
