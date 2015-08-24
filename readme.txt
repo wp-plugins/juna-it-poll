@@ -1,7 +1,8 @@
 === Poll ===
 Contributors: Juna IT Poll
 Donate link: http://juna-it.com/index.php/features/elements/juna-it-plugin/
-Tags: poll, post, democracy,wordpress poll, create poll, custom poll, flash poll, free user polls, online poll, poll plugin, Votes, polling, polls, vote,  responsive, shortcode, qualaroo, free user polls, voting, yop poll, user polls, polldaddy, wppolls, flash poll, wp polls, WordPress polls, Poll poll, pol, feedback , survey, survey form, data collection, charts, polling, shortcode .
+Tags: poll, post, flash poll, poll builder, democracy,wordpress poll, create poll,  wordpress poll widget, custom poll, flash poll, free user polls, online poll, poll plugin, Votes, polling, polls, vote,  responsive, shortcode, qualaroo, free user polls, voting, yop poll, user polls, polldaddy, wppolls, flash poll, wp polls, WordPress 
+      polls, Poll poll, pol, feedback , survey, survey form, data collection, charts, polling, shortcode .
 Requires at least: 3.0.1
 Tested up to: 4.2.4
 Stable tag: 1.0.1
@@ -76,50 +77,41 @@ To add a poll in your website you just need to install poll plugin and its done.
 
 ###To create wordpress requests.
 
-*Version-Select the one from the 4 versions which corresponds the subject matter of your
+* Version-Select the one from the 4 versions which corresponds the subject matter of your
+  request.
 
-request.
+* Question- Enter your question to be voted. You can use the images and edit your 
+  question using the standard Wordpress text.
 
-*Question- Enter your question to be voted. You can use the images and edit your 
+* The answers of requests-Select how many answers of request will have your versions. 
 
-question using the standard Wordpress text.
+* Each version has its uniqueness.
 
-*The answers of requests-Select how many answers of request will have your versions. 
+* The width of request-Select the width of request you want with pixels(px).
 
-*Each version has its uniqueness.
+* The background color of request- Select the background color you want for the question.
 
-*The width of request-Select the width of request you want with pixels(px).
+* The size of the question- Select the letter's size of given question.
 
-*The background color of request- Select the background color you want for the question.
+* Font of request -There are many fonts and you can select any fonts of style.
 
-*The size of the question- Select the letter's size of given question.
+* Letter color of the answer-Select what color do you want to be your answers.
 
-*Font of request -There are many fonts and you can select any fonts of style.
-
-*Letter color of the answer-Select what color do you want to be your answers.
-
-*Pictures of answer-It is used in the third version. You can create the given question by 
-
-pictures and make it more simple.
+* Pictures of answer-It is used in the third version. You can create the given question by 
+  pictures and make it more simple.
 
 
 
 
-###After all of this compress the button save and your request version is already ready. 
+### After all of this compress the button save and your request version is already ready. 
 
-After getting all of this on the right side is written "shortcode". If you want your request 
-
-plugin works where you want therefore the code [Juna-IT-Poll id="1"] which is written 
-
-there insert in the page. If you have some questions and want to know the other code of 
-
-the question, select the question and in the same place you will see the ID of the 
-
-question.
+### After getting all of this on the right side is written "shortcode". If you want your request 
+    plugin works where you want therefore the code [Juna-IT-Poll id="1"] which is written 
+    there insert in the page. If you have some questions and want to know the other code of 
+    the question, select the question and in the same place you will see the ID of the 
+    question.
 
 
 ###You also have a possibility to see the results of voting. Press the result part there on the
-
-top you will see the categories of question. Select the question which you want and you 
-
-will see the results of voting in the down.
+   top you will see the categories of question. Select the question which you want and you will 
+   see the results of voting in the down.
