@@ -1,8 +1,7 @@
 === Poll ===
 Contributors: Juna IT Poll
 Donate link: http://juna-it.com/index.php/features/elements/juna-it-plugin/
-Tags: poll, post, flash poll, poll builder, democracy,wordpress poll, create poll,  wordpress poll widget, custom poll, flash poll, free user polls, online poll, poll plugin, Votes, polling, polls, vote,  responsive, shortcode, qualaroo, free user polls, voting, yop poll, user polls, polldaddy, wppolls, flash poll, wp polls, WordPress 
-      polls, Poll poll, pol, feedback , survey, survey form, data collection, charts, polling, shortcode .
+Tags: poll, post, flash poll, poll builder, democracy,wordpress poll, create poll,  wordpress poll widget, custom poll, flash poll, free user polls, online poll, poll plugin, Votes, polling, polls, vote,  responsive, shortcode, qualaroo, free user polls, voting, yop poll, user polls, polldaddy, wppolls, flash poll, wp polls, WordPress polls, Poll poll, pol, feedback , survey, survey form, data collection, charts, polling, shortcode.
 Requires at least: 3.0.1
 Tested up to: 4.2.4
 Stable tag: 1.0.0
@@ -105,13 +104,7 @@ To add a poll in your website you just need to install poll plugin and its done.
 
 ### After all of this compress the button save and your request version is already ready. 
 
-### After getting all of this on the right side is written "shortcode". If you want your request 
-    plugin works where you want therefore the code [Juna-IT-Poll id="1"] which is written 
-    there insert in the page. If you have some questions and want to know the other code of 
-    the question, select the question and in the same place you will see the ID of the 
-    question.
+### After getting all of this on the right side is written "shortcode". If you want your request plugin works where you want therefore the code [Juna-IT-Poll id="1"] which is written there insert in the page. If you have some questions and want to know the other code of the question, select the question and in the same place you will see the ID of the question.
 
 
-###You also have a possibility to see the results of voting. Press the result part there on the
-   top you will see the categories of question. Select the question which you want and you will 
-   see the results of voting in the down.
+### You also have a possibility to see the results of voting. Press the result part there on the top you will see the categories of question. Select the question which you want and you will see the results of voting in the down.
