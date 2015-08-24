@@ -4,7 +4,7 @@ Donate link: http://juna-it.com/index.php/features/elements/juna-it-plugin/
 Tags: poll, post, democracy,wordpress poll, create poll, custom poll, flash poll, free user polls, online poll, poll plugin, Votes, polling, polls, vote,  responsive, shortcode, qualaroo, free user polls, voting, yop poll, user polls, polldaddy, wppolls, flash poll, wp polls, WordPress polls, Poll poll, pol, feedback , survey, survey form, data collection, charts, polling, shortcode .
 Requires at least: 3.0.1
 Tested up to: 4.2.4
-Stable tag: 1.0.1
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
