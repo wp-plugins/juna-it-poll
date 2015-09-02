@@ -1,7 +1,7 @@
 === Poll ===
 Contributors: Juna IT Poll
 Donate link: http://juna-it.com/index.php/features/elements/juna-it-plugin/
-Tags: create poll, create polls, custom poll, custom polls, data collection, democracy, do a poll,easy polls, feedback, flash poll,  user polls , free user polls, html poll, online poll, opinion, opinion stage, page poll, plugin, poll, poll builder, poll directory, poll plugin, poll widget,polldaddy polls, polling, Polling System, polls, post poll, post survey,  rate, premade polls,questionnaire, responsive,  opinionstage, shortcode, sidebar survey, survey, survey form, survey form builder,survey plugin, survey tool, survey widget, surveys,  user survey, vote, Votes, voting,voting polls, pol, poll poll, widget, widgets, wordpress poll widget,  wordpress poll,  WordPress polls, wordpress survey, feedback, survey,  wp polls, wp survey, social, wppolls, bing, booth,   statistics, polldaddy, qualaroo, charts, juna it poll, it poll, yop poll
+Tags: create poll, create polls, custom poll, custom polls, data collection, democracy, do a poll,easy polls, feedback, flash poll, user polls, free user polls, html poll, online poll, opinion, opinion stage, page poll, plugin, poll, poll builder, poll directory, poll plugin, poll widget,polldaddy polls, polling, Polling System, polls, post poll, post survey, rate, premade polls,questionnaire, responsive, opinionstage, shortcode, sidebar survey, survey, survey form, survey form builder,survey plugin, survey tool, survey widget, surveys, user survey, vote, Votes, voting,voting polls, pol, poll poll, widget, widgets, wordpress poll widget, wordpress poll,  WordPress polls, wordpress survey, feedback, survey, wp polls, wp survey, social, wppolls, bing, booth, statistics, polldaddy, qualaroo, charts, juna it poll, it poll, yop poll,
 Requires at least: 3.0.1
 Tested up to: 4.3
 Stable tag: 1.0.1
@@ -25,10 +25,10 @@ Juna IT Poll lets you  add standart and social questions in your profile easily.
 versions in our Poll Plugin, which are necessary for each profile/web-site. And it will be improved for you every time and will also  
 increase the variants of the questions . You can rule any question and answer.
 
-### Upgrade to WordPress Slider Pro to add some features:
+### Upgrade to WordPress Slider Pro to add some features - Poll:
 
 
-### Please ask us if you have any problems. We will try to solve your problem as soon as possible. Because we are trying to keep our collaboration in this way through these methods.
+### Please ask us if you have any problems with Juna IT Poll. We will try to solve your problem as soon as possible. Because we are trying to keep our collaboration in this way through these methods.
 
 
 * Easy placing and using - Poll
@@ -42,9 +42,9 @@ https://www.youtube.com/watch?v=dOTYWDvjYws
 
 If you think, that you found a bug in our [WordPress Juna IT Poll](http://juna-it.com/index.php/features/elements/juna-it-plugin/) plugin or have any question contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com).
 
-Get results without ruining the user experience of your site.
+Get results without running the user experience of your site.
 
-Install and enjoy!
+Install Juna IT Poll and enjoy!
 
 
 == Installation ==
@@ -55,7 +55,7 @@ Install and enjoy!
 
 2. Then go to Plugins page Add New > Upload Plugin. (Juna IT Poll)
 
-3. Click "Choose file" then select the - poll-wp zip file. (Juna IT Poll)
+3. Click "Choose file" then select the - poll wp zip file. (Juna IT Poll)
 
 4. Then Install and activate the plugin.(Juna IT Poll)
 
@@ -83,6 +83,8 @@ Once you complete the purchase you will be taken to your account and you will se
 
 Go to your widgets page, then add our WordPress Poll plugin widget to your sidebar. After that choose your poll and then choose theme for your poll. (WordPress poll plugin)
 
+If you think, that you found a bug in our [WordPress Juna IT Poll](http://juna-it.com/index.php/features/elements/juna-it-plugin/) plugin or have any question contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com).
+
 == Screenshots ==
     
 1.  WordPress Juna IT Poll
@@ -105,6 +107,9 @@ Go to your widgets page, then add our WordPress Poll plugin widget to your sideb
 = 1.0.1 =
 *  Bug fixed in Poll.
 
+= 1.0.0 =
+*  Added Poll.
+
 ==Other comments==
 
 To add a poll in your website you just need to install poll plugin and its done.
@@ -112,27 +117,27 @@ To add a poll in your website you just need to install poll plugin and its done.
 ###To create wordpress requests.
 
 * Version-Select the one from the 4 versions which corresponds the subject matter of your
-  request.
+  request - Poll.
 
 * Question- Enter your question to be voted. You can use the images and edit your 
-  question using the standard Wordpress text.
+  question using the standard Wordpress text - Poll.
 
-* The answers of requests-Select how many answers of request will have your versions. 
+* The answers of requests-Select how many answers of request will have your versions - Poll. 
 
-* Each version has its uniqueness.
+* Each version has its uniqueness - Poll.
 
-* The width of request-Select the width of request you want with pixels(px).
+* The width of request-Select the width of request you want with pixels(px) - Poll.
 
-* The background color of request- Select the background color you want for the question.
+* The background color of request- Select the background color you want for the question - Poll.
 
-* The size of the question- Select the letter's size of given question.
+* The size of the question- Select the letter's size of given question - Poll.
 
-* Font of request -There are many fonts and you can select any fonts of style.
+* Font of request -There are many fonts and you can select any fonts of style - Poll.
 
-* Letter color of the answer-Select what color do you want to be your answers.
+* Letter color of the answer-Select what color do you want to be your answers - Poll.
 
 * Pictures of answer-It is used in the third version. You can create the given question by 
-  pictures and make it more simple.
+  pictures and make it more simple - Poll.
 
 
 
