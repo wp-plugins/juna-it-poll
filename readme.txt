@@ -69,7 +69,7 @@ Featured Articles requires at least WordPress 3.0.1 and a modern web browser. No
 
 = How does support and updates work? =
 
-that wise men answered a thousand years ago. Working from home meant we could vary snack and coffee breaks, change our desks or view, goof off, drink on the job, even spend the day in pajamas, and often meet to gossip or share ideas. On the other hand, we bossed ourselves around, set impossible goals, and demanded longer hours than office jobs usually entail. It was the ultimate “flextime,” in that it depended on how flexible we felt each day, given deadlines, distractions, and workaholic crescendos. (WP Poll Plugin)
+that wise men answered a thousand years ago. Working from home meant we could vary snack and coffee breaks, change our desks or view, goof off, drink on the job, even spend the day in pajamas, and often meet to gossip or share ideas. On the other hand, we bossed ourselves around, set impossible goals, and demanded longer hours than office jobs usually entail. It was the ultimate 'flextime' in that it depended on how flexible we felt each day, given deadlines, distractions, and workaholic crescendos. (WP Poll Plugin)
 
 = Can I upgrade after the initial purchase Juna Poll? =
 
@@ -77,7 +77,7 @@ Yes. License upgrading is quite easy. After your initial purchase, if you want t
 
 = How do plugin licenses work? =
 
-Once you complete the purchase you’ll be taken to your account and you’ll see a list of license codes and a download link for the plugin. Just install the plugin on your WordPress website, go to plugin page Licensing, enter a license key, save it and you’re done. (create polls)
+Once you complete the purchase you will be taken to your account and you will see a list of license codes and a download link for the plugin. Just install the plugin on your WordPress website, go to plugin page Licensing, enter a license key, save it and you are done. (create polls)
 
 = How can I add poll on widget? =
 
