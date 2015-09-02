@@ -27,9 +27,9 @@ increase the variants of the questions . You can rule any question and answer.
 
 ### Upgrade to WordPress Slider Pro to add some features:
 
-https://www.youtube.com/watch?v=dOTYWDvjYws
 
 ### Please ask us if you have any problems. We will try to solve your problem as soon as possible. Because we are trying to keep our collaboration in this way through these methods.
+
 
 * easy placing and using - Poll
 * Plugin  inquiry works with each wordpress version - Poll
@@ -41,6 +41,11 @@ https://www.youtube.com/watch?v=dOTYWDvjYws
 https://www.youtube.com/watch?v=dOTYWDvjYws
 
 If you think, that you found a bug in our [WordPress Juna IT Poll](http://juna-it.com/index.php/features/elements/juna-it-plugin/) plugin or have any question contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com).
+
+Get results without ruining the user experience of your site.
+
+Install and enjoy!
+
 
 == Installation ==
 
@@ -106,7 +111,8 @@ To add a poll in your website you just need to install poll plugin and its done.
 
 
 
-### After all of this compress the button save and your request version is already ready. 
+### After all of this compress the button save and your request version is already ready.
+
 
 
 ### After getting all of this on the right side is written "shortcode". If you want your request plugin works where you want therefore the code [Juna-IT-Poll id="1"] which is written there insert in the page. If you have some questions and want to know the other code of the question, select the question and in the same place you will see the ID of the question.
