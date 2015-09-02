@@ -1,7 +1,7 @@
 === Poll ===
 Contributors: Juna IT Poll
 Donate link: http://juna-it.com/index.php/features/elements/juna-it-plugin/
-Tags: create poll, create polls, custom poll, custom polls, data collection, democracy, do a poll,easy polls, feedback, flash poll,  user polls , free user polls, html poll, online poll, opinion, opinion stage,opinionstage, page poll, plugin, poll, poll builder, poll directory, poll plugin, poll widget,polldaddy polls, polling, Polling System, polls, post poll, post survey, premade polls,questionnaire, responsive, shortcode, sidebar survey, survey, survey form, survey form builder,survey plugin, survey tool, survey widget, surveys,  user survey, vote, Votes, voting,voting polls, pol, poll poll, widget, widgets, wordpress poll widget,  wordpress poll,  WordPress polls, wordpress survey, feedback, survey,  wp polls, wp survey, social, wppolls, bing, booth,   statistics, polldaddy, qualaroo, charts, juna it poll, it poll, yop poll
+Tags: create poll, create polls, custom poll, custom polls, data collection, democracy, do a poll,easy polls, feedback, flash poll,  user polls , free user polls, html poll, online poll, opinion, opinion stage, page poll, plugin, poll, poll builder, poll directory, poll plugin, poll widget,polldaddy polls, polling, Polling System, polls, post poll, post survey,  rate, premade polls,questionnaire, responsive,  opinionstage, shortcode, sidebar survey, survey, survey form, survey form builder,survey plugin, survey tool, survey widget, surveys,  user survey, vote, Votes, voting,voting polls, pol, poll poll, widget, widgets, wordpress poll widget,  wordpress poll,  WordPress polls, wordpress survey, feedback, survey,  wp polls, wp survey, social, wppolls, bing, booth,   statistics, polldaddy, qualaroo, charts, juna it poll, it poll, yop poll
 Requires at least: 3.0.1
 Tested up to: 4.3
 Stable tag: 1.0.1
@@ -31,7 +31,7 @@ increase the variants of the questions . You can rule any question and answer.
 ### Please ask us if you have any problems. We will try to solve your problem as soon as possible. Because we are trying to keep our collaboration in this way through these methods.
 
 
-* easy placing and using - Poll
+* Easy placing and using - Poll
 * Plugin  inquiry works with each wordpress version - Poll
 * A possibility to use more than few questions in the Widget - Poll
 * Unlimited numbers of votes - Poll
@@ -51,11 +51,37 @@ Install and enjoy!
 
 ### First download the WordPress Polls plugin ZIP file.
 
-1. Go to Plugins page, and add new plugin.
-2. Then go to Plugins page Add New > Upload Plugin
-3. Click "Choose file" then select the - poll-wp zip file.
-4. Then Install and activate the plugin.
-5. That's all, now you can build Polls and Survey forms. If any problem occurs, contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com)
+1. Go to Plugins page, and add new plugin. (Juna IT Poll)
+
+2. Then go to Plugins page Add New > Upload Plugin. (Juna IT Poll)
+
+3. Click "Choose file" then select the - poll-wp zip file. (Juna IT Poll)
+
+4. Then Install and activate the plugin.(Juna IT Poll)
+
+5. That's all, now you can build Polls and Survey forms. If any problem occurs, contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com). (Juna IT Poll)
+
+== Frequently Asked Questions ==
+
+= What are the plugin requirements? =
+
+Featured Articles requires at least WordPress 3.0.1 and a modern web browser. No support for IE8 or below. (Poll plugin)
+
+= How does support and updates work? =
+
+that wise men answered a thousand years ago. Working from home meant we could vary snack and coffee breaks, change our desks or view, goof off, drink on the job, even spend the day in pajamas, and often meet to gossip or share ideas. On the other hand, we bossed ourselves around, set impossible goals, and demanded longer hours than office jobs usually entail. It was the ultimate “flextime,” in that it depended on how flexible we felt each day, given deadlines, distractions, and workaholic crescendos. (WP Poll Plugin)
+
+= Can I upgrade after the initial purchase Juna Poll? =
+
+Yes. License upgrading is quite easy. After your initial purchase, if you want to ugrade, visit this page. All prices will be discounted based on the initial purchase that you made. (free user polls)
+
+= How do plugin licenses work? =
+
+Once you complete the purchase you’ll be taken to your account and you’ll see a list of license codes and a download link for the plugin. Just install the plugin on your WordPress website, go to plugin page Licensing, enter a license key, save it and you’re done. (create polls)
+
+= How can I add poll on widget? =
+
+Go to your widgets page, then add our WordPress Poll plugin widget to your sidebar. After that choose your poll and then choose theme for your poll. (WordPress poll plugin)
 
 == Screenshots ==
     
