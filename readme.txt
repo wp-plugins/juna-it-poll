@@ -25,10 +25,16 @@ Juna IT Poll lets you  add standart and social questions in your profile easily.
 versions in our Poll Plugin, which are necessary for each profile/web-site. And it will be improved for you every time and will also  
 increase the variants of the questions . You can rule any question and answer.
 
-### Upgrade to WordPress Slider Pro to add some features - Poll:
+Multiple poll shortcodes can be used per post.
+
+Super easy to add to your site.  - poll
+Every site is different so we've got a few different ways to add Voice Polls to yours. Each one allows you to get up and running with poll Voice in minutes. - poll
+
+### Upgrade to WordPress Juna IT Poll Pro to add some features - Poll:
 
 
 ### Please ask us if you have any problems with Juna IT Poll. We will try to solve your problem as soon as possible. Because we are trying to keep our collaboration in this way through these methods.
+
 
 
 * Easy placing and using - Poll
@@ -84,6 +90,10 @@ Once you complete the purchase you will be taken to your account and you will se
 Go to your widgets page, then add our WordPress Poll plugin widget to your sidebar. After that choose your poll and then choose theme for your poll. (WordPress poll plugin)
 
 If you think, that you found a bug in our [WordPress Juna IT Poll](http://juna-it.com/index.php/features/elements/juna-it-plugin/) plugin or have any question contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com).
+
+= Can I embed the poll manually? =
+
+Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], where xxx is the poll ID. (poll)
 
 == Screenshots ==
     
