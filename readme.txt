@@ -1,7 +1,7 @@
 === Poll ===
 Contributors: Juna IT Poll
 Donate link: http://juna-it.com/index.php/features/elements/juna-it-plugin/
-Tags: create poll, create polls, custom poll, custom polls, data collection, democracy, do a poll,easy polls, feedback, flash poll, user polls, free user polls, html poll, online poll, opinion, opinion stage, page poll, plugin, poll, poll builder, poll directory, poll plugin, poll widget,polldaddy polls, polling, Polling System, polls, post poll, post survey, rate, premade polls,questionnaire, responsive, opinionstage, shortcode, sidebar survey, survey, survey form, survey form builder,survey plugin, survey tool, survey widget, surveys, user survey, vote, Votes, voting,voting polls, pol, poll poll, widget, widgets, wordpress poll widget, wordpress poll,  WordPress polls, wordpress survey, feedback, survey, wp polls, wp survey, social, wppolls, bing, booth, statistics, polldaddy, qualaroo, charts, juna it poll, it poll, yop poll, post, posts,
+Tags: create poll, create polls, custom poll, custom polls, data collection, democracy, do a poll,easy polls, feedback, flash poll, user polls, free user polls, html poll, online poll, opinion, opinion stage, page poll, plugin, poll, poll builder, poll directory, poll plugin, poll widget,polldaddy polls, polling, Polling System, polls, post poll, post survey, rate, premade polls,questionnaire, responsive, opinionstage, shortcode, sidebar survey, survey, survey form, survey form builder,survey plugin, survey tool, survey widget, surveys, user survey, vote, Votes, voting,voting polls, pol, poll poll, widget, widgets, wordpress poll widget, wordpress poll,  WordPress polls, wordpress survey, feedback, survey, wp polls, wp survey, social, wppolls, bing, booth, statistics, polldaddy, qualaroo, charts, juna it poll, it poll, yop poll, post, posts, debate, research, usability,
 Requires at least: 3.0.1
 Tested up to: 4.3
 Stable tag: 1.0.1
@@ -14,12 +14,12 @@ Juna IT Poll - WordPress Plugin is an instrument for understanding visitor 's op
 
 ### Wordpress Poll
 
-* [Wordpress JUna IT Poll](http://juna-it.com/index.php/features/elements/juna-it-plugin/)
+* [Wordpress Juna IT Poll -All Poll Version](http://juna-it.com/index.php/features/elements/juna-it-plugin/)
 
 ### Juna IT Poll
 
-Wordpress Plugin is an instrument for understanding visitor 's opinions. You can use this plugin for explaining  what your users think about your web-page or  a new page and or about  any question. 
-We believe that researching is an  importing instrument in each web-site but more attractive side is the visitor can vote only  once, not leting him/her vote the same question any more not breaking the real result of the inquiry. And  THE other adventages you will feel after using Plugin. It's better to use one time than read a lot without seeing the real images. 
+WordPress Plugin is an instrument for understanding visitor 's opinions. You can use this poll plugin for explaining what your users think about your web-page or a new page and or about any question. 
+We believe that researching is an importing instrument in each web-site but more attractive side is the visitor can vote only once, not letting him/her vote the same question any more not breaking the real result of the inquiry. And THE other advantages you will feel after using Plugin. It's better to use one time than read a lot without seeing the real images.
 
 Juna IT Poll lets you  add standart and social questions in your profile easily. We have done all the best to help Wordpress users to create inquiries easier and quickly. There are Poll Plugin  4 
 versions in our Poll Plugin, which are necessary for each profile/web-site. And it will be improved for you every time and will also  
