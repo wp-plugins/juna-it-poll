@@ -1,76 +1,134 @@
 
-				 var images= [];
-				 var src="";
-				 var index="";
-				 var sub="";
+var images= [];
+var src="";
+var index="";
+var sub="";
 
-	jQuery(document).ready(function() {	
-
-				var img1=document.getElementById("img1");
-				var img2=document.getElementById("img2");	
-				var img3=document.getElementById("img3");	
-				var img4=document.getElementById("img4");	
+jQuery(document).ready(function() {	
+		
+	var img1=document.getElementById("img1");
+	var img2=document.getElementById("img2");	
+	var img3=document.getElementById("img3");	
+	var img4=document.getElementById("img4");	
 				
-				images=[img1,img2,img3,img4];	
-	});
-
-	jQuery(window).load(function() {
-
-	
-		src=jQuery('#img1').attr('src');		
-		index = jQuery('#img1').attr('src').indexOf('.');
-		sub=src.substring(0,index-2);	
-
-		jQuery('#fonts_div').append("<input type='submit'  id='Save_button' style='margin-left: 40px; float: right;' value='Save Changes' />");
-
-		var text=document.getElementById('copy').value;
-				
-				var ajaxurl = object.ajaxurl;
-			  	var data = {
-			    	action: 'GetOptionForShortcode', // wp_ajax_my_action / wp_ajax_nopriv_my_action in ajax.php. Can be named anything.
-					foobar:  text, // translates into $_POST['foobar'] in PHP				
-				};
-				
-				jQuery.post(ajaxurl, data, function(response) {	
-
-				var a=response.split('^');
-												
-				for(i=1;i<a.length-1;i++)
-				{
-					jQuery('#shortcode_select').append("<option value="+a[i]+">"+a[i]+"</option>");
-				}
-
+	images=[img1,img2,img3,img4];
+	upload_files();	
+});
+function upload_files(){
+		jQuery('#img3').click(function(){
+			for(var i = 1; i < 11; i++){
+				jQuery('#upload'+i).fadeIn(100);
+			}
+		})
+		jQuery('#img1').click(function(){
+			for(var i = 1; i < 11; i++){
+				jQuery('#upload'+i).fadeOut(100);
+			}
+		})
+		jQuery('#img2').click(function(){
+			for(var i = 1; i < 11; i++){
+				jQuery('#upload'+i).fadeOut(100);
+			}
+		})
+		jQuery('#img4').click(function(){
+			for(var i = 1; i < 11; i++){
+				jQuery('#upload'+i).fadeOut(100);
+			}
+		})
+		for (var i = 1; i < 11; i++){
+		jQuery('#upload'+i).click(function(){
+			window.id =jQuery(this).attr('id');
+			jQuery('#'+id+'1').addClass('select_file_pc');
+			jQuery('#display_media_button').fadeIn(100);
+			var body = jQuery("html, body");
+			jQuery('#'+id+'1').fadeIn(100);
+			body.animate({scrollTop:'0'}, '100')
+			jQuery('#confirm_selection').click(function(){
+				jQuery('#'+id+'1').fadeOut(100);
+				jQuery('#display_media_button').fadeOut(100);
+				jQuery('#'+id+'1').removeClass('select_file_pc');
 			})
-	})
-
-	function myF()
-	{	
-		var sel=document.getElementById('shortcode_select').value;
-
-		var a=sel+'^';
-
-		var ajaxurl = object.ajaxurl;
-
-		var data = {
-		action: 'GetIdForShortcode', // wp_ajax_my_action / wp_ajax_nopriv_my_action in ajax.php. Can be named anything.
-		foobar:  a, // translates into $_POST['foobar'] in PHP				
-		};
-				
-		jQuery.post(ajaxurl, data, function(response) {
-
-			var old_id=document.getElementById('shortcode_id').value;
-
-			var b=old_id.substr(0,18);
-
-			var new_id=b+response+'"]';
-
-			document.getElementById('shortcode_id').value="";
-			document.getElementById('shortcode_id').value=new_id;
-			
+		})		
+			jQuery('.image_select_file_library').click(function(){
+				var src = jQuery(this).attr('src');
+				jQuery('#confirm_selection').click(function(){
+					jQuery('#'+id+'11').val(src);
+					jQuery('#display_media_button').fadeOut(100);
+				})
+			})
+		}
+		jQuery('#select-file-library').click(function(){
+			jQuery('.select_file_pc').fadeOut(100);
+			jQuery('#select_file_library').fadeIn(100);
+			jQuery('#alt_file_pc').css('display','none');
+			jQuery('.image_select_file_library').fadeIn(100);
+			jQuery('.border_bottom,.border_bottom_none').toggleClass('border_bottom_none').toggleClass('border_bottom');
+		})
+		jQuery('#select-file-pc').click(function(){
+			jQuery('.image_select_file_library').fadeOut(100);
+			jQuery('#select_file_library').fadeOut(100);
+			jQuery('.select_file_pc').fadeIn(100);
+			jQuery('#alt_file_pc').fadeIn(100);
+			jQuery('.border_bottom,.border_bottom_none').toggleClass('border_bottom_none').toggleClass('border_bottom');
+		})
+		jQuery('#close_display_media_button').click(function(){
+			jQuery('#display_media_button').fadeOut(100);
 		})
 	}
+jQuery(window).load(function() {
 
-	function add_answers()
+	src=jQuery('#img1').attr('src');		
+	index = jQuery('#img1').attr('src').indexOf('.');
+	sub=src.substring(0,index-2);	
+		jQuery('#fonts_div').append("<br><br><input type='submit'  id='Save_button' style='margin-right: 215px; float: right; border-radius:3px; background-color:#cfcfcf; color:black; ' value='Save Changes' />");
+		var text=document.getElementById('copy').value;
+		var ajaxurl = object.ajaxurl;
+		var data = {
+			  action: 'GetOptionForShortcode', // wp_ajax_my_action / wp_ajax_nopriv_my_action in ajax.php. Can be named anything.
+				foobar:  text, // translates into $_POST['foobar'] in PHP				
+		};
+		jQuery.post(ajaxurl, data, function(response) {	
+
+			var a=response.split('^');
+			for(i=1;i<a.length-1;i++)
+			{
+			jQuery('#shortcode_select').append("<option value="+a[i]+">"+a[i]+"</option>");
+			}
+		})
+})
+
+function myF()
+	{	
+	var sel=document.getElementById('shortcode_select').value;
+
+	var a=sel+'^';
+
+	var ajaxurl = object.ajaxurl;
+
+	var data = {
+	action: 'GetIdForShortcode', // wp_ajax_my_action / wp_ajax_nopriv_my_action in ajax.php. Can be named anything.
+	foobar:  a, // translates into $_POST['foobar'] in PHP				
+	};
+				
+	jQuery.post(ajaxurl, data, function(response) {
+
+		var old_id=document.getElementById('shortcode_id').value;
+
+		var b=old_id.substr(0,18);
+
+		var new_id=b+response+'"]';
+
+		document.getElementById('shortcode_id').value="";
+		document.getElementById('shortcode_id').value=new_id;
+			
+	})
+}
+function set(){
+	var x=jQuery('#widg_width').val();
+	jQuery('#plugins_type').css('width',x+'px');
+}
+
+function add_answers()
 	{
 		var answers_count =document.getElementById('AnswersCount').value;
 
@@ -80,7 +138,8 @@
 			jQuery(':text').each(function() {
 				if(!jQuery(this).prop('disabled'))
 				{
-					textbox_count++;				
+					textbox_count++;
+
 				}
 			});		
 					
@@ -91,7 +150,9 @@
 
 			for(i=1; i<=answers_count; i++)
 			{
-				jQuery("#answer"+i).removeAttr('disabled');	
+				jQuery("#answer"+i).removeAttr('disabled');
+				
+
 			}
 		}
 		else if(textbox_count>answers_count)
@@ -101,14 +162,22 @@
 			{
 				if(i<=answers_count)
 				{
-					jQuery("#answer"+i).removeAttr('disabled');					
+					jQuery("#answer"+i).removeAttr('disabled');
+					jQuery("#an"+i).fadeIn(100);	
+					jQuery(".votes"+i).fadeIn(100);
+					jQuery("#a"+i).fadeIn(100);
+					jQuery("#set_file"+i).fadeIn(100);
 				}
 				else
+
 				{					
 					jQuery("#answer"+i).prop('disabled','true');
+					jQuery(".votes"+i).fadeOut(100);
 					if(jQuery('#span_answer'+i).html()!="")
 					{
 						jQuery('#span_answer'+i).html("");
+						
+						
 					}
 				}
 			}
@@ -119,8 +188,9 @@
 			{
 				if(i<=answers_count)
 				{
-
-					jQuery("#answer"+i).removeAttr('disabled');					
+					
+					jQuery("#answer"+i).removeAttr('disabled');	
+									
 				}
 				else
 				{					
@@ -128,17 +198,18 @@
 					if(jQuery('#span_answer'+i).html()!="")
 					{
 						jQuery('#span_answer'+i).html("");
+
 					}
 				}
+
 			}
 		}
 
 			EnableUploads(3);
 			EnableColors(2,4);	
 	}
+	function SelectType(image){
 
-	function SelectType(image)
-		{
 			jQuery('#'+image).css("width","130px");
 			jQuery('#'+image).css("height","130px");
 			
@@ -147,26 +218,29 @@
 
 			EnableUploads(3);
 			EnableColors(2,4);
-
+			Set_image();
+		
 			if(image[image.length-1]==2 || image[image.length-1]==3 )
 			{				
 					jQuery('#hoverColor_label').css({"display":"inline"});
 					jQuery('#selectedHoverColor').css({"display":"inline"});
 					jQuery('#colorPickerhover').css({"display":"inline"});
 					jQuery('#HoverCheck').css({"opacity":"1"});
-			}
+				
+			}			
 			else
 			{
 					jQuery('#hoverColor_label').css({"display":"none"});
 					jQuery('#selectedHoverColor').css({"display":"none"});
 					jQuery('#colorPickerhover').css({"display":"none"});
 					jQuery('#HoverCheck').css({"opacity":"0"});
+					
 			}
-
 			if(image[image.length-1]==1 )
 			{
 				jQuery('#Save_button').remove();
-				jQuery('#fonts_div').append("<input type='submit'  id='Save_button' style='margin-left: 40px; float: right;' value='Save Changes' />");
+				jQuery('#fonts_div').append("<input type='submit'  id='Save_button' style='margin-right: 215px; float: right; border-radius:3px; background-color:#cfcfcf; color:black; ' value='Save Changes' />");
+				
 			}
 			else
 			{
@@ -176,13 +250,15 @@
 			if(image[image.length-1]==3)
 			{
 				jQuery('#hoverColor_label').html('Bg-color for Question: ');
+				
 			}
 			else
 			{
 				jQuery('#hoverColor_label').html('Hover Color: ');
+				
 			}
-		}
-
+			
+		}	
 		function ClearImages(image2)
 		{
 			var img1=document.getElementById("img1");
@@ -231,7 +307,10 @@
 				{
 				 	jQuery('#'+images[i].id).attr('src',PrimalSrc[i]);
 				}
-			}	
+				
+			}
+			
+
 		}
 
 		function WidgetStyle(field)
@@ -282,8 +361,9 @@
 				}
 			}
 			document.getElementById('img_id').value=index;
-
+			
 			return index;
+
 		}
 
 		function EnableUploads(k)
@@ -312,6 +392,7 @@
 				for(i=1; i<=10; i++)
 				{
 					jQuery("#labelUpload"+i).css({"display":"inline"});
+					
 				}				
 
 				var answers_count=document.getElementById('AnswersCount').value;
@@ -329,7 +410,7 @@
 			}
 		}
 
-		function EnableColors(k1,k2)
+function EnableColors(k1,k2)
 		{
 			if(Check()!=k1 && Check()!=k2)
 			{
@@ -367,7 +448,7 @@
 			}
 		}
 
-		function Validate()
+function Validate()
 		{
 
 			var answer=false;
@@ -386,6 +467,7 @@
 			if(Question=="")
 			{
 				document.getElementById('span_question').innerHTML="*";
+
 				for(i=1; i<=AnswersCount; i++)
 				{
 					if(Answers[i]=="")
@@ -395,6 +477,7 @@
 					else 
 					{
 						document.getElementById('span_answer'+i).innerHTML="";
+						
 					}
 				}
 
@@ -404,6 +487,7 @@
 			{
 				document.getElementById('span_question').innerHTML="";
 
+
 				for(i=1; i<=AnswersCount; i++)
 				{
 					if(Answers[i]=="")
@@ -413,6 +497,9 @@
 					else 
 					{
 						document.getElementById('span_answer'+i).innerHTML="";
+						document.getElementById('ans'+i).text=Answers[i];
+
+						
 					}
 				}
 				
@@ -431,11 +518,12 @@
 
 			}
 			return answer;
-		}
+}
+
+
 
 		function ColorPicker(pickerID,type)
 		{
-
 			var colors = ["aliceblue:#f0f8ff","antiquewhite:#faebd7","aqua:#00ffff",
 			"aquamarine:#7fffd4","azure:#f0ffff", "beige:#f5f5dc","bisque:#ffe4c4",
 			"black:#000000","blanchedalmond:#ffebcd","blue:#0000ff","blueviolet:#8a2be2",
@@ -475,71 +563,108 @@
 					{
 						var col=jQuery('#color_div'+pickerID).val();
 						jQuery('#color'+pickerID).val(col);
+						jQuery('#an'+pickerID).css('background-color',col);
+						jQuery('#set_color'+pickerID).css('background-color',col);
+						jQuery('#a'+pickerID).css('border-color',col);
 					}
 				if(pickerID=='2')
 					{
 						var col=jQuery('#color_div'+pickerID).val();
 						jQuery('#color'+pickerID).val(col);
+						jQuery('#an'+pickerID).css('background-color',col);
+						jQuery('#set_color'+pickerID).css('background-color',col);
+						jQuery('#a'+pickerID).css('border-color',col);
+						
 					}
 				if(pickerID=='3')
 					{
 						var col=jQuery('#color_div'+pickerID).val();
 						jQuery('#color'+pickerID).val(col);
+						jQuery('#an'+pickerID).css('background-color',col);
+						jQuery('#set_color'+pickerID).css('background-color',col);
+						jQuery('#a3').css('border-color',col);
+						
 					}
 				if(pickerID=='4')
 					{
 						var col=jQuery('#color_div'+pickerID).val();
 						jQuery('#color'+pickerID).val(col);
+						jQuery('#an'+pickerID).css('background-color',col);
+						jQuery('#set_color'+pickerID).css('background-color',col);
+						jQuery('#a4').css('border-color',col);
+
 					}
 				if(pickerID=='5')
 					{
 						var col=jQuery('#color_div'+pickerID).val();
 						jQuery('#color'+pickerID).val(col);
+						jQuery('#an'+pickerID).css('background-color',col);
+						jQuery('#set_color'+pickerID).css('background-color',col);
+						jQuery('#a'+pickerID).css('border-color',col);
 					}
 				if(pickerID=='6')
 					{
 						var col=jQuery('#color_div'+pickerID).val();
 						jQuery('#color'+pickerID).val(col);
+						jQuery('#an'+pickerID).css('background-color',col);
+						jQuery('#set_color'+pickerID).css('background-color',col);
+						jQuery('#a'+pickerID).css('border-color',col);
 					}
 				if(pickerID=='7')
 					{
 						var col=jQuery('#color_div'+pickerID).val();
 						jQuery('#color'+pickerID).val(col);
+						jQuery('#an'+pickerID).css('background-color',col);
+						jQuery('#set_color'+pickerID).css('background-color',col);
+						jQuery('#a'+pickerID).css('border-color',col);
 					}
 				if(pickerID=='8')
 					{
 						var col=jQuery('#color_div'+pickerID).val();
 						jQuery('#color'+pickerID).val(col);
+						jQuery('#an'+pickerID).css('background-color',col);
+						jQuery('#set_color'+pickerID).css('background-color',col);
+						jQuery('#a'+pickerID).css('border-color',col);
 					}
 				if(pickerID=='9')
 					{
 						var col=jQuery('#color_div'+pickerID).val();
 						jQuery('#color'+pickerID).val(col);
+						jQuery('#an'+pickerID).css('background-color',col);
+						jQuery('#set_color'+pickerID).css('background-color',col);
+						jQuery('#a'+pickerID).css('border-color',col);
 					}
 				if(pickerID=='10')
 					{
 						var col=jQuery('#color_div'+pickerID).val();
 						jQuery('#color'+pickerID).val(col);
+						jQuery('#an'+pickerID).css('background-color',col);
+						jQuery('#set_color'+pickerID).css('background-color',col);
+						jQuery('#a'+pickerID).css('border-color',col);
 					}
 				if (pickerID=='bg') 
 					{
 						var col=jQuery('#bg_div').val();
 						jQuery('#bg_color').val(col);
+						jQuery('.plugins_type').css('background-color',col);
 					}
 				if (pickerID=='answer') 
 					{
 						var col=jQuery('#answer_div').val();
 						jQuery('#answer_color').val(col);
+						jQuery('.set_answer').css('color',col);
 					}
 				if (pickerID=='border') 
 					{
 						var col=jQuery('#border_div').val();
 						jQuery('#border_color').val(col);
+						jQuery('.plugins_type').css('border-color',col);
 					}
 				if (pickerID=='question') 
 					{
 						var col=jQuery('#quest_div').val();
 						jQuery('#Question_color').val(col);
+						jQuery('.questions_title').css('color',col);
 					}
 				if (pickerID=='col_pick')
 					{
@@ -550,16 +675,18 @@
 					{
 						var col=jQuery('#vote_button_div').val();
 						jQuery('#vote_button_color').val(col);
+						jQuery('#vote_button').css('background-color',col);
 					}
 				if (pickerID=='buttons_text_color') 
 					{
 						var col=jQuery('#buttons_text_div').val();
 						jQuery('#buttons_text_color').val(col);
+						jQuery('#vote_button').css('color',col);
 					}
-				if (pickerID=='results_color') 
+				if (pickerID=='votes_color') 
 					{
-						var col=jQuery('#results_color_div').val();
-						jQuery('#results_color').val(col);
+						var col=jQuery('#votes_color').val();
+						jQuery('#votes_text_color').val(col);
 					}
 			}
 			else
@@ -571,6 +698,7 @@
 						if(text[0]=="#")
 						{
 							jQuery('#color_div'+pickerID).val(text);
+							jQuery('#an'+pickerID).css('background-color',text);
 						}	
 						else
 						{
@@ -580,6 +708,7 @@
 									if(k[0]==text)
 									{	
 										jQuery('#color_div'+pickerID).val(k[1]);
+										jQuery('#an'+pickerID).css('background-color',k[1]);
 										break;
 									}
 									else
@@ -596,6 +725,7 @@
 						if(text[0]=="#")
 						{
 							jQuery('#color_div'+pickerID).val(text);
+							jQuery('#an'+pickerID).css('background-color',text);
 						}	
 						else
 						{
@@ -605,6 +735,7 @@
 									if(k[0]==text)
 									{	
 										jQuery('#color_div'+pickerID).val(k[1]);
+										jQuery('#an'+pickerID).css('background-color',k[1]);
 										break;
 									}
 									else
@@ -621,6 +752,7 @@
 						if(text[0]=="#")
 						{
 							jQuery('#color_div'+pickerID).val(text);
+							jQuery('#an'+pickerID).css('background-color',text);
 						}	
 						else
 						{
@@ -630,6 +762,7 @@
 									if(k[0]==text)
 									{	
 										jQuery('#color_div'+pickerID).val(k[1]);
+										jQuery('#an'+pickerID).css('background-color',k[1]);
 										break;
 									}
 									else
@@ -646,6 +779,7 @@
 						if(text[0]=="#")
 						{
 							jQuery('#color_div'+pickerID).val(text);
+							jQuery('#an'+pickerID).css('background-color',text);
 						}	
 						else
 						{
@@ -655,6 +789,7 @@
 									if(k[0]==text)
 									{	
 										jQuery('#color_div'+pickerID).val(k[1]);
+										jQuery('#an'+pickerID).css('background-color',k[1]);
 										break;
 									}
 									else
@@ -671,6 +806,7 @@
 						if(text[0]=="#")
 						{
 							jQuery('#color_div'+pickerID).val(text);
+							jQuery('#an'+pickerID).css('background-color',text);
 						}	
 						else
 						{
@@ -680,6 +816,7 @@
 									if(k[0]==text)
 									{	
 										jQuery('#color_div'+pickerID).val(k[1]);
+										jQuery('#an'+pickerID).css('background-color',k[1]);
 										break;
 									}
 									else
@@ -696,6 +833,7 @@
 						if(text[0]=="#")
 						{
 							jQuery('#color_div'+pickerID).val(text);
+							jQuery('#an'+pickerID).css('background-color',text);
 						}	
 						else
 						{
@@ -705,6 +843,7 @@
 									if(k[0]==text)
 									{	
 										jQuery('#color_div'+pickerID).val(k[1]);
+										jQuery('#an'+pickerID).css('background-color',k[1]);
 										break;
 									}
 									else
@@ -721,6 +860,7 @@
 						if(text[0]=="#")
 						{
 							jQuery('#color_div'+pickerID).val(text);
+							jQuery('#an'+pickerID).css('background-color',text);
 						}	
 						else
 						{
@@ -730,6 +870,7 @@
 									if(k[0]==text)
 									{	
 										jQuery('#color_div'+pickerID).val(k[1]);
+										jQuery('#an'+pickerID).css('background-color',k[1]);
 										break;
 									}
 									else
@@ -746,6 +887,7 @@
 						if(text[0]=="#")
 						{
 							jQuery('#color_div'+pickerID).val(text);
+							jQuery('#an'+pickerID).css('background-color',text);
 						}	
 						else
 						{
@@ -755,6 +897,7 @@
 									if(k[0]==text)
 									{	
 										jQuery('#color_div'+pickerID).val(k[1]);
+										jQuery('#an'+pickerID).css('background-color',k[1]);
 										break;
 									}
 									else
@@ -771,6 +914,7 @@
 						if(text[0]=="#")
 						{
 							jQuery('#color_div'+pickerID).val(text);
+							jQuery('#an'+pickerID).css('background-color',text);
 						}	
 						else
 						{
@@ -780,6 +924,7 @@
 									if(k[0]==text)
 									{	
 										jQuery('#color_div'+pickerID).val(k[1]);
+										jQuery('#an'+pickerID).css('background-color',k[1]);
 										break;
 									}
 									else
@@ -796,6 +941,7 @@
 						if(text[0]=="#")
 						{
 							jQuery('#color_div'+pickerID).val(text);
+							jQuery('#an'+pickerID).css('background-color',text);
 						}	
 						else
 						{
@@ -805,6 +951,7 @@
 									if(k[0]==text)
 									{	
 										jQuery('#color_div'+pickerID).val(k[1]);
+										jQuery('#an'+pickerID).css('background-color',k[1]);
 										break;
 									}
 									else
@@ -821,6 +968,7 @@
 						if(text[0]=="#")
 						{
 							jQuery('#bg_div').val(text);
+							jQueryt('.plugins_type').css('background-color',text);
 						}	
 						else
 						{
@@ -830,6 +978,7 @@
 									if(k[0]==text)
 									{	
 										jQuery('#bg_div').val(k[1]);
+										jQueryt('.plugins_type').css('background-color',k[1])
 										break;
 									}
 									else
@@ -846,6 +995,7 @@
 						if(text[0]=="#")
 						{
 							jQuery('#border_div').val(text);
+							jQueryt('.plugins_type').css('border-color',text);
 						}	
 						else
 						{
@@ -855,6 +1005,7 @@
 									if(k[0]==text)
 									{	
 										jQuery('#border_div').val(k[1]);
+										jQueryt('.plugins_type').css('border-color',k[1]);
 										break;
 									}
 									else
@@ -871,6 +1022,7 @@
 						if(text[0]=="#")
 						{
 							jQuery('#answer_div').val(text);
+							jQuery('.set_answer').css('color',text);
 						}	
 						else
 						{
@@ -880,6 +1032,7 @@
 									if(k[0]==text)
 									{	
 										jQuery('#answer_div').val(k[1]);
+										jQuery('.set_answer').css('color',k[1]);
 										break;
 									}
 									else
@@ -896,6 +1049,7 @@
 						if(text[0]=="#")
 						{
 							jQuery('#quest_div').val(text);
+							jQuery('.questions_title').css('color',text);
 						}	
 						else
 						{
@@ -905,6 +1059,7 @@
 									if(k[0]==text)
 									{	
 										jQuery('#quest_div').val(k[1]);
+										jQuery('.questions_title').css('color',k[1]);
 										break;
 									}
 									else
@@ -989,13 +1144,13 @@
 								}
 						}		
 					}
-				if(pickerID=='results_color')
+				if(pickerID=='votes_color')
 					{
-						var text=jQuery('#results_color').val().toLowerCase();
+						var text=jQuery('#votes_text_color').val().toLowerCase();
 
 						if(text[0]=="#")
 						{
-							jQuery('#results_color_div').val(text);
+							jQuery('#votes_color').val(text);
 						}	
 						else
 						{
@@ -1004,7 +1159,7 @@
 									var k=colors[i].split(':');
 									if(k[0]==text)
 									{	
-										jQuery('#results_color_div').val(k[1]);
+										jQuery('#votes_color').val(k[1]);
 										break;
 									}
 									else
@@ -1045,3 +1200,56 @@
 			 	jQuery('#fontCheck').css('font-family',fontFamily);			 	
 			 }
 		}
+
+		function Set_image()
+		{
+			var x=jQuery('#img_id').val();
+			
+			if(x==1)
+			{	
+				jQuery('#plugins_type4').css({"display":"none"});
+				jQuery('#plugins_type3').css({"display":"none"});
+				jQuery('#plugins_type2').css({"display":"none"});
+				jQuery('#plugins_type1').css({"display":"inline"});
+			}
+			else if(x==2)
+			{	
+				jQuery('#plugins_type4').css({"display":"none"});
+				jQuery('#plugins_type3').css({"display":"none"});
+				jQuery('#plugins_type1').css({"display":"none"});
+				jQuery('#plugins_type2').css({"display":"inline"});
+			}
+		
+			else if(x==3)
+			{
+				jQuery('#plugins_type4').css({"display":"none"});
+				jQuery('#plugins_type2').css({"display":"none"});
+				jQuery('#plugins_type1').css({"display":"none"});
+				jQuery('#plugins_type3').css({"display":"inline"});
+			}
+			else if(x==4)
+			{
+				jQuery('#plugins_type1').css({"display":"none"});
+				jQuery('#plugins_type2').css({"display":"none"});
+				jQuery('#plugins_type3').css({"display":"none"});
+				jQuery('#plugins_type4').css({"display":"inline"});	
+				
+			}
+		}
+		function changed_question(){
+			jQuery('#question_id').each(function(){
+			var c=jQuery(this).val();
+			jQuery(".questions_title").text(c);
+			})
+			}
+		
+		function change(i){
+			jQuery('#answer'+i).each(function(){
+			var z=jQuery(this).val();
+			jQuery('#ans'+i).text(z);
+			jQuery('#an'+i).text(z);
+			jQuery('#set_answer'+i).text(z);
+			jQuery('#answ'+i).text(z);
+			})
+
+		}		

@@ -3,7 +3,7 @@
 	Plugin name: Juna IT Poll
 	Plugin URI: http://juna-it.com/index.php/features/elements/juna-it-plugin/
 	Description: Juna IT Poll - Wordpress Plugin is an instrument for understanding visitor's opinions.
-	Version: 1.0.1
+	Version: 1.0.3
 	Author: Juna-IT
 	Author URI: http://juna-it.com/
 	License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
@@ -38,6 +38,8 @@
 	});
 
 	add_action('admin_init', function() {
+		wp_register_style( 'poll-wp', plugins_url( '/Styles/AdminStyle.css',__FILE__ ) );
+		wp_enqueue_style( 'poll-wp' );	
 		wp_register_script('poll-wp', plugins_url('/Scripts/poll-wp_admin.js',__FILE__));
 		wp_localize_script( 'poll-wp', 'object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 		wp_enqueue_script( 'poll-wp' );

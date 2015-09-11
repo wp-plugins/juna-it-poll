@@ -15,7 +15,8 @@
 
 	 	$table_name  =  $wpdb->prefix . "poll_wp_Questions";
 		$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
-		$table_name3 =  $wpdb->prefix . "poll_wp_Results";	
+		$table_name3 =  $wpdb->prefix . "poll_wp_Results";
+		$table_name4 =  $wpdb->prefix . "poll_wp_Settings";	
 		
 		$selected_quest=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Question= %s", $data[0]));
 		//$selected_quest=$wpdb->get_var("SELECT id FROM $table_name Where Question='$data[0]'");
@@ -36,6 +37,10 @@
 		//Sending data to Ajax
 
 		$counts_array=$wpdb->get_results($wpdb->prepare("SELECT count FROM $table_name3 WHERE id in (SELECT id FROM $table_name3 WHERE QuestionID= %s)", $selected_quest ));
+
+		$vote_type=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name4 WHERE QuestionID= %s", $selected_quest));
+
+		echo  $vote_type[0]->vote_type . '%^&^%' . $vote_type[0]->vote_color . '%^&^%' . $answer_count;
 
 		for($i=0; $i<count($counts_array); $i++)
 		{
@@ -65,17 +70,17 @@
 
 		$results=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name3 WHERE QuestionID= %s", $selected_quest));
 
-		$answer_count=array();
+		$vote_type=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name4 WHERE QuestionID= %s", $selected_quest));
+
+		echo  $vote_type[0]->vote_type . '%^&^%' . $vote_type[0]->vote_color . '%^&^%' . $answer_count;
 
 		for($i=0;$i<count($answers);$i++)
 		{
-			$answer_count[$i]=$results[$i]->Count . "^";
+			$answer_count=$results[$i]->Count . "^";
+			echo $answer_count;
 		}
 
-		for($i=0; $i<count($answer_count); $i++)
-		{
-			echo $answer_count[$i];
-		}
+		die();
 	} 
 
 	add_action( 'wp_ajax_GetOptionForShortcode', 'GetOptionForShortcode_callback' );

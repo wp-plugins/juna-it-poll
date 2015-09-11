@@ -1,0 +1,111 @@
+	#display_media_button{
+			position:absolute;
+			display:none;
+			z-index: 1000;
+			top:0;
+			left:0;
+			width:100%;
+			min-height:100%;
+			background: rgba(255,255,255, 1) !important;
+			color:#444;
+
+		}
+		#close_display_media_button{
+			display:block;
+			float:right;
+			cursor: pointer;
+			width:20px;
+			height:20px;
+			margin-top:50px; 
+			margin-right: 50px;
+			background-image: url(http://juna-it.com/image/fileclose.png);
+			background-size:20px 20px;
+			z-index: 1000000 !important;
+		}
+		#close_display_media_button:hover{
+			background-image: url(http://juna-it.com/image/fileclose1.png);
+			background-size:20px 20px;
+		}
+		#display_for_selected_file{
+			position: relative;
+			width:100%;
+			height:100%;
+			border:1px solid #ddd;
+			margin-top: 52px;
+
+		}
+		.select_file_pc{
+			width:250px;
+			margin:15% 0 0 15%;
+			
+		}
+		.image_select_file_library{
+
+			width:150px;
+			height:150px;
+			margin:10px 5px  5px 5px;
+			float: left;
+		}
+		#select_file_library{
+			display:none;
+			width:100%;
+			height:500px;
+			top:0;
+			left:0;
+			position: absolute;
+			padding-top: 50px;
+			
+		}
+		#confirm_selection{
+			background:rgba(187, 185, 199,1); 
+			position: absolute;
+			right:20px;
+			top:20px;
+			width:80px;
+			height:30px;
+			border-radius:5px;
+			font-weight: 900;
+			cursor: pointer;
+		}
+		#confirm_selection:hover{
+			background:rgba(30,140,190,1);
+			color:#fff; 
+		}
+		#upload1,#upload2,#upload3,#upload4,#upload5,#upload6,#upload7,#upload8,#upload9,#upload10{
+			width:150px;
+			height: 27px;
+			border:1px solid gray;
+			display: none;
+			background: #eee;
+			padding-bottom: 5px ;
+			border-radius:3px;
+		}
+		.border_bottom,.border_bottom_none{
+			position:relative;
+			float:left;
+			margin:0 0 0 0;
+			z-index: 10002;
+			width:143px;
+			height:29px;
+			border :1px solid #ddd;
+			background:rgba(255,255,255, 1) !important;
+			font-size: 14px;
+			padding: 7px 0 0 7px;
+			z-index: 1000001;
+		}
+		.border_bottom:hover{
+			color:#D54E21;
+			webkit-box-shadow: 0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);
+		 	 box-shadow: 0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);
+		}
+		.border_bottom_none:hover{
+			webkit-box-shadow: 0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);
+		  	box-shadow: 0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);
+		}
+		.border_bottom_none{
+			border-bottom:none !important;
+		}
+		.border_bottom{
+			border-bottom:1px solid #ddd;
+			color:#21759b;
+		}

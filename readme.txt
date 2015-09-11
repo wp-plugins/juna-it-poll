@@ -4,7 +4,7 @@ Donate link: http://juna-it.com/index.php/features/elements/juna-it-plugin/
 Tags: create poll, create polls, custom poll, custom polls, data collection, democracy, do a poll,easy polls, feedback, flash poll, user polls, free user polls, html poll, online poll, opinion, opinion stage, page poll, plugin, poll, poll builder, poll directory, poll plugin, poll widget,polldaddy polls, polling, Polling System, polls, post poll, post survey, rate, premade polls,questionnaire, responsive, opinionstage, shortcode, sidebar survey, survey, survey form, survey form builder,survey plugin, survey tool, survey widget, surveys, user survey, vote, Votes, voting,voting polls, pol, poll poll, widget, widgets, wordpress poll widget, wordpress poll,  WordPress polls, wordpress survey, feedback, survey, wp polls, wp survey, social, wppolls, bing, booth, statistics, polldaddy, qualaroo, charts, juna it poll, it poll, yop poll, post, posts, debate, research, usability,
 Requires at least: 3.0.1
 Tested up to: 4.3
-Stable tag: 1.0.1
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +15,14 @@ Juna IT Poll - WordPress Plugin is an instrument for understanding visitor 's op
 ### Wordpress Poll
 
 * [Wordpress Juna IT Poll -All Poll Version](http://juna-it.com/index.php/features/elements/juna-it-plugin/)
+
+### Wordpress Poll Demo Version
+
+* [Standard Poll Version](http://juna-it.com/index.php/poll-demo1)
+* [Pie Chart Version](http://juna-it.com/index.php/poll-demo2)
+* [Image Chart Version](http://juna-it.com/index.php/poll-demo3)
+* [Column Chart Version](http://juna-it.com/index.php/poll-demo4)
+
 
 ### Juna IT Poll
 
@@ -113,6 +121,12 @@ Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], w
 34.  WordPress Juna IT Poll
 
 == Changelog ==
+
+= 1.0.3 =
+*  Adding to admin page digital calculation and choosing color.
+
+= 1.0.2 =
+*  Our admin page  changed and you can see your poll's looks.
 
 = 1.0.1 =
 *  Bug fixed in Poll.
