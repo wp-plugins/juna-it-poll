@@ -44,6 +44,10 @@
 					widget_div_width VARCHAR(255) NOT NULL,
 					vote_type VARCHAR(255) NOT NULL,
 					vote_color VARCHAR(255) NOT NULL,
+					image_width INTEGER(10) NOT NULL,
+					image_height INTEGER(10) NOT NULL,
+					answer_font_family VARCHAR(255) NOT NULL,
+					answer_font_size INTEGER(10) NOT NULL,
 					QuestionID INTEGER(10) NOT NULL,			
 					PRIMARY KEY  (id) )';
 		
@@ -80,7 +84,7 @@
 			$wpdb->query($wpdb->prepare("INSERT INTO $table_name3 (id, QuestionID, AnswerID, Count) VALUES (%d, %d, %d, %d)", '', 1, 3, 0));
 			$wpdb->query($wpdb->prepare("INSERT INTO $table_name3 (id, QuestionID, AnswerID, Count) VALUES (%d, %d, %d, %d)", '', 1, 4, 0));
 			
-			$wpdb->query($wpdb->prepare("INSERT INTO $table_name4 (id, border_color, bg_color, font_family, font_size, answer_color, answer_hover_color, question_color, vote_button_color, buttons_text_color, widget_div_width, vote_type, vote_color, QuestionID) VALUES (%d, %s, %s, %s, %d, %s, %s, %s, %s, %s, %s, %s, %s, %d)", '', 'Black', '#FFFFFF', 'Consolas', '14', 'rgb(255,0,0)', '', 'rgba(0,0,255,0.5)', 'black', 'white', '200', 'percent', 'white', 1));
+			$wpdb->query($wpdb->prepare("INSERT INTO $table_name4 (id, border_color, bg_color, font_family, font_size, answer_color, answer_hover_color, question_color, vote_button_color, buttons_text_color, widget_div_width, vote_type, vote_color, image_width, image_height, answer_font_family, answer_font_size, QuestionID) VALUES (%d, %s, %s, %s, %d, %s, %s, %s, %s, %s, %s, %s, %s, %d, %d, %s, %d, %d)", '', 'Black', '#FFFFFF', 'Consolas', '14', 'rgb(255,0,0)', '', 'rgba(0,0,255,0.5)', 'black', 'white', '200', 'percent', 'white', '', '', 'Consolas', '14', 1));
 		}
 
 ?>

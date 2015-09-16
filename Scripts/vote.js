@@ -30,8 +30,10 @@
 						var ques_font_size=document.getElementById('ActiveQuestion').style.fontSize;
 
 						var ans_color=document.getElementById('span_ans_id').style.color;
+						var ans_font_family=document.getElementById('span_ans_id').style.fontFamily;
+						var ans_font_size=document.getElementById('span_ans_id').style.fontSize;
 
-					 var k=0;
+						var k=0;
 
 					 	jQuery(':radio').each(function() {
 					 		k++;
@@ -43,7 +45,6 @@
 					 	{
 					 		answers[answers.length]=jQuery('#answer'+i).val();
 					 	}	
-
 					 	var hoplo=response.split('%^&^%');
 					 	var counts=hoplo[2].split("^");
 
@@ -69,12 +70,12 @@
 					 	}
 
 					 	if(sum==0) sum=1;
-						
+
 					 	for(i=0; i<results.length; i++)
 					 	{			
-					 		widths[widths.length]=(results[i]*100)/sum;						
-					 	}				
-							
+					 		widths[widths.length]=(results[i]*100)/sum;	
+					 	}
+
 					 	if(hoplo[0]=='percent')
 					 	{
 					 		jQuery('#widgetDiv').empty();
@@ -83,7 +84,7 @@
 
 						 	for(i=1; i<=k; i++)
 							{
-								jQuery('#widgetDiv').append("<span  style='color:"+ ans_color + "'>"+ answers[i-1] + "</span>" + "<span style='color:"+hoplo[1]+"'> &nbsp; <i>("+ (parseFloat(widths[i-1]).toFixed(1)+'%') + ")</i> </span>" + "<br> <div style='margin-top:4px; background-color:" + ans_color + "; width:" + (parseFloat(widths[i-1]).toFixed(1)+'%') + "; height:10px; '> </div>");				 		
+								jQuery('#widgetDiv').append("<span  style='color:"+ ans_color + "; font-family: " + ans_font_family +"; font-size:"+ ans_font_size +"'>"+ answers[i-1] + "</span>" + "<span style='color:"+hoplo[1]+"'> &nbsp; <i>("+ (parseFloat(widths[i-1]).toFixed(1)+'%') + ")</i> </span>" + "<br> <div style='margin-top:4px; background-color:" + ans_color + "; width:" + (parseFloat(widths[i-1]).toFixed(1)+'%') + "; height:10px; '> </div>");				 		
 							}
 					 	}
 					 	else if(hoplo[0]=='vote')
@@ -95,7 +96,7 @@
 
 						 	for(i=1; i<=k; i++)
 							{
-								jQuery('#widgetDiv').append("<span  style='color:"+ ans_color + "'>"+ answers[i-1] + "</span>" + "<span style='color:"+hoplo[1]+"'> &nbsp; <i>"+ (parseInt(results[i-1])+' votes') + "</i> </span>" + "<br> <div style='margin-top:4px; background-color:" + ans_color + "; width:" + (parseFloat(widths[i-1]).toFixed(1)+'%') + "; height:10px; '> </div>");				 		
+								jQuery('#widgetDiv').append("<span  style='color:"+ ans_color + "; font-family: " + ans_font_family +"; font-size:"+ ans_font_size +"'>"+ answers[i-1] + "</span>" + "<span style='color:"+hoplo[1]+"'> &nbsp; <i>"+ (parseInt(results[i-1])+' votes') + "</i> </span>" + "<br> <div style='margin-top:4px; background-color:" + ans_color + "; width:" + (parseFloat(widths[i-1]).toFixed(1)+'%') + "; height:10px; '> </div>");				 		
 							}
 					 	}	
 					 	else
@@ -106,9 +107,9 @@
 
 						 	for(i=1; i<=k; i++)
 							{
-								jQuery('#widgetDiv').append("<span  style='color:"+ ans_color + "'>"+ answers[i-1] + "</span>" + "<span style='color:"+hoplo[1]+"'> &nbsp; <i>"+ parseFloat(widths[i-1]).toFixed(1)+'%' +' ('+ (parseInt(results[i-1])+' votes') + ')'+ "</i> </span>" + "<br> <div style='margin-top:4px; background-color:" + ans_color + "; width:" + (parseFloat(widths[i-1]).toFixed(1)+'%') + "; height:10px; '> </div>");				 		
+								jQuery('#widgetDiv').append("<span  style='color:"+ ans_color + "; font-family: " + ans_font_family +"; font-size:"+ ans_font_size +"'>"+ answers[i-1] + "</span>" + "<span style='color:"+hoplo[1]+"'> &nbsp; <i>"+ parseFloat(widths[i-1]).toFixed(1)+'%' +' ('+ (parseInt(results[i-1])+' votes') + ')'+ "</i> </span>" + "<br> <div style='margin-top:4px; background-color:" + ans_color + "; width:" + (parseFloat(widths[i-1]).toFixed(1)+'%') + "; height:10px; '> </div>");				 		
 							}
-					 	}			
+					 	}						
 					}
 			});
 		}
@@ -141,11 +142,14 @@
 			};
 			jQuery.post(ajaxurl, data, function(response) {
 
+
 				 var ques_color=document.getElementById('ActiveQuestion').style.color;
 				 var ques_font_family=document.getElementById('ActiveQuestion').style.fontFamily;
 				 var ques_font_size=document.getElementById('ActiveQuestion').style.fontSize;
 
 				 var ans_color=document.getElementById('span_ans_id').style.color;
+				 var ans_font_family=document.getElementById('span_ans_id').style.fontFamily;
+				 var ans_font_size=document.getElementById('span_ans_id').style.fontSize;
 				
 				/* answers */
 				 var k=0;
@@ -200,7 +204,6 @@
 				 	}				
 						
 				 	window.clearInterval();
-
 				 	if(hoplo[0]=='percent')
 				 	{
 				 		setTimeout(function() {
@@ -210,7 +213,7 @@
 
 						 	for(i=1; i<=k; i++)
 							 	{
-							 		jQuery('#widgetDiv').append("<span  style='color:"+ ans_color + "'>"+ answers[i-1] + "</span>" + "<span style='color:"+hoplo[1]+"'> &nbsp; <i>("+ (parseFloat(widths[i-1]).toFixed(1)+'%') + ")</i> </span>" + "<br> <div style='margin-top:4px; background-color:" + ans_color + "; width:" + (parseFloat(widths[i-1]).toFixed(1)+'%') + "; height:10px; '> </div>");				 		
+							 		jQuery('#widgetDiv').append("<span  style='color:"+ ans_color + ";font-family: " + ans_font_family +"; font-size:"+ ans_font_size +" '>"+ answers[i-1] + "</span>" + "<span style='color:"+hoplo[1]+"'> &nbsp; <i>("+ (parseFloat(widths[i-1]).toFixed(1)+'%') + ")</i> </span>" + "<br> <div style='margin-top:4px; background-color:" + ans_color + "; width:" + (parseFloat(widths[i-1]).toFixed(1)+'%') + "; height:10px; '> </div>");				 		
 							 	}	
 						 	
 						 	jQuery('#widgetDiv').fadeIn();
@@ -226,7 +229,7 @@
 
 						 	for(i=1; i<=k; i++)
 							 	{
-							 		jQuery('#widgetDiv').append("<span  style='color:"+ ans_color + "'>"+ answers[i-1] + "</span>" + "<span style='color:"+hoplo[1]+"'> &nbsp; <i>"+ (parseInt(results[i-1])+' votes') + "</i> </span>" + "<br> <div style='margin-top:4px; background-color:" + ans_color + "; width:" + (parseFloat(widths[i-1]).toFixed(1)+'%') + "; height:10px; '> </div>");				 		
+							 		jQuery('#widgetDiv').append("<span  style='color:"+ ans_color + "; font-family: " + ques_font_family +"; font-size:"+ ques_font_size +"'>"+ answers[i-1] + "</span>" + "<span style='color:"+hoplo[1]+"'> &nbsp; <i>"+ (parseInt(results[i-1])+' votes') + "</i> </span>" + "<br> <div style='margin-top:4px; background-color:" + ans_color + "; width:" + (parseFloat(widths[i-1]).toFixed(1)+'%') + "; height:10px; '> </div>");				 		
 							 	}	
 						 	
 						 	jQuery('#widgetDiv').fadeIn();
@@ -242,7 +245,7 @@
 
 						 	for(i=1; i<=k; i++)
 							 	{
-							 		jQuery('#widgetDiv').append("<span  style='color:"+ ans_color + "'>"+ answers[i-1] + "</span>" + "<span style='color:"+hoplo[1]+"'> &nbsp; <i>"+ parseFloat(widths[i-1]).toFixed(1)+'%' +' ('+ (parseInt(results[i-1])+' votes') + ')' + "</i> </span>" + "<br> <div style='margin-top:4px; background-color:" + ans_color + "; width:" + (parseFloat(widths[i-1]).toFixed(1)+'%') + "; height:10px; '> </div>");				 		
+							 		jQuery('#widgetDiv').append("<span  style='color:"+ ans_color + "; font-family: " + ques_font_family +"; font-size:"+ ques_font_size +"'>"+ answers[i-1] + "</span>" + "<span style='color:"+hoplo[1]+"'> &nbsp; <i>"+ parseFloat(widths[i-1]).toFixed(1)+'%' +' ('+ (parseInt(results[i-1])+' votes') + ')' + "</i> </span>" + "<br> <div style='margin-top:4px; background-color:" + ans_color + "; width:" + (parseFloat(widths[i-1]).toFixed(1)+'%') + "; height:10px; '> </div>");				 		
 							 	}	
 						 	
 						 	jQuery('#widgetDiv').fadeIn();

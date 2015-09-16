@@ -1,10 +1,10 @@
 === Poll ===
 Contributors: Juna IT Poll
 Donate link: http://juna-it.com/index.php/features/elements/juna-it-plugin/
-Tags: create poll, create polls, custom poll, custom polls, data collection, democracy, do a poll,easy polls, feedback, flash poll, user polls, free user polls, html poll, online poll, opinion, opinion stage, page poll, plugin, poll, poll builder, poll directory, poll plugin, poll widget,polldaddy polls, polling, Polling System, polls, post poll, post survey, rate, premade polls,questionnaire, responsive, opinionstage, shortcode, sidebar survey, survey, survey form, survey form builder,survey plugin, survey tool, survey widget, surveys, user survey, vote, Votes, voting,voting polls, pol, poll poll, widget, widgets, wordpress poll widget, wordpress poll,  WordPress polls, wordpress survey, feedback, survey, wp polls, wp survey, social, wppolls, bing, booth, statistics, polldaddy, qualaroo, charts, juna it poll, it poll, yop poll, post, posts, debate, research, usability,
+Tags: create poll, create polls, custom poll, custom polls, data collection, democracy, do a poll,easy polls, feedback, flash poll, user polls, free user polls, html poll, online poll, opinion, opinion stage, page poll, plugin, poll, poll builder, poll directory, poll plugin, poll widget,polldaddy polls, polling, Polling System, polls, post poll, post survey, rate, premade polls,questionnaire, responsive, opinionstage, shortcode, sidebar survey, survey, survey form, survey form builder,survey plugin, survey tool, survey widget, surveys, user survey, vote, Votes, voting,voting polls, pol, poll poll, widget, widgets, wordpress poll widget, wordpress poll,  WordPress polls, wordpress survey, feedback, survey, wp polls, wp survey, social, wppolls, bing, booth, statistics, polldaddy, qualaroo, charts, juna it poll, it poll, yop poll, post, posts, debate, research, usability, cache, beautiful poll, create amazing polls, multiple poll, pie chart, image poll, Column Chart, Standard Poll, question answer, responsive poll, awesome poll,
 Requires at least: 3.0.1
 Tested up to: 4.3
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,10 +18,10 @@ Juna IT Poll - WordPress Plugin is an instrument for understanding visitor 's op
 
 ### Wordpress Poll Demo Version
 
-* [Standard Poll Version](http://juna-it.com/index.php/poll-demo1)
-* [Pie Chart Version](http://juna-it.com/index.php/poll-demo2)
-* [Image Chart Version](http://juna-it.com/index.php/poll-demo3)
-* [Column Chart Version](http://juna-it.com/index.php/poll-demo4)
+* [Standard Poll Version - Juna IT Poll](http://juna-it.com/index.php/poll-demo1)
+* [Pie Chart Version - Juna IT Poll](http://juna-it.com/index.php/poll-demo2)
+* [Image Chart Version - Juna IT Poll](http://juna-it.com/index.php/poll-demo3)
+* [Column Chart Version - Juna IT Poll](http://juna-it.com/index.php/poll-demo4)
 
 
 ### Juna IT Poll
@@ -33,10 +33,22 @@ Juna IT Poll lets you  add standart and social questions in your profile easily.
 versions in our Poll Plugin, which are necessary for each profile/web-site. And it will be improved for you every time and will also  
 increase the variants of the questions . You can rule any question and answer.
 
-Multiple poll shortcodes can be used per post.
+All of your polls are stored so you can return later to add or update as desired. - poll
+
+Multiple poll shortcodes can be used per post. - poll
+You can add any poll into your post or page by using the shortcode. - poll
 
 Super easy to add to your site.  - poll
 Every site is different so we've got a few different ways to add Voice Polls to yours. Each one allows you to get up and running with poll Voice in minutes. - poll
+
+### Juna IT Poll Pro versions key benefits - Juna IT Poll
+
+* You can upload videos, give width and height for images and videos. - Poll
+
+* Give font-size and font-family for answers. - Poll
+
+* You can change results of poll. - Poll
+
 
 ### Upgrade to WordPress Juna IT Poll Pro to add some features - Poll:
 
@@ -54,9 +66,13 @@ Every site is different so we've got a few different ways to add Voice Polls to 
 
 https://www.youtube.com/watch?v=dOTYWDvjYws
 
-If you think, that you found a bug in our [WordPress Juna IT Poll](http://juna-it.com/index.php/features/elements/juna-it-plugin/) plugin or have any question contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com).
+1. If you think, that you found a bug in our [WordPress Juna IT Poll](http://juna-it.com/index.php/features/elements/juna-it-plugin/) plugin or have any question contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com). - poll
 
-Get results without running the user experience of your site.
+2. If you think any feature adding to this plugin can improve its features, please recommend it in the following link. -Poll
+
+Get results without running the user experience of your site. poll
+
+Thanks for downloading and installing Juna IT Poll plugin. You can show your appreciation and support future development. poll
 
 Install Juna IT Poll and enjoy!
 
@@ -103,9 +119,17 @@ If you think, that you found a bug in our [WordPress Juna IT Poll](http://juna-i
 
 Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], where xxx is the poll ID. (poll)
 
+= Go to Polls in your WordPress backend.? =
+
+  1. Go to Polls in your WordPress backend. - poll
+  2. Go to Juna IT Poll. - poll
+  3. Go to Results. - poll
+  4. Now you can see the list of polls. - poll
+  5. Once clicked it will display the poll result. - poll
+
 == Screenshots ==
     
-1.  WordPress Juna IT Poll
+1.  
 2.  WordPress Juna IT Poll
 22.  WordPress Juna IT Poll
 23.  WordPress Juna IT Poll
@@ -121,6 +145,12 @@ Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], w
 34.  WordPress Juna IT Poll
 
 == Changelog ==
+
+= 1.0.5 =
+* You can upload videos, give width and height for images and videos, give font-size and font-family for answers.
+
+= 1.0.4 =
+* Added to the result menu. Admin can change the vote as you wish.
 
 = 1.0.3 =
 *  Adding to admin page digital calculation and choosing color.
@@ -162,6 +192,11 @@ To add a poll in your website you just need to install poll plugin and its done.
 
 * Pictures of answer-It is used in the third version. You can create the given question by 
   pictures and make it more simple - Poll.
+  
+  How do I check the results without polling myself?
+  
+
+  
 
 
 

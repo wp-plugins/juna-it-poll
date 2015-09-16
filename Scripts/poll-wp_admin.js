@@ -1,8 +1,5 @@
 
 var images= [];
-var src="";
-var index="";
-var sub="";
 
 jQuery(document).ready(function() {	
 		
@@ -37,50 +34,15 @@ function upload_files(){
 		})
 		for (var i = 1; i < 11; i++){
 		jQuery('#upload'+i).click(function(){
-			window.id =jQuery(this).attr('id');
-			jQuery('#'+id+'1').addClass('select_file_pc');
-			jQuery('#display_media_button').fadeIn(100);
-			var body = jQuery("html, body");
-			jQuery('#'+id+'1').fadeIn(100);
-			body.animate({scrollTop:'0'}, '100')
-			jQuery('#confirm_selection').click(function(){
-				jQuery('#'+id+'1').fadeOut(100);
-				jQuery('#display_media_button').fadeOut(100);
-				jQuery('#'+id+'1').removeClass('select_file_pc');
-			})
-		})		
-			jQuery('.image_select_file_library').click(function(){
-				var src = jQuery(this).attr('src');
-				jQuery('#confirm_selection').click(function(){
-					jQuery('#'+id+'11').val(src);
-					jQuery('#display_media_button').fadeOut(100);
-				})
-			})
-		}
-		jQuery('#select-file-library').click(function(){
-			jQuery('.select_file_pc').fadeOut(100);
-			jQuery('#select_file_library').fadeIn(100);
-			jQuery('#alt_file_pc').css('display','none');
-			jQuery('.image_select_file_library').fadeIn(100);
-			jQuery('.border_bottom,.border_bottom_none').toggleClass('border_bottom_none').toggleClass('border_bottom');
-		})
-		jQuery('#select-file-pc').click(function(){
-			jQuery('.image_select_file_library').fadeOut(100);
-			jQuery('#select_file_library').fadeOut(100);
-			jQuery('.select_file_pc').fadeIn(100);
-			jQuery('#alt_file_pc').fadeIn(100);
-			jQuery('.border_bottom,.border_bottom_none').toggleClass('border_bottom_none').toggleClass('border_bottom');
-		})
-		jQuery('#close_display_media_button').click(function(){
-			jQuery('#display_media_button').fadeOut(100);
-		})
+			jQuery(this).css('color','red');
+			jQuery(this).val('Get Pro Version');
+		})	
+		}	
 	}
 jQuery(window).load(function() {
 
-	src=jQuery('#img1').attr('src');		
-	index = jQuery('#img1').attr('src').indexOf('.');
-	sub=src.substring(0,index-2);	
-		jQuery('#fonts_div').append("<br><br><input type='submit'  id='Save_button' style='margin-right: 215px; float: right; border-radius:3px; background-color:#cfcfcf; color:black; ' value='Save Changes' />");
+		
+		jQuery('#fonts_div').append("<br><br><input type='submit'  id='Save_button' style='margin-right: 215px; float: right; width:130px; border-radius: 10px; color: white; text-align: center; background-color: #0073aa;' value='Save Changes' />");
 		var text=document.getElementById('copy').value;
 		var ajaxurl = object.ajaxurl;
 		var data = {
@@ -123,9 +85,30 @@ function myF()
 			
 	})
 }
-function set(){
-	var x=jQuery('#widg_width').val();
-	jQuery('#plugins_type').css('width',x+'px');
+function set(type){
+	if(type=='widget')
+		{
+			var x=jQuery('#widg_width').val();
+			jQuery('.plugins_type').css('width',x+'px');
+		}
+		else if(type=='width')
+		{
+			var x=jQuery('#image_width').val();
+			for(var i=1;i<=10;i++)
+			{
+				jQuery('#set_file'+i).css('width',x+'px');
+				jQuery('#file'+i).css('width',x+'px');
+			}
+		}
+		else if(type=='height')
+		{
+			var x=jQuery('#image_height').val();
+			for(var i=1;i<=10;i++)
+			{
+				jQuery('#set_file'+i).css('height',parseInt(x)+20+'px');
+				jQuery('#file'+i).css('height',x+'px');
+			}
+		}
 }
 
 function add_answers()
@@ -151,8 +134,6 @@ function add_answers()
 			for(i=1; i<=answers_count; i++)
 			{
 				jQuery("#answer"+i).removeAttr('disabled');
-				
-
 			}
 		}
 		else if(textbox_count>answers_count)
@@ -173,6 +154,9 @@ function add_answers()
 				{					
 					jQuery("#answer"+i).prop('disabled','true');
 					jQuery(".votes"+i).fadeOut(100);
+					jQuery("#an"+i).fadeOut(100);	
+					jQuery("#a"+i).fadeOut(100);
+					jQuery("#set_file"+i).fadeOut(100);
 					if(jQuery('#span_answer'+i).html()!="")
 					{
 						jQuery('#span_answer'+i).html("");
@@ -222,42 +206,36 @@ function add_answers()
 		
 			if(image[image.length-1]==2 || image[image.length-1]==3 )
 			{				
-					jQuery('#hoverColor_label').css({"display":"inline"});
-					jQuery('#selectedHoverColor').css({"display":"inline"});
-					jQuery('#colorPickerhover').css({"display":"inline"});
+					jQuery('#hover_div').css({"display":"inline"});
 					jQuery('#HoverCheck').css({"opacity":"1"});
-				
 			}			
 			else
 			{
-					jQuery('#hoverColor_label').css({"display":"none"});
-					jQuery('#selectedHoverColor').css({"display":"none"});
-					jQuery('#colorPickerhover').css({"display":"none"});
+					jQuery('#hover_div').css({"display":"none"});
 					jQuery('#HoverCheck').css({"opacity":"0"});
-					
 			}
 			if(image[image.length-1]==1 )
 			{
 				jQuery('#Save_button').remove();
-				jQuery('#fonts_div').append("<input type='submit'  id='Save_button' style='margin-right: 215px; float: right; border-radius:3px; background-color:#cfcfcf; color:black; ' value='Save Changes' />");
-				
+				jQuery('#fonts_div').append("<input type='submit'  id='Save_button' style='margin-right: 215px; float: right; width:130px; border-radius: 10px; color: white; text-align: center; background-color: #0073aa;' value='Save Changes' />");
+				jQuery('#vote_buttons_div').css('width','400px');
+				jQuery('#vote_buttons_div').css({"display":"inline"});
 			}
 			else
 			{
 				jQuery('#Save_button').remove();
+				jQuery('#vote_buttons_div').css({"display":"none"});
 			}
-			
 			if(image[image.length-1]==3)
 			{
-				jQuery('#hoverColor_label').html('Bg-color for Question: ');
-				
+				jQuery('#image_div').css({"display":"inline"});
+				jQuery('#hoverColor_label').html('Question`s bg-color: ');
 			}
 			else
 			{
+				jQuery('#image_div').css({"display":"none"});
 				jQuery('#hoverColor_label').html('Hover Color: ');
-				
 			}
-			
 		}	
 		function ClearImages(image2)
 		{
@@ -1189,15 +1167,25 @@ function Validate()
 
 		function ChangeFont(type)
 		{			
-			 var fontSize=jQuery('#fontSize').val();
-			 var fontFamily=jQuery('#Text_Font').val();
-			 if(type=="true")
-			 {			 	
-			 	jQuery('#fontCheck').css('font-size',fontSize+'px');
+			  if(type=="true")
+			 {		
+				var fontSize=jQuery('#fontSize').val();
+			 	jQuery('.questions_title').css('font-size',fontSize+'px');
 			 }
 			 else if(type=="false")
 			 {
-			 	jQuery('#fontCheck').css('font-family',fontFamily);			 	
+			 	var fontFamily=jQuery('#Text_Font').val();
+			 	jQuery('.questions_title').css('font-family',fontFamily);		 	
+			 }
+			 else if(type=='hoplo')
+			 {
+			 	var fontFamily=jQuery('#Answer_Font').val();
+			 	jQuery('.set_answer').css('font-family',fontFamily);
+			 }
+			 else if(type=="yupi")
+			 {
+				var fontSize=jQuery('#AnswerSize').val();
+			 	jQuery('.set_answer').css('font-size',fontSize+'px');		 	
 			 }
 		}
 

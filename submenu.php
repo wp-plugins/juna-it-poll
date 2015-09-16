@@ -28,22 +28,18 @@
 
 	?>
 <style>
-	table
+	table, th, td 
 	{
-		border-radius: 10px;
+ 	  	border:1px solid #0073aa;
+ 	  	border-radius:10px;	
 	}
-		table, th, td 
-		{
-	 	  	border:1px solid #98bf21;
-	 	  	border-radius:10px;	
-		}
 	tr:nth-child(odd)
 	{
-		background-color:whitesmoke;		
+		background-color:white;		
 	}
 	tr:nth-child(even)
 	{
-		background-color:#EAF2D3;		
+		background-color:#ddf4fb;		
 	}
 	table
 	{
@@ -61,24 +57,43 @@
 	{
 		position:relative;
 		border:1px solid white;
-		background-color:#98bf21;
+		background-color:#0073aa;
 		color:white;
 		border-radius:10px;
 		margin: 5px auto;
+		margin-top:20px;
 	}	
 	tr:nth-child(1)
 	{
 		font-size:20px;
 		color:white;
 		font-family: Consolas, Arial, Gabriola;
-		background-color:#98bf21;
+		background-color:#0073aa;
 		width:100%;
 	}
+	#change_button
+	{
+		position:relative;
+		border:1px solid white;
+		background-color:#0073aa;
+		color:white;
+		border-radius:10px;
+		margin: 5px auto;
+	}
 </style>
+<script type="text/javascript">
+	function Change_votes()
+	{
+		jQuery('#change_button').css('color','red');
+		jQuery('#change_button').css('font-size','14px');
+		jQuery('#change_button').html('* It`s working only with pro version (Click on logo to buy Pro version...)');
+	}
+</script>
 
 	<form method="post">
 	<br>
-		<Label> Select a Question </Label> <br>
+		<img style="float:left;" src="http://juna-it.com/image/icon.png">
+		<Label style="font-size:18px; margin-left:10px;"><i> Select a Question</i></Label> <a href="http://juna-it.com/index.php/features/elements/juna-it-plugin/" target="_blank"><img src="http://juna-it.com/wp-content/uploads/2015/07/juna-logo.png" style="float:right; width:150px;height:70px; margin-right:10px;" <abbr title="Click to get Pro version"></a><br>
 		<select name="Question" onchange="this.form.submit()">
 		<option> Select Question </option>
 			<?php
@@ -119,7 +134,9 @@
 				 			<?php
 				 		}
 				 	?>	
-
+				 		<tr>
+						 	<th colspan="3" id="change_button" onclick="Change_votes()" >Change Votes</th>
+					 	</tr>
 				 </table> 
 				<?php
 			}
