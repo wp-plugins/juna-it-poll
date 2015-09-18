@@ -49,6 +49,8 @@ Every site is different so we've got a few different ways to add Voice Polls to 
 
 * You can change results of poll. - Poll
 
+* Easy content creation - creating polls is an easy way to produce engaging and relevant content.(Juna IT Poll) Deploy your first polls in minutes and easily manage all your polls from a simple and intuitive dashboard. - poll
+
 
 ### Upgrade to WordPress Juna IT Poll Pro to add some features - Poll:
 
