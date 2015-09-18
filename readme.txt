@@ -196,6 +196,8 @@ To add a poll in your website you just need to install poll plugin and its done.
   pictures and make it more simple - Poll.
   
   How do I check the results without polling myself?
+
+poll - Juna poll - Wordpress poll - reate poll - create polls - custom poll - easy polls - flash poll - user polls -  html poll - online poll -  opinion - page poll -  poll plugin - poll widget - post poll - WordPress polls - wp polls - image poll
   
 
   
