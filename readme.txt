@@ -4,11 +4,11 @@ Donate link: http://juna-it.com/index.php/features/elements/juna-it-plugin/
 Tags: create poll, create polls, custom poll, custom polls, data collection, democracy, do a poll,easy polls, feedback, flash poll, user polls, free user polls, html poll, online poll, opinion, opinion stage, page poll, plugin, poll, poll builder, poll directory, poll plugin, poll widget,polldaddy polls, polling, Polling System, polls, post poll, post survey, rate, premade polls,questionnaire, responsive, opinionstage, shortcode, sidebar survey, survey, survey form, survey form builder,survey plugin, survey tool, survey widget, surveys, user survey, vote, Votes, voting,voting polls, pol, poll poll, widget, widgets, wordpress poll widget, wordpress poll,  WordPress polls, wordpress survey, feedback, survey, wp polls, wp survey, social, wppolls, bing, booth, statistics, polldaddy, qualaroo, charts, juna it poll, it poll, yop poll, post, posts, debate, research, usability, cache, beautiful poll, create amazing polls, multiple poll, pie chart, image poll, Column Chart, Standard Poll, question answer, responsive poll, awesome poll,
 Requires at least: 3.0.1
 Tested up to: 4.3
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Juna IT Poll - WordPress Plugin is an instrument for understanding visitor 's opinions. You can use this plugin for explaining what your users think about your web-page or a new page and or about any question.
+Juna IT Poll - You can use WordPress Juna IT Poll for explaining what your users think about your web-page or a new page and or about any question. - WordPress Juna IT Poll
 
 == Description ==
 
