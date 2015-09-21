@@ -170,5 +170,6 @@ Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], w
 
 To add a poll in your website you just need to install poll plugin and its done. - poll
 
-Hello.Let`s try to create polling versions together .This poll plugin has 4 version , which correspond to your inquiry theme. - poll
-Above you`ll see that there are images corresponding to each polling.Clicking om images you`ll choose your polling version . - poll
+Hello.Let`s try to create polling versions together. This poll plugin has 4 version, which correspond to your inquiry theme. - poll
+
+Above you`ll see that there are images corresponding to each polling.Clicking om images you`ll choose your polling version. - poll
