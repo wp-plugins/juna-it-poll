@@ -168,48 +168,7 @@ Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], w
 
 ==Other comments==
 
-To add a poll in your website you just need to install poll plugin and its done.
+To add a poll in your website you just need to install poll plugin and its done. - poll
 
-###To create wordpress requests.
-
-* Version-Select the one from the 4 versions which corresponds the subject matter of your
-  request - Poll.
-
-* Question- Enter your question to be voted. You can use the images and edit your 
-  question using the standard Wordpress text - Poll.
-
-* The answers of requests-Select how many answers of request will have your versions - Poll. 
-
-* Each version has its uniqueness - Poll.
-
-* The width of request-Select the width of request you want with pixels(px) - Poll.
-
-* The background color of request- Select the background color you want for the question - Poll.
-
-* The size of the question- Select the letter's size of given question - Poll.
-
-* Font of request -There are many fonts and you can select any fonts of style - Poll.
-
-* Letter color of the answer-Select what color do you want to be your answers - Poll.
-
-* Pictures of answer-It is used in the third version. You can create the given question by 
-  pictures and make it more simple - Poll.
-  
-  How do I check the results without polling myself?
-
-poll - Juna poll - Wordpress poll - reate poll - create polls - custom poll - easy polls - flash poll - user polls -  html poll - online poll -  opinion - page poll -  poll plugin - poll widget - post poll - WordPress polls - wp polls - image poll
-  
-
-  
-
-
-
-
-### After all of this compress the button save and your request version is already ready.
-
-
-
-### After getting all of this on the right side is written "shortcode". If you want your request plugin works where you want therefore the code [Juna-IT-Poll id="1"] which is written there insert in the page. If you have some questions and want to know the other code of the question, select the question and in the same place you will see the ID of the question.
-
-
-### You also have a possibility to see the results of voting. Press the result part there on the top you will see the categories of question. Select the question which you want and you will see the results of voting in the down.
+Hello.Let`s try to create polling versions together .This poll plugin has 4 version , which correspond to your inquiry theme. - poll
+Above you`ll see that there are images corresponding to each polling.Clicking om images you`ll choose your polling version . - poll
