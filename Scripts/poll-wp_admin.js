@@ -1,4 +1,3 @@
-
 var images= [];
 
 jQuery(document).ready(function() {	
@@ -10,6 +9,9 @@ jQuery(document).ready(function() {
 				
 	images=[img1,img2,img3,img4];
 	upload_files();	
+	jQuery('#colors_div').css({"display":"none"});					
+	jQuery('#upload_div').css({"display":"none"});
+
 });
 function upload_files(){
 		jQuery('#img3').click(function(){
@@ -34,9 +36,9 @@ function upload_files(){
 		})
 		for (var i = 1; i < 11; i++){
 		jQuery('#upload'+i).click(function(){
-			jQuery(this).css('color','red');
-			jQuery(this).val('Get Pro Version');
-		})	
+				jQuery(this).css('color','red');
+				jQuery(this).val('Get Pro Version');
+			})	
 		}	
 	}
 jQuery(window).load(function() {
@@ -111,38 +113,115 @@ function set(type){
 		}
 }
 
-function add_answers()
+function Add_answer()
 	{
-		var answers_count =document.getElementById('AnswersCount').value;
-
 		var textbox_count=0;
 
 		jQuery(document).ready(function() {
-			jQuery(':text').each(function() {
-				if(!jQuery(this).prop('disabled'))
-				{
-					textbox_count++;
-
-				}
-			});		
-					
-		});
-		
-	 if(textbox_count<answers_count)
-		{			
-
-			for(i=1; i<=answers_count; i++)
+			for(var i=1;i<=10;i++)
 			{
+				jQuery('#answer'+i).each(function() {
+				if(!jQuery(this).prop('disabled'))
+					{
+						textbox_count++;				
+					}
+				});	
+			}
+		});
+
+		jQuery('#hidden_value').val(parseInt(textbox_count+1));
+
+		if(textbox_count==9)
+		{
+			jQuery('#add_answer').css('display','none');
+		}
+		if(textbox_count==2)
+		{
+			jQuery('#remove_answer').css('display','inline');
+		}
+
+			jQuery('#Admin_Menu').append("<label id='labelAnswer"+parseInt(textbox_count+1)+"' style='font-size:14px;color:#0073aa; '>Answer "+parseInt(textbox_count+1)+":</label> <br class='br_class"+parseInt(textbox_count+1)+"'> <input type='text' name='answer"+parseInt(textbox_count+1)+"' id='answer"+parseInt(textbox_count+1)+"' style='width:400px; border-radius:3px;' onchange='change("+parseInt(textbox_count+1)+")'/> <span id='span_answer"+parseInt(textbox_count+1)+"' style='color: red'></span> <br class='br_class"+parseInt(textbox_count+1)+"'>");
+			jQuery('#colors_div').append("<label id='bg_color"+parseInt(textbox_count+1)+"' style='font-size:14px; color:#0073aa; '> Choose Background Color</label> <br class='bg_color_br"+parseInt(textbox_count+1)+"'> <input type='text' value='#c0c0c0' name='color"+parseInt(textbox_count+1)+"' id='color"+parseInt(textbox_count+1)+"' style='width: 170px;' onchange='ColorPicker("+parseInt(textbox_count+1)+",false);' /> <input type='color' value='#c0c0c0' id='color_div"+parseInt(textbox_count+1)+"' style='height: 23px; padding: 1px 3px;' onchange='ColorPicker("+parseInt(textbox_count+1)+",true);'> <br class='bg_color_br"+parseInt(textbox_count+1)+"'>");
+			jQuery('#upload_div').append("<label id='labelUpload"+parseInt(textbox_count+1)+"' style='font-size:14px; color:#0073aa; '> Include File</label> <br class='upload_file_br"+parseInt(textbox_count+1)+"'> <input type='button' id='upload"+parseInt(textbox_count+1)+"'  value = 'Add image'> <br class='upload_file_br"+parseInt(textbox_count+1)+"'>");
+			
+		add_answers(parseInt(textbox_count+1));
+		
+	}
+	function Remove_answer()
+	{
+		var textbox_count=0;
+
+		jQuery(document).ready(function() {
+			for(var i=1;i<=10;i++)
+			{
+				jQuery('#answer'+i).each(function() {
+				if(!jQuery(this).prop('disabled'))
+					{
+						textbox_count++;				
+					}
+				});	
+			}
+		});
+		jQuery('#hidden_value').val(textbox_count-1);
+		if(textbox_count==10)
+		{
+			jQuery('#add_answer').css('display','inline');
+		}
+		if(textbox_count==3)
+		{
+			jQuery('#remove_answer').css('display','none');
+		}
+
+		jQuery('#labelAnswer'+textbox_count).remove();
+		jQuery('#answer'+textbox_count).remove();
+		jQuery('#span_answer'+textbox_count).remove();
+		jQuery('.br_class'+textbox_count).remove();
+
+		jQuery('#bg_color'+textbox_count).remove();
+		jQuery('.bg_color_br'+textbox_count).remove();
+		jQuery('#color'+textbox_count).remove();
+		jQuery('#color_div'+textbox_count).remove();
+
+		jQuery('#labelUpload'+textbox_count).remove();
+		jQuery('.upload_file_br'+textbox_count).remove();
+		jQuery('#upload'+textbox_count).remove();
+
+
+		for(i=1; i<=10; i++)
+		{
+			if(i<textbox_count)
+			{
+
 				jQuery("#answer"+i).removeAttr('disabled');
+				jQuery("#an"+i).fadeIn(100);	
+				jQuery(".votes"+i).fadeIn(100);
+				jQuery("#a"+i).fadeIn(100);
+				jQuery("#set_file"+i).fadeIn(100);
+			}
+			else
+			{					
+				jQuery("#answer"+i).prop('disabled','true');
+				jQuery(".votes"+i).fadeOut(100);
+				jQuery("#an"+i).fadeOut(100);	
+				jQuery("#a"+i).fadeOut(100);
+				jQuery("#set_file"+i).fadeOut(100);
+
+				if(jQuery('#span_answer'+i).html()!="")
+				{
+					jQuery('#span_answer'+i).html("");						
+				}
 			}
 		}
-		else if(textbox_count>answers_count)
-		{		
+	}
 
-			for(i=1; i<=10; i++)
+function add_answers(answers_count)
+	{
+		
+		for(i=1; i<=10; i++)
 			{
 				if(i<=answers_count)
 				{
+
 					jQuery("#answer"+i).removeAttr('disabled');
 					jQuery("#an"+i).fadeIn(100);	
 					jQuery(".votes"+i).fadeIn(100);
@@ -150,48 +229,23 @@ function add_answers()
 					jQuery("#set_file"+i).fadeIn(100);
 				}
 				else
-
 				{					
 					jQuery("#answer"+i).prop('disabled','true');
 					jQuery(".votes"+i).fadeOut(100);
 					jQuery("#an"+i).fadeOut(100);	
 					jQuery("#a"+i).fadeOut(100);
 					jQuery("#set_file"+i).fadeOut(100);
+
 					if(jQuery('#span_answer'+i).html()!="")
 					{
-						jQuery('#span_answer'+i).html("");
-						
-						
+						jQuery('#span_answer'+i).html("");						
 					}
 				}
 			}
-		}
-		else if (textbox_count==answers_count) 
-		{
-			for(i=1; i<=answers_count; i++)
-			{
-				if(i<=answers_count)
-				{
-					
-					jQuery("#answer"+i).removeAttr('disabled');	
-									
-				}
-				else
-				{					
-					jQuery("#answer"+i).prop('disabled','true');
-					if(jQuery('#span_answer'+i).html()!="")
-					{
-						jQuery('#span_answer'+i).html("");
-
-					}
-				}
-
-			}
-		}
-
 			EnableUploads(3);
 			EnableColors(2,4);	
 	}
+
 	function SelectType(image){
 
 			jQuery('#'+image).css("width","130px");
@@ -348,81 +402,23 @@ function add_answers()
 		{
 			if(Check()!=k)
 			{
-				jQuery(":file").each(function(){
-					jQuery(this).css({"display": "none" });
-				});
-
-				for(i=1; i<=10; i++)
-				{
-					jQuery("#labelUpload"+i).css({"display":"none"});
-				}				
-
-				jQuery(":file").each(function() {
-					jQuery(this).prop("disabled",true);
-				});
+				jQuery('#upload_div').css('display','none');
 			}
 			else
 			{
-				jQuery(":file").each(function(){
-					jQuery(this).css({"display": "inline" });
-				});
-
-				for(i=1; i<=10; i++)
-				{
-					jQuery("#labelUpload"+i).css({"display":"inline"});
-					
-				}				
-
-				var answers_count=document.getElementById('AnswersCount').value;
-				for(i=1; i<=10; i++)
-				{
-					if (i<=answers_count) 
-					{
-						jQuery("#upload"+i).removeAttr('disabled');
-					}
-					else
-					{
-						jQuery("#upload"+i).prop('disabled','true');
-					}
-				}	
+				jQuery('#upload_div').css('display','inline');
 			}
 		}
 
-function EnableColors(k1,k2)
+		function EnableColors(k1,k2)
 		{
 			if(Check()!=k1 && Check()!=k2)
 			{
-
-				for(i=1; i<=10; i++)
-				{
-					jQuery("#bg_color"+i).css({"display":"none"});
-					jQuery('#color'+i).css({"display":"none"});
-					jQuery('#color_div'+i).css({"display":"none"});					
-				}				
+				jQuery('#colors_div').css({"display":"none"});					
 			}
 			else if(Check()==k1 || Check()==k2)
 			{				
-				for(i=1; i<=10; i++)
-				{
-					jQuery("#bg_color"+i).css({"display":"inline"});
-					jQuery('#color'+i).css({"display":"inline"});
-					jQuery('#color_div'+i).css({"display":"inline"});
-				}
-				
-				var answers_count=document.getElementById('AnswersCount').value;
-				for(i=1; i<=10; i++)
-				{
-					if (i<=answers_count) 
-					{
-						jQuery("#color"+i).removeAttr('disabled');
-						jQuery("#color_div"+i).removeAttr('disabled');
-					}
-					else
-					{
-						jQuery("#color"+i).prop('disabled','true');
-						jQuery("#color_div"+i).prop('disabled','true');
-					}
-				}	
+				jQuery('#colors_div').css({"display":"inline"});
 			}
 		}
 

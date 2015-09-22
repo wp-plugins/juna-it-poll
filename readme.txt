@@ -4,7 +4,7 @@ Donate link: http://juna-it.com/index.php/features/elements/juna-it-plugin/
 Tags: create poll, create polls, custom poll, custom polls, data collection, democracy, do a poll,easy polls, feedback, flash poll, user polls, free user polls, html poll, online poll, opinion, opinion stage, page poll, plugin, poll, poll builder, poll directory, poll plugin, poll widget,polldaddy polls, polling, Polling System, polls, post poll, post survey, rate, premade polls,questionnaire, responsive, opinionstage, shortcode, sidebar survey, survey, survey form, survey form builder,survey plugin, survey tool, survey widget, surveys, user survey, vote, Votes, voting,voting polls, pol, poll poll, widget, widgets, wordpress poll widget, wordpress poll,  WordPress polls, wordpress survey, feedback, survey, wp polls, wp survey, social, wppolls, bing, booth, statistics, polldaddy, qualaroo, charts, juna it poll, it poll, yop poll, post, posts, debate, research, usability, cache, beautiful poll, create amazing polls, multiple poll, pie chart, image poll, Column Chart, Standard Poll, question answer, responsive poll, awesome poll,
 Requires at least: 3.0.1
 Tested up to: 4.3
-Stable tag: 1.0.5
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -148,28 +148,31 @@ Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], w
 
 == Changelog ==
 
+= 1.1.0 =
+*Admin page changes. - WordPress Juna IT Poll
+
 = 1.0.5 =
-* You can upload videos, give width and height for images and videos, give font-size and font-family for answers.
+* You can upload videos, give width and height for images and videos, give font-size and font-family for answers - WordPress Juna IT Poll
 
 = 1.0.4 =
-* Added to the result menu. Admin can change the vote as you wish.
+* Added to the result menu. Admin can change the vote as you wish - WordPress Juna IT Poll
 
-= 1.0.3 =
-*  Adding to admin page digital calculation and choosing color.
+= 1.0.3 = 
+* Adding to admin page digital calculation and choosing color - WordPress Juna IT Poll
 
 = 1.0.2 =
-*  Our admin page  changed and you can see your poll's looks.
+* Our admin page  changed and you can see your poll's looks - WordPress Juna IT Poll
 
 = 1.0.1 =
-*  Bug fixed in Poll.
+* Bug fixed in Poll - WordPress Juna IT Poll
 
 = 1.0.0 =
-*  Added Poll.
+* Added Poll - WordPress Juna IT Poll
 
-==Other comments==
+== WordPress Slider step by step guide ==
 
-To add a poll in your website you just need to install poll plugin and its done. - poll
+To add a poll in your website you just need to install poll plugin and its done - WordPress Juna IT Poll
 
-Hello.Let`s try to create polling versions together. This poll plugin has 4 version, which correspond to your inquiry theme. - poll
+Hello.Let`s try to create polling versions together. This poll plugin has 4 version, which correspond to your inquiry theme - WordPress Juna IT Poll
 
-Above you`ll see that there are images corresponding to each polling.Clicking om images you`ll choose your polling version. - poll
+Above you all see that there are images corresponding to each polling. Clicking om images you`ll choose your polling version - WordPress Juna IT Poll

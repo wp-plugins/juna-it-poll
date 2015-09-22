@@ -54,7 +54,7 @@
 				</div>
 		</div>
 
-	<img style="float:left;" src='http://juna-it.com/image/icon.png'><p style="font-size:20px; width:200px; margin-left:50px;"><b>Add Poll</b></p><a href="http://juna-it.com" target="_blank"><img src="http://juna-it.com/wp-content/uploads/2015/07/juna-logo.png" style="float:right; width:150px;height:70px; margin-top:-70px;"><p style="float:right; margin-right:40px;margin-top:2px; font-size:14px;"><b>Click to visit </b></p></a>
+	<img style="float:left;" src='http://juna-it.com/image/icon.png'><p style="font-size:20px; width:200px; margin-left:50px;"><b>Add Poll</b></p><a href="http://juna-it.com/index.php/features/elements/juna-it-plugin/" target="_blank"><img src="http://juna-it.com/wp-content/uploads/2015/07/juna-logo.png" style="float:right; width:150px;height:70px; margin-top:-70px;"><p style="float:right; margin-right:25px;margin-top:2px; font-size:14px;"><b>Get Pro Version</b></p></a>
 	
 	<fieldset style="position:relative; margin-bottom:15px;background-color: white;border-radius: 6px;width: 675px; height: 190px;box-shadow: 2px -2px 1px 1px #ddd;border: 1px solid #0073aa;">
 
@@ -66,8 +66,8 @@
 
  	</fieldset>
  	<fieldset id="shortcode_section"  style="position: absolute; top: 70px;margin-left: 695px; width:300px; height:170px; padding:10px; box-shadow: 2px -2px 1px 1px #ddd; border: 1px solid #0073aa;border-radius:6px; background-color: white; padding: 10px; ">
- 		<legend style="color: #B0AFAF;font-size:16px;margin-left:10px;color:#0073aa;"><i>Shortcode</i></legend>
- 		<p style="font-size:14px;color: #B0AFAF;" id="copy">Copy & paste the shortcode directly into any WordPress post or page.</p>
+ 		<legend style="color: #B0AFAF;font-size:16px; color:#0073aa;"><i>Shortcode</i></legend>
+ 		<p style="font-size:14px;color:#0073aa;" id="copy">Copy & paste the shortcode directly into any WordPress post or page.</p>
  		<input type="text" style="font-size:14px;border-radius:2px;" id="shortcode_id" readonly value='[Juna_IT_Poll id="1"]'>
  		<select id="shortcode_select" onchange="myF()" style="margin-top:15px;border-radius:3px;">
 			<option value="Do You Like Our plugin?">Do You Like Our plugin?</option> 			
@@ -78,196 +78,103 @@
 		<input type="text" name="question" id="question_id" style="width:500px;margin-left: 10px;border-radius: 4px;margin-top:25px;" onchange="changed_question()" /> <span id="span_question" style="color: red"></span> <br><br><br>
 	</fieldset>
 	<fieldset id='answers_section' style='width:656px;background-color:white;margin-top: 20px;border-radius:6px;padding: 10px;box-shadow: 2px -2px 1px 1px #ddd;border: 1px solid #0073aa;'>	
-		<legend style="color: #B0AFAF;font-size:16px;margin-left:10px;color:#0073aa;"><i> Answers</i> </legend>
-		 	<select name="AnswersCount" id="AnswersCount" onchange="add_answers()"style='border-radius:3px;'> 		
-		 		<option value="2">2</option>
-		 		<option value="3">3</option>
-		 		<option value="4">4</option>
-		 		<option value="5">5</option>
-		 		<option value="6">6</option>
-		 		<option value="7">7</option>
-		 		<option value="8">8</option>
-		 		<option value="9">9</option>
-		 		<option value="10">10</option>
-		 	</select> 
-		<div id="Admin_Menu" style="position:relative; width:658px; height: 500px; margin-bottom: 20px; ">
-			<div style="position: absolute; right: 0; top: 0; width: 230px; height: 400px;">
-				<input type="hidden"   id="upload111"  name = 'upload111' value = '' />
-				<input type="hidden"   id="upload211"  name = 'upload211' value = ''  />
-				<input type="hidden"   id="upload311"  name = 'upload311' value = '' />
-				<input type="hidden"   id="upload411"  name = 'upload411' value = '' />
-				<input type="hidden"   id="upload511"  name = 'upload511' value = ''  />
-				<input type="hidden"   id="upload611"  name = 'upload611' value = '' />
-				<input type="hidden"   id="upload711"  name = 'upload711' value = '' />
-				<input type="hidden"   id="upload811"  name = 'upload811' value = '' />
-				<input type="hidden"   id="upload911"  name = 'upload911' value = '' />
-				<input type="hidden"   id="upload1011" name = 'upload1011' value = '' />
-				<label id="labelUpload1" style="display:none; font-size:14px;  "> Include File</label>  
-		 		<label id="bg_color1" style="display:none; font-size:14px;  "> Choose Background Color</label>  <br>
-		 		<input type="button"   id="upload1"  value = 'Add image' />
-
-		 		<input type="text" disabled="true" value="#c0c0c0" name="color1" id="color1" style="display:none; width: 170px; " onchange="ColorPicker('1',false);">
-		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div1" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('1',true)"> <br> 
-
-		 		<label id="labelUpload2" style="display:none; font-size:14px;  "> Include File</label>  
-		 		<label id="bg_color2"  style="display:none; font-size:14px;  "> Choose Background Color</label> <br>
-
-			 	<input type="button" disabled="true"  id="upload2"  value = 'Add image'/> 
-		 		
-		 		<input type="text" disabled="true" value="#c0c0c0" name="color2" id="color2" style="display:none; width: 170px; " onchange="ColorPicker('2',false);">
-		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div2" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('2',true)"> <br> 
-
-		 		<label id="labelUpload3" style="display:none; font-size:14px;  "> Include File</label>  
-		 		<label id="bg_color3" style="display:none; font-size:14px;  "> Choose Background Color</label> <br>
+		<legend style="color: #B0AFAF;font-size:16px; color:#0073aa;"><i> Answers</i> </legend> <input type="hidden" id="hidden_value" name="AnswersCount" value="2">
 		 	
-		 		<input disabled="true" type="button" id="upload3"  value = 'Add image'/> 
+		 <div id="Admin_Menu" style="position:relative; width:658px; margin-bottom: 20px;">
+			<div style="display:none; position: absolute; right: 0; top: 0; width: 230px; z-index:0;" id="upload_div">
+				<input type="hidden" id="upload111" name = 'upload111' value = '' />
+				<input type="hidden" id="upload211" name = 'upload211' value = '' />
+				<input type="hidden" id="upload311" name = 'upload311' value = '' />
+				<input type="hidden" id="upload411" name = 'upload411' value = '' />
+				<input type="hidden" id="upload511" name = 'upload511' value = '' />
+				<input type="hidden" id="upload611" name = 'upload611' value = '' />
+				<input type="hidden" id="upload711" name = 'upload711' value = '' />
+				<input type="hidden" id="upload811" name = 'upload811' value = '' />
+				<input type="hidden" id="upload911" name = 'upload911' value = '' />
+				<input type="hidden" id="upload1011" name = 'upload1011' value = '' />
+				
+				<label id="labelUpload1" style="font-size:14px; color:#0073aa;  "> Include File</label> <br>
+		 		<input type="button"  id="upload1"  value = 'Add image' /> <br>
 		 		
-		 		<input type="text" disabled="true" value="#c0c0c0" name="color3" id="color3" style="display:none; width: 170px; " onchange="ColorPicker('3',false);">
-		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div3" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('3',true)"> <br> 
+		 		<label id="labelUpload2" style="font-size:14px; color:#0073aa; "> Include File</label> <br>
+			 	<input type="button"  id="upload2"  value = 'Add image'/> <br>
+			</div> 
 
-		 		<label id="labelUpload4" style="display:none; font-size:14px;  "> Include File</label>  
-		 		<label id="bg_color4" style="display:none; font-size:14px;  "> Choose Background Color</label> <br>
+			<div style="position: absolute; right: 0; top: 0; width: 230px; z-index:0;" id="colors_div">
+		 		<label id="bg_color1" style="font-size:14px; color:#0073aa; "> Choose Background Color</label>  <br>
+		 		<input type="text" value="#c0c0c0" name="color1" id="color1" style=" width: 170px; " onchange="ColorPicker('1',false);">
+		 		<input type="color" value="#c0c0c0" id="color_div1" style=" height: 23px; padding: 1px 3px;" onchange="ColorPicker('1',true)"> <br> 
 
-		 		<input disabled="true" type="button" id="upload4"  value = 'Add image'/> 
-		 	
-		 		<input type="text" disabled="true" value="#c0c0c0" name="color4" id="color4" style="display:none; width: 170px; " onchange="ColorPicker('4',false);">
-		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div4" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('4',true)"> <br>
-
-		 		<label id="labelUpload5" style="display:none; font-size:14px;  "> Include File</label>  
-		 		<label id="bg_color5" style="display:none; font-size:14px;  "> Choose Background Color</label> <br>
-
-		 		<input disabled="true" type="button"  id="upload5"  value = 'Add image'/> 
-		 		
-		 		<input type="text" disabled="true" value="#c0c0c0" name="color5" id="color5" style="display:none; width: 170px; " onchange="ColorPicker('5',false);">
-		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div5" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('5',true)"> <br> 
-
-		 		<label id="labelUpload6" style="display:none; font-size:14px;  "> Include File</label>  
-		 		<label id="bg_color6" style="display:none; font-size:14px;  "> Choose Background Color</label><br>
-
-		 		<input disabled="true" type="button" id="upload6" value = 'Add image' /> 
-		 		
-		 		<input type="text" disabled="true" value="#c0c0c0" name="color6" id="color6" style="display:none; width: 170px; " onchange="ColorPicker('6',false);">
-		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div6" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('6',true)"> <br> 
-
-		 		<label id="labelUpload7" style="display:none; font-size:14px;  "> Include File</label>  
-		 		<label id="bg_color7" style="display:none; font-size:14px;  "> Choose Background Color</label><br>
-
-		 		<input disabled="true" type="button" id="upload7" value = 'Add image' /> 
-		 		
-		 		<input type="text" disabled="true" value="#c0c0c0" name="color7" id="color7" style="display:none; width: 170px; " onchange="ColorPicker('7',false);">
-		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div7" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('7',true)"> <br>
-
-		 		<label id="labelUpload8" style="display:none; font-size:14px;  "> Include File</label>  
-		 		<label id="bg_color8" style="display:none; font-size:14px;  "> Choose Background Color</label> <br>
-
-		 		<input disabled="true" type="button"  id="upload8" value = 'Add image'/> 
-		 		
-		 		<input type="text" disabled="true" value="#c0c0c0" name="color8" id="color8" style="display:none; width: 170px; " onchange="ColorPicker('8',false);">
-		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div8" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('8',true)"> <br>
-
-		 		<label id="labelUpload9" style="display:none; font-size:14px;  "> Include File</label>  
-		 		<label id="bg_color9" style="display:none; font-size:14px;  "> Choose Background Color</label>  <br>
-
-		 		<input disabled="true" type="button"  id="upload9" value = 'Add image' /> 
-		 		
-		 		<input type="text" disabled="true" value="#c0c0c0" name="color9" id="color9" style="display:none; width: 170px; " onchange="ColorPicker('9',false);">
-		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div9" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('9',true)"> <br>
-
-		 		<label id="labelUpload10" style="display:none; font-size:14px; "> Include File</label>  
-		 		<label id="bg_color10" style="display:none; font-size:14px; "> Choose Background Color</label><br>
-
-		 		<input disabled="true" type="button"  id="upload10"  value = 'Add image'/>
-		 		
-		 		<input type="text" disabled="true" value="#c0c0c0" name="color10" id="color10" style="display:none; width: 170px; " onchange="ColorPicker('10',false);">
-		 		<input type="color" disabled="true" value="#c0c0c0" id="color_div10" style="display:none; height: 23px; padding: 1px 3px;" onchange="ColorPicker('10',true)"> <br> 
-			
+		 		<label id="bg_color2"  style="font-size:14px; color:#0073aa; "> Choose Background Color</label> <br>
+		 		<input type="text" value="#c0c0c0" name="color2" id="color2" style="width: 170px; " onchange="ColorPicker('2',false);">
+		 		<input type="color"  value="#c0c0c0" id="color_div2" style="height: 23px; padding: 1px 3px;" onchange="ColorPicker('2',true)"> <br> 
 			</div>
 
-				<label id="labelAnswer1" style="font-size:14px;color: #B0AFAF;"> Answer 1: </label> <br>
-		 		<input type="text" name="answer1" id="answer1" style=" width:400px;border-radius:3px;" onchange='change(1)'/>  <span id="span_answer1" style="color: red"></span><br>
+				<label id="labelAnswer1" style="font-size:14px; color:#0073aa; "> Answer 1: </label> <br>
+		 		<input type="text" name="answer1" id="answer1" style=" width:400px;border-radius:3px;" onchange='change(1)'/> <span id="span_answer1" style="color: red"></span><br>
 
-			 	<label id="labelAnswer2" style="font-size:14px;color: #B0AFAF;"> Answer 2: </label> <br>
-			 	<input type="text" name="answer2" id="answer2" style=" width:400px;border-radius:3px; "onchange='change(2)'/> <span id="span_answer2" style="color: red"></span><br> 
-		 		 
-			 	<label id="labelAnswer3" style="font-size:14px;color: #B0AFAF;"> Answer 3: </label>  <br>
-			 	<input disabled="true" type="text" name="answer3" id="answer3" style="width:400px;border-radius:3px; "onchange='change(3)'/> <span id="span_answer3" style="color: red"></span> <br>
-		 		
-		 		<label id="labelAnswer4" style="font-size:14px;color: #B0AFAF;"> Answer 4: </label>  <br>
-		 		<input disabled="true" type="text" name="answer4" id="answer4" style="width:400px;border-radius:3px; "onchange='change(4)'/> <span id="span_answer4" style="color: red"></span> <br>
-		 		
-		 		<label id="labelAnswer5" style="font-size:14px;color: #B0AFAF;"> Answer 5: </label> <br>
-		 		<input disabled="true" type="text" name="answer5" id="answer5" style="width:400px;border-radius:3px; "onchange='change(5)'/>  <span id="span_answer5" style="color: red"></span><br>
-
-		 		<label id="labelAnswer6" style="font-size:14px;color: #B0AFAF;"> Answer 6: </label> <br>
-		 		<input disabled="true" type="text" name="answer6" id="answer6" style="width:400px; border-radius:3px;" onchange='change(6)'/>  <span id="span_answer6" style="color: red"></span><br>
-
-		 		<label id="labelAnswer7" style="font-size:14px;color: #B0AFAF;"> Answer 7: </label><br>
-		 		<input disabled="true" type="text" name="answer7" id="answer7" style="width:400px;border-radius:3px; "onchange='change(7)'/>  <span id="span_answer7" style="color: red"></span><br>
-
-		 		<label id="labelAnswer8" style="font-size:14px;color: #B0AFAF;"> Answer 8: </label> <br>
-		 		<input disabled="true" type="text" name="answer8" id="answer8" style="width:400px; border-radius:3px;"onchange='change(8)'/>  <span id="span_answer8" style="color: red"></span><br>
-
-		 		<label id="labelAnswer9" style="font-size:14px;color: #B0AFAF;"> Answer 9: </label> <br>
-		 		<input disabled="true" type="text" name="answer9" id="answer9" style="width:400px;border-radius:3px; "onchange='change(9)'/>  <span id="span_answer9" style="color: red"></span><br>
-
-		 		<label id="labelAnswer10" style="font-size:14px;color: #B0AFAF;"> Answer 10: </label> <br>
-		 		<input disabled="true" type="text" name="answer10" id="answer10" style="width:400px;border-radius:3px;margin-bottom:10px;"onchange='change(10)'/>  <span id="span_answer10" style="color: red"></span><br>
-	 	
+			 	<label id="labelAnswer2" style="font-size:14px; color:#0073aa; "> Answer 2: </label> <br>
+			 	<input type="text" name="answer2" id="answer2" style=" width:400px;border-radius:3px;" onchange='change(2)'/> <span id="span_answer2" style="color: red"></span><br> 
+		 	
 	 	</div>
+
+	 	<input type="button" id="add_answer" value="Add Answer" onclick="Add_answer()" style="z-index:1000000; cursor:pointer; float:right; margin-right:20px; width:130px; border-radius: 10px; color: white; background-color: #0073aa;">
+	 	<input type="button" id="remove_answer" value="Remove Answer" onclick="Remove_answer()" style="cursor:pointer; display:none; float:right; margin-right:20px; width:130px; border-radius: 10px; color: white; text-align: center; background-color: #0073aa;">
+	
 	</fieldset>
 	<fieldset id='widget_section' style=' background-color:white;box-shadow: 2px -2px 1px 1px #ddd;border: 1px solid #0073aa;border-radius:6px;margin-top: 10px;width: 655px;padding: 10px;'>
-		<legend style="color: #B0AFAF;font-size:16px;margin-left:10px;color:#0073aa;"><i> Widget Style</i> </legend>
+		<legend style="color: #B0AFAF;font-size:16px;color:#0073aa;"><i> Widget Style</i> </legend>
 
 	 	<div id="Color_Picker" style="position:relative; margin-top: 25px; width:400px;">
 	 		
-	 		<label style="font-size:14px;color: #B0AFAF;">Background Color:  </label> 
+	 		<label style="font-size:14px;color:#0073aa;">Background Color:  </label> 
 	 		<input type="color" value="#ffffff" id="bg_div" style="float:right; height: 23px; padding: 1px 3px;" onchange="ColorPicker('bg',true)">
 	 		<input type="text" value="#ffffff" name="bg_color" id="bg_color" style="width: 170px; float:right; margin-right:10px;" onchange="ColorPicker('bg',false)"> <br><br>		
 	 		
-	 		<label style="font-size:14px;color: #B0AFAF;">Border Color:  </label>
+	 		<label style="font-size:14px;color:#0073aa;">Border Color:  </label>
 	 		<input type="color" value="#c0c0c0" id="border_div" style="float:right; height: 23px; padding: 1px 3px;border-radius:3px;" onchange="ColorPicker('border',true)"> 
 	 		<input type="text" value="#c0c0c0" name="border_color" id="border_color" style="width: 170px; float:right; margin-right:10px;border-radius:3px;" onchange="ColorPicker('border',false)"><br><br>
 	 		
-	 		<label style="font-size:14px;color: #B0AFAF;">Answer Color:   </label> 
+	 		<label style="font-size:14px;color:#0073aa;">Answer Color:   </label> 
 	 		<input type="color" value="#c0c0c0" id="answer_div" style="float:right; height: 23px; padding: 1px 3px;border-radius:3px;" onchange="ColorPicker('answer',true)">
 	 		<input type="text" value="#c0c0c0" name="answer_color" id="answer_color" style="width: 170px; float:right; margin-right:10px;border-radius:3px;" onchange="ColorPicker('answer',false)"><br><br>
 	 		
-	 		<label style="font-size:14px;color: #B0AFAF;">Question Color:  </label>
+	 		<label style="font-size:14px;color:#0073aa;">Question Color:  </label>
 	 		<input type="color" value="#c0c0c0" id="quest_div" style="float:right; height: 23px; padding: 1px 3px;border-radius:3px;" onchange="ColorPicker('question',true)"> 
 	 		<input type="text" value="#c0c0c0" name="Question_color" id="Question_color" style="width: 170px; float:right; margin-right:10px;border-radius:3px;" onchange="ColorPicker('question',false)"><br><br>
 	 		 		 
-	 		<label style='font-size:14px;color: #B0AFAF;'>Widget's width: </label> <input type="number" onchange="set('widget')" name="widg_width" id="widg_width" min="250" value='250' style="margin-left:71px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>		 
+	 		<label style='font-size:14px;color:#0073aa;'>Widget's width: </label> <input type="number" onchange="set('widget')" name="widg_width" id="widg_width" min="250" value='250' style="margin-left:71px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>		 
 	 		
-	 		<label style='font-size:14px;color: #B0AFAF;'>Vote's type: </label> <input type="radio" name="votes_type" style="margin-left:50px;" value="percent" checked>By Percents<input type="radio" name="votes_type" style="margin-left:5px;" value="vote">By Votes Count<input type="radio" name="votes_type" style="margin-left:5px;" value="both">Both<br><br>
+	 		<label style='font-size:14px;color:#0073aa;'>Vote's type: </label> <input type="radio" name="votes_type" style="margin-left:50px;" value="percent" checked>By Percents<input type="radio" name="votes_type" style="margin-left:5px;" value="vote">By Votes Count<input type="radio" name="votes_type" style="margin-left:5px;" value="both">Both<br><br>
 	 	
-	 		<label style="font-size:14px;color: #B0AFAF;">Vote's Color: </label>
+	 		<label style="font-size:14px;color:#0073aa;">Vote's Color: </label>
 	 		<input type="color" value="#ffffff" id="votes_color" style="float:right; height: 23px; padding: 1px 3px;border-radius:3px;" onchange="ColorPicker('votes_color',true)"> 
 	 		<input type="text" value="#ffffff" name="votes_color" id="votes_text_color" style="width: 170px; float:right; margin-right:10px;border-radius:3px;" onchange="ColorPicker('votes_color',false)"> <br><br>
 	 	</div>
 	 	<div style="position:relative;" id="vote_buttons_div">
-	 		<label style="font-size:14px;color: #B0AFAF;">Vote Button Color:  </label>
+	 		<label style="font-size:14px;color:#0073aa;">Vote Button Color:  </label>
 	 		<input type="text" value="#000000" name="vote_button_color" id="vote_button_color" style="margin-left:50px; width: 170px; border-radius:3px;" onchange="ColorPicker('vote_button_color',false)">
 	 		<input type="color"  id="vote_button_div" style="margin-left:8px; height: 23px; padding: 1px 3px;border-radius:3px;" onchange="ColorPicker('vote_button_color',true)"> <br><br>
 	 		
-	 		<label style="font-size:14px;color: #B0AFAF;">Button`s Text Color:  </label>
+	 		<label style="font-size:14px;color:#0073aa;">Button`s Text Color:  </label>
 	 		<input type="text" value="#ffffff" name="buttons_text" id="buttons_text_color" style="margin-left:38px; width: 170px; border-radius:3px;" onchange="ColorPicker('buttons_text_color',false)">
 	 		<input type="color" value="#ffffff" id="buttons_text_div" style="margin-left:8px; height: 23px; padding: 1px 3px;border-radius:3px;" onchange="ColorPicker('buttons_text_color',true)"> <br><br>
 	 	</div>
 	 	<div id="image_div" style=" display:none; position:relative; margin-top: 25px; width:400px;">
-	 		<label id="width_image" style='font-size:14px; color: #B0AFAF;'>Image's width: </label> <input type="number" onchange="set('width')" name="image_width" id="image_width" min='0' value='0' style="margin-left:76px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>
-	 		<label id="height_image" style='font-size:14px; color: #B0AFAF;'>Image's height: </label> <input type="number" onchange="set('height')" name="image_height" id="image_height" min='0' value='0' style="margin-left:72px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>
+	 		<label id="width_image" style='font-size:14px; color:#0073aa; '>Image's width: </label> <input type="number" onchange="set('width')" name="image_width" id="image_width" min='0' value='90' style="margin-left:76px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>
+	 		<label id="height_image" style='font-size:14px; color:#0073aa; '>Image's height: </label> <input type="number" onchange="set('height')" name="image_height" id="image_height" min='0' value='66' style="margin-left:72px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>
 	 	</div>
 	 	<div id="hover_div" style=" display:none; position:relative; margin-top: 25px; width:400px;">
-	 		<label id="hoverColor_label" style="font-size:14px;color: #B0AFAF;">Hover Color: </label> 
+	 		<label id="hoverColor_label" style="font-size:14px;color:#0073aa;">Hover Color: </label> 
 			<input id="HoverCheck" type="checkbox"  style="float:right; margin-right:231px; margin-top:3px; opacity:0; height:20px; width:20px; border-radius:3px;" onchange="ActivateHover()">
 			<input type="color"  disabled="true" id="colorPickerhover" style="float:right; margin-right: 5px;margin-top:2px; height: 23px; padding: 1px 3px;border-radius:3px; " onchange="ColorPicker('col_pick',true)">
 			<input id="selectedHoverColor" disabled="true" type="text" value="#000000" name="selectedHoverColor" style="float:right; border-radius:3px; margin-right:10px; width: 170px; border-radius:3px;" onchange="ColorPicker('col_pick',false)">
 	 	</div>
 	</fieldset>
  	<fieldset id='font_section' style='box-shadow: 2px -2px 1px 1px #ddd; background-color:white; border:1px solid #0073aa;border-radius:6px;margin-top: 10px;width: 655px;padding: 10px;'>
- 		<legend style="color: #B0AFAF;font-size:16px;margin-left:10px;color:#0073aa;"> <i>Fonts</i> </legend>
+ 		<legend style="color: #B0AFAF;font-size:16px; color:#0073aa;"> <i>Fonts</i> </legend>
 	 	<div id="fonts_div" style="position: relative; width: 600px; margin: 0 auto 0 0; ">
-		 	<label style='color: #B0AFAF;'> Select Text Font For Question: </label>
+		 	<label style='color:#0073aa;'> Select Text Font For Question: </label>
 		 	<select name="Text_Font" id="Text_Font" onchange="ChangeFont('false');" style="margin-left:15px">
 		 		<option value='Abadi MT Condensed Light'> Abadi MT Condensed Light </option>
 				<option value='Aharoni'> Aharoni </option>
@@ -395,9 +302,9 @@
 				<option value='Vani'> Vani </option>
 				<option value='Vijaya'> Vijaya </option>
 		 	</select> <br> 
-		 	<label style='color: #B0AFAF;'> Question's Font-Size: </label> <input type="number" min=12 name="fontSize" id="fontSize" value="14" style="margin-left:69px; width:50px;" onchange="ChangeFont('true');" /> <span> px </span> <br>
+		 	<label style='color:#0073aa;'> Question's Font-Size: </label> <input type="number" min=12 name="fontSize" id="fontSize" value="14" style="margin-left:69px; width:50px;" onchange="ChangeFont('true');" /> <span> px </span> <br>
 		 	
-		 	<label style='color: #B0AFAF;'> Select Text Font For Answers: </label>
+		 	<label style='color:#0073aa;'> Select Text Font For Answers: </label>
 		 	<select name="Answer_Font" id="Answer_Font" onchange="ChangeFont('hoplo');" style="margin-left:19px">
 		 		<option value='Abadi MT Condensed Light'> Abadi MT Condensed Light </option>
 				<option value='Aharoni'> Aharoni </option>
@@ -525,7 +432,7 @@
 				<option value='Vani'> Vani </option>
 				<option value='Vijaya'> Vijaya </option>
 		 	</select> <br> 
-		 	<label style='color: #B0AFAF;'> Answer's Font-Size: </label> <input type="number" min=12 name="AnswerSize" id="AnswerSize" value="14" style="margin-left:79px; width:50px;" onchange="ChangeFont('yupi');" /> <span> px </span>
+		 	<label style='color:#0073aa;'> Answer's Font-Size: </label> <input type="number" min=12 name="AnswerSize" id="AnswerSize" value="14" style="margin-left:79px; width:50px;" onchange="ChangeFont('yupi');" /> <span> px </span>
 
 	 	</div>
  	</fieldset>
@@ -563,16 +470,16 @@
  	<div class='plugins_type'id='plugins_type3'style=' display:none; border: 1px solid #0073aa; position: absolute;top: 415px; width: 250px; left: 695px;border-radius:6px;background-color:#ffffff;padding:20px;'>
  		
  		<p class='questions_title'style='text-align:center;color:black; background-color:#cfcfcf; margin:10px 10px 10px 10px;'>Question?</p>
- 		<div id='set_file1' style='text-align:center;float:left; margin:5px 10px 5px 10px;width:100px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/1.jpg" id='file1' style='width:100px; height:66px;'><span class='set_answer' id='set_answer1' style='text-align:center;color:black;'>Answer1</span></div>
- 		<div id='set_file2' style='text-align:center;float:left; margin:5px 10px 5px 10px;width:100px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/2.jpg" id='file2' style='width:100px; height:66px;'><span class='set_answer' id='set_answer2' style='text-align:center;color:black;'>Answer2</span></div>
- 		<div id='set_file3' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:100px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/3.jpg" id='file3' style='width:100px; height:66px;'><span class='set_answer' id='set_answer3' style='text-align:center;color:black;'>Answer3</span></div>
- 		<div id='set_file4' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:100px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/4.jpg" id='file4' style='width:100px; height:66px;'><span class='set_answer' id='set_answer4' style='text-align:center;color:black;'>Answer4</span></div>
- 		<div id='set_file5' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:100px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/5.jpg" id='file5' style='width:100px; height:66px;'><span class='set_answer' id='set_answer5' style='text-align:center;color:black;'>Answer6</span></div>
- 		<div id='set_file6' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:100px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/6.jpg" id='file6' style='width:100px; height:66px;'><span class='set_answer' id='set_answer6' style='text-align:center;color:black;'>Answer6</span></div>
- 		<div id='set_file7' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:100px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/7.jpg" id='file7' style='width:100px; height:66px;'><span class='set_answer' id='set_answer7' style='text-align:center;color:black;'>Answer7</span></div>
- 		<div id='set_file8' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:100px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/8.jpg" id='file8' style='width:100px; height:66px;'><span class='set_answer' id='set_answer8' style='text-align:center;color:black;'>Answer8</span></div>
- 		<div id='set_file9' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:100px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/9.jpg" id='file9' style='width:100px; height:66px;'><span class='set_answer' id='set_answer9' style='text-align:center;color:black;'>Answer9</span></div>
- 		<div id='set_file10' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:100px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/10.jpg" id='file10' style='width:100px; height:66px;'><span class='set_answer' id='set_answer10' style='text-align:center;color:black;'>Answer10</span></div>
+ 		<div id='set_file1' style='text-align:center;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/1.jpg" id='file1' style='width:90px; height:66px;'><span class='set_answer' id='set_answer1' style='text-align:center;color:black;'>Answer1</span></div>
+ 		<div id='set_file2' style='text-align:center;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/2.jpg" id='file2' style='width:90px; height:66px;'><span class='set_answer' id='set_answer2' style='text-align:center;color:black;'>Answer2</span></div>
+ 		<div id='set_file3' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/3.jpg" id='file3' style='width:90px; height:66px;'><span class='set_answer' id='set_answer3' style='text-align:center;color:black;'>Answer3</span></div>
+ 		<div id='set_file4' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/4.jpg" id='file4' style='width:90px; height:66px;'><span class='set_answer' id='set_answer4' style='text-align:center;color:black;'>Answer4</span></div>
+ 		<div id='set_file5' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/5.jpg" id='file5' style='width:90px; height:66px;'><span class='set_answer' id='set_answer5' style='text-align:center;color:black;'>Answer6</span></div>
+ 		<div id='set_file6' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/6.jpg" id='file6' style='width:90px; height:66px;'><span class='set_answer' id='set_answer6' style='text-align:center;color:black;'>Answer6</span></div>
+ 		<div id='set_file7' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/7.jpg" id='file7' style='width:90px; height:66px;'><span class='set_answer' id='set_answer7' style='text-align:center;color:black;'>Answer7</span></div>
+ 		<div id='set_file8' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/8.jpg" id='file8' style='width:90px; height:66px;'><span class='set_answer' id='set_answer8' style='text-align:center;color:black;'>Answer8</span></div>
+ 		<div id='set_file9' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/9.jpg" id='file9' style='width:90px; height:66px;'><span class='set_answer' id='set_answer9' style='text-align:center;color:black;'>Answer9</span></div>
+ 		<div id='set_file10' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/10.jpg" id='file10' style='width:90px; height:66px;'><span class='set_answer' id='set_answer10' style='text-align:center;color:black;'>Answer10</span></div>
  	</div>
 	 	<div class='plugins_type' id='plugins_type4' style='padding:0 10px 10px 10px; display:none; border: 1px solid #0073aa; position: absolute;top: 415px; width: 250px;left: 695px;border-radius:6px;background:#ffffff;'>
 	 	<p class='questions_title' style='text-align:center;color:black;margin:10px 20px 0 10px;'>Question?</p>
