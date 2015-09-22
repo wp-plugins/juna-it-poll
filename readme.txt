@@ -175,4 +175,4 @@ To add a poll in your website you just need to install poll plugin and its done 
 
 Hello.Let`s try to create polling versions together. This poll plugin has 4 version, which correspond to your inquiry theme - WordPress Juna IT Poll
 
-Above you all see that there are images corresponding to each polling. Clicking om images you`ll choose your polling version - WordPress Juna IT Poll
+Above you will see that there are images corresponding to each polling. Clicking om images you will choose your polling version - WordPress Juna IT Poll
