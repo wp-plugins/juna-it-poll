@@ -51,13 +51,9 @@ Every site is different so we've got a few different ways to add Voice Polls to 
 
 * Easy content creation - creating polls is an easy way to produce engaging and relevant content.(Juna IT Poll) Deploy your first polls in minutes and easily manage all your polls from a simple and intuitive dashboard. - poll
 
-
 ### Upgrade to WordPress Juna IT Poll Pro to add some features - Poll:
 
-
 ### Please ask us if you have any problems with Juna IT Poll. We will try to solve your problem as soon as possible. Because we are trying to keep our collaboration in this way through these methods.
-
-
 
 * Easy placing and using - Poll
 * Plugin  inquiry works with each wordpress version - Poll
@@ -180,71 +176,70 @@ Hello. Lets try to create polling versions together. This poll plugin has 4 vers
 Let`s start with the first poll version.
 
 1.1 At first we choose what kind of statement of a question is needed for the poll.
-
 1.2 Next step - what kind of answers should be for our polling. Poll answers can be two or more than two.
 
-### We should not forget to say that you can see each step of the polling with the help of online plugin created on the right side. Here you can see how your plagin looks like and what colours it should have. 
+We should not forget to say that you can see each step of the polling with the help of online plugin created on the right side. Here you can see how your plagin looks like and what colours it should have. 
 
 let`s continue creating our poll.
 
 1.3 In widget style you can choose the colours and the sizes of the polling.
-
 1.4 The poll has one more advantage -you can choose the frame colour.
-
 1.5 Click on the colour of the question and choose the colour of the question.
-
 1.6 Next step of the polling, we choose the colour of the answer.
-
 1.7 You can also designate the polling width.
-
 1.8 Next step of the polling is the vote`s type. Here you can choose the types of polling answer results by rates, be numbers or both of them.
-
 1.9 You can also choose the colour of the polling button.
-
 1.10 You can also choose the inside colour of the botton of the polling.
-
 1.11 Next step of the polling we choose a font for the question . There are various versions of them.
-
 1.12 You can choose the size of the question. Minimal size is given there.
-
 1.13 In this polling you can choose the answers font , the polling design making it more attractive.
-
 1.14 At the end poll you can choose the answer size.
-
 1.15 If you already have the polling image, click on the button - SAVE - 
 
-### So it is ready. If something is wrong with it poll, it means that you missed something.
+So it is ready. If something is wrong with it poll, it means that you missed something.
 
-### If you want to place it anywhere in your website , you should take the above written shortcode and place it in your website 
+If you want to place it anywhere in your website , you should take the above written shortcode and place it in your website 
    
     [Juna_IT_Poll id="1"]
 
-### Create 2 voting version, which is also  included in PRO version.
+Create 2 voting version, which is also  included in PRO version.
 
 This voting version has its name "Pie Chart"
 
 2.1 At first we choose what kind of statement of a question is needed for the poll.
-
 2.2 Next step - what kind of answers should be for our polling. Poll answers can be two or more than two.
-
 2.3 The right side every answers you will see the option to choose the color. Every answer can be in different colors.	
-
 2.4 In widget style you can choose the colors and the sizes of the polling.
-
 2.5 You can choose the frame color.
-
 2.6  Click on the color of the question and choose the color of the question.
-
 2.7 Next step of the polling, we choose the color of the answer.
-
 2.8 You can also designate the polling width.
-
 2.9 The poll has one more advantage.Every answer also has to hover, you can choose the colors too.					
-
 2.10 Next step of the polling we choose a font for the question. There are various versions of them.
-
 2.11 You can choose the size of the question. Minimal size is given there.
-
 2.12 In this polling you can choose the answers font, the polling design making it more attractive.
-
 2.13 At the end poll you can choose the answer size.
+
+
+### Lets 3 version. This  includes voting  pictures and videos
+
+3.1 First step is choose question 
+3.2 Next step - what kind of answers should be for our polling. Poll answers can be two or more than two.
+3.3 Third step  is the main advantage and  wealth of our poll plugin. You will see written "Add Image". By clicking will open a new page where you can select  pictures or videos for your polling.
+
+In widget style you can choose the colours and the sizes of the polling.
+
+3.4 In the poll's next line can choose the background color.
+3.5 The poll has one more advantage -you can choose the frame colour.
+3.6 Click on the colour of the question and choose the colour of the question.
+3.7 Next step of the polling, we choose the colour of the answer.
+3.8 You can also designate the polling width.
+3.9 Next step of the polling is the vote`s type. Here you can choose the types of polling answer results by rates, be numbers or both of them.
+3.10 If you want a different color to the results of the vote, then choose it.
+3.11 In the poll's next two steps are choosing our videos or pictures width and height
+3.12 If you want to have  background for question, than activate the colors selection field
+3.13 Next step of the polling we choose a font for the question . There are various versions of them.
+3.14 You can choose the size of the question. Minimal size is given there.
+3.15 In this polling you can choose the answers font , the polling design making it more attractive.
+3.16 At the end poll you can choose the answer size .
+3.17 If you already have the polling image, click on the button - SAVE CHANGES - 
