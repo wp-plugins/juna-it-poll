@@ -171,11 +171,14 @@ Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], w
 
 == WordPress Slider step by step guide ==
 
-### To add a poll in your website you just need to install poll plugin and its done - WordPress Juna IT Poll
+### To add a poll in your website you just need to install poll plugin and its done - WordPress Juna IT Poll.
 
-### Hello.Let`s try to create polling versions together. This poll plugin has 4 version, which correspond to your inquiry theme - WordPress Juna IT Poll
 
-### Above you will see that there are images corresponding to each polling. Clicking om images you will choose your polling version - WordPress Juna IT Poll
+### Hello. Let`s try to create polling versions together. This poll plugin has 4 version, which correspond to your inquiry theme - WordPress Juna IT Poll.
+
+
+### Above you will see that there are images corresponding to each polling. Clicking om images you will choose your polling version - WordPress Juna IT Poll.
+
 
 Let`s start with the first poll version.
 
@@ -217,4 +220,4 @@ Let`s start with the first poll version.
 
 ### If you want to place it anywhere in your website , you should take the above written shortcode and place it in your website 
    
-   [Juna_IT_Poll id="1"]
+    [Juna_IT_Poll id="1"]
