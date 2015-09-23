@@ -169,7 +169,7 @@ Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], w
 = 1.0.0 =
 * Added Poll - WordPress Juna IT Poll
 
-== WordPress Slider step by step guide ==
+== WordPress poll step by step guide ==
 
 ### To add a poll in your website you just need to install poll plugin and its done - WordPress Juna IT Poll.
 
