@@ -56,11 +56,14 @@
  		  	$Question=empty($instance['Question']) ? '' : $instance['Question'];
  		 	
  		 	echo $before_widget;
+ 		 	global $wpdb;
+			$table_name5  =  $wpdb->prefix . "poll_wp_position";
+			$t = $selected_quest=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name5 WHERE id= %d", 1));
 
  		 	?> 		 	
  		 	<form method="post" onload="MyFunction()" id="WidgetForm" onsubmit="return false;"  action=''>
-
- 		 	<div id="widgetDiv" class="widget_div"  style="position:relative;  float:left; width: <?php echo  GetSettingsDataFromMySQL('widget_div_width',$instance) . 'px'; ?>; border-color: <?php echo  GetSettingsDataFromMySQL('border_color',$instance); ?>; background-color: <?php echo  GetSettingsDataFromMySQL('bg_color',$instance); ?>; ">
+ 		 	
+ 		 	<div id="widgetDiv" class="widget_div"  style="position:relative; margin: 5px 10px 5px 0;  <?php echo  $t[0]->Position ?>; width: <?php echo  GetSettingsDataFromMySQL('widget_div_width',$instance) . 'px'; ?>; border-color: <?php echo  GetSettingsDataFromMySQL('border_color',$instance); ?>; background-color: <?php echo  GetSettingsDataFromMySQL('bg_color',$instance); ?>; ">
 
  		 	<section id="QuestionDiv" style="margin-bottom:0px; text-align:center; ">	
  		 	<span id="ActiveQuestion" class="Question" 	style="margin-bottom:0px; font-weight: bold; 

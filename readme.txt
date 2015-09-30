@@ -4,7 +4,7 @@ Donate link: http://juna-it.com/index.php/features/elements/juna-it-plugin/
 Tags: create poll, create polls, custom poll, custom polls,
 Requires at least: 3.0.1
 Tested up to: 4.3
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -145,8 +145,11 @@ Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], w
 
 == Changelog ==
 
+= 1.2.0 =
+* Added Shortcode. Juna IT Poll
+
 = 1.1.0 =
-*Admin page changes. - WordPress Juna IT Poll
+* Admin page changes. - WordPress Juna IT Poll
 
 = 1.0.5 =
 * You can upload videos, give width and height for images and videos, give font-size and font-family for answers - WordPress Juna IT Poll

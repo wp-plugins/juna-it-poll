@@ -65,14 +65,6 @@
  		<img id="img4" style="width:120px; margin-left:10px; height:120px; " src="http://juna-it.com/image/poll-4.png" onclick="SelectType('img4')" >
 
  	</fieldset>
- 	<fieldset id="shortcode_section"  style="position: absolute; top: 70px;margin-left: 695px; width:300px; height:170px; padding:10px; box-shadow: 2px -2px 1px 1px #ddd; border: 1px solid #0073aa;border-radius:6px; background-color: white; padding: 10px; ">
- 		<legend style="color: #B0AFAF;font-size:16px; color:#0073aa;"><i>Shortcode</i></legend>
- 		<p style="font-size:14px;color:#0073aa;" id="copy">Copy & paste the shortcode directly into any WordPress post or page.</p>
- 		<input type="text" style="font-size:14px;border-radius:2px;" id="shortcode_id" readonly value='[Juna_IT_Poll id="1"]'>
- 		<select id="shortcode_select" onchange="myF()" style="margin-top:15px;border-radius:3px;">
-			<option value="Do You Like Our plugin?">Do You Like Our plugin?</option> 			
- 		</select>
- 	</fieldset>
  	<fieldset id='question_section' style='background-color: white;border-radius: 6px;box-shadow: 2px -2px 1px 1px #ddd; width: 675px;border-radius:6px;border:1px solid #0073aa;'>
 		<legend style="color: #B0AFAF;font-size:16px;margin-left:10px;color:#0073aa;"><i> Question</i> </legend>
 		<input type="text" name="question" id="question_id" style="width:500px;margin-left: 10px;border-radius: 4px;margin-top:25px;" onchange="changed_question()" /> <span id="span_question" style="color: red"></span> <br><br><br>

@@ -3,14 +3,13 @@
 	Plugin name: Juna IT Poll
 	Plugin URI: http://juna-it.com/index.php/features/elements/juna-it-plugin/
 	Description: Juna IT Poll - Wordpress Plugin is an instrument for understanding visitor's opinions.
-	Version: 1.1.0
+	Version: 1.2.0
 	Author: Juna-IT
 	Author URI: http://juna-it.com/
 	License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */	
 	
  	require_once('poll-wp_widget.php');
- 	require_once('shortcode_poll.php');
  	require_once('ajax_in_poll.php');
 
  	add_action('wp_enqueue_scripts',function() {
@@ -34,7 +33,7 @@
 		add_menu_page('poll-wp_Admin_Menu','Juna_IT_Poll', 'manage_options','Juna_IT_Poll', 'Add_Poll','http://juna-it.com/image/admin.png');
  		add_submenu_page('Juna_IT_Poll', 'poll-wp_Admin_Menu', 'Add Poll', 'manage_options', 'Juna_IT_Poll', 'Add_Poll');
 		add_submenu_page('Juna_IT_Poll', 'poll-wp_Admin_Menu_Results', 'Results', 'manage_options', 'Admin_Menu_Results', 'See_Results');
-
+		add_submenu_page('Juna_IT_Poll', 'poll-wp_Admin_Menu_Shortcode', 'Widget_Shortcode', 'manage_options', 'Add_Menu_Shortcode', 'Add_Shortcode_Poll');
 	});
 
 	add_action('admin_init', function() {
@@ -53,6 +52,10 @@
 	function See_Results()
 	{
 		require_once('submenu.php');
+	}
+	function Add_Shortcode_Poll()
+	{
+		require_once('shortcode_html.php');
 	}
 
 	function poll_wp_activate()

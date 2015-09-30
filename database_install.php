@@ -6,6 +6,7 @@
 		$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
 		$table_name3 =  $wpdb->prefix . "poll_wp_Results";	
 		$table_name4 =  $wpdb->prefix . "poll_wp_Settings";	
+		$table_name5 =  $wpdb->prefix . "poll_wp_position";
 
 		if( $wpdb->get_var('SHOW TABLES LIKE' . $table_name) != $table_name )
 		{
@@ -50,6 +51,11 @@
 					answer_font_size INTEGER(10) NOT NULL,
 					QuestionID INTEGER(10) NOT NULL,			
 					PRIMARY KEY  (id) )';
+
+				$sql4 = 'CREATE TABLE ' .$table_name5 . '(
+					id INTEGER(10) UNSIGNED AUTO_INCREMENT,
+					Position VARCHAR(255) NOT NULL,
+					PRIMARY KEY  (id) )';
 		
 			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
@@ -57,6 +63,7 @@
 			dbDelta($sql1);
 			dbDelta($sql2);
 			dbDelta($sql3);
+			dbDelta($sql4);
 
 			DefaultData();
 
@@ -71,7 +78,9 @@
 			$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
 			$table_name3 =  $wpdb->prefix . "poll_wp_Results";	
 			$table_name4 =  $wpdb->prefix . "poll_wp_Settings";
+			$table_name5 =  $wpdb->prefix . "poll_wp_position";
 
+			$wpdb->query($wpdb->prepare("INSERT INTO $table_name5 (id, Position) VALUES (%d, %s)", '','float:left'));
 			$wpdb->query($wpdb->prepare("INSERT INTO $table_name (id, Question, PluginType) VALUES (%d, %s, %d)", '','Do You Like Our Plugin?', 1));
 
 			$wpdb->query($wpdb->prepare("INSERT INTO $table_name2 (id, Answer, File, Answer_bg_color, QuestionID) VALUES (%d, %s, %s, %s, %d)", '', 'Yes', '', '#F5F5F5', 1));

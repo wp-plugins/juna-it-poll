@@ -9,6 +9,7 @@ jQuery(document).ready(function() {
 				
 	images=[img1,img2,img3,img4];
 	upload_files();	
+	checkbox_selected();
 	jQuery('#colors_div').css({"display":"none"});					
 	jQuery('#upload_div').css({"display":"none"});
 
@@ -41,6 +42,29 @@ function upload_files(){
 			})	
 		}	
 	}
+
+	function checkbox_selected(){
+		jQuery('.it_example_select').click(function(){
+			var id = jQuery(this).attr('id');
+			jQuery('.it_example_select').each(function(){
+				
+				
+			 	var id1 = jQuery(this).attr('id')
+			 	if(id1!=id){
+			 		jQuery(this).attr('checked',false);
+			 	}else{
+			 		jQuery(this).attr('checked', true);
+				}
+				
+				
+			})
+		})
+		jQuery('#it_example_select2').click(function(){
+			var d = jQuery('#position_procent').val();
+			jQuery('#it_example_select2').val('margin-left:'+d+'%');
+		})
+		
+	}
 jQuery(window).load(function() {
 
 		
@@ -61,6 +85,10 @@ jQuery(window).load(function() {
 		})
 })
 
+function Save_poll_position_clicked()
+{
+	jQuery('#Save_poll_position_span').html('It works only with Pro Version(<a href="http://juna-it.com/index.php/features/elements/juna-it-plugin/" target="_blank" <abbr title="Click to get Pro version">Click here to get Pro version!)</a>');
+}
 function myF()
 	{	
 	var sel=document.getElementById('shortcode_select').value;
