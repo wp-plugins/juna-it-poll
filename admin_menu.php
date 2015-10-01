@@ -86,10 +86,10 @@
 				<input type="hidden" id="upload1011" name = 'upload1011' value = '' />
 				
 				<label id="labelUpload1" style="font-size:14px; color:#0073aa;  "> Include File</label> <br>
-		 		<input type="button"  id="upload1"  value = 'Add image' /> <br>
+		 		<input type="button"  id="upload1"  value = 'Add image/video' /> <br>
 		 		
 		 		<label id="labelUpload2" style="font-size:14px; color:#0073aa; "> Include File</label> <br>
-			 	<input type="button"  id="upload2"  value = 'Add image'/> <br>
+			 	<input type="button"  id="upload2"  value = 'Add image/video'/> <br>
 			</div> 
 
 			<div style="position: absolute; right: 0; top: 0; width: 230px; z-index:0;" id="colors_div">
