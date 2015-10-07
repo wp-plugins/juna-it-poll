@@ -1,0 +1,16 @@
+.widget_div
+{	
+	border:1px;
+	border-style:dotted;
+	width: 300px;	
+	padding:15px;
+	border-radius:7px;
+	
+}
+
+
+input[type="radio"]
+{
+	margin:7px;
+
+}
