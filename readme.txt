@@ -79,43 +79,43 @@ Install Juna IT Poll and enjoy!
 
 ### First download the WordPress Polls plugin ZIP file.
 
-1. Go to Plugins page, and add new plugin. (Juna IT Poll)
+1. Go to Plugins page, and add new plugin. wp-poll
 
-2. Then go to Plugins page Add New > Upload Plugin. (Juna IT Poll)
+2. Then go to Plugins page Add New > Upload Plugin. wp-poll
 
-3. Click "Choose file" then select the - poll wp zip file. (Juna IT Poll)
+3. Click "Choose file" then select the - poll wp zip file. wp-poll
 
-4. Then Install and activate the plugin.(Juna IT Poll)
+4. Then Install and activate the plugin. wp-poll
 
-5. That's all, now you can build Polls and Survey forms. If any problem occurs, contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com). (Juna IT Poll)
+5. That's all, now you can build Polls and Survey forms. If any problem occurs, contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com). wp-poll
 
 == Frequently Asked Questions ==
 
 = What are the plugin requirements? =
 
-Featured Articles requires at least WordPress 3.0.1 and a modern web browser. No support for IE8 or below. (Poll plugin)
+Featured Articles requires at least WordPress 3.0.1 and a modern web browser. No support for IE8 or below. Poll plugin
 
 = How does support and updates work? =
 
-that wise men answered a thousand years ago. Working from home meant we could vary snack and coffee breaks, change our desks or view, goof off, drink on the job, even spend the day in pajamas, and often meet to gossip or share ideas. On the other hand, we bossed ourselves around, set impossible goals, and demanded longer hours than office jobs usually entail. It was the ultimate 'flextime' in that it depended on how flexible we felt each day, given deadlines, distractions, and workaholic crescendos. (WP Poll Plugin)
+that wise men answered a thousand years ago. Working from home meant we could vary snack and coffee breaks, change our desks or view, goof off, drink on the job, even spend the day in pajamas, and often meet to gossip or share ideas. On the other hand, we bossed ourselves around, set impossible goals, and demanded longer hours than office jobs usually entail. It was the ultimate 'flextime' in that it depended on how flexible we felt each day, given deadlines, distractions, and workaholic crescendos. WP Poll Plugin
 
 = Can I upgrade after the initial purchase Juna Poll? =
 
-Yes. License upgrading is quite easy. After your initial purchase, if you want to ugrade, visit this page. All prices will be discounted based on the initial purchase that you made. (free user polls)
+Yes. License upgrading is quite easy. After your initial purchase, if you want to ugrade, visit this page. All prices will be discounted based on the initial purchase that you made. free user polls
 
 = How do plugin licenses work? =
 
-Once you complete the purchase you will be taken to your account and you will see a list of license codes and a download link for the plugin. Just install the plugin on your WordPress website, go to plugin page Licensing, enter a license key, save it and you are done. (create polls)
+Once you complete the purchase you will be taken to your account and you will see a list of license codes and a download link for the plugin. Just install the plugin on your WordPress website, go to plugin page Licensing, enter a license key, save it and you are done. create polls
 
 = How can I add poll on widget? =
 
-Go to your widgets page, then add our WordPress Poll plugin widget to your sidebar. After that choose your poll and then choose theme for your poll. (WordPress poll plugin)
+Go to your widgets page, then add our WordPress Poll plugin widget to your sidebar. After that choose your poll and then choose theme for your poll. WordPress poll plugin
 
 If you think, that you found a bug in our [WordPress Juna IT Poll](http://juna-it.com/index.php/features/elements/juna-it-plugin/) plugin or have any question contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com).
 
 = Can I embed the poll manually? =
 
-Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], where xxx is the poll ID. (poll)
+Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], where xxx is the poll ID. poll
 
 = Go to Polls in your WordPress backend.? =
 
@@ -147,7 +147,7 @@ Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], w
 
 == Changelog ==
 
-= 1.2.0 =
+= 1.2.1 =
 * Added Ssing Polls Shortcode Video.
 
 = 1.2.0 =
@@ -662,81 +662,81 @@ Juna-Wordpress-Poll.ui-icon-mail-closed{background-position:-80px -96px}
 Juna-Wordpress-Poll.ui-icon-mail-open{background-position:-96px -96px}
 Juna-Wordpress-Poll.ui-icon-suitcase{background-position:-112px -96px}
 Juna-Wordpress-Poll.ui-icon-comment{background-position:-128px -96px}
-Juna-Wordpress-Poll.ui-icon-person{background-position:-144px -96px}
-Juna-Wordpress-Poll.ui-icon-print{background-position:-160px -96px}
-Juna-Wordpress-Poll.ui-icon-trash{background-position:-176px -96px}
-Juna-Wordpress-Poll.ui-icon-locked{background-position:-192px -96px}
-Juna-Wordpress-Poll.ui-icon-unlocked{background-position:-208px -96px}
-Juna-Wordpress-Poll.ui-icon-bookmark{background-position:-224px -96px}
-Juna-Wordpress-Poll.ui-icon-tag{background-position:-240px -96px}
-Juna-Wordpress-Poll.ui-icon-home{background-position:0 -112px}
-Juna-Wordpress-Poll.ui-icon-flag{background-position:-16px -112px}
-Juna-Wordpress-Poll.ui-icon-calendar{background-position:-32px -112px}
-Juna-Wordpress-Poll.ui-icon-cart{background-position:-48px -112px}
-Juna-Wordpress-Poll.ui-icon-pencil{background-position:-64px -112px}
-Juna-Wordpress-Poll.ui-icon-clock{background-position:-80px -112px}
-Juna-Wordpress-Poll.ui-icon-disk{background-position:-96px -112px}
-Juna-Wordpress-Poll.ui-icon-calculator{background-position:-112px -112px}
-Juna-Wordpress-Poll.ui-icon-zoomin{background-position:-128px -112px}
-Juna-Wordpress-Poll.ui-icon-zoomout{background-position:-144px -112px}
-Juna-Wordpress-Poll.ui-icon-search{background-position:-160px -112px}
-Juna-Wordpress-Poll.ui-icon-wrench{background-position:-176px -112px}
-Juna-Wordpress-Poll.ui-icon-gear{background-position:-192px -112px}
-Juna-Wordpress-Poll.ui-icon-heart{background-position:-208px -112px}
-Juna-Wordpress-Poll.ui-icon-star{background-position:-224px -112px}
-Juna-Wordpress-Poll.ui-icon-link{background-position:-240px -112px}
-Juna-Wordpress-Poll.ui-icon-cancel{background-position:0 -128px}
-Juna-Wordpress-Poll.ui-icon-plus{background-position:-16px -128px}
-Juna-Wordpress-Poll.ui-icon-plusthick{background-position:-32px -128px}
-Juna-Wordpress-Poll.ui-icon-minus{background-position:-48px -128px}
-Juna-Wordpress-Poll.ui-icon-minusthick{background-position:-64px -128px}
-Juna-Wordpress-Poll.ui-icon-close{background-position:-80px -128px}
-Juna-Wordpress-Poll.ui-icon-closethick{background-position:-96px -128px}
-Juna-Wordpress-Poll.ui-icon-key{background-position:-112px -128px}
-Juna-Wordpress-Poll.ui-icon-lightbulb{background-position:-128px -128px}
-Juna-Wordpress-Poll.ui-icon-scissors{background-position:-144px -128px}
-Juna-Wordpress-Poll.ui-icon-clipboard{background-position:-160px -128px}
-Juna-Wordpress-Poll.ui-icon-copy{background-position:-176px -128px}
-Juna-Wordpress-Poll.ui-icon-contact{background-position:-192px -128px}
-Juna-Wordpress-Poll.ui-icon-image{background-position:-208px -128px}
-Juna-Wordpress-Poll.ui-icon-video{background-position:-224px -128px}
-Juna-Wordpress-Poll.ui-icon-script{background-position:-240px -128px}
-Juna-Wordpress-Poll.ui-icon-alert{background-position:0 -144px}
-Juna-Wordpress-Poll.ui-icon-info{background-position:-16px -144px}
-Juna-Wordpress-Poll.ui-icon-notice{background-position:-32px -144px}
-Juna-Wordpress-Poll.ui-icon-help{background-position:-48px -144px}
-Juna-Wordpress-Poll.ui-icon-check{background-position:-64px -144px}
-Juna-Wordpress-Poll.ui-icon-bullet{background-position:-80px -144px}
-Juna-Wordpress-Poll.ui-icon-radio-on{background-position:-96px -144px}
-Juna-Wordpress-Poll.ui-icon-radio-off{background-position:-112px -144px}
-Juna-Wordpress-Poll.ui-icon-pin-w{background-position:-128px -144px}
-Juna-Wordpress-Poll.ui-icon-pin-s{background-position:-144px -144px}
-Juna-Wordpress-Poll.ui-icon-play{background-position:0 -160px}
-Juna-Wordpress-Poll.ui-icon-pause{background-position:-16px -160px}
-Juna-Wordpress-Poll.ui-icon-seek-next{background-position:-32px -160px}
-Juna-Wordpress-Poll.ui-icon-seek-prev{background-position:-48px -160px}
-Juna-Wordpress-Poll.ui-icon-seek-end{background-position:-64px -160px}
-Juna-Wordpress-Poll.ui-icon-seek-start{background-position:-80px -160px}
-Juna-Wordpress-Poll.ui-icon-seek-first{background-position:-80px -160px}
-Juna-Wordpress-Poll.ui-icon-stop{background-position:-96px -160px}
-Juna-Wordpress-Poll.ui-icon-eject{background-position:-112px -160px}
-Juna-Wordpress-Poll.ui-icon-volume-off{background-position:-128px -160px}
-Juna-Wordpress-Poll.ui-icon-volume-on{background-position:-144px -160px}
-Juna-Wordpress-Poll.ui-icon-power{background-position:0 -176px}
-Juna-Wordpress-Poll.ui-icon-signal-diag{background-position:-16px -176px}
-Juna-Wordpress-Poll.ui-icon-signal{background-position:-32px -176px}
-Juna-Wordpress-Poll.ui-icon-battery-0{background-position:-48px -176px}
-Juna-Wordpress-Poll.ui-icon-battery-1{background-position:-64px -176px}
-Juna-Wordpress-Poll.ui-icon-battery-2{background-position:-80px -176px}
-Juna-Wordpress-Poll.ui-icon-battery-3{background-position:-96px -176px}
-Juna-Wordpress-Poll.ui-icon-circle-plus{background-position:0 -192px}
-Juna-Wordpress-Poll.ui-icon-circle-minus{background-position:-16px -192px}
-Juna-Wordpress-Poll.ui-icon-circle-close{background-position:-32px -192px}
-Juna-Wordpress-Poll.ui-icon-circle-triangle-e{background-position:-48px -192px}
-Juna-Wordpress-Poll.ui-icon-circle-triangle-s{background-position:-64px -192px}
-Juna-Wordpress-Poll.ui-icon-circle-triangle-w{background-position:-80px -192px}
-Juna-Wordpress-Poll.ui-icon-circle-triangle-n{background-position:-96px -192px}
-Juna-Wordpress-Poll.ui-icon-circle-arrow-e{background-position:-112px -192px}
+wp-polls.ui-icon-person{background-position:-144px -96px}
+wp-polls.ui-icon-print{background-position:-160px -96px}
+wp-polls.ui-icon-trash{background-position:-176px -96px}
+wp-polls.ui-icon-locked{background-position:-192px -96px}
+wp-polls.ui-icon-unlocked{background-position:-208px -96px}
+wp-polls.ui-icon-bookmark{background-position:-224px -96px}
+wp-polls.ui-icon-tag{background-position:-240px -96px}
+wp-polls.ui-icon-home{background-position:0 -112px}
+wp-polls.ui-icon-flag{background-position:-16px -112px}
+wp-polls.ui-icon-calendar{background-position:-32px -112px}
+wp-polls.ui-icon-cart{background-position:-48px -112px}
+wp-polls.ui-icon-pencil{background-position:-64px -112px}
+wp-polls.ui-icon-clock{background-position:-80px -112px}
+wp-polls.ui-icon-disk{background-position:-96px -112px}
+wp-polls.ui-icon-calculator{background-position:-112px -112px}
+wp-polls.ui-icon-zoomin{background-position:-128px -112px}
+wp-polls.ui-icon-zoomout{background-position:-144px -112px}
+wp-polls-image.ui-icon-search{background-position:-160px -112px}
+wp-polls-image.ui-icon-wrench{background-position:-176px -112px}
+wp-polls-image.ui-icon-gear{background-position:-192px -112px}
+wp-polls-image.ui-icon-heart{background-position:-208px -112px}
+wp-polls-image.ui-icon-star{background-position:-224px -112px}
+wp-polls-image.ui-icon-link{background-position:-240px -112px}
+wp-polls-image.ui-icon-cancel{background-position:0 -128px}
+wp-polls-image.ui-icon-plus{background-position:-16px -128px}
+wp-polls-image.ui-icon-plusthick{background-position:-32px -128px}
+wp-polls-image.ui-icon-minus{background-position:-48px -128px}
+wp-polls-image.ui-icon-minusthick{background-position:-64px -128px}
+wp-polls-image.ui-icon-close{background-position:-80px -128px}
+wp-polls-image.ui-icon-closethick{background-position:-96px -128px}
+wp-polls-image.ui-icon-key{background-position:-112px -128px}
+wp-polls-image.ui-icon-lightbulb{background-position:-128px -128px}
+wp-polls-image.ui-icon-scissors{background-position:-144px -128px}
+wp-polls-image.ui-icon-clipboard{background-position:-160px -128px}
+wp-polls-image.ui-icon-copy{background-position:-176px -128px}
+wp-polls-image.ui-icon-contact{background-position:-192px -128px}
+wp-polls-image.ui-icon-image{background-position:-208px -128px}
+wp-polls-image.ui-icon-video{background-position:-224px -128px}
+wp-polls-image-Poll.ui-icon-script{background-position:-240px -128px}
+wp-polls-image-Poll.ui-icon-alert{background-position:0 -144px}
+wp-polls-image.ui-icon-info{background-position:-16px -144px}
+wp-polls-image.ui-icon-notice{background-position:-32px -144px}
+polls-widget.ui-icon-help{background-position:-48px -144px}
+polls-widget.ui-icon-check{background-position:-64px -144px}
+polls-widget.ui-icon-bullet{background-position:-80px -144px}
+polls-widget.ui-icon-radio-on{background-position:-96px -144px}
+polls-widget.ui-icon-radio-off{background-position:-112px -144px}
+polls-widget.ui-icon-pin-w{background-position:-128px -144px}
+polls-widget.ui-icon-pin-s{background-position:-144px -144px}
+polls-widget.ui-icon-play{background-position:0 -160px}
+polls-widget.ui-icon-pause{background-position:-16px -160px}
+polls-widget.ui-icon-seek-next{background-position:-32px -160px}
+polls-widget.ui-icon-seek-prev{background-position:-48px -160px}
+polls-widget.ui-icon-seek-end{background-position:-64px -160px}
+polls-widget.ui-icon-seek-start{background-position:-80px -160px}
+polls-widget.ui-icon-seek-first{background-position:-80px -160px}
+polls-widget.ui-icon-stop{background-position:-96px -160px}
+polls-widget.ui-icon-eject{background-position:-112px -160px}
+polls-widget.ui-icon-volume-off{background-position:-128px -160px}
+polls-widget.ui-icon-volume-on{background-position:-144px -160px}
+polls-widget.ui-icon-power{background-position:0 -176px}
+polls-widget.ui-icon-signal-diag{background-position:-16px -176px}
+polls-widget.ui-icon-signal{background-position:-32px -176px}
+polls-widget.ui-icon-battery-0{background-position:-48px -176px}
+polls-widget.ui-icon-battery-1{background-position:-64px -176px}
+polls-widget.ui-icon-battery-2{background-position:-80px -176px}
+polls-widget.ui-icon-battery-3{background-position:-96px -176px}
+polls-widget.ui-icon-circle-plus{background-position:0 -192px}
+polls-widget.ui-icon-circle-minus{background-position:-16px -192px}
+polls-widget.ui-icon-circle-close{background-position:-32px -192px}
+polls-widget.ui-icon-circle-triangle-e{background-position:-48px -192px}
+polls-widget.ui-icon-circle-triangle-s{background-position:-64px -192px}
+polls-widget.ui-icon-circle-triangle-w{background-position:-80px -192px}
+polls-widget.ui-icon-circle-triangle-n{background-position:-96px -192px}
+polls-widget.ui-icon-circle-arrow-e{background-position:-112px -192px}
 Juna-Wordpress-Poll.ui-icon-circle-arrow-s{background-position:-128px -192px}
 Juna-Wordpress-Poll.ui-icon-circle-arrow-w{background-position:-144px -192px}
 Juna-Wordpress-Poll.ui-icon-circle-arrow-n{background-position:-160px -192px}
