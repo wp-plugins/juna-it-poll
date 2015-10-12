@@ -211,7 +211,7 @@ If you want to place it anywhere in your website , you should take the above wri
    
     [Juna_IT_Poll id="1"]
 
-Create 2 voting version, which is also  included in PRO version.
+Create 2 voting version, which is also  included in PRO version..
 
 This voting version has its name "Pie Chart"
 
