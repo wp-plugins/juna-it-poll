@@ -66,23 +66,7 @@ function upload_files(){
 		
 	}
 jQuery(window).load(function() {
-
-		
-		jQuery('#fonts_div').append("<br><br><input type='submit'  id='Save_button' style='margin-right: 215px; float: right; width:130px; border-radius: 10px; color: white; text-align: center; background-color: #0073aa;' value='Save Changes' />");
-		var text=document.getElementById('copy').value;
-		var ajaxurl = object.ajaxurl;
-		var data = {
-			  action: 'GetOptionForShortcode', // wp_ajax_my_action / wp_ajax_nopriv_my_action in ajax.php. Can be named anything.
-				foobar:  text, // translates into $_POST['foobar'] in PHP				
-		};
-		jQuery.post(ajaxurl, data, function(response) {	
-
-			var a=response.split('^');
-			for(i=1;i<a.length-1;i++)
-			{
-			jQuery('#shortcode_select').append("<option value="+a[i]+">"+a[i]+"</option>");
-			}
-		})
+	jQuery('#fonts_div').append("<br><br><input type='submit'  id='Save_button' style='margin-right: 215px; float: right; width:130px; border-radius: 10px; color: white; text-align: center; background-color: #0073aa;' value='Save Changes' name='Add_new_Juna_IT_Poll_Save_button'/>");
 })
 
 function Save_poll_position_clicked()
@@ -1174,94 +1158,314 @@ function Validate()
 			}
 			
 		}
+function ActivateHover()
+{
+	if(jQuery('#HoverCheck').attr('checked'))
+	{
+			jQuery('#selectedHoverColor').removeAttr('disabled');
+			jQuery('#colorPickerhover').removeAttr('disabled');				
+	}
+	else
+	{
+			jQuery('#selectedHoverColor').prop('disabled','true');
+			jQuery('#colorPickerhover').prop('disabled','true');	
+	}
+}
+function ChangeFont(type)
+{			
+	  if(type=="true")
+	 {		
+		var fontSize=jQuery('#fontSize').val();
+	 	jQuery('.questions_title').css('font-size',fontSize+'px');
+	 }
+	 else if(type=="false")
+	 {
+	 	var fontFamily=jQuery('#Text_Font').val();
+	 	jQuery('.questions_title').css('font-family',fontFamily);		 	
+	 }
+	 else if(type=='hoplo')
+	 {
+	 	var fontFamily=jQuery('#Answer_Font').val();
+	 	jQuery('.set_answer').css('font-family',fontFamily);
+	 }
+	 else if(type=="yupi")
+	 {
+		var fontSize=jQuery('#AnswerSize').val();
+	 	jQuery('.set_answer').css('font-size',fontSize+'px');		 	
+	 }
+}
+function Set_image()
+{
+	var x=jQuery('#img_id').val();
+	
+	if(x==1)
+	{	
+		jQuery('#plugins_type4').css({"display":"none"});
+		jQuery('#plugins_type3').css({"display":"none"});
+		jQuery('#plugins_type2').css({"display":"none"});
+		jQuery('#plugins_type1').css({"display":"inline"});
+	}
+	else if(x==2)
+	{	
+		jQuery('#plugins_type4').css({"display":"none"});
+		jQuery('#plugins_type3').css({"display":"none"});
+		jQuery('#plugins_type1').css({"display":"none"});
+		jQuery('#plugins_type2').css({"display":"inline"});
+	}
 
-		function ActivateHover()
-		{
-			if(jQuery('#HoverCheck').attr('checked'))
-			{
-					jQuery('#selectedHoverColor').removeAttr('disabled');
-					jQuery('#colorPickerhover').removeAttr('disabled');				
-			}
-			else
-			{
-					jQuery('#selectedHoverColor').prop('disabled','true');
-					jQuery('#colorPickerhover').prop('disabled','true');	
-			}
-		}
-
-		function ChangeFont(type)
-		{			
-			  if(type=="true")
-			 {		
-				var fontSize=jQuery('#fontSize').val();
-			 	jQuery('.questions_title').css('font-size',fontSize+'px');
-			 }
-			 else if(type=="false")
-			 {
-			 	var fontFamily=jQuery('#Text_Font').val();
-			 	jQuery('.questions_title').css('font-family',fontFamily);		 	
-			 }
-			 else if(type=='hoplo')
-			 {
-			 	var fontFamily=jQuery('#Answer_Font').val();
-			 	jQuery('.set_answer').css('font-family',fontFamily);
-			 }
-			 else if(type=="yupi")
-			 {
-				var fontSize=jQuery('#AnswerSize').val();
-			 	jQuery('.set_answer').css('font-size',fontSize+'px');		 	
-			 }
-		}
-
-		function Set_image()
-		{
-			var x=jQuery('#img_id').val();
-			
-			if(x==1)
-			{	
-				jQuery('#plugins_type4').css({"display":"none"});
-				jQuery('#plugins_type3').css({"display":"none"});
-				jQuery('#plugins_type2').css({"display":"none"});
-				jQuery('#plugins_type1').css({"display":"inline"});
-			}
-			else if(x==2)
-			{	
-				jQuery('#plugins_type4').css({"display":"none"});
-				jQuery('#plugins_type3').css({"display":"none"});
-				jQuery('#plugins_type1').css({"display":"none"});
-				jQuery('#plugins_type2').css({"display":"inline"});
-			}
+	else if(x==3)
+	{
+		jQuery('#plugins_type4').css({"display":"none"});
+		jQuery('#plugins_type2').css({"display":"none"});
+		jQuery('#plugins_type1').css({"display":"none"});
+		jQuery('#plugins_type3').css({"display":"inline"});
+	}
+	else if(x==4)
+	{
+		jQuery('#plugins_type1').css({"display":"none"});
+		jQuery('#plugins_type2').css({"display":"none"});
+		jQuery('#plugins_type3').css({"display":"none"});
+		jQuery('#plugins_type4').css({"display":"inline"});	
 		
-			else if(x==3)
-			{
-				jQuery('#plugins_type4').css({"display":"none"});
-				jQuery('#plugins_type2').css({"display":"none"});
-				jQuery('#plugins_type1').css({"display":"none"});
-				jQuery('#plugins_type3').css({"display":"inline"});
-			}
-			else if(x==4)
-			{
-				jQuery('#plugins_type1').css({"display":"none"});
-				jQuery('#plugins_type2').css({"display":"none"});
-				jQuery('#plugins_type3').css({"display":"none"});
-				jQuery('#plugins_type4').css({"display":"inline"});	
-				
-			}
-		}
-		function changed_question(){
-			jQuery('#question_id').each(function(){
-			var c=jQuery(this).val();
-			jQuery(".questions_title").text(c);
-			})
-			}
-		
-		function change(i){
-			jQuery('#answer'+i).each(function(){
-			var z=jQuery(this).val();
-			jQuery('#ans'+i).text(z);
-			jQuery('#an'+i).text(z);
-			jQuery('#set_answer'+i).text(z);
-			jQuery('#answ'+i).text(z);
-			})
+	}
+}
+function changed_question(){
+	jQuery('#question_id').each(function(){
+	var c=jQuery(this).val();
+	jQuery(".questions_title").text(c);
+	})
+	}
 
-		}		
+function change(i){
+	jQuery('#answer'+i).each(function(){
+	var z=jQuery(this).val();
+	jQuery('#ans'+i).text(z);
+	jQuery('#an'+i).text(z);
+	jQuery('#set_answer'+i).text(z);
+	jQuery('#answ'+i).text(z);
+	})
+
+}	
+function Juna_IT_Poll_Create_New_Poll_Clicked()
+{
+	jQuery('#Juna_IT_Poll_main_first_div').fadeOut();
+	setTimeout(function(){
+		jQuery('#AdminForm').fadeIn(); 
+		jQuery('#plugins_type1').fadeIn();
+		// jQuery('.Add_new_Video_Gallery_Save_button').fadeIn();
+		// jQuery('.Add_new_Video_Gallery_Update_button').fadeOut();
+	}, 500);
+}
+function Delete_Juna_IT_Poll(Juna_IT_Poll_id)
+{
+	var ajaxurl = object.ajaxurl;
+	var data = {
+	action: 'Delete_Juna_IT_Poll_Click', // wp_ajax_my_action / wp_ajax_nopriv_my_action in ajax.php. Can be named anything.
+	foobar: Juna_IT_Poll_id, // translates into $_POST['foobar'] in PHP
+	};
+	jQuery.post(ajaxurl, data, function(response) {
+		location.reload();
+	});
+}
+function Edit_Juna_IT_Poll(Juna_IT_Poll_id,Juna_IT_Poll_PluginType)
+{
+	jQuery('#Juna_IT_Poll_main_first_div').fadeOut();
+	setTimeout(function(){
+		jQuery('#AdminForm').fadeIn(); 
+		jQuery('#plugins_type'+Juna_IT_Poll_PluginType+'').fadeIn();
+		// jQuery('.Add_new_Video_Gallery_Save_button').fadeIn();
+		// jQuery('.Add_new_Video_Gallery_Update_button').fadeOut();
+		var ajaxurl = object.ajaxurl;
+		var data = {
+		action: 'Edit_Juna_IT_Poll_Click', // wp_ajax_my_action / wp_ajax_nopriv_my_action in ajax.php. Can be named anything.
+		foobar: Juna_IT_Poll_id, // translates into $_POST['foobar'] in PHP
+		};
+		jQuery.post(ajaxurl, data, function(response) {
+			var question_and_params=response.split('$#@#$');
+			var quest_and_set=question_and_params[0].split('%^&^%');
+			// question
+			jQuery('#question_id').val(quest_and_set[0]);
+				jQuery('.questions_title').html(quest_and_set[0]);
+			// border_color
+			jQuery('#border_color').val(quest_and_set[1]);
+				jQuery('#border_div').val(quest_and_set[1]);
+				jQuery('.plugins_type').css('border-color',quest_and_set[1]);
+			// bg_color
+			jQuery('#bg_color').val(quest_and_set[2]);
+				jQuery('#bg_div').val(quest_and_set[2]);
+				jQuery('.plugins_type').css('background-color',quest_and_set[2]);
+			// font_family
+			jQuery('#Text_Font').val(quest_and_set[3]);
+				jQuery('.questions_title').css('font-family',quest_and_set[3]);
+			// font_size
+			jQuery('#fontSize').val(quest_and_set[4]);
+				jQuery('.questions_title').css('font-size',quest_and_set[4]+'px');
+			// answer_color
+			jQuery('#answer_color').val(quest_and_set[5]);
+				jQuery('#answer_div').val(quest_and_set[5]);
+				jQuery('.set_answer').css('color',quest_and_set[5]);
+			// answer_hover_color
+			if(quest_and_set[6]!='none')
+			{
+				jQuery('#HoverCheck').attr('checked',true);
+				ActivateHover();
+				jQuery('#selectedHoverColor').val(quest_and_set[6]);
+				jQuery('#colorPickerhover').val(quest_and_set[6]);
+			}
+			// question_color
+			jQuery('#Question_color').val(quest_and_set[7]);
+				jQuery('#quest_div').val(quest_and_set[7]);
+				jQuery('.questions_title').css('color',quest_and_set[7]);
+			// vote_button_color
+			jQuery('#vote_button_color').val(quest_and_set[8]);
+				jQuery('#vote_button_div').val(quest_and_set[8]);
+				jQuery('#vote_button').css('background-color',quest_and_set[8]);
+			// buttons_text_color
+			jQuery('#buttons_text_color').val(quest_and_set[9]);
+				jQuery('#buttons_text_div').val(quest_and_set[9]);
+				jQuery('#vote_button').css('color',quest_and_set[9]);
+			// widget_div_width
+			jQuery('#widg_width').val(quest_and_set[10]);
+				jQuery('.plugins_type').css('width',quest_and_set[10]+'px');
+			// vote_type
+			jQuery('.Votes_type_radio').each(function(){
+				if(jQuery(this).val()==quest_and_set[11]){
+					jQuery(this).attr('checked','checked');
+				}
+			})
+			// vote_color
+			jQuery('#votes_text_color').val(quest_and_set[12]);
+				jQuery('#votes_color').val(quest_and_set[12]);
+			// image_width
+			if(quest_and_set[13]!=0)
+			{
+				jQuery('#image_width').val(quest_and_set[13]);
+				for(var i=1;i<=10;i++)
+				{
+					jQuery('#set_file'+i).css('width',quest_and_set[13]+'px');
+					jQuery('#file'+i).css('width',quest_and_set[13]+'px');
+				}
+			}				
+			// image_height
+			if(quest_and_set[14]!=0)
+			{
+				jQuery('#image_height').val(quest_and_set[14]);
+				for(var i=1;i<=10;i++)
+				{
+					jQuery('#set_file'+i).css('height',parseInt(quest_and_set[14])+20+'px');
+					jQuery('#file'+i).css('height',quest_and_set[14]+'px');
+				}
+			}	
+			// answer_font_family
+			jQuery('#Answer_Font').val(quest_and_set[15]);
+				jQuery('.set_answer').css('font-family',quest_and_set[15]);
+			// answer_font_size
+			jQuery('#AnswerSize').val(quest_and_set[16]);
+				jQuery('.set_answer').css('font-size',quest_and_set[16]+'px');
+
+			var answer_and_ansset=question_and_params[1].split(')^%^(');
+						
+			add_answers(quest_and_set[17]);
+			jQuery('#hidden_value').val(quest_and_set[17]);
+			if(quest_and_set[17]>2)
+			{
+				jQuery('#remove_answer').css('display','inline');
+			}
+
+			SelectType('img'+Juna_IT_Poll_PluginType);
+
+			for(i=0;i<quest_and_set[17];i++)
+			{
+				if(parseInt(i+1)>2)
+				{
+					jQuery('#Admin_Menu').append("<label id='labelAnswer"+parseInt(i+1)+"' style='font-size:14px;color:#0073aa; '>Answer "+parseInt(i+1)+":</label> <br class='br_class"+parseInt(i+1)+"'> <input type='text' name='answer"+parseInt(i+1)+"' id='answer"+parseInt(i+1)+"' style='width:400px; border-radius:3px;' onchange='change("+parseInt(i+1)+")'/> <span id='span_answer"+parseInt(i+1)+"' style='color: red'></span> <br class='br_class"+parseInt(i+1)+"'>");
+					jQuery('#colors_div').append("<label id='bg_color"+parseInt(i+1)+"' style='font-size:14px; color:#0073aa; '> Choose Background Color</label> <br class='bg_color_br"+parseInt(i+1)+"'> <input type='text' value='#c0c0c0' name='color"+parseInt(i+1)+"' id='color"+parseInt(i+1)+"' style='width: 170px;' onchange='ColorPicker("+parseInt(i+1)+",false);' /> <input type='color' value='#c0c0c0' id='color_div"+parseInt(i+1)+"' style='height: 23px; padding: 1px 3px;' onchange='ColorPicker("+parseInt(i+1)+",true);'> <br class='bg_color_br"+parseInt(i+1)+"'>");
+					jQuery('#upload_div').append("<label id='labelUpload"+parseInt(i+1)+"' style='font-size:14px; color:#0073aa; '> Include File</label> <br class='upload_file_br"+parseInt(i+1)+"'> <input type='button' id='upload"+parseInt(i+1)+"'  value = 'Add image/video'> <br class='upload_file_br"+parseInt(i+1)+"'>");
+				}		
+				answers_and_anssets=answer_and_ansset[i].split('%***%');
+				// answers
+				jQuery('#answer'+parseInt(i+1)+'').val(answers_and_anssets[0]);
+					jQuery('#ans'+parseInt(i+1)).text(answers_and_anssets[0]);
+					jQuery('#an'+parseInt(i+1)).text(answers_and_anssets[0]);
+					jQuery('#set_answer'+parseInt(i+1)).text(answers_and_anssets[0]);
+					jQuery('#answ'+parseInt(i+1)).text(answers_and_anssets[0]);
+				// Answer_bg_color
+				jQuery('#color'+parseInt(i+1)+'').val(answers_and_anssets[2]);
+					jQuery('#color_div'+parseInt(i+1)+'').val(answers_and_anssets[2]);
+					jQuery('#an'+parseInt(i+1)).css('background-color',answers_and_anssets[2]);
+					jQuery('#set_color'+parseInt(i+1)).css('background-color',answers_and_anssets[2]);
+					jQuery('#a'+parseInt(i+1)).css('border-color',answers_and_anssets[2]);
+				// file
+				if(answers_and_anssets[1]!='none')
+				{
+					jQuery('#file'+parseInt(i+1)+'').attr('src',answers_and_anssets[1]);
+				}
+			}
+		});
+	}, 500);
+}
+function Juna_IT_Poll_Search_Question()
+{
+	setInterval(function(){
+		var Juna_IT_Poll_Searched_Question=jQuery('#Juna_IT_Poll_search_text_field').val();
+		if(Juna_IT_Poll_Searched_Question!='')
+		{
+			var ajaxurl = object.ajaxurl;
+			var data = {
+			action: 'Search_Juna_IT_Poll_Click', // wp_ajax_my_action / wp_ajax_nopriv_my_action in ajax.php. Can be named anything.
+			foobar: Juna_IT_Poll_Searched_Question, // translates into $_POST['foobar'] in PHP
+			};
+			jQuery.post(ajaxurl, data, function(response) {
+				if(response=='')
+				{
+					jQuery('#searched_question_does_not_exist').html('* Requested Question does not exist!');
+					jQuery('.Juna_IT_Poll_Table1').hide();
+					jQuery('.Juna_IT_Poll_Table').show();
+				}
+				else
+				{
+					jQuery('#searched_question_does_not_exist').html('');
+					jQuery('.Juna_IT_Poll_Table').hide();
+					jQuery('.Juna_IT_Poll_Table1').show();
+					jQuery('.Juna_IT_Poll_Table1').empty();
+
+					var searched_params=response.split(')&*&(');
+					for(i=0;i<parseInt(searched_params.length-1);i++)
+					{
+						searched_params_callback=searched_params[i].split("^%^");
+						if(searched_params_callback[2]==1)
+						{
+							var plugins_type_span='Standart Poll';
+						}
+						else if(searched_params_callback[2]==2)
+						{
+							var plugins_type_span='Pie Chart';
+						}
+						else if(searched_params_callback[2]==3)
+						{
+							var plugins_type_span='Image/Video';
+						}
+						else
+						{
+							var plugins_type_span='Column Chart';
+						}
+
+						jQuery('.Juna_IT_Poll_Table1').append("<tr><td class='Juna_IT_Poll_id_item'><B><I>"+parseInt(i+1)+"</I></B></td><td class='Juna_IT_Poll_title_item'><B><I>"+searched_params_callback[1]+"</I></B></td><td class='Juna_IT_Poll_type_item'><B><I>"+plugins_type_span+"</I></B></td><td class='Juna_IT_Poll_edit_item' onclick='Edit_Juna_IT_Poll("+searched_params_callback[0]+','+searched_params_callback[2]+")'><B><I>Edit</I></B></td><td class='Juna_IT_Poll_delete_item' onclick='Delete_Juna_IT_Poll("+searched_params_callback[0]+")'><B><I>Delete</I></B></td></tr>");
+					}
+				}
+			});
+		}
+		else
+		{
+			jQuery('.Juna_IT_Poll_Table1').hide();
+			jQuery('.Juna_IT_Poll_Table').show();
+		}
+	}, 600);
+}
+function Juna_IT_Poll_Reset_Button_Clicked()
+{
+	jQuery('#Juna_IT_Poll_search_text_field').val('');
+	jQuery('#searched_question_does_not_exist').html('');
+	jQuery('.Juna_IT_Poll_Table1').hide();
+	jQuery('.Juna_IT_Poll_Table').show();
+}	

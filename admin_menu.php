@@ -4,9 +4,153 @@
 	{
 		die('Access Denied');
 	}
+	global $wpdb;		
 
+	$table_name  =  $wpdb->prefix . "poll_wp_Questions";
+	$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
+	$table_name3 =  $wpdb->prefix . "poll_wp_Results";
+	$table_name4 =  $wpdb->prefix . "poll_wp_Settings";	
+
+	if(isset ($_POST['Add_new_Juna_IT_Poll_Save_button']))
+	{
+		$question=sanitize_text_field(stripslashes($_POST["question"]));
+		$k=sanitize_text_field($_POST['AnswersCount']);
+		$image=sanitize_text_field($_POST["img_name"]);
+		$answerColors=array();
+
+		if($image==2 || $image==4)
+		{
+			for($i=1; $i<=$k; $i++)
+			{
+				$answerColors[$i]=sanitize_text_field($_POST['color' . $i]);
+			}
+		}			
+		else
+		{
+			for($i=1; $i<=$k; $i++)
+			{
+				$answerColors[$i]='#ffffff';
+			}
+		}		
+		if($image!=3)
+		{
+			//insert data to poll_wp_Question	
+
+			delete($question);
+			if(strlen($question)>0 && strlen($image)>0)
+			{	
+				$wpdb->query($wpdb->prepare("INSERT INTO $table_name (id, Question, PluginType) VALUES (%d,%s,%s) ", '', $question,$image ));
+			}	
+			else 
+			{
+				return false;
+			}	
+
+			//insert data to poll_wp_Answers
+			$count=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name  WHERE id > %d order by id desc limit 1  ", 0));
+
+			$answers_array=array();
+			$answers_array[0]=null;
+			$question=addslashes($question);
+
+			for($i=1; $i<=$k; $i++)
+			{
+				$answers_array[$i]=sanitize_text_field(stripslashes($_POST['answer' . $i]));
+
+				if(strlen($answers_array[$i])>0 && strlen($answerColors[$i])>0 && strlen($count)>0)
+				{
+					$wpdb->query($wpdb->prepare("INSERT INTO $table_name2 (id, Answer, File, Answer_bg_color, QuestionID) VALUES (%d,%s,%s,%s,%d)",'',$answers_array[$i],'',$answerColors[$i],$count));
+				}	
+				else 
+				{
+					return false;
+				}
+
+				$answers_array[$i]=addslashes($answers_array[$i]);
+				$ans_id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name2 WHERE Answer= %s and QuestionID=(SELECT id FROM $table_name WHERE Question= %s) ", $answers_array[$i],$question ));
+				$ques_id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Question= %s",$question));
+
+				//insert data to poll_wp_Results
+				if(strlen($ques_id)>0 && strlen($ans_id)>0) 
+				{	
+					$wpdb->query($wpdb->prepare("INSERT INTO $table_name3 (id, QuestionID, AnswerID,  count) VALUES (%d,%d,%d,%d)",'', $ques_id, $ans_id, 0));
+				}
+				else
+				{
+					return false;	
+				}	
+			}
+
+			//insert data to poll_wp_Settings
+			$bgColor=sanitize_text_field($_POST['bg_color']);
+			$borderColor=sanitize_text_field($_POST['border_color']);
+			$fontFamily=sanitize_text_field($_POST['Text_Font']);
+			$fontSize=sanitize_text_field($_POST['fontSize']);
+			$answerColor=sanitize_text_field($_POST['answer_color']);
+			$answerHoverColor=sanitize_text_field($_POST['selectedHoverColor']);
+			$questionColor=sanitize_text_field($_POST['Question_color']);
+			$vote_button_color=sanitize_text_field($_POST['vote_button_color']);
+			$buttons_text=sanitize_text_field($_POST['buttons_text']);
+			$widg_width=sanitize_text_field($_POST['widg_width']);
+			$type_vote=sanitize_text_field($_POST['votes_type']);
+			$votes_color=sanitize_text_field($_POST['votes_color']);
+			$answer_font_size=sanitize_text_field($_POST['AnswerSize']);
+			$answer_font_family=sanitize_text_field($_POST['Answer_Font']);
+
+			if(strlen($bgColor)>0 && strlen($borderColor)>0 && strlen($fontFamily)>0 && strlen($fontSize)>0 && strlen($answerColor)>0 && strlen($questionColor)>0 && strlen($vote_button_color)>0 && strlen($buttons_text)>0 && strlen($widg_width)>0)
+			{	
+			 	$wpdb->query($wpdb->prepare("INSERT INTO $table_name4 (id, border_color, bg_color, font_family, font_size, answer_color, answer_hover_color, question_color, vote_button_color, buttons_text_color, widget_div_width, vote_type, vote_color, image_width, image_height, answer_font_family, answer_font_size, QuestionID) VALUES (%d,%s,%s,%s,%d,%s,%s,%s,%s,%s,%s,%s,%s,%d,%d,%s,%d,%d)", '', $borderColor, $bgColor, $fontFamily, $fontSize, $answerColor, $answerHoverColor, $questionColor, $vote_button_color, $buttons_text, $widg_width, $type_vote, $votes_color, '', '', $answer_font_family, $answer_font_size, $count));
+			}
+			else
+			{
+				return false;
+			}
+		}
+	}
+
+	$Juna_IT_Poll_title_table=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name WHERE id > %d",1));
 ?>
-	<form method="post" id="AdminForm" enctype="multipart/form-data" onsubmit="if(Validate()==false) return false;" >
+<div id="Juna_IT_Poll_main_first_div"> 
+	<div class="Juna_IT_Poll_Add_Poll_Footer_Div">
+		<a href="http://juna-it.com" target="_blank"<abbr title="Click to Visit"><img src="http://juna-it.com/image/logo-orange.png" class="Juna_IT_Logo_Orange"></a>
+			<br><br><br><br><br>
+		<span class="Polls_Title_Span">Question:</span> 
+		<input type="text" class="Juna_IT_Poll_search_text_field" id="Juna_IT_Poll_search_text_field" onclick="Juna_IT_Poll_Search_Question()">
+		<input type="button" class="Juna_IT_Poll_Reset_button" value="Reset" onclick="Juna_IT_Poll_Reset_Button_Clicked()">
+		<span class="searched_question_does_not_exist" id="searched_question_does_not_exist"></span>
+		<input type="button" class="Juna_IT_Poll_Add_Poll_button" value="Create New Poll" onclick="Juna_IT_Poll_Create_New_Poll_Clicked()">
+	</div>
+	<table class = 'Juna_IT_Poll_Main_Table'>
+		<tr class="Juna_IT_Poll_first_row">
+			<td class='Juna_IT_Poll_main_id_item'><B><I>No</I></B></td>
+			<td class='Juna_IT_Poll_main_title_item'><B><I>Poll Title</I></B></td>
+			<td class='Juna_IT_Poll_main_type_item'><B><I>Poll Type</I></B></td>			
+			<td class='Juna_IT_Poll_main_actions_item'><B><I>Actions</I></B></td>
+		</tr>
+	</table>
+	<table class = 'Juna_IT_Poll_Table'>
+		<tr>
+			<td class='Juna_IT_Poll_id_item'><B><I><?php echo 1 ;?></I></B></td>
+			<td class='Juna_IT_Poll_title_item'><B><I><?php echo 'Do You Like Our Plugin?'; ?></I></B></td>	
+			<td class='Juna_IT_Poll_type_item'><B><I><?php echo 'Standart Poll' ;?></I></B></td>			
+			<td class='Juna_IT_Poll_edit_item1'><B><I>Edit</I></B></td>
+			<td class='Juna_IT_Poll_delete_item1'><B><I>Delete</I></B></td>
+		</tr>
+		<?php for($i=0;$i<count($Juna_IT_Poll_title_table);$i++) {?>
+		<tr>
+			<td class='Juna_IT_Poll_id_item'><B><I><?php echo $i+2 ;?></I></B></td>
+			<td class='Juna_IT_Poll_title_item'><B><I><?php echo $Juna_IT_Poll_title_table[$i]->Question ; ?></I></B></td>	
+			<td class='Juna_IT_Poll_type_item'><B><I><?php if($Juna_IT_Poll_title_table[$i]->PluginType==1){echo 'Standart Poll';}else if($Juna_IT_Poll_title_table[$i]->PluginType==2){echo 'Pie Chart';}else if($Juna_IT_Poll_title_table[$i]->PluginType==3){echo 'Image/Video';}else{echo 'Column Chart';} ;?></I></B></td>			
+			<td class='Juna_IT_Poll_edit_item' onclick="Edit_Juna_IT_Poll(<?php echo $Juna_IT_Poll_title_table[$i]->id; ?>,<?php echo $Juna_IT_Poll_title_table[$i]->PluginType; ?>)"><B><I>Edit</I></B></td>
+			<td class='Juna_IT_Poll_delete_item' onclick="Delete_Juna_IT_Poll(<?php echo $Juna_IT_Poll_title_table[$i]->id ; ?>)"><B><I>Delete</I></B></td>
+		</tr>
+		<?php } ?>
+	</table>
+	<table class = 'Juna_IT_Poll_Table1'>
+			
+	</table>
+</div>
+<form method="post" id="AdminForm" enctype="multipart/form-data" onsubmit="if(Validate()==false) return false;" >
 		<div id = 'display_media_button'  >
 			<span id = 'close_display_media_button' ></span>
 			<h2 id = 'h2_1'>Вставить медиафайл</h2>
@@ -137,7 +281,7 @@
 	 		 		 
 	 		<label style='font-size:14px;color:#0073aa;'>Widget's width: </label> <input type="number" onchange="set('widget')" name="widg_width" id="widg_width" min="250" value='250' style="margin-left:71px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>		 
 	 		
-	 		<label style='font-size:14px;color:#0073aa;'>Vote's type: </label> <input type="radio" name="votes_type" style="margin-left:50px;" value="percent" checked>By Percents<input type="radio" name="votes_type" style="margin-left:5px;" value="vote">By Votes Count<input type="radio" name="votes_type" style="margin-left:5px;" value="both">Both<br><br>
+	 		<label style='font-size:14px;color:#0073aa;'>Vote's type: </label> <input type="radio" class="Votes_type_radio" name="votes_type" style="margin-left:50px;" value="percent" checked>By Percents<input type="radio" class="Votes_type_radio" name="votes_type" style="margin-left:5px;" value="vote">By Votes Count<input type="radio" class="Votes_type_radio" name="votes_type" style="margin-left:5px;" value="both">Both<br><br>
 	 	
 	 		<label style="font-size:14px;color:#0073aa;">Vote's Color: </label>
 	 		<input type="color" value="#ffffff" id="votes_color" style="float:right; height: 23px; padding: 1px 3px;border-radius:3px;" onchange="ColorPicker('votes_color',true)"> 
@@ -489,161 +633,49 @@
 
 <?php
 		
-	 global $wpdb;		
+function delete($sql_question)
+{
+	global $wpdb;
 
-		$table_name  =  $wpdb->prefix . "poll_wp_Questions";
-		$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
-		$table_name3 =  $wpdb->prefix . "poll_wp_Results";
-		$table_name4 =  $wpdb->prefix . "poll_wp_Settings";		
+	$sql_question=addslashes($sql_question);
 
-		$question=sanitize_text_field(stripslashes($_POST["question"]));
+	$table_name  =  $wpdb->prefix . "poll_wp_Questions";
+	$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
+	$table_name3 =  $wpdb->prefix . "poll_wp_Results";
+	$table_name4 =  $wpdb->prefix . "poll_wp_Settings";		
 
-		$k=sanitize_text_field($_POST['AnswersCount']);
+	$count=$wpdb->get_var($wpdb->prepare("SELECT count(*) FROM  $table_name WHERE Question= %s", $sql_question));
 
-		$image=sanitize_text_field($_POST["img_name"]);
+	$id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Question= %s limit 1",$sql_question));
 
-		$answerColors=array();
+	if($count!=0)
+	{
 
-			if($image==2 || $image==4)
-			{
-				for($i=1; $i<=$k; $i++)
-				{
-					$answerColors[$i]=sanitize_text_field($_POST['color' . $i]);
-				}
-			}			
-			else
-			{
-				for($i=1; $i<=$k; $i++)
-				{
-					$answerColors[$i]='white';
-				}
-			}		
+		$wpdb->query($wpdb->prepare("DELETE FROM $table_name WHERE id= %d", $id));
 
-			if($image!=3)
-			{
-					//insert data to poll_wp_Question	
+		$results=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE QuestionID= %d", $id));
 
-				delete($question);
+		for($i=0;$i<count($results);$i++)
+		{		
+			$wpdb->query($wpdb->prepare("DELETE FROM $table_name2 WHERE id= %d", $results[$i]->id));
+		}
 
-				if(strlen($question)>0 && strlen($image)>0)
-				{	
-					$wpdb->query($wpdb->prepare("INSERT INTO $table_name (id, Question, PluginType) VALUES (%d,%s,%s) ", '', $question,$image ));
-				}	
-					else 
-				{
-					return false;
-				}	
+		$set_id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name4 WHERE QuestionID= %d", $id));
 
-				//insert data to poll_wp_Answers
+		$wpdb->query($wpdb->prepare("DELETE FROM $table_name4 WHERE id= %d",$set_id));
 
-				$count=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name  WHERE id > %d order by id desc limit 1  ", 0));
+		$result_s=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name3 WHERE QuestionID= %d",$id));
 
-				$answers_array=array();
+		for($i=0;$i<count($result_s);$i++)
+		{		
+			$wpdb->query($wpdb->prepare("DELETE FROM $table_name3 WHERE id= %d", $result_s[$i]->id));				
+		}
 
-				$answers_array[0]=null;
-
-				$question=addslashes($question);
-
-				for($i=1; $i<=$k; $i++)
-				{
-					$answers_array[$i]=sanitize_text_field(stripslashes($_POST['answer' . $i]));
-
-					if(strlen($answers_array[$i])>0 && strlen($answerColors[$i])>0 && strlen($count)>0)
-					{
-						$wpdb->query($wpdb->prepare("INSERT INTO $table_name2 (id, Answer, File, Answer_bg_color, QuestionID) VALUES (%d,%s,%s,%s,%d)",'',$answers_array[$i],'',$answerColors[$i],$count));
-					}	
-						else 
-					{
-						return false;
-					}
-
-					$answers_array[$i]=addslashes($answers_array[$i]);
-
-					$ans_id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name2 WHERE Answer= %s and QuestionID=(SELECT id FROM $table_name WHERE Question= %s) ", $answers_array[$i],$question ));
-
-					$ques_id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Question= %s",$question));
-
-					//insert data to poll_wp_Results
-					if(strlen($ques_id)>0 && strlen($ans_id)>0) 
-					{	
-						$wpdb->query($wpdb->prepare("INSERT INTO $table_name3 (id, QuestionID, AnswerID,  count) VALUES (%d,%d,%d,%d)",'', $ques_id, $ans_id, 0));
-					}
-						else
-					{
-						return false;	
-					}	
-
-				}
-
-					//insert data to poll_wp_Settings
-
-						$bgColor=sanitize_text_field($_POST['bg_color']);
-						$borderColor=sanitize_text_field($_POST['border_color']);
-						$fontFamily=sanitize_text_field($_POST['Text_Font']);
-						$fontSize=sanitize_text_field($_POST['fontSize']);
-						$answerColor=sanitize_text_field($_POST['answer_color']);
-						$answerHoverColor=sanitize_text_field($_POST['selectedHoverColor']);
-						$questionColor=sanitize_text_field($_POST['Question_color']);
-						$vote_button_color=sanitize_text_field($_POST['vote_button_color']);
-						$buttons_text=sanitize_text_field($_POST['buttons_text']);
-						$widg_width=sanitize_text_field($_POST['widg_width']);
-						$type_vote=sanitize_text_field($_POST['votes_type']);
-						$votes_color=sanitize_text_field($_POST['votes_color']);
-						$answer_font_size=sanitize_text_field($_POST['AnswerSize']);
-						$answer_font_family=sanitize_text_field($_POST['Answer_Font']);
-
-						if(strlen($bgColor)>0 && strlen($borderColor)>0 && strlen($fontFamily)>0 && strlen($fontSize)>0 && strlen($answerColor)>0 && strlen($questionColor)>0 && strlen($vote_button_color)>0 && strlen($buttons_text)>0 && strlen($widg_width)>0)
-						{	
-						 	$wpdb->query($wpdb->prepare("INSERT INTO $table_name4 (id, border_color, bg_color, font_family, font_size, answer_color, answer_hover_color, question_color, vote_button_color, buttons_text_color, widget_div_width, vote_type, vote_color, image_width, image_height, answer_font_family, answer_font_size, QuestionID) VALUES (%d,%s,%s,%s,%d,%s,%s,%s,%s,%s,%s,%s,%s,%d,%d,%s,%d,%d)", '', $borderColor, $bgColor, $fontFamily, $fontSize, $answerColor, $answerHoverColor, $questionColor, $vote_button_color, $buttons_text, $widg_width, $type_vote, $votes_color, '', '', $answer_font_family, $answer_font_size, $count));
- 						}
- 						else
- 						{
- 							return false;
- 						}
-			}
-		function delete($sql_question)
-				{
-					global $wpdb;
-
-					$sql_question=addslashes($sql_question);
-
-					$table_name  =  $wpdb->prefix . "poll_wp_Questions";
-					$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
-					$table_name3 =  $wpdb->prefix . "poll_wp_Results";
-					$table_name4 =  $wpdb->prefix . "poll_wp_Settings";		
-
-					$count=$wpdb->get_var($wpdb->prepare("SELECT count(*) FROM  $table_name WHERE Question= %s", $sql_question));
-
-					$id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Question= %s limit 1",$sql_question));
-
-					if($count!=0)
-					{
-
-						$wpdb->query($wpdb->prepare("DELETE FROM $table_name WHERE id= %d", $id));
-
-						$results=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE QuestionID= %d", $id));
-
-						for($i=0;$i<count($results);$i++)
-						{		
-							$wpdb->query($wpdb->prepare("DELETE FROM $table_name2 WHERE id= %d", $results[$i]->id));
-						}
-
-						$set_id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name4 WHERE QuestionID= %d", $id));
-
-						$wpdb->query($wpdb->prepare("DELETE FROM $table_name4 WHERE id= %d",$set_id));
-
-						$result_s=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name3 WHERE QuestionID= %d",$id));
-
-						for($i=0;$i<count($result_s);$i++)
-						{		
-							$wpdb->query($wpdb->prepare("DELETE FROM $table_name3 WHERE id= %d", $result_s[$i]->id));				
-						}
-
-					}
-					else 
-					{
-						return;
-					}
-					
-				}
+	}
+	else 
+	{
+		return;
+	}
+	
+}
 ?>

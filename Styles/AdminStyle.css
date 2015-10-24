@@ -1,110 +1,248 @@
-	#display_media_button{
-			position:absolute;
-			display:none;
-			z-index: 1000;
-			top:0;
-			left:0;
-			width:100%;
-			min-height:100%;
-			background: rgba(255,255,255, 1) !important;
-			color:#444;
-
-		}
-		#close_display_media_button{
-			display:block;
-			float:right;
-			cursor: pointer;
-			width:20px;
-			height:20px;
-			margin-top:50px; 
-			margin-right: 50px;
-			background-image: url(http://juna-it.com/image/fileclose.png);
-			background-size:20px 20px;
-			z-index: 1000000 !important;
-		}
-		#close_display_media_button:hover{
-			background-image: url(http://juna-it.com/image/fileclose1.png);
-			background-size:20px 20px;
-		}
-		#display_for_selected_file{
-			position: relative;
-			width:100%;
-			height:100%;
-			border:1px solid #ddd;
-			margin-top: 52px;
-
-		}
-		.select_file_pc{
-			width:250px;
-			margin:15% 0 0 15%;
-			
-		}
-		.image_select_file_library{
-
-			width:150px;
-			height:150px;
-			margin:10px 5px  5px 5px;
-			float: left;
-		}
-		#select_file_library{
-			display:none;
-			width:100%;
-			height:500px;
-			top:0;
-			left:0;
-			position: absolute;
-			padding-top: 50px;
-			
-		}
-		#confirm_selection{
-			background:rgba(187, 185, 199,1); 
-			position: absolute;
-			right:20px;
-			top:20px;
-			width:80px;
-			height:30px;
-			border-radius:5px;
-			font-weight: 900;
-			cursor: pointer;
-		}
-		#confirm_selection:hover{
-			background:rgba(30,140,190,1);
-			color:#fff; 
-		}
-		#upload1,#upload2,#upload3,#upload4,#upload5,#upload6,#upload7,#upload8,#upload9,#upload10{
-			width:150px;
-			height: 27px;
-			border:1px solid gray;
-			background: #eee;
-			padding-bottom: 5px ;
-			border-radius:3px;
-		}
-		.border_bottom,.border_bottom_none{
-			position:relative;
-			float:left;
-			margin:0 0 0 0;
-			z-index: 10002;
-			width:143px;
-			height:29px;
-			border :1px solid #ddd;
-			background:rgba(255,255,255, 1) !important;
-			font-size: 14px;
-			padding: 7px 0 0 7px;
-			z-index: 1000001;
-		}
-		.border_bottom:hover{
-			color:#D54E21;
-			webkit-box-shadow: 0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);
-		 	 box-shadow: 0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);
-		}
-		.border_bottom_none:hover{
-			webkit-box-shadow: 0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);
-		  	box-shadow: 0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);
-		}
-		.border_bottom_none{
-			border-bottom:none !important;
-		}
-		.border_bottom{
-			border-bottom:1px solid #ddd;
-			color:#21759b;
-		}
+#display_media_button{	
+	position:absolute;
+	display:none;
+	z-index: 1000;
+	top:0;
+	left:0;
+	width:100%;
+	min-height:100%;
+	background: rgba(255,255,255, 1) !important;
+	color:#444;
+}
+#close_display_media_button{
+	display:block;
+	float:right;
+	cursor: pointer;
+	width:20px;
+	height:20px;
+	margin-top:50px; 
+	margin-right: 50px;
+	background-image: url(http://juna-it.com/image/fileclose.png);
+	background-size:20px 20px;
+	z-index: 1000000 !important;
+}
+#close_display_media_button:hover{
+	background-image: url(http://juna-it.com/image/fileclose1.png);
+	background-size:20px 20px;
+}
+#display_for_selected_file{
+	position: relative;
+	width:100%;
+	height:100%;
+	border:1px solid #ddd;
+	margin-top: 52px;
+}
+.select_file_pc{
+	width:250px;
+	margin:15% 0 0 15%;
+}
+.image_select_file_library{
+	width:150px;
+	height:150px;
+	margin:10px 5px  5px 5px;
+	float: left;
+}
+#select_file_library{
+	display:none;
+	width:100%;
+	height:500px;
+	top:0;
+	left:0;
+	position: absolute;
+	padding-top: 50px;
+}
+#confirm_selection{
+	background:rgba(187, 185, 199,1); 
+	position: absolute;
+	right:20px;
+	top:20px;
+	width:80px;
+	height:30px;
+	border-radius:5px;
+	font-weight: 900;
+	cursor: pointer;
+}
+#confirm_selection:hover{
+	background:rgba(30,140,190,1);
+	color:#fff; 
+}
+#upload1,#upload2,#upload3,#upload4,#upload5,#upload6,#upload7,#upload8,#upload9,#upload10{
+	width:150px;
+	height: 27px;
+	border:1px solid gray;
+	background: #eee;
+	padding-bottom: 5px ;
+	border-radius:3px;
+}
+.border_bottom,.border_bottom_none{
+	position:relative;
+	float:left;
+	margin:0 0 0 0;
+	z-index: 10002;
+	width:143px;
+	height:29px;
+	border :1px solid #ddd;
+	background:rgba(255,255,255, 1) !important;
+	font-size: 14px;
+	padding: 7px 0 0 7px;
+	z-index: 1000001;
+}
+.border_bottom:hover{
+	color:#D54E21;
+	webkit-box-shadow: 0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);
+ 	 box-shadow: 0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);
+}
+.border_bottom_none:hover{
+	webkit-box-shadow: 0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);
+  	box-shadow: 0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);
+}
+.border_bottom_none{
+	border-bottom:none !important;
+}
+.border_bottom{
+	border-bottom:1px solid #ddd;
+	color:#21759b;
+}
+#AdminForm,.plugins_type
+{
+	display: none;
+}
+.Juna_IT_Poll_Add_Poll_Footer_Div
+{
+	margin-top: 30px;
+	width: 99%;
+	height: 120px;
+	background-color: #0073aa; 
+	border-radius: 10px;
+	padding: 5px;
+}
+.Juna_IT_Logo_Orange
+{
+	float: left;
+	height: 70px;
+}
+.Polls_Title_Span
+{
+	color: white;
+	margin-left: 25px;
+	font-size: 25px;
+	font-family: Gabriola;
+}
+.Juna_IT_Poll_search_text_field
+{
+	height: 25px;
+	margin-top: -10px;
+	border-radius: 3px;
+}
+.Juna_IT_Poll_Reset_button
+{
+	width: 100px;
+	background-color: #0073aa;
+	color: white;
+	border: 2px solid #0073aa;
+	border-radius: 3px;
+	box-shadow: 0px 0px 30px white;
+	margin-left: 5px;
+}
+.Juna_IT_Poll_Add_Poll_button
+{
+	width: 130px;
+	background-color: #0073aa;
+	color: #f68935;
+	border: 2px solid #f68935;
+	border-radius: 3px;
+	box-shadow: 0px 0px 30px #f68935;
+	margin-right: 25px;
+	float: right;
+}
+.Juna_IT_Poll_Main_Table
+{
+	width:99.5% ;
+	margin:15px 0 0 0; 
+	height:40px;
+	border:1px solid #0073aa;
+	border-radius: 5px;
+	padding: 2px;
+}
+.Juna_IT_Poll_first_row
+{
+	background:#0073aa !important;
+	color:white;
+	text-align: center;
+	font-family: Gabriola;
+	font-size: 20px;
+}
+.Juna_IT_Poll_Table
+{
+	width:99.5% ;
+	padding: 2px;
+	border:1px solid #0073aa;
+	border-radius: 5px;
+	margin-top: 1px;
+	background-color: #c0c0c0;
+}	
+.Juna_IT_Poll_Table tr:nth-child(odd),.Juna_IT_Poll_Table1 tr:nth-child(odd)
+{
+	background:#f0f0f0 !important;
+	color:#717171;
+	text-align: center;
+	font-size: 14px;
+	height: 30px;	
+}
+.Juna_IT_Poll_Table tr:nth-child(even),.Juna_IT_Poll_Table1 tr:nth-child(even)
+{
+	background:#e4e3e3 !important;
+	color:#717171;
+	text-align: center;
+	font-size: 14px;
+	height: 30px;		
+}
+.Juna_IT_Poll_id_item,.Juna_IT_Poll_main_id_item
+{
+	width:118px;
+}
+.Juna_IT_Poll_title_item,.Juna_IT_Poll_main_title_item
+{
+	width:660px;
+}
+.Juna_IT_Poll_main_type_item,.Juna_IT_Poll_type_item
+{
+	width:259px;
+}
+.Juna_IT_Poll_main_actions_item
+{
+	width:520px;
+}
+.Juna_IT_Poll_edit_item,.Juna_IT_Poll_delete_item
+{
+	width:259px;
+	text-decoration: underline;
+	color: #b12201;
+}
+.Juna_IT_Poll_edit_item:hover,.Juna_IT_Poll_delete_item:hover
+{
+	cursor: pointer;
+	color: #f68935;
+}
+.Juna_IT_Poll_edit_item1,.Juna_IT_Poll_delete_item1
+{
+	width:259px;
+	text-decoration: underline;
+}
+.searched_question_does_not_exist
+{
+	color: white;
+	font-family: Gabriola;
+	font-size: 25px;
+	margin-left: 15px;
+}
+.Juna_IT_Poll_Table1
+{
+	width:99.5% ;
+	padding: 2px;
+	border:1px solid #0073aa;
+	border-radius: 5px;
+	margin-top: 2px;
+	background-color: #c0c0c0;
+	display: none;
+}
