@@ -123,6 +123,38 @@ function set(type){
 				jQuery('#file'+i).css('height',x+'px');
 			}
 		}
+		else if(type=='border_width')
+		{
+			var x= jQuery('#image_border_width').val();
+			for(var i=1;i<=10;i++)
+			{
+				jQuery('#set_file'+i).css('border-width',x+'px');
+			}
+		}
+		else if(type=='border_radius')
+		{
+			var x= jQuery('#image_border_radius').val();
+			for(var i=1;i<=10;i++)
+			{
+				jQuery('#file'+i).css('border-radius',x+'px');
+			}
+		}
+		else if(type=='border_style')
+		{
+			var x= jQuery('#border_style_image').val();
+			for(var i=1;i<=10;i++)
+			{
+				jQuery('#set_file'+i).css('border-style',x);
+			}
+		}
+		else if(type=='border_radius_div')
+		{
+			var x= jQuery('#div_border_radius').val();
+			for(var i=1;i<=10;i++)
+			{
+				jQuery('#set_file'+i).css('border-radius',x+'px');
+			}
+		}
 }
 
 function Add_answer()
@@ -674,6 +706,15 @@ function Validate()
 						var col=jQuery('#votes_color').val();
 						jQuery('#votes_text_color').val(col);
 					}
+				if (pickerID=='border_color_image')
+					{
+						var col=jQuery('#border_div_image').val();
+						jQuery('#border_color_image').val(col);
+						for(var i=1;i<=10;i++)
+						{
+							jQuery('#set_file'+i+'').css('border-color',col);
+						}
+					}
 			}
 			else
 			{
@@ -1154,6 +1195,39 @@ function Validate()
 									}
 								}
 						}		
+					}
+				if(pickerID=='border_color_image')
+					{
+						var text=jQuery('#border_color_image').val().toLowerCase();
+
+						if(text[0]=="#")
+						{
+							for(var i=1;i<=10;i++)
+							{
+								jQuery('#set_file'+i+'').css('border-color',text);
+							}
+							jQuery('#border_div_image').val(text);
+						}	
+						else
+						{
+							for(i=0; i<colors.length;i++)
+								{
+									var k=colors[i].split(':');
+									if(k[0]==text)
+									{	
+										for(var i=1;i<=10;i++)
+										{
+											jQuery('#set_file'+i+'').css('border-color',k[1]);
+										}
+										jQuery('#border_div_image').val(k[1]);
+										break;
+									}
+									else
+									{
+										continue;
+									}
+								}
+						}		
 					}																					
 			}
 			
@@ -1362,19 +1436,51 @@ function Edit_Juna_IT_Poll(Juna_IT_Poll_id,Juna_IT_Poll_PluginType)
 			// answer_font_size
 			jQuery('#AnswerSize').val(quest_and_set[16]);
 				jQuery('.set_answer').css('font-size',quest_and_set[16]+'px');
+			//image_border_width
+			jQuery('#image_border_width').val(quest_and_set[17]);
+				for(var i=1;i<=10;i++)
+				{
+					jQuery('#set_file'+i).css('border-width',quest_and_set[17]+'px');
+				}
+			//image_border_radius
+			jQuery('#image_border_radius').val(quest_and_set[18]);
+			for(var i=1;i<=10;i++)
+			{
+				jQuery('#file'+i).css('border-radius',quest_and_set[18]+'px');
+			}
+			//div_border_radius
+			jQuery('#div_border_radius').val(quest_and_set[19]);
+				for(var i=1;i<=10;i++)
+				{
+					jQuery('#set_file'+i).css('border-radius',quest_and_set[19]+'px');
+				}
+			//border_color_image
+			jQuery('#border_div_image').val(quest_and_set[20]);
+				jQuery('#border_color_image').val(quest_and_set[20]);
+				for(var i=1;i<=10;i++)
+				{
+					jQuery('#set_file'+i+'').css('border-color',quest_and_set[20]);
+				}
+
+			//border_style_image
+			jQuery('#border_style_image').val(quest_and_set[21]);
+				for(var i=1;i<=10;i++)
+				{
+					jQuery('#set_file'+i).css('border-style',quest_and_set[21]);
+				}
 
 			var answer_and_ansset=question_and_params[1].split(')^%^(');
 						
-			add_answers(quest_and_set[17]);
-			jQuery('#hidden_value').val(quest_and_set[17]);
-			if(quest_and_set[17]>2)
+			add_answers(quest_and_set[22]);
+			jQuery('#hidden_value').val(quest_and_set[22]);
+			if(quest_and_set[22]>2)
 			{
 				jQuery('#remove_answer').css('display','inline');
 			}
 
 			SelectType('img'+Juna_IT_Poll_PluginType);
 
-			for(i=0;i<quest_and_set[17];i++)
+			for(i=0;i<quest_and_set[22];i++)
 			{
 				if(parseInt(i+1)>2)
 				{
@@ -1398,6 +1504,7 @@ function Edit_Juna_IT_Poll(Juna_IT_Poll_id,Juna_IT_Poll_PluginType)
 				// file
 				if(answers_and_anssets[1]!='none')
 				{
+					jQuery('#upload'+parseInt(i+1)+'11').val(answers_and_anssets[1]);
 					jQuery('#file'+parseInt(i+1)+'').attr('src',answers_and_anssets[1]);
 				}
 			}

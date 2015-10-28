@@ -99,7 +99,7 @@
 
 			if(strlen($bgColor)>0 && strlen($borderColor)>0 && strlen($fontFamily)>0 && strlen($fontSize)>0 && strlen($answerColor)>0 && strlen($questionColor)>0 && strlen($vote_button_color)>0 && strlen($buttons_text)>0 && strlen($widg_width)>0)
 			{	
-			 	$wpdb->query($wpdb->prepare("INSERT INTO $table_name4 (id, border_color, bg_color, font_family, font_size, answer_color, answer_hover_color, question_color, vote_button_color, buttons_text_color, widget_div_width, vote_type, vote_color, image_width, image_height, answer_font_family, answer_font_size, QuestionID) VALUES (%d,%s,%s,%s,%d,%s,%s,%s,%s,%s,%s,%s,%s,%d,%d,%s,%d,%d)", '', $borderColor, $bgColor, $fontFamily, $fontSize, $answerColor, $answerHoverColor, $questionColor, $vote_button_color, $buttons_text, $widg_width, $type_vote, $votes_color, '', '', $answer_font_family, $answer_font_size, $count));
+		 		$wpdb->query($wpdb->prepare("INSERT INTO $table_name4 (id, border_color, bg_color, font_family, font_size, answer_color, answer_hover_color, question_color, vote_button_color, buttons_text_color, widget_div_width, vote_type, vote_color, image_width, image_height, answer_font_family, answer_font_size, image_border_width, image_border_radius, div_border_radius, border_color_image, border_style_image, QuestionID) VALUES (%d,%s,%s,%s,%d,%s,%s,%s,%s,%s,%s,%s,%s,%d,%d,%s,%d,%d,%d,%d,%s,%s,%d)", '', $borderColor, $bgColor, $fontFamily, $fontSize, $answerColor, $answerHoverColor, $questionColor, $vote_button_color, $buttons_text, $widg_width, $type_vote, $votes_color, '', '', $answer_font_family, $answer_font_size, '1', '0', '0', '#0073aa', 'solid', $count));
 			}
 			else
 			{
@@ -299,6 +299,27 @@
 	 	<div id="image_div" style=" display:none; position:relative; margin-top: 25px; width:400px;">
 	 		<label id="width_image" style='font-size:14px; color:#0073aa; '>Image's width: </label> <input type="number" onchange="set('width')" name="image_width" id="image_width" min='0' value='90' style="margin-left:76px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>
 	 		<label id="height_image" style='font-size:14px; color:#0073aa; '>Image's height: </label> <input type="number" onchange="set('height')" name="image_height" id="image_height" min='0' value='66' style="margin-left:72px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>
+	 		
+	 		<label id="border_width_image" style='font-size:14px; color:#0073aa; '>Image's border width: </label> <input type="number" onchange="set('border_width')" name="image_border_width" id="image_border_width" min='0' value='1' style="margin-left:28px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>
+	 		<label id="border_radius_image" style='font-size:14px; color:#0073aa; '>Image's border radius: </label> <input type="number" onchange="set('border_radius')" name="image_border_radius" id="image_border_radius" min='0' value='0' style="margin-left:24px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>
+	 		<label id="border_radius_div" style='font-size:14px; color:#0073aa; '>Div's border radius: </label> <input type="number" onchange="set('border_radius_div')" name="div_border_radius" id="div_border_radius" min='0' value='0' style="margin-left:45px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>
+	 		<label style="font-size:14px; color:#0073aa; ">Image's Border Color:  </label>
+	 		<input type="text" value="#0073aa"  id="border_color_image" style="margin-left:29px; width: 170px; border-radius:3px;" onchange="ColorPicker('border_color_image',false)">
+	 		<input type="color"  id="border_div_image" name="border_color_image" style="margin-left:8px; height: 23px; padding: 1px 3px;border-radius:3px;" onchange="ColorPicker('border_color_image',true)" value="#0073aa"> <br><br>
+	 		<label style="font-size:14px; color:#0073aa; ">Image's Border Style:  </label>
+	 		<select name="border_style_image" id="border_style_image" onchange="set('border_style');" style="margin-left:33px">
+	 			<option value='none' selected="select"> None </option>
+	 			<option value='dotted' > Dotted </option>
+	 			<option value='dashed'> Dashed </option>
+	 			<option value='solid'> Solid </option>
+	 			<option value='double'> Double </option>
+	 			<option value='groove'> Groove </option>
+	 			<option value='ridge'> Ridge </option>
+	 			<option value='inset'> Inset </option>
+	 			<option value='outset'> Outset </option>
+	 			<option value='dotted solid'> Dotted Solid </option>
+	 			<option value="dotted solid double dashed">Dotted solid double dashed</option>
+	 		</select> </br></br>
 	 	</div>
 	 	<div id="hover_div" style=" display:none; position:relative; margin-top: 25px; width:400px;">
 	 		<label id="hoverColor_label" style="font-size:14px;color:#0073aa;">Hover Color: </label> 

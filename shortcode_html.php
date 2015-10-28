@@ -108,9 +108,9 @@
 
 		</form>
 	</fieldset>
-	<fieldset   style="position: relative; margin-top:70x; margin-left: 210px; width:550px;height:345px; padding:10px; float: left; box-shadow: 2px -2px 1px 1px #ddd; border: 1px solid #0073aa;border-radius:6px; background-color: white;">
+	<fieldset   style="position: relative; margin-top:70x; margin-left: 210px; width:550px;height:345px; padding:10px; float: left; box-shadow: 2px -2px 1px 1px #ddd; border: 1px solid #0073aa;border-radius:10px; background-color: white;">
 		<legend style="color: #B0AFAF;font-size:16px;color:#0073aa;"><i>Using Shortcote Poll</i></legend>
- 	<iframe width="550" height="310" style="clear:both" src="//www.youtube.com/embed/YoqgM08wcJQ" frameborder="0" allowfullscreen=""></iframe>
+ 	<iframe width="550" height="310" style="clear:both;border-radius:30px;" src="//www.youtube.com/embed/YoqgM08wcJQ" frameborder="0" allowfullscreen=""></iframe>
  	     </fieldset>
  		</form>
 </fieldset>

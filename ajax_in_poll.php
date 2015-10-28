@@ -19,18 +19,14 @@
 		$table_name4 =  $wpdb->prefix . "poll_wp_Settings";	
 		
 		$selected_quest=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Question= %s", $data[0]));
-		//$selected_quest=$wpdb->get_var("SELECT id FROM $table_name Where Question='$data[0]'");
 
 		$selected_ans=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name2 WHERE QuestionID= %d AND Answer= %s", $selected_quest, $answer));
-		//$selected_ans=$wpdb->get_var("SELECT id FROM $table_name2 where QuestionID='$selected_quest' AND Answer='$answer'");
 		
 		$count=$wpdb->get_var($wpdb->prepare("SELECT Count FROM $table_name3 WHERE AnswerID= %s AND QuestionID= %s", $selected_ans, $selected_quest));
-		//$count=$wpdb->get_var("SELECT Count FROM $table_name3 Where AnswerID='$selected_ans' and QuestionID='$selected_quest'");
 		
 		$count=$count+1;
 
 		$ID=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name3 WHERE QuestionID= %s AND AnswerID= %s", $selected_quest, $selected_ans));
-		//$ID=$wpdb->get_var("SELECT id from $table_name3 where QuestionID='$selected_quest' and AnswerID='$selected_ans'");
 
 		$wpdb->query($wpdb->prepare("UPDATE  $table_name3 set Count= %s WHERE  id= %d ",$count, $ID));
 
@@ -132,7 +128,9 @@
 			$Edited_Results[0]->vote_button_color . '%^&^%' . $Edited_Results[0]->buttons_text_color . '%^&^%' . 
 			$Edited_Results[0]->widget_div_width . '%^&^%' . $Edited_Results[0]->vote_type . '%^&^%' . $Edited_Results[0]->vote_color . '%^&^%' . 
 			$Edited_Results[0]->image_width . '%^&^%' . $Edited_Results[0]->image_height . '%^&^%' . $Edited_Results[0]->answer_font_family . '%^&^%' . 
-			$Edited_Results[0]->answer_font_size . '%^&^%' . count($Edited_Answer) . '$#@#$' . $Edited_Answers;
+			$Edited_Results[0]->answer_font_size . '%^&^%' . $Edited_Results[0]->image_border_width . '%^&^%' . $Edited_Results[0]->image_border_radius . '%^&^%' . 
+			$Edited_Results[0]->div_border_radius . '%^&^%' . $Edited_Results[0]->border_color_image . '%^&^%' . $Edited_Results[0]->border_style_image . '%^&^%' . 
+			count($Edited_Answer) . '$#@#$' . $Edited_Answers;
 
 		for($i=0;$i<count($Edited_Answer);$i++)
 		{
