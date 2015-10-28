@@ -148,7 +148,7 @@ Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], w
 == Changelog ==
 
 = 1.2.3 =
-* Changed admin menu for image/video type of poll
+* Changed admin menu for image/video type of poll.
 
 = 1.2.2 =
 * Changed Admin menu design. 
