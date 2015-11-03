@@ -14,7 +14,7 @@ Juna IT Poll - You can use WordPress Juna IT Poll for explaining what your users
 
 ### Wordpress Poll
 
-* [Wordpress Juna IT Poll -All Poll Version](http://juna-it.com/index.php/features/elements/juna-it-plugin/)
+* [Wordpress Juna IT Poll -All Poll Version](http://juna-it.com/index.php/features/elements/juna-it-plugin)
 
 ### Wordpress Poll Demo Version
 
