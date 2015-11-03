@@ -20,7 +20,7 @@ Juna IT Poll - You can use WordPress Juna IT Poll for explaining what your users
 
 * [Standard Poll Version - Juna IT Poll](http://juna-it.com/index.php/poll-demo1)
 * [Pie Chart Version - Juna IT Poll](http://juna-it.com/index.php/poll-demo2)
-* [Image Chart Version - Juna IT Poll](http://juna-it.com/index.php/poll-demo3)
+* [Image/Video Chart Version - Juna IT Poll](http://juna-it.com/index.php/poll-demo3)
 * [Column Chart Version - Juna IT Poll](http://juna-it.com/index.php/poll-demo4)
 
 
