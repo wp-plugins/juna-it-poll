@@ -44,24 +44,21 @@
 		margin:-18px -6px 0 30px;
 	}
 	 </style>
-</style>
 <fieldset   style="position: relative; margin-top:700x; margin-left: 30px; width:1000px;height:805px; padding:10px;  box-shadow: 2px -2px 1px 1px #ddd; border: 1px solid #0073aa;border-radius:6px; background-color: white;">
 		<legend style="color: #B0AFAF;font-size:16px;color:#0073aa;"><i>Widget Shortcode</i></legend>
 
 <div id = 'page_edit_shortcode'>
 
-	
 	<fieldset id="shortcode_section"  style="position: relative; margin-right: 70px; margin-left: 39px; width:300px; float: left; height:220px; padding:10px; box-shadow: 2px -2px 1px 1px #ddd; border: 1px solid #0073aa;border-radius:6px; background-color: white;  ">
  		<legend style="color: #B0AFAF;font-size:16px;color:#0073aa;"><i>Shortcode</i></legend>
- 		<p style="font-size:14px; color:#0073aa; " id="copy">Copy & paste the shortcode directly into any WordPress post or page.</p>
- 		<input type="text" style="font-size:14px;border-radius:2px;" id="shortcode_id" readonly value='[Juna_IT_Poll id="1"]'>
- 		<select id="shortcode_select" onchange="myF()" style="margin-top:15px;border-radius:3px;">
-			<option value="Do You Like Our plugin?">Do You Like Our plugin?</option> 			
- 		</select>
- 	</fieldset>
  		
+ 		<p style="font-size:14px; color:#0073aa; " id="copy">Copy & paste the shortcode directly into any WordPress post or page.</p>
+ 		<input type="text" style="font-size:14px;border-radius:2px;" id="shortcode_id" readonly value='[Juna_IT_Poll id="Poll_1"]'><br><br> 	
+ 		<span style="font-size:14px; color:#0073aa; ">Insert id for shortcode</span>
+ 		<input type="text" id="shortcode_select" onchange="myF()" style="margin-top:15px;border-radius:3px;" value="Poll_1">	
+ 	</fieldset>
 	
-	<fieldset   style="position: relative; margin-top:70x; margin-left: 450px; width:500px;height:395px; padding:10px; box-shadow: 2px -2px 1px 1px #ddd; border: 1px solid #0073aa;border-radius:6px; background-color: white;">
+	<fieldset   style="position: relative; margin-top:90x; margin-right: 10px; width:500px;height:395px; padding:10px; float: left; box-shadow: 2px -2px 1px 1px #ddd; border: 1px solid #0073aa;border-radius:6px; background-color: white;">
 		<legend style="color: #B0AFAF;font-size:16px;color:#0073aa;"><i>Widget Position</i></legend>
 		<div  style="width:350px; margin:0">
 			<div class = 'it_example_parent'>
@@ -107,12 +104,12 @@
 				<span style="color:red; font-size:14px; float:right; margin-top:-10px;" id='Save_poll_position_span'></span>
 
 		</form>
+	
 	</fieldset>
-	<fieldset   style="position: relative; margin-top:70x; margin-left: 210px; width:550px;height:345px; padding:10px; float: left; box-shadow: 2px -2px 1px 1px #ddd; border: 1px solid #0073aa;border-radius:10px; background-color: white;">
+	<fieldset   style="position: relative; margin-top:70x; margin-left: 210px; width:400px;height:345px; padding:10px; float: left; box-shadow: 2px -2px 1px 1px #ddd; border: 1px solid #0073aa;border-radius:10px; background-color: white;">
 		<legend style="color: #B0AFAF;font-size:16px;color:#0073aa;"><i>Using Shortcote Poll</i></legend>
- 	<iframe width="550" height="310" style="clear:both;border-radius:30px;" src="//www.youtube.com/embed/YoqgM08wcJQ" frameborder="0" allowfullscreen=""></iframe>
+ 	<iframe width="560" height="315" style="clear:both; border-radius:30px;" src="//www.youtube.com/embed/YoqgM08wcJQ" frameborder="0" allowfullscreen=""></iframe>
  	     </fieldset>
  		</form>
 </fieldset>
-
 </div>

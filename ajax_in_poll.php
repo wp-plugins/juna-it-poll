@@ -2,45 +2,46 @@
 	add_action( 'wp_ajax_Vote_Click', 'Vote_Click_callback' );
 	add_action( 'wp_ajax_nopriv_Vote_Click', 'Vote_Click_callback' ); // for use outside admin
 
-	function Vote_Click_callback(){
-
+	function Vote_Click_callback()
+	{
 		$data =array();
  
- 		$data=explode('^',$_POST['foobar']);
+		$data=explode('^',$_POST['foobar']);
 
- 		$question=sanitize_text_field($data[0]);
+		$question=sanitize_text_field($data[0]);
 		$answer=sanitize_text_field(trim($data[1]));
 
-	 	global $wpdb;
+		global $wpdb;
 
-	 	$table_name  =  $wpdb->prefix . "poll_wp_Questions";
+		$table_name  =  $wpdb->prefix . "poll_wp_Questions";
 		$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
 		$table_name3 =  $wpdb->prefix . "poll_wp_Results";
-		$table_name4 =  $wpdb->prefix . "poll_wp_Settings";	
-		
-		$selected_quest=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Question= %s", $data[0]));
+		$table_name4 =  $wpdb->prefix . "poll_wp_Settings";
+		$table_name7 =  $wpdb->prefix . "poll_wp_Parameters";
 
-		$selected_ans=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name2 WHERE QuestionID= %d AND Answer= %s", $selected_quest, $answer));
+		$selected_quest=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Juna_IT_Poll_Add_Question_Field= %s", $data[0]));
+
+		$selected_ans=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name2 WHERE Juna_IT_Poll_Add_Question_FieldID= %d AND Juna_IT_Poll_Answers_Input= %s", $selected_quest, $answer));
 		
-		$count=$wpdb->get_var($wpdb->prepare("SELECT Count FROM $table_name3 WHERE AnswerID= %s AND QuestionID= %s", $selected_ans, $selected_quest));
+		$count=$wpdb->get_var($wpdb->prepare("SELECT Juna_IT_Poll_Count FROM $table_name3 WHERE Juna_IT_Poll_Answers_InputID= %s AND Juna_IT_Poll_Add_Question_FieldID= %s", $selected_ans, $selected_quest));
 		
 		$count=$count+1;
 
-		$ID=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name3 WHERE QuestionID= %s AND AnswerID= %s", $selected_quest, $selected_ans));
+		$ID=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name3 WHERE Juna_IT_Poll_Add_Question_FieldID= %s AND Juna_IT_Poll_Answers_InputID= %s", $selected_quest, $selected_ans));
 
-		$wpdb->query($wpdb->prepare("UPDATE  $table_name3 set Count= %s WHERE  id= %d ",$count, $ID));
+		$wpdb->query($wpdb->prepare("UPDATE  $table_name3 set Juna_IT_Poll_Count= %s WHERE  id= %d ",$count, $ID));
 
 		//Sending data to Ajax
 
-		$counts_array=$wpdb->get_results($wpdb->prepare("SELECT count FROM $table_name3 WHERE id in (SELECT id FROM $table_name3 WHERE QuestionID= %s)", $selected_quest ));
+		$counts_array=$wpdb->get_results($wpdb->prepare("SELECT Juna_IT_Poll_Count FROM $table_name3 WHERE id in (SELECT id FROM $table_name3 WHERE Juna_IT_Poll_Add_Question_FieldID= %s)", $selected_quest ));
 
-		$vote_type=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name4 WHERE QuestionID= %s", $selected_quest));
+		$vote_type=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name7 WHERE Juna_IT_Poll_Add_Question_FieldID= %s", $selected_quest));
 
-		echo  $vote_type[0]->vote_type . '%^&^%' . $vote_type[0]->vote_color . '%^&^%' . $answer_count;
+		echo  $vote_type[0]->Juna_IT_Poll_Votes_Type_Radio . '%^&^%' . $vote_type[0]->Juna_IT_Poll_Input_Vote_Color . '%^&^%' . $answer_count;
 
 		for($i=0; $i<count($counts_array); $i++)
 		{
-			echo $counts_array[$i]->count."^";
+			echo $counts_array[$i]->Juna_IT_Poll_Count."^";
 		}
 
 		die(); // this is required to return a proper result
@@ -53,32 +54,59 @@
 	{
 		global $wpdb;
 
-	 	$data=sanitize_text_field($_POST["foobar"]); 
+		$data=sanitize_text_field($_POST["foobar"]); 
 
-	 	$table_name  =  $wpdb->prefix . "poll_wp_Questions";
+		$table_name  =  $wpdb->prefix . "poll_wp_Questions";
 		$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
 		$table_name3 =  $wpdb->prefix . "poll_wp_Results";
-		$table_name4 =  $wpdb->prefix . "poll_wp_Settings";	
+		$table_name4 =  $wpdb->prefix . "poll_wp_Settings";
+		$table_name7 =  $wpdb->prefix . "poll_wp_Parameters";
 		
-		$selected_quest=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Question= %s", $data ));
+		$selected_quest=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Juna_IT_Poll_Add_Question_Field= %s", $data ));
 
-		$answers=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE QuestionID= %s", $selected_quest));
+		$answers=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE Juna_IT_Poll_Add_Question_FieldID= %s", $selected_quest));
 
-		$results=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name3 WHERE QuestionID= %s", $selected_quest));
+		$results=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name3 WHERE Juna_IT_Poll_Add_Question_FieldID= %s", $selected_quest));
 
-		$vote_type=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name4 WHERE QuestionID= %s", $selected_quest));
+		$vote_type=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name7 WHERE Juna_IT_Poll_Add_Question_FieldID= %s", $selected_quest));
 
-		echo  $vote_type[0]->vote_type . '%^&^%' . $vote_type[0]->vote_color . '%^&^%' . $answer_count;
+		echo  $vote_type[0]->Juna_IT_Poll_Votes_Type_Radio . '%^&^%' . $vote_type[0]->Juna_IT_Poll_Input_Vote_Color . '%^&^%' . $answer_count;
 
 		for($i=0;$i<count($answers);$i++)
 		{
-			$answer_count=$results[$i]->Count . "^";
+			$answer_count=$results[$i]->Juna_IT_Poll_Count . "^";
 			echo $answer_count;
 		}
 
 		die();
 	} 
 
+	add_action( 'wp_ajax_Update_votes', 'Update_votes_callback' );
+	add_action( 'wp_ajax_nopriv_Update_votes', 'Update_votes_callback' );
+
+	function Update_votes_callback()
+	{
+		$votes=sanitize_text_field($_POST['foobar']);
+		$data=explode('$#$',$votes);
+		$vote=explode('*&^&*', $data[1]);
+
+		global $wpdb;
+
+		$table_name  =  $wpdb->prefix . "poll_wp_Questions";
+		$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
+		$table_name3 =  $wpdb->prefix . "poll_wp_Results";
+		
+		$selected_quest=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Question= %s", $data[0] ));
+
+		$answers=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE QuestionID= %s", $selected_quest));
+
+		for($i=0;$i<count($answers);$i++)
+		{
+			$wpdb->query($wpdb->prepare("UPDATE  $table_name3 set Count= %s WHERE  AnswerID= %d ",$vote[$i], $answers[$i]->id));
+		}
+		
+		die();
+	}
 	add_action( 'wp_ajax_Delete_Juna_IT_Poll_Click', 'Delete_Juna_IT_Poll_Click_Callback' );
 	add_action( 'wp_ajax_nopriv_Delete_Juna_IT_Poll_Click', 'Delete_Juna_IT_Poll_Click_Callback' );
 
@@ -90,13 +118,15 @@
 
 		$table_name  =  $wpdb->prefix . "poll_wp_Questions";
 		$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
-		$table_name3 =  $wpdb->prefix . "poll_wp_Results";
+		$table_name3 =  $wpdb->prefix . "poll_wp_Results";	
 		$table_name4 =  $wpdb->prefix . "poll_wp_Settings";
+		$table_name7 =  $wpdb->prefix . "poll_wp_Parameters";
 
 		$wpdb->query($wpdb->prepare("DELETE FROM $table_name WHERE id= %d", $Delete_Juna_IT_Poll_id));
-		$wpdb->query($wpdb->prepare("DELETE FROM $table_name2 WHERE QuestionID= %d", $Delete_Juna_IT_Poll_id));
-		$wpdb->query($wpdb->prepare("DELETE FROM $table_name3 WHERE QuestionID= %d", $Delete_Juna_IT_Poll_id));
-		$wpdb->query($wpdb->prepare("DELETE FROM $table_name4 WHERE QuestionID= %d", $Delete_Juna_IT_Poll_id));
+		$wpdb->query($wpdb->prepare("DELETE FROM $table_name2 WHERE Juna_IT_Poll_Add_Question_FieldID= %d", $Delete_Juna_IT_Poll_id));
+		$wpdb->query($wpdb->prepare("DELETE FROM $table_name3 WHERE Juna_IT_Poll_Add_Question_FieldID= %d", $Delete_Juna_IT_Poll_id));
+		$wpdb->query($wpdb->prepare("DELETE FROM $table_name4 WHERE Juna_IT_Poll_Add_Question_FieldID= %d", $Delete_Juna_IT_Poll_id));
+		$wpdb->query($wpdb->prepare("DELETE FROM $table_name7 WHERE Juna_IT_Poll_Add_Question_FieldID= %d", $Delete_Juna_IT_Poll_id));
 
 		die();
 	}
@@ -113,32 +143,42 @@
 		$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
 		$table_name3 =  $wpdb->prefix . "poll_wp_Results";
 		$table_name4 =  $wpdb->prefix . "poll_wp_Settings";
+		$table_name7 =  $wpdb->prefix . "poll_wp_Parameters";
 
 		$Edited_Quest=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name WHERE id= %d", $Edit_Juna_IT_Poll_id));
-		$Edited_Answer=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE QuestionID= %d", $Edit_Juna_IT_Poll_id));
-		$Edited_Results=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name4 WHERE QuestionID= %d", $Edit_Juna_IT_Poll_id));
-		if($Edited_Results[0]->answer_hover_color=='')
-		{
-			$Edited_Results[0]->answer_hover_color='none';
-		}
+		$Edited_Answer=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE Juna_IT_Poll_Add_Question_FieldID= %d", $Edit_Juna_IT_Poll_id));
+		$Edited_Results=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name4 WHERE Juna_IT_Poll_Add_Question_FieldID= %d", $Edit_Juna_IT_Poll_id));
+		$Edited_Sets=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name7 WHERE Juna_IT_Poll_Add_Question_FieldID= %d", $Edit_Juna_IT_Poll_id));
 
-		echo $Edited_Quest[0]->Question . '%^&^%' . $Edited_Results[0]->border_color . '%^&^%' . $Edited_Results[0]->bg_color . '%^&^%' . 
-			$Edited_Results[0]->font_family . '%^&^%' . $Edited_Results[0]->font_size . '%^&^%' . $Edited_Results[0]->answer_color . '%^&^%' . 
-			$Edited_Results[0]->answer_hover_color . '%^&^%' . $Edited_Results[0]->question_color . '%^&^%' . 
-			$Edited_Results[0]->vote_button_color . '%^&^%' . $Edited_Results[0]->buttons_text_color . '%^&^%' . 
-			$Edited_Results[0]->widget_div_width . '%^&^%' . $Edited_Results[0]->vote_type . '%^&^%' . $Edited_Results[0]->vote_color . '%^&^%' . 
-			$Edited_Results[0]->image_width . '%^&^%' . $Edited_Results[0]->image_height . '%^&^%' . $Edited_Results[0]->answer_font_family . '%^&^%' . 
-			$Edited_Results[0]->answer_font_size . '%^&^%' . $Edited_Results[0]->image_border_width . '%^&^%' . $Edited_Results[0]->image_border_radius . '%^&^%' . 
-			$Edited_Results[0]->div_border_radius . '%^&^%' . $Edited_Results[0]->border_color_image . '%^&^%' . $Edited_Results[0]->border_style_image . '%^&^%' . 
-			count($Edited_Answer) . '$#@#$' . $Edited_Answers;
-
+		echo $Edited_Quest[0]->Juna_IT_Poll_Add_Question_Field . '%^&^%' . $Edited_Results[0]->Juna_IT_Poll_Question_Font_Family . '%^&^%' . 
+			 $Edited_Results[0]->Juna_IT_Poll_Question_Font_Size . '%^&^%' . $Edited_Results[0]->Juna_IT_Poll_Input_Bg_Color . '%^&^%' . 
+			 $Edited_Results[0]->Juna_IT_Poll_Input_Color . '%^&^%' . $Edited_Results[0]->Juna_IT_Poll_Question_Border_Style . '%^&^%' . 
+			 $Edited_Results[0]->Juna_IT_Poll_Question_Border_Width . '%^&^%' . $Edited_Results[0]->Juna_IT_Poll_Question_Border_Radius . '%^&^%' . 
+			 $Edited_Results[0]->Juna_IT_Poll_Input_Border_Color . '%^&^%' . $Edited_Results[0]->Juna_IT_Poll_Answer_Font_Family . '%^&^%' . 
+			 $Edited_Results[0]->Juna_IT_Poll_Answer_Font_Size . '%^&^%' . $Edited_Results[0]->Juna_IT_Poll_Input_Answer_Bg_Color . '%^&^%' . 
+			 $Edited_Results[0]->Juna_IT_Poll_Input_Answer_Color . '%^&^%' . $Edited_Results[0]->Juna_IT_Poll_Answer_Border_Style . '%^&^%' . 
+			 $Edited_Results[0]->Juna_IT_Poll_Answer_Border_Width . '%^&^%' . $Edited_Results[0]->Juna_IT_Poll_Answer_Border_Radius . '%^&^%' . 
+			 $Edited_Results[0]->Juna_IT_Poll_Input_Answer_Border_Color . '%^&^%' . $Edited_Results[0]->Juna_IT_Poll_Between_Answer . '%^&^%' . 
+			 $Edited_Sets[0]->Juna_IT_Poll_Widget_Width . '%^&^%' . $Edited_Sets[0]->Juna_IT_Poll_Input_Background_Color . '%^&^%' . 
+			 $Edited_Sets[0]->Juna_IT_Poll_Widget_Border_Width . '%^&^%' . $Edited_Sets[0]->Juna_IT_Poll_Widget_Border_Radius . '%^&^%' . 
+			 $Edited_Sets[0]->Juna_IT_Poll_Input_Border_Color . '%^&^%' . $Edited_Sets[0]->Juna_IT_Poll_Widget_Border_Style . '%^&^%' . 
+			 $Edited_Sets[0]->Juna_IT_Poll_Votes_Type_Radio . '%^&^%' . $Edited_Sets[0]->Juna_IT_Poll_Input_Vote_Color . '%^&^%' . 
+			 $Edited_Sets[0]->Juna_IT_Poll_Input_Vote_Button_Color . '%^&^%' . $Edited_Sets[0]->Juna_IT_Poll_Input_Vote_Button_Color_Color . '%^&^%' . 
+			 $Edited_Sets[0]->Juna_IT_Poll_Margin_Right . '%^&^%' . $Edited_Sets[0]->Juna_IT_Poll_Button_Width . '%^&^%' . 
+			 $Edited_Sets[0]->Juna_IT_Poll_Button_Border_Radius . '%^&^%' . $Edited_Sets[0]->Juna_IT_Poll_Button_Font_Family . '%^&^%' . 
+			 $Edited_Sets[0]->Juna_IT_Poll_Button_Font_Size . '%^&^%' . $Edited_Sets[0]->Juna_IT_Poll_Button_Text . '%^&^%' . 
+			 $Edited_Sets[0]->Juna_IT_Poll_Image_Width . '%^&^%' . $Edited_Sets[0]->Juna_IT_Poll_Image_Height . '%^&^%' . 
+			 $Edited_Sets[0]->Juna_IT_Poll_Image_Border_Width . '%^&^%' . $Edited_Sets[0]->Juna_IT_Poll_Image_Border_Radius . '%^&^%' . 
+			 $Edited_Sets[0]->Juna_IT_Poll_Div_Border_Radius . '%^&^%' . $Edited_Sets[0]->Juna_IT_Poll_Input_Image_Border_Color . '%^&^%' . 
+			 $Edited_Sets[0]->Juna_IT_Poll_Image_Border_Style . '%^&^%' . count($Edited_Answer) . '$#@#$' . $Edited_Answers;
+		
 		for($i=0;$i<count($Edited_Answer);$i++)
 		{
-			if($Edited_Answer[$i]->File=='')
+			if($Edited_Answer[$i]->Juna_IT_Poll_Upload_File=='')
 			{
-				$Edited_Answer[$i]->File='none';
+				$Edited_Answer[$i]->Juna_IT_Poll_Upload_File='none';
 			}
-			echo $Edited_Answers=$Edited_Answer[$i]->Answer . '%***%' . $Edited_Answer[$i]->File . '%***%' . $Edited_Answer[$i]->Answer_bg_color . ')^%^(';
+			echo $Edited_Answers=$Edited_Answer[$i]->Juna_IT_Poll_Answers_Input . '%***%' . $Edited_Answer[$i]->Juna_IT_Poll_Upload_File . '%***%' . $Edited_Answer[$i]->Juna_IT_Poll_Input_Add_Answer_Bg . ')^%^(';
 		}
 
 		die();

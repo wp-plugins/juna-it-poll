@@ -1,114 +1,125 @@
-<?php
-
+ <?php
 	if(!current_user_can('manage_options'))
 	{
 		die('Access Denied');
 	}
-	global $wpdb;		
-
-	$table_name  =  $wpdb->prefix . "poll_wp_Questions";
+	global $wpdb;	
+	wp_enqueue_media();
+	wp_enqueue_script( 'custom-header' );
+	$table_name  =  $wpdb->prefix . "poll_wp_Questions"; 
 	$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
-	$table_name3 =  $wpdb->prefix . "poll_wp_Results";
-	$table_name4 =  $wpdb->prefix . "poll_wp_Settings";	
+	$table_name3 =  $wpdb->prefix . "poll_wp_Results";	
+	$table_name4 =  $wpdb->prefix . "poll_wp_Settings"; 
+	$table_name5 =  $wpdb->prefix . "poll_wp_position"; 
+	$table_name6 =  $wpdb->prefix . "poll_wp_font_family"; 
+	$table_name7 =  $wpdb->prefix . "poll_wp_Parameters"; 
 
 	if(isset ($_POST['Add_new_Juna_IT_Poll_Save_button']))
 	{
-		$question=sanitize_text_field(stripslashes($_POST["question"]));
-		$k=sanitize_text_field($_POST['AnswersCount']);
-		$image=sanitize_text_field($_POST["img_name"]);
-		$answerColors=array();
+		$Juna_IT_Poll_Add_Question_Field=sanitize_text_field($_POST['Juna_IT_Poll_Add_Question_Field']);
+		$Juna_IT_Poll_Plugin_Type_Text_Readonly=sanitize_text_field($_POST['Juna_IT_Poll_Plugin_Type_Text_Readonly']);
 
-		if($image==2 || $image==4)
+		if($Juna_IT_Poll_Plugin_Type_Text_Readonly==1)
 		{
-			for($i=1; $i<=$k; $i++)
+			$Juna_IT_Poll_Answers_Count=sanitize_text_field($_POST['Juna_IT_Poll_Answers_Count']);
+			delete($Juna_IT_Poll_Add_Question_Field);
+
+			$wpdb->query($wpdb->prepare("INSERT INTO $table_name (id, Juna_IT_Poll_Add_Question_Field, Juna_IT_Poll_Plugin_Type_Text_Readonly) VALUES (%d,%s,%s) ", '', $Juna_IT_Poll_Add_Question_Field,$Juna_IT_Poll_Plugin_Type_Text_Readonly));
+			
+			for($i=1; $i<=$Juna_IT_Poll_Answers_Count; $i++)
 			{
-				$answerColors[$i]=sanitize_text_field($_POST['color' . $i]);
+				$Juna_IT_Poll_Answer_Colors[$i]='#ffffff';
 			}
-		}			
-		else
-		{
-			for($i=1; $i<=$k; $i++)
+			
+			for($i=1; $i<=$Juna_IT_Poll_Answers_Count; $i++)
 			{
-				$answerColors[$i]='#ffffff';
+				$Juna_IT_Poll_Answers[$i]=sanitize_text_field($_POST['Juna_IT_Poll_Answers_Input_' . $i]);
 			}
+
+			$Juna_IT_Poll_Add_Question_FieldID=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name  WHERE id > %d order by id desc limit 1  ", 0));
+
+			$Juna_IT_Poll_Question_Font_Family=sanitize_text_field($_POST['Juna_IT_Poll_Question_Font_Family']);
+			$Juna_IT_Poll_Question_Font_Size=sanitize_text_field($_POST['Juna_IT_Poll_Question_Font_Size']).'px';
+			$Juna_IT_Poll_Input_Bg_Color=sanitize_text_field($_POST['Juna_IT_Poll_Input_Bg_Color']);
+			$Juna_IT_Poll_Input_Color=sanitize_text_field($_POST['Juna_IT_Poll_Input_Color']);
+			$Juna_IT_Poll_Question_Border_Style='None';
+			$Juna_IT_Poll_Question_Border_Width='0px';
+			$Juna_IT_Poll_Question_Border_Radius='0px';
+			$Juna_IT_Poll_Input_Border_Color='#000000';
+			$Juna_IT_Poll_Answer_Font_Family=sanitize_text_field($_POST['Juna_IT_Poll_Answer_Font_Family']);
+			$Juna_IT_Poll_Answer_Font_Size=sanitize_text_field($_POST['Juna_IT_Poll_Answer_Font_Size']).'px';
+			$Juna_IT_Poll_Input_Answer_Bg_Color=sanitize_text_field($_POST['Juna_IT_Poll_Input_Answer_Bg_Color']);
+			$Juna_IT_Poll_Input_Answer_Color=sanitize_text_field($_POST['Juna_IT_Poll_Input_Answer_Color']);
+			$Juna_IT_Poll_Answer_Border_Style='None';
+			$Juna_IT_Poll_Answer_Border_Width='0px';
+			$Juna_IT_Poll_Answer_Border_Radius='0px';
+			$Juna_IT_Poll_Input_Answer_Border_Color='#000000';
+			$Juna_IT_Poll_Between_Answer='0px';
+
+			$wpdb->query($wpdb->prepare("INSERT INTO $table_name4 (id, Juna_IT_Poll_Question_Font_Family, Juna_IT_Poll_Question_Font_Size, 
+				Juna_IT_Poll_Input_Bg_Color, Juna_IT_Poll_Input_Color, Juna_IT_Poll_Question_Border_Style, Juna_IT_Poll_Question_Border_Width, 
+				Juna_IT_Poll_Question_Border_Radius, Juna_IT_Poll_Input_Border_Color, Juna_IT_Poll_Answer_Font_Family, Juna_IT_Poll_Answer_Font_Size, 
+				Juna_IT_Poll_Input_Answer_Bg_Color, Juna_IT_Poll_Input_Answer_Color, Juna_IT_Poll_Answer_Border_Style, Juna_IT_Poll_Answer_Border_Width, 
+				Juna_IT_Poll_Answer_Border_Radius, Juna_IT_Poll_Input_Answer_Border_Color, Juna_IT_Poll_Between_Answer, Juna_IT_Poll_Add_Question_FieldID) 
+			VALUES (%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%d) ", '', $Juna_IT_Poll_Question_Font_Family, $Juna_IT_Poll_Question_Font_Size, 
+			$Juna_IT_Poll_Input_Bg_Color, $Juna_IT_Poll_Input_Color, $Juna_IT_Poll_Question_Border_Style, $Juna_IT_Poll_Question_Border_Width, 
+			$Juna_IT_Poll_Question_Border_Radius, $Juna_IT_Poll_Input_Border_Color, $Juna_IT_Poll_Answer_Font_Family, $Juna_IT_Poll_Answer_Font_Size, 
+			$Juna_IT_Poll_Input_Answer_Bg_Color, $Juna_IT_Poll_Input_Answer_Color, $Juna_IT_Poll_Answer_Border_Style, $Juna_IT_Poll_Answer_Border_Width, 
+			$Juna_IT_Poll_Answer_Border_Radius, $Juna_IT_Poll_Input_Answer_Border_Color, $Juna_IT_Poll_Between_Answer, $Juna_IT_Poll_Add_Question_FieldID));
+
+	 		$Juna_IT_Poll_Widget_Width=sanitize_text_field($_POST['Juna_IT_Poll_Widget_Width']).'px';
+			$Juna_IT_Poll_Input_Background_Color=sanitize_text_field($_POST['Juna_IT_Poll_Input_Background_Color']);
+			$Juna_IT_Poll_Widget_Border_Width='1px';
+			$Juna_IT_Poll_Widget_Border_Radius='6px';
+			$Juna_IT_Poll_Input_Border_Color=sanitize_text_field($_POST['Juna_IT_Poll_Input_Border_Color']);
+			$Juna_IT_Poll_Widget_Border_Style='solid';
+			$Juna_IT_Poll_Votes_Type_Radio=sanitize_text_field($_POST['Juna_IT_Poll_Votes_Type_Radio']);
+			$Juna_IT_Poll_Input_Vote_Color=sanitize_text_field($_POST['Juna_IT_Poll_Input_Vote_Color']);
+			$Juna_IT_Poll_Input_Vote_Button_Color=sanitize_text_field($_POST['Juna_IT_Poll_Input_Vote_Button_Color']);
+			$Juna_IT_Poll_Input_Vote_Button_Color_Color=sanitize_text_field($_POST['Juna_IT_Poll_Input_Vote_Button_Color_Color']);
+			$Juna_IT_Poll_Margin_Right='20px';
+			$Juna_IT_Poll_Button_Width='62px';
+			$Juna_IT_Poll_Button_Border_Radius='10px';
+			$Juna_IT_Poll_Button_Font_Family='Abadi MT Condensed Light';
+			$Juna_IT_Poll_Button_Font_Size='14px';
+			$Juna_IT_Poll_Button_Text='VOTE';
+			$Juna_IT_Poll_Image_Width='0px';
+			$Juna_IT_Poll_Image_Height='0px';
+			$Juna_IT_Poll_Image_Border_Width='0px';
+			$Juna_IT_Poll_Image_Border_Radius='0px';
+			$Juna_IT_Poll_Div_Border_Radius='0px';
+			$Juna_IT_Poll_Input_Image_Border_Color='#000000';
+			$Juna_IT_Poll_Image_Border_Style='None';
+
+			$wpdb->query($wpdb->prepare("INSERT INTO $table_name7 (id, Juna_IT_Poll_Widget_Width, Juna_IT_Poll_Input_Background_Color, 
+				Juna_IT_Poll_Widget_Border_Width, Juna_IT_Poll_Widget_Border_Radius, Juna_IT_Poll_Input_Border_Color, Juna_IT_Poll_Widget_Border_Style, 
+				Juna_IT_Poll_Votes_Type_Radio, Juna_IT_Poll_Input_Vote_Color, Juna_IT_Poll_Input_Vote_Button_Color, 
+				Juna_IT_Poll_Input_Vote_Button_Color_Color, Juna_IT_Poll_Margin_Right, Juna_IT_Poll_Button_Width, 
+				Juna_IT_Poll_Button_Border_Radius, Juna_IT_Poll_Button_Font_Family, Juna_IT_Poll_Button_Font_Size, Juna_IT_Poll_Button_Text, 
+				Juna_IT_Poll_Image_Width, Juna_IT_Poll_Image_Height, Juna_IT_Poll_Image_Border_Width, Juna_IT_Poll_Image_Border_Radius, Juna_IT_Poll_Div_Border_Radius, 
+				Juna_IT_Poll_Input_Image_Border_Color, Juna_IT_Poll_Image_Border_Style, Juna_IT_Poll_Add_Question_FieldID) 
+			VALUES (%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%d) ", '', $Juna_IT_Poll_Widget_Width, $Juna_IT_Poll_Input_Background_Color, 
+			$Juna_IT_Poll_Widget_Border_Width, $Juna_IT_Poll_Widget_Border_Radius, $Juna_IT_Poll_Input_Border_Color, $Juna_IT_Poll_Widget_Border_Style, $Juna_IT_Poll_Votes_Type_Radio, 
+			$Juna_IT_Poll_Input_Vote_Color, $Juna_IT_Poll_Input_Vote_Button_Color, $Juna_IT_Poll_Input_Vote_Button_Color_Color, $Juna_IT_Poll_Margin_Right, $Juna_IT_Poll_Button_Width, 
+			$Juna_IT_Poll_Button_Border_Radius, $Juna_IT_Poll_Button_Font_Family, $Juna_IT_Poll_Button_Font_Size, $Juna_IT_Poll_Button_Text, $Juna_IT_Poll_Image_Width, 
+			$Juna_IT_Poll_Image_Height, $Juna_IT_Poll_Image_Border_Width, $Juna_IT_Poll_Image_Border_Radius, $Juna_IT_Poll_Div_Border_Radius, $Juna_IT_Poll_Input_Image_Border_Color, 
+			$Juna_IT_Poll_Image_Border_Style, $Juna_IT_Poll_Add_Question_FieldID));
+
+	 		if($Juna_IT_Poll_Plugin_Type_Text_Readonly!=3)
+	 		{
+	 			for($i=1; $i<=$Juna_IT_Poll_Answers_Count; $i++)
+				{
+					$wpdb->query($wpdb->prepare("INSERT INTO $table_name2 (id, Juna_IT_Poll_Answers_Input, Juna_IT_Poll_Upload_File, Juna_IT_Poll_Input_Add_Answer_Bg, Juna_IT_Poll_Add_Question_FieldID) VALUES (%d,%s,%s,%s,%d)",'',$Juna_IT_Poll_Answers[$i],'',$Juna_IT_Poll_Answer_Colors[$i],$Juna_IT_Poll_Add_Question_FieldID));
+					
+					$Juna_IT_Poll_Answers_ID=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name2 WHERE Juna_IT_Poll_Answers_Input= %s and Juna_IT_Poll_Add_Question_FieldID= %d ", $Juna_IT_Poll_Answers[$i], $Juna_IT_Poll_Add_Question_FieldID ));
+					$wpdb->query($wpdb->prepare("INSERT INTO $table_name3 (id, Juna_IT_Poll_Add_Question_FieldID, Juna_IT_Poll_Answers_InputID, Juna_IT_Poll_Count) VALUES (%d,%d,%d,%d)",'', $Juna_IT_Poll_Add_Question_FieldID, $Juna_IT_Poll_Answers_ID, 0));
+				}
+	 		} 		
 		}		
-		if($image!=3)
-		{
-			//insert data to poll_wp_Question	
-
-			delete($question);
-			if(strlen($question)>0 && strlen($image)>0)
-			{	
-				$wpdb->query($wpdb->prepare("INSERT INTO $table_name (id, Question, PluginType) VALUES (%d,%s,%s) ", '', $question,$image ));
-			}	
-			else 
-			{
-				return false;
-			}	
-
-			//insert data to poll_wp_Answers
-			$count=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name  WHERE id > %d order by id desc limit 1  ", 0));
-
-			$answers_array=array();
-			$answers_array[0]=null;
-			$question=addslashes($question);
-
-			for($i=1; $i<=$k; $i++)
-			{
-				$answers_array[$i]=sanitize_text_field(stripslashes($_POST['answer' . $i]));
-
-				if(strlen($answers_array[$i])>0 && strlen($answerColors[$i])>0 && strlen($count)>0)
-				{
-					$wpdb->query($wpdb->prepare("INSERT INTO $table_name2 (id, Answer, File, Answer_bg_color, QuestionID) VALUES (%d,%s,%s,%s,%d)",'',$answers_array[$i],'',$answerColors[$i],$count));
-				}	
-				else 
-				{
-					return false;
-				}
-
-				$answers_array[$i]=addslashes($answers_array[$i]);
-				$ans_id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name2 WHERE Answer= %s and QuestionID=(SELECT id FROM $table_name WHERE Question= %s) ", $answers_array[$i],$question ));
-				$ques_id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Question= %s",$question));
-
-				//insert data to poll_wp_Results
-				if(strlen($ques_id)>0 && strlen($ans_id)>0) 
-				{	
-					$wpdb->query($wpdb->prepare("INSERT INTO $table_name3 (id, QuestionID, AnswerID,  count) VALUES (%d,%d,%d,%d)",'', $ques_id, $ans_id, 0));
-				}
-				else
-				{
-					return false;	
-				}	
-			}
-
-			//insert data to poll_wp_Settings
-			$bgColor=sanitize_text_field($_POST['bg_color']);
-			$borderColor=sanitize_text_field($_POST['border_color']);
-			$fontFamily=sanitize_text_field($_POST['Text_Font']);
-			$fontSize=sanitize_text_field($_POST['fontSize']);
-			$answerColor=sanitize_text_field($_POST['answer_color']);
-			$answerHoverColor=sanitize_text_field($_POST['selectedHoverColor']);
-			$questionColor=sanitize_text_field($_POST['Question_color']);
-			$vote_button_color=sanitize_text_field($_POST['vote_button_color']);
-			$buttons_text=sanitize_text_field($_POST['buttons_text']);
-			$widg_width=sanitize_text_field($_POST['widg_width']);
-			$type_vote=sanitize_text_field($_POST['votes_type']);
-			$votes_color=sanitize_text_field($_POST['votes_color']);
-			$answer_font_size=sanitize_text_field($_POST['AnswerSize']);
-			$answer_font_family=sanitize_text_field($_POST['Answer_Font']);
-
-			if(strlen($bgColor)>0 && strlen($borderColor)>0 && strlen($fontFamily)>0 && strlen($fontSize)>0 && strlen($answerColor)>0 && strlen($questionColor)>0 && strlen($vote_button_color)>0 && strlen($buttons_text)>0 && strlen($widg_width)>0)
-			{	
-		 		$wpdb->query($wpdb->prepare("INSERT INTO $table_name4 (id, border_color, bg_color, font_family, font_size, answer_color, answer_hover_color, question_color, vote_button_color, buttons_text_color, widget_div_width, vote_type, vote_color, image_width, image_height, answer_font_family, answer_font_size, image_border_width, image_border_radius, div_border_radius, border_color_image, border_style_image, QuestionID) VALUES (%d,%s,%s,%s,%d,%s,%s,%s,%s,%s,%s,%s,%s,%d,%d,%s,%d,%d,%d,%d,%s,%s,%d)", '', $borderColor, $bgColor, $fontFamily, $fontSize, $answerColor, $answerHoverColor, $questionColor, $vote_button_color, $buttons_text, $widg_width, $type_vote, $votes_color, '', '', $answer_font_family, $answer_font_size, '1', '0', '0', '#0073aa', 'solid', $count));
-			}
-			else
-			{
-				return false;
-			}
-		}
 	}
 
 	$Juna_IT_Poll_title_table=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name WHERE id > %d",1));
+	$Juna_IT_Poll_Font_Family=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name6 WHERE id > %d",0));
 ?>
 <div id="Juna_IT_Poll_main_first_div"> 
 	<div class="Juna_IT_Poll_Add_Poll_Footer_Div">
@@ -139,9 +150,9 @@
 		<?php for($i=0;$i<count($Juna_IT_Poll_title_table);$i++) {?>
 		<tr>
 			<td class='Juna_IT_Poll_id_item'><B><I><?php echo $i+2 ;?></I></B></td>
-			<td class='Juna_IT_Poll_title_item'><B><I><?php echo $Juna_IT_Poll_title_table[$i]->Question ; ?></I></B></td>	
-			<td class='Juna_IT_Poll_type_item'><B><I><?php if($Juna_IT_Poll_title_table[$i]->PluginType==1){echo 'Standart Poll';}else if($Juna_IT_Poll_title_table[$i]->PluginType==2){echo 'Pie Chart';}else if($Juna_IT_Poll_title_table[$i]->PluginType==3){echo 'Image/Video';}else{echo 'Column Chart';} ;?></I></B></td>			
-			<td class='Juna_IT_Poll_edit_item' onclick="Edit_Juna_IT_Poll(<?php echo $Juna_IT_Poll_title_table[$i]->id; ?>,<?php echo $Juna_IT_Poll_title_table[$i]->PluginType; ?>)"><B><I>Edit</I></B></td>
+			<td class='Juna_IT_Poll_title_item'><B><I><?php echo $Juna_IT_Poll_title_table[$i]->Juna_IT_Poll_Add_Question_Field ; ?></I></B></td>	
+			<td class='Juna_IT_Poll_type_item'><B><I><?php if($Juna_IT_Poll_title_table[$i]->Juna_IT_Poll_Plugin_Type_Text_Readonly==1){echo 'Standart Poll';}else if($Juna_IT_Poll_title_table[$i]->Juna_IT_Poll_Plugin_Type_Text_Readonly==2){echo 'Pie Chart';}else if($Juna_IT_Poll_title_table[$i]->Juna_IT_Poll_Plugin_Type_Text_Readonly==3){echo 'Image/Video';}else{echo 'Column Chart';} ;?></I></B></td>			
+			<td class='Juna_IT_Poll_edit_item' onclick="Edit_Juna_IT_Poll(<?php echo $Juna_IT_Poll_title_table[$i]->id; ?>,<?php echo $Juna_IT_Poll_title_table[$i]->Juna_IT_Poll_Plugin_Type_Text_Readonly; ?>)"><B><I>Edit</I></B></td>
 			<td class='Juna_IT_Poll_delete_item' onclick="Delete_Juna_IT_Poll(<?php echo $Juna_IT_Poll_title_table[$i]->id ; ?>)"><B><I>Delete</I></B></td>
 		</tr>
 		<?php } ?>
@@ -150,553 +161,543 @@
 			
 	</table>
 </div>
-<form method="post" id="AdminForm" enctype="multipart/form-data" onsubmit="if(Validate()==false) return false;" >
-		<div id = 'display_media_button'  >
-			<span id = 'close_display_media_button' ></span>
-			<h2 id = 'h2_1'>Вставить медиафайл</h2>
-				<div  class = 'border_bottom_none' id = 'select-file-pc' >
-					Загрузить файлы
-				</div>
-				<div  class = 'border_bottom' id ='select-file-library'>
-					Библиотека файлов
-				</div>
-				<div  id= 'display_for_selected_file'>
-					<input type="file"   id="upload11" name = 'upload11' value = '' style = 'display:none;' accept=".jpg,.png,.gif,.WMV,.FLV,.MP4,.3gp,.AVI"/>
-					<input type="file"   id="upload21" name = 'upload21' value = '' style = 'display:none;' accept=".jpg,.png,.gif,.WMV,.FLV,.MP4,.3gp,.AVI"/>
-					<input type="file"   id="upload31" name = 'upload31' value = '' style = 'display:none;' accept=".jpg,.png,.gif,.WMV,.FLV,.MP4,.3gp,.AVI"/>
-					<input type="file"   id="upload41" name = 'upload41' value = '' style = 'display:none;' accept=".jpg,.png,.gif,.WMV,.FLV,.MP4,.3gp,.AVI"/>
-					<input type="file"   id="upload51" name = 'upload51' value = '' style = 'display:none;' accept=".jpg,.png,.gif,.WMV,.FLV,.MP4,.3gp,.AVI"/>
-					<input type="file"   id="upload61" name = 'upload61' value = '' style = 'display:none;' accept=".jpg,.png,.gif,.WMV,.FLV,.MP4,.3gp,.AVI"/>
-					<input type="file"   id="upload71" name = 'upload71' value = '' style = 'display:none;' accept=".jpg,.png,.gif,.WMV,.FLV,.MP4,.3gp,.AVI"/>
-					<input type="file"   id="upload81" name = 'upload81' value = '' style = 'display:none;' accept=".jpg,.png,.gif,.WMV,.FLV,.MP4,.3gp,.AVI"/>
-					<input type="file"   id="upload91" name = 'upload91' value = '' style = 'display:none;' accept=".jpg,.png,.gif,.WMV,.FLV,.MP4,.3gp,.AVI"/>
-					<input type="file"   id="upload101" name = 'upload101' value = '' style = 'display:none;' accept=".jpg,.png,.gif,.WMV,.FLV,.MP4,.3gp,.AVI"/>
-					<input type = 'text'  id = 'alt_file_pc'  placeholder ='Добавить атрибут alt'>
+<!-- Stepan -->
+<div id="Juna_IT_Poll_main_second_div">
+	<form method="post" id="Juna_IT_Poll_Admin_Form" enctype="multipart/form-data">
+		<div class="Juna_IT_Poll_Add_Poll_Footer_Div1">
+			<a href="http://juna-it.com" target="_blank"<abbr title="Click to Visit"><img src="http://juna-it.com/image/logo-orange.png" class="Juna_IT_Logo_Orange1"></a>
+			<br>
+			<span class="Add_Polls_Title_Span">Question:</span> 
+			<input type="text" class="Juna_IT_Poll_Add_Question_Field" id="Juna_IT_Poll_Add_Question_Field" name="Juna_IT_Poll_Add_Question_Field" onclick="Juna_IT_Poll_Add_Question_Field_Click()" required>
+				<br><br><br>
+			<input type="button" value="Choose Poll Type" id="Juna_IT_Poll_Admin_Menu_Button_1" class="Juna_IT_Poll_Choose_Poll_Type_Button">
+			<input type="button" value="Question Style" id="Juna_IT_Poll_Admin_Menu_Button_2" class="Juna_IT_Poll_Question_Style_Button">
+			<input type="button" value="Add Answers" id="Juna_IT_Poll_Admin_Menu_Button_3" class="Juna_IT_Poll_Add_Answers_Button">
+			<input type="button" value="Answers Style" id="Juna_IT_Poll_Admin_Menu_Button_4" class="Juna_IT_Poll_Answers_Style_Button">
+			<input type="button" value="Widget Style" id="Juna_IT_Poll_Admin_Menu_Button_5" class="Juna_IT_Poll_Widget_Style_Button">
+			<input type="hidden" id="Juna_IT_Poll_hidden_Field_for_Number" value="1">
+			<input type='submit' id='Juna_IT_Poll_Save_Button' class="Juna_IT_Poll_Save_Button" value='Save Poll' name="Add_new_Juna_IT_Poll_Save_button" />
 
-					<input type="hidden"   id="upload41"  value = '' />
-					<input type="hidden"   id="upload41"  value = '' />
-					<div  id = 'select_file_library'>
-						<?php 
-							global $wpdb;
+		</div>
+		<div id="Juna_IT_Poll_Next_Prev_Button_Div" class="Juna_IT_Poll_Next_Prev_Button_Div">
+			<span style="display:none;color:red;margin-left:15px;font-size:16px;" id="Juna_IT_Poll_Free_Span_1">This is the free version of the plugin. Click <a href="http://juna-it.com/index.php/features/elements/juna-it-plugin/" target="_blank"<abbr title="Click to Buy">"GET THE FULL VERSION"</a> for more advanced options.</span><br>
+			<span style="display:none;color:red;margin-left:250px;font-size:16px;" id="Juna_IT_Poll_Free_Span_2"> We appreciate every customer.</span>
+			<span style="display:none;color:red;margin-left:150px;font-size:16px;" id="Juna_IT_Poll_Free_Span_3"> * This Symbols will work only with Full version.<a href="http://juna-it.com/index.php/features/elements/juna-it-plugin/" target="_blank" style="margin-left:5px;"><abbr title="Click to Buy">"GET THE FULL VERSION"</a></span>
 
+			<input type="button" value="Next    >>" class="Juna_IT_Poll_Next_Button" onclick="Juna_IT_Poll_Next_Button()">
+			<input type="button" value="<<    Prev" class="Juna_IT_Poll_Prev_Button" onclick="Juna_IT_Poll_Prev_Button()">
+			<input type="hidden" id="Juna_IT_Poll_Plugin_Type_Text_Readonly" value="1" name="Juna_IT_Poll_Plugin_Type_Text_Readonly">
+		</div><br><br>
 
-							$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
-
-							$hoplo=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE id>%d",0));
-
-							for($i=0;$i<count($hoplo);$i++)
-							{
-								if(strlen($hoplo[$i]->File)>0)
-								{
-									echo '<img src="' .esc_url( wp_upload_dir()['baseurl']) .'/' . $hoplo[$i]->File .'" class = "image_select_file_library" >';
-								}
-							}
-							
-						?>
-					</div>
-					<input type = 'button' id = 'confirm_selection' value = 'Save'  name = 'confirm_selection'  >
-				</div>
+		<div class='plugins_type' id='plugins_type1' >
+			<p class='questions_title' style='text-align:center; color:black;'>Question?</p>	
+			
+			<div class='Juna_IT_Poll_PT1_Div1 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style="height:40px;margin-top:0px;"><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_1'>Answer1</span></div>
+			<div class='Juna_IT_Poll_PT1_Div2 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style="height:40px;margin-top:0px;"><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_2'>Answer2</span></div>
+			<div class='Juna_IT_Poll_PT1_Div3 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_3'>Answer3</span></div>
+			<div class='Juna_IT_Poll_PT1_Div4 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_4'>Answer4</span></div>
+			<div class='Juna_IT_Poll_PT1_Div5 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_5'>Answer5</span></div>
+			<div class='Juna_IT_Poll_PT1_Div6 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_6'>Answer6</span></div>
+			<div class='Juna_IT_Poll_PT1_Div7 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_7'>Answer7</span></div>
+			<div class='Juna_IT_Poll_PT1_Div8 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_8'>Answer8</span></div>
+			<div class='Juna_IT_Poll_PT1_Div9 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_9'>Answer9</span></div>
+			<div class='Juna_IT_Poll_PT1_Div10 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_10'>Answer10</span></div>
+			<input id='Juna_IT_Poll_Vote_Button' type='button' value='VOTE' style='background: #000000;width: 62px;color: #ffffff; float:right;padding:0px; margin-right: 20px;height:40px;border:0px; border-radius: 10px;margin-bottom:10px;margin-top:15px;'>
+		</div>
+		<div class='plugins_type' id='plugins_type2' >
+			<p class='questions_title' style='text-align:center;color:black;'>Question?</p>	
+			
+			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_1' style='color:black;height:30px; background-color: #49ff78;border-radius:10px; text-align:center;'>Answer1</p>
+			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_2' style='color:black;height:30px; background-color: #10ffff;border-radius:10px; text-align:center;'>Answer2</p>
+			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_3' style='display:none;color:black;height:30px; background-color: #ffa448;border-radius:10px; text-align:center;'>Answer3</p>
+			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_4' style='display:none;color:black;height:30px; background-color: #ffff80;border-radius:10px; text-align:center;'>Answer4</p>
+			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_5' style='display:none;color:black;height:30px; background-color: #ff4242;border-radius:10px; text-align:center;'>Answer5</p>
+			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_6' style='display:none;color:black;height:30px; background-color: #49ff78;border-radius:10px; text-align:center;'>Answer6</p>
+			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_7' style='display:none;color:black;height:30px; background-color: #10ffff;border-radius:10px; text-align:center;'>Answer7</p>
+			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_8' style='display:none;color:black;height:30px; background-color: #ffa448;border-radius:10px; text-align:center;'>Answer8</p>
+			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_9' style='display:none;color:black;height:30px; background-color: #ff4242;border-radius:10px; text-align:center;'>Answer9</p>
+			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_10' style='display:none;color:black;height:30px; background-color: #49ff78;border-radius:10px; text-align:center;'>Answer10</p>
+		</div>
+		<div class='plugins_type' id='plugins_type3' >
+			<p class='questions_title' style='text-align:center;color:black; background-color:#cfcfcf; margin:10px 10px 10px 10px;'>Question?</p>
+			
+			<div id='Juna_IT_Poll_PT3_Div1' class="Juna_IT_Poll_PT3_Div" style='text-align:center;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/1.jpg" id='Juna_IT_Poll_Image_1' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_1' style='text-align:center;color:black;'>Answer1</span></div>
+			<div id='Juna_IT_Poll_PT3_Div2' class="Juna_IT_Poll_PT3_Div" style='text-align:center;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/2.jpg" id='Juna_IT_Poll_Image_2' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_2' style='text-align:center;color:black;'>Answer2</span></div>
+			<div id='Juna_IT_Poll_PT3_Div3' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/3.jpg" id='Juna_IT_Poll_Image_3' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_3' style='text-align:center;color:black;'>Answer3</span></div>
+			<div id='Juna_IT_Poll_PT3_Div4' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/4.jpg" id='Juna_IT_Poll_Image_4' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_4' style='text-align:center;color:black;'>Answer4</span></div>
+			<div id='Juna_IT_Poll_PT3_Div5' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/5.jpg" id='Juna_IT_Poll_Image_5' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_5' style='text-align:center;color:black;'>Answer5</span></div>
+			<div id='Juna_IT_Poll_PT3_Div6' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/6.jpg" id='Juna_IT_Poll_Image_6' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_6' style='text-align:center;color:black;'>Answer6</span></div>
+			<div id='Juna_IT_Poll_PT3_Div7' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/7.jpg" id='Juna_IT_Poll_Image_7' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_7' style='text-align:center;color:black;'>Answer7</span></div>
+			<div id='Juna_IT_Poll_PT3_Div8' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/8.jpg" id='Juna_IT_Poll_Image_8' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_8' style='text-align:center;color:black;'>Answer8</span></div>
+			<div id='Juna_IT_Poll_PT3_Div9' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/9.jpg" id='Juna_IT_Poll_Image_9' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_9' style='text-align:center;color:black;'>Answer9</span></div>
+			<div id='Juna_IT_Poll_PT3_Div10' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/10.jpg" id='Juna_IT_Poll_Image_10' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_10' style='text-align:center;color:black;'>Answer10</span></div>
+		</div>
+		<div class='plugins_type' id='plugins_type4' >
+			<p class='questions_title' style='text-align:center;color:black;'>Question?</p>
+			
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div1' style='border: 1px solid #49ff78;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_1' style='float: left;margin: 5px;'>Answer1</p><div id='Juna_IT_Poll_Set_Color_1'style='float: right;background-color:#49ff78;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div2' style='border: 1px solid #10ffff;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_2' style='float: left;margin: 5px;'>Answer2</p><div id='Juna_IT_Poll_Set_Color_2'style='float: right;background-color:#10ffff;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div3' style='display:none;border: 1px solid #ffa448;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_3' style='float: left;margin: 5px;'>Answer3</p><div id='Juna_IT_Poll_Set_Color_3'style='float: right;background-color:#ffa448;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div4' style='display:none;border: 1px solid #ffff80;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_4' style='float: left;margin: 5px;'>Answer4</p><div id='Juna_IT_Poll_Set_Color_4'style='float: right;background-color:#ffff80;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div5' style='display:none;border: 1px solid #ff4242;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_5' style='float: left;margin: 5px;'>Answer5</p><div id='Juna_IT_Poll_Set_Color_5'style='float: right;background-color:#ff4242;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div6' style='display:none;border: 1px solid #49ff78;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_6' style='float: left;margin: 5px;'>Answer6</p><div id='Juna_IT_Poll_Set_Color_6'style='float: right;background-color:#49ff78;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div7' style='display:none;border: 1px solid #10ffff;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_7' style='float: left;margin: 5px;'>Answer7</p><div id='Juna_IT_Poll_Set_Color_7'style='float: right;background-color:#10ffff;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div8' style='display:none;border: 1px solid #ffa448;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_8' style='float: left;margin: 5px;'>Answer8</p><div id='Juna_IT_Poll_Set_Color_8'style='float: right;background-color:#ffa448;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div9' style='display:none;border: 1px solid #ffff80;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_9' style='float: left;margin: 5px;'>Answer9</p><div id='Juna_IT_Poll_Set_Color_9'style='float: right;background-color:#ffff80;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div10' style='display:none;border: 1px solid #ff4242;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_10' style='float: left;margin: 5px;'>Answer10</p><div id='Juna_IT_Poll_Set_Color_10'style='float: right;background-color:#ff4242;display: inline-block;height: 40px; width: 32px;'></div></div>
 		</div>
 
-	<img style="float:left;" src='http://juna-it.com/image/icon.png'><p style="font-size:20px; width:200px; margin-left:50px;"><b>Add Poll</b></p><a href="http://juna-it.com/index.php/features/elements/juna-it-plugin/" target="_blank"><img src="http://juna-it.com/wp-content/uploads/2015/07/juna-logo.png" style="float:right; width:150px;height:70px; margin-top:-70px;"><p style="float:right; margin-right:25px;margin-top:2px; font-size:14px;"><b>Get Pro Version</b></p></a>
-	
-	<fieldset style="position:relative; margin-bottom:15px;background-color: white;border-radius: 6px;width: 675px; height: 190px;box-shadow: 2px -2px 1px 1px #ddd;border: 1px solid #0073aa;">
+		<fieldset id="Juna_IT_Poll_Select_Poll_Type" class="Juna_IT_Poll_Select_Poll_Type">
+			<legend><i>Poll Type</i> </legend>
+			<fieldset class="Juna_IT_Poll_Image_Class1" onclick="Juna_IT_Poll_Image_Fieldset(1)">
+				<legend class="Juna_IT_Poll_Image_Legend_Class1"><i>Standart Poll</i></legend>
+				<img src="http://juna-it.com/image/standart.png" class='Juna_IT_Poll_Image' >
+			</fieldset>
+			<fieldset class="Juna_IT_Poll_Image_Class2" onclick="Juna_IT_Poll_Image_Fieldset(2)">
+				<legend class="Juna_IT_Poll_Image_Legend_Class2"><i>Pie Chart</i></legend>
+				<img src="http://juna-it.com/image/pie.png" class  = 'Juna_IT_Poll_Image'>
+			</fieldset>
+			<fieldset class="Juna_IT_Poll_Image_Class3" onclick="Juna_IT_Poll_Image_Fieldset(3)">
+				<legend class="Juna_IT_Poll_Image_Legend_Class3"><i>Image/Video</i></legend>
+				<img src="http://juna-it.com/image/image_video.png" class  = 'Juna_IT_Poll_Image'>
+			</fieldset>
+			<fieldset class="Juna_IT_Poll_Image_Class4" onclick="Juna_IT_Poll_Image_Fieldset(4)">
+				<legend class="Juna_IT_Poll_Image_Legend_Class4"><i>Column Chart</i></legend>
+				<img src="http://juna-it.com/image/column.png" class  = 'Juna_IT_Poll_Image'>
+			</fieldset>
+		</fieldset>
 
- 		<legend id="spt"style='margin-left: 10px;color: #B0AFAF; font-size:16px;margin-left:10px;color:#0073aa;'><i> Select Plugin Type </i></legend> <input type="text"  id="img_id" name="img_name" style="display:none;" value="1"/> <br><br>
- 		<img id="img1" style="width:130px; margin-left:10px; height:130px; " src="http://juna-it.com/image/poll-1.png" onclick="SelectType('img1')" >
- 		<img id="img2" style="width:120px; margin-left:10px; height:120px; " src="http://juna-it.com/image/poll-2.png" onclick="SelectType('img2')" >
- 		<img id="img3" style="width:120px; margin-left:10px; height:120px; " src="http://juna-it.com/image/poll-3.png" onclick="SelectType('img3')" >
- 		<img id="img4" style="width:120px; margin-left:10px; height:120px; " src="http://juna-it.com/image/poll-4.png" onclick="SelectType('img4')" >
+		<input type="hidden" id="hidden_video_src_1">	<div style = 'display:none' class ="hidden_video_src_1"></div>	<input type="hidden" id="Juna_IT_Poll_Upload_Image_1" name="Juna_IT_Poll_Upload_Image_1">
+		<input type="hidden" id="hidden_video_src_2">	<div style = 'display:none' class ="hidden_video_src_2"></div>	<input type="hidden" id="Juna_IT_Poll_Upload_Image_2" name="Juna_IT_Poll_Upload_Image_2">
+		<input type="hidden" id="hidden_video_src_3">	<div style = 'display:none' class ="hidden_video_src_3"></div>	<input type="hidden" id="Juna_IT_Poll_Upload_Image_3" name="Juna_IT_Poll_Upload_Image_3">
+		<input type="hidden" id="hidden_video_src_4">	<div style = 'display:none' class ="hidden_video_src_4"></div>	<input type="hidden" id="Juna_IT_Poll_Upload_Image_4" name="Juna_IT_Poll_Upload_Image_4">
+		<input type="hidden" id="hidden_video_src_5">	<div style = 'display:none' class ="hidden_video_src_5"></div>	<input type="hidden" id="Juna_IT_Poll_Upload_Image_5" name="Juna_IT_Poll_Upload_Image_5">
+		<input type="hidden" id="hidden_video_src_6">	<div style = 'display:none' class ="hidden_video_src_6"></div>	<input type="hidden" id="Juna_IT_Poll_Upload_Image_6" name="Juna_IT_Poll_Upload_Image_6">
+		<input type="hidden" id="hidden_video_src_7">	<div style = 'display:none' class ="hidden_video_src_7"></div>	<input type="hidden" id="Juna_IT_Poll_Upload_Image_7" name="Juna_IT_Poll_Upload_Image_7">
+		<input type="hidden" id="hidden_video_src_8">	<div style = 'display:none' class ="hidden_video_src_8"></div>	<input type="hidden" id="Juna_IT_Poll_Upload_Image_8" name="Juna_IT_Poll_Upload_Image_8">
+		<input type="hidden" id="hidden_video_src_9">	<div style = 'display:none' class ="hidden_video_src_9"></div>	<input type="hidden" id="Juna_IT_Poll_Upload_Image_9" name="Juna_IT_Poll_Upload_Image_9">
+		<input type="hidden" id="hidden_video_src_10">	<div style = 'display:none' class ="hidden_video_src_10"></div>	<input type="hidden" id="Juna_IT_Poll_Upload_Image_10" name="Juna_IT_Poll_Upload_Image_10">
 
- 	</fieldset>
- 	<fieldset id='question_section' style='background-color: white;border-radius: 6px;box-shadow: 2px -2px 1px 1px #ddd; width: 675px;border-radius:6px;border:1px solid #0073aa;'>
-		<legend style="color: #B0AFAF;font-size:16px;margin-left:10px;color:#0073aa;"><i> Question</i> </legend>
-		<input type="text" name="question" id="question_id" style="width:500px;margin-left: 10px;border-radius: 4px;margin-top:25px;" onchange="changed_question()" /> <span id="span_question" style="color: red"></span> <br><br><br>
-	</fieldset>
-	<fieldset id='answers_section' style='width:656px;background-color:white;margin-top: 20px;border-radius:6px;padding: 10px;box-shadow: 2px -2px 1px 1px #ddd;border: 1px solid #0073aa;'>	
-		<legend style="color: #B0AFAF;font-size:16px; color:#0073aa;"><i> Answers</i> </legend> <input type="hidden" id="hidden_value" name="AnswersCount" value="2">
-		 	
-		 <div id="Admin_Menu" style="position:relative; width:658px; margin-bottom: 20px;">
-			<div style="display:none; position: absolute; right: 0; top: 0; width: 230px; z-index:0;" id="upload_div">
-				<input type="hidden" id="upload111" name = 'upload111' value = '' />
-				<input type="hidden" id="upload211" name = 'upload211' value = '' />
-				<input type="hidden" id="upload311" name = 'upload311' value = '' />
-				<input type="hidden" id="upload411" name = 'upload411' value = '' />
-				<input type="hidden" id="upload511" name = 'upload511' value = '' />
-				<input type="hidden" id="upload611" name = 'upload611' value = '' />
-				<input type="hidden" id="upload711" name = 'upload711' value = '' />
-				<input type="hidden" id="upload811" name = 'upload811' value = '' />
-				<input type="hidden" id="upload911" name = 'upload911' value = '' />
-				<input type="hidden" id="upload1011" name = 'upload1011' value = '' />
-				
-				<label id="labelUpload1" style="font-size:14px; color:#0073aa;  "> Include File</label> <br>
-		 		<input type="button"  id="upload1"  value = 'Add image/video' /> <br>
-		 		
-		 		<label id="labelUpload2" style="font-size:14px; color:#0073aa; "> Include File</label> <br>
-			 	<input type="button"  id="upload2"  value = 'Add image/video'/> <br>
-			</div> 
 
-			<div style="position: absolute; right: 0; top: 0; width: 230px; z-index:0;" id="colors_div">
-		 		<label id="bg_color1" style="font-size:14px; color:#0073aa; "> Choose Background Color</label>  <br>
-		 		<input type="text" value="#c0c0c0" name="color1" id="color1" style=" width: 170px; " onchange="ColorPicker('1',false);">
-		 		<input type="color" value="#c0c0c0" id="color_div1" style=" height: 23px; padding: 1px 3px;" onchange="ColorPicker('1',true)"> <br> 
+		<fieldset id="Juna_IT_Poll_Question_Style_Field" class="Juna_IT_Poll_Question_Style_Field">
+			<legend><i>Question Style</i></legend>
+			<table class="Juna_IT_Poll_Style_Table">
+				<tr>
+					<td>Font Family:</td>
+					<td>
+						<select name="Juna_IT_Poll_Question_Font_Family" id="Juna_IT_Poll_Question_Font_Family" onchange="Juna_IT_Poll_Change_Font('Question')">
+						 	<?php for($i=0;$i<count($Juna_IT_Poll_Font_Family);$i++){?>
+						 		<option value="<?php echo $Juna_IT_Poll_Font_Family[$i]->Font_family; ?>"><?php echo $Juna_IT_Poll_Font_Family[$i]->Font_family; ?></option>
+						 	<?php } ?>
+					 	</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Font Size:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Question_Font_Size_Range"  onchange="Juna_IT_Poll_Change_Size('Question','false')" min='0' max='100' value="14" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Question_Font_Size_Number" onchange="Juna_IT_Poll_Change_Size('Question','true')"  min='0' max='100' value="14" name="Juna_IT_Poll_Question_Font_Size" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+				</tr>
+				<tr>
+					<td>Background Color:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Question_Bg_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Question_Bg','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Question_Bg_Color"  class="Juna_IT_Poll_Input_Color"      value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Question_Bg','false')" name="Juna_IT_Poll_Input_Bg_Color"></td>
+				</tr>
+				<tr>
+					<td>Color:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Question_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#000000" onchange="Juna_IT_Poll_Change_Color('Question_Color','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Question_Color"  class="Juna_IT_Poll_Input_Color"      value="#000000" onchange="Juna_IT_Poll_Change_Color('Question_Color','false')" name="Juna_IT_Poll_Input_Color"></td>
+				</tr>
+				<tr>
+					<td>Border Style:</td>
+					<td>
+						<select id="Juna_IT_Poll_Question_Border_Style" onchange="Juna_IT_Poll_Change_Font('Border_Style')">
+				 			<option value='none' selected="select">     None                       </option>
+				 			<option value='dotted'>                     Dotted                     </option>
+				 			<option value='dashed'>                     Dashed                     </option>
+				 			<option value='solid'>                      Solid                      </option>
+				 			<option value='double'>                     Double                     </option>
+				 			<option value='groove'>                     Groove                     </option>
+				 			<option value='ridge'>                      Ridge                      </option>
+				 			<option value='inset'>                      Inset                      </option>
+				 			<option value='outset'>                     Outset                     </option>
+				 			<option value='dotted solid'>               Dotted Solid               </option>
+				 			<option value="dotted solid double dashed"> Dotted solid double dashed </option>
+				 		</select>
+					</td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+				<tr>
+					<td>Border Width:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Question_Border_Width_Range"  onchange="Juna_IT_Poll_Change_Size('Border_Width','false')" min='0' max='100' value="0" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Question_Border_Width_Number" onchange="Juna_IT_Poll_Change_Size('Border_Width','true')"  min='0' max='100' value="0" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>				
+				</tr>
+				<tr>
+					<td>Border Radius:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Question_Border_Radius_Range"  onchange="Juna_IT_Poll_Change_Size('Border_Radius','false')" min='0' max='150' value="0" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Question_Border_Radius_Number" onchange="Juna_IT_Poll_Change_Size('Border_Radius','true')"  min='0' max='150' value="0" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>				
+				</tr>
+				<tr>
+					<td>Border Color:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Question_Border_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#000000" onchange="Juna_IT_Poll_Change_Color('Border_Color','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Question_Border_Color"  class="Juna_IT_Poll_Input_Color"      value="#000000" onchange="Juna_IT_Poll_Change_Color('Border_Color','false')" ></td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+			</table>			
+		</fieldset>		
 
-		 		<label id="bg_color2"  style="font-size:14px; color:#0073aa; "> Choose Background Color</label> <br>
-		 		<input type="text" value="#c0c0c0" name="color2" id="color2" style="width: 170px; " onchange="ColorPicker('2',false);">
-		 		<input type="color"  value="#c0c0c0" id="color_div2" style="height: 23px; padding: 1px 3px;" onchange="ColorPicker('2',true)"> <br> 
-			</div>
+		<fieldset id='Juna_IT_Poll_Add_Answers_Field' class="Juna_IT_Poll_Add_Answers_Field">	
+			<legend><i>Answers</i></legend> <input type="hidden" id="Juna_IT_Poll_Hidden_Value" name="Juna_IT_Poll_Answers_Count" value="2">
+			<table class="Juna_IT_Poll_Style_Table" id="Juna_IT_Poll_Add_Answer_Table">
+				<tr class="Juna_IT_Poll_Answer_1">
+					<td class="Juna_IT_Poll_Answer_1">Answer 1:</td>
+					<td><input type="text" class="Juna_IT_Poll_Answers_Input" id="Juna_IT_Poll_Answers_Input_1" name="Juna_IT_Poll_Answers_Input_1" onclick="Juna_IT_Poll_Add_Answer(1)"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_2">
+					<td class="Juna_IT_Poll_Answer_2">Answer 2:</td>
+					<td><input type="text" class="Juna_IT_Poll_Answers_Input" id="Juna_IT_Poll_Answers_Input_2" name="Juna_IT_Poll_Answers_Input_2" onclick="Juna_IT_Poll_Add_Answer(2)"></td>
+				</tr>				
+			</table>
+			<table class="Juna_IT_Poll_Style_Table" id="Juna_IT_Poll_Add_Answer_Bg_Color_Table">
+				<tr class="Juna_IT_Poll_Answer_1">
+					<td class="Juna_IT_Poll_Answer_1">Background 1:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Add_Answer_Bg_Text1"   class="Juna_IT_Poll_Input_Text_Color" value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg1','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Add_Answer_Bg_Color1"  class="Juna_IT_Poll_Input_Color"      value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg1','false')" name="Juna_IT_Poll_Input_Add_Answer_Bg1"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_2">
+					<td class="Juna_IT_Poll_Answer_2">Background 2:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Add_Answer_Bg_Text2"   class="Juna_IT_Poll_Input_Text_Color" value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg2','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Add_Answer_Bg_Color2"  class="Juna_IT_Poll_Input_Color"      value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg2','false')" name="Juna_IT_Poll_Input_Add_Answer_Bg2"></td>
+				</tr>				
+			</table>
+			<table class="Juna_IT_Poll_Style_Table" id="Juna_IT_Poll_Add_Answer_File_Table">
+				<tr class="Juna_IT_Poll_Answer_1">
+					<td class="Juna_IT_Poll_Answer_1">Include File 1:</td>
+					<td>
+						<div id="wp-content-media-buttons" class="wp-media-buttons" >
+													
+							<a href="#" class="button insert-media add_media" data-editor="hidden_video_src_1" title="Add Media" id = "Juna_IT_Poll_Upload_1"  >
+								<span class="wp-media-buttons-icon"></span> Add Media File
+							</a>
+						</div>
+					</td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_2">
+					<td class="Juna_IT_Poll_Answer_2">Include File 2:</td>
+					<td>
+						<div id="wp-content-media-buttons" class="wp-media-buttons" >
+													
+							<a href="#" class="button insert-media add_media" data-editor="hidden_video_src_2" title="Add Media" id = "Juna_IT_Poll_Upload_2"  >
+								<span class="wp-media-buttons-icon"></span> Add Media File
+							</a>
+						</div>
+					</td>
+				</tr>				
+			</table> <br>			
+			<table class="Juna_IT_Poll_Add_Remove_Button_Table">
+				<tr>
+					<td>
+						<input type="button" id="Juna_IT_Poll_Add_Answer_Button"    value="Add Answer"    onclick="Juna_IT_Poll_Add_Answer_Button_Click()">
+						<input type="button" id="Juna_IT_Poll_Remove_Answer_Button" value="Remove Answer" onclick="Juna_IT_Poll_Remove_Answer_Button_Click()">
+					</td>
+				</tr>
+			</table>		 	
+		</fieldset>
 
-				<label id="labelAnswer1" style="font-size:14px; color:#0073aa; "> Answer 1: </label> <br>
-		 		<input type="text" name="answer1" id="answer1" style=" width:400px;border-radius:3px;" onchange='change(1)'/> <span id="span_answer1" style="color: red"></span><br>
-
-			 	<label id="labelAnswer2" style="font-size:14px; color:#0073aa; "> Answer 2: </label> <br>
-			 	<input type="text" name="answer2" id="answer2" style=" width:400px;border-radius:3px;" onchange='change(2)'/> <span id="span_answer2" style="color: red"></span><br> 
-		 	
-	 	</div>
-
-	 	<input type="button" id="add_answer" value="Add Answer" onclick="Add_answer()" style="z-index:1000000; cursor:pointer; float:right; margin-right:20px; width:130px; border-radius: 10px; color: white; background-color: #0073aa;">
-	 	<input type="button" id="remove_answer" value="Remove Answer" onclick="Remove_answer()" style="cursor:pointer; display:none; float:right; margin-right:20px; width:130px; border-radius: 10px; color: white; text-align: center; background-color: #0073aa;">
-	
-	</fieldset>
-	<fieldset id='widget_section' style=' background-color:white;box-shadow: 2px -2px 1px 1px #ddd;border: 1px solid #0073aa;border-radius:6px;margin-top: 10px;width: 655px;padding: 10px;'>
-		<legend style="color: #B0AFAF;font-size:16px;color:#0073aa;"><i> Widget Style</i> </legend>
-
-	 	<div id="Color_Picker" style="position:relative; margin-top: 25px; width:400px;">
-	 		
-	 		<label style="font-size:14px;color:#0073aa;">Background Color:  </label> 
-	 		<input type="color" value="#ffffff" id="bg_div" style="float:right; height: 23px; padding: 1px 3px;" onchange="ColorPicker('bg',true)">
-	 		<input type="text" value="#ffffff" name="bg_color" id="bg_color" style="width: 170px; float:right; margin-right:10px;" onchange="ColorPicker('bg',false)"> <br><br>		
-	 		
-	 		<label style="font-size:14px;color:#0073aa;">Border Color:  </label>
-	 		<input type="color" value="#c0c0c0" id="border_div" style="float:right; height: 23px; padding: 1px 3px;border-radius:3px;" onchange="ColorPicker('border',true)"> 
-	 		<input type="text" value="#c0c0c0" name="border_color" id="border_color" style="width: 170px; float:right; margin-right:10px;border-radius:3px;" onchange="ColorPicker('border',false)"><br><br>
-	 		
-	 		<label style="font-size:14px;color:#0073aa;">Answer Color:   </label> 
-	 		<input type="color" value="#c0c0c0" id="answer_div" style="float:right; height: 23px; padding: 1px 3px;border-radius:3px;" onchange="ColorPicker('answer',true)">
-	 		<input type="text" value="#c0c0c0" name="answer_color" id="answer_color" style="width: 170px; float:right; margin-right:10px;border-radius:3px;" onchange="ColorPicker('answer',false)"><br><br>
-	 		
-	 		<label style="font-size:14px;color:#0073aa;">Question Color:  </label>
-	 		<input type="color" value="#c0c0c0" id="quest_div" style="float:right; height: 23px; padding: 1px 3px;border-radius:3px;" onchange="ColorPicker('question',true)"> 
-	 		<input type="text" value="#c0c0c0" name="Question_color" id="Question_color" style="width: 170px; float:right; margin-right:10px;border-radius:3px;" onchange="ColorPicker('question',false)"><br><br>
-	 		 		 
-	 		<label style='font-size:14px;color:#0073aa;'>Widget's width: </label> <input type="number" onchange="set('widget')" name="widg_width" id="widg_width" min="250" value='250' style="margin-left:71px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>		 
-	 		
-	 		<label style='font-size:14px;color:#0073aa;'>Vote's type: </label> <input type="radio" class="Votes_type_radio" name="votes_type" style="margin-left:50px;" value="percent" checked>By Percents<input type="radio" class="Votes_type_radio" name="votes_type" style="margin-left:5px;" value="vote">By Votes Count<input type="radio" class="Votes_type_radio" name="votes_type" style="margin-left:5px;" value="both">Both<br><br>
-	 	
-	 		<label style="font-size:14px;color:#0073aa;">Vote's Color: </label>
-	 		<input type="color" value="#ffffff" id="votes_color" style="float:right; height: 23px; padding: 1px 3px;border-radius:3px;" onchange="ColorPicker('votes_color',true)"> 
-	 		<input type="text" value="#ffffff" name="votes_color" id="votes_text_color" style="width: 170px; float:right; margin-right:10px;border-radius:3px;" onchange="ColorPicker('votes_color',false)"> <br><br>
-	 	</div>
-	 	<div style="position:relative;" id="vote_buttons_div">
-	 		<label style="font-size:14px;color:#0073aa;">Vote Button Color:  </label>
-	 		<input type="text" value="#000000" name="vote_button_color" id="vote_button_color" style="margin-left:50px; width: 170px; border-radius:3px;" onchange="ColorPicker('vote_button_color',false)">
-	 		<input type="color"  id="vote_button_div" style="margin-left:8px; height: 23px; padding: 1px 3px;border-radius:3px;" onchange="ColorPicker('vote_button_color',true)"> <br><br>
-	 		
-	 		<label style="font-size:14px;color:#0073aa;">Button`s Text Color:  </label>
-	 		<input type="text" value="#ffffff" name="buttons_text" id="buttons_text_color" style="margin-left:38px; width: 170px; border-radius:3px;" onchange="ColorPicker('buttons_text_color',false)">
-	 		<input type="color" value="#ffffff" id="buttons_text_div" style="margin-left:8px; height: 23px; padding: 1px 3px;border-radius:3px;" onchange="ColorPicker('buttons_text_color',true)"> <br><br>
-	 	</div>
-	 	<div id="image_div" style=" display:none; position:relative; margin-top: 25px; width:400px;">
-	 		<label id="width_image" style='font-size:14px; color:#0073aa; '>Image's width: </label> <input type="number" onchange="set('width')" name="image_width" id="image_width" min='0' value='90' style="margin-left:76px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>
-	 		<label id="height_image" style='font-size:14px; color:#0073aa; '>Image's height: </label> <input type="number" onchange="set('height')" name="image_height" id="image_height" min='0' value='66' style="margin-left:72px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>
-	 		
-	 		<label id="border_width_image" style='font-size:14px; color:#0073aa; '>Image's border width: </label> <input type="number" onchange="set('border_width')" name="image_border_width" id="image_border_width" min='0' value='1' style="margin-left:28px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>
-	 		<label id="border_radius_image" style='font-size:14px; color:#0073aa; '>Image's border radius: </label> <input type="number" onchange="set('border_radius')" name="image_border_radius" id="image_border_radius" min='0' value='0' style="margin-left:24px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>
-	 		<label id="border_radius_div" style='font-size:14px; color:#0073aa; '>Div's border radius: </label> <input type="number" onchange="set('border_radius_div')" name="div_border_radius" id="div_border_radius" min='0' value='0' style="margin-left:45px; width:80px;border-radius:3px;" /> <span> px </span> <br><br>
-	 		<label style="font-size:14px; color:#0073aa; ">Image's Border Color:  </label>
-	 		<input type="text" value="#0073aa"  id="border_color_image" style="margin-left:29px; width: 170px; border-radius:3px;" onchange="ColorPicker('border_color_image',false)">
-	 		<input type="color"  id="border_div_image" name="border_color_image" style="margin-left:8px; height: 23px; padding: 1px 3px;border-radius:3px;" onchange="ColorPicker('border_color_image',true)" value="#0073aa"> <br><br>
-	 		<label style="font-size:14px; color:#0073aa; ">Image's Border Style:  </label>
-	 		<select name="border_style_image" id="border_style_image" onchange="set('border_style');" style="margin-left:33px">
-	 			<option value='none' selected="select"> None </option>
-	 			<option value='dotted' > Dotted </option>
-	 			<option value='dashed'> Dashed </option>
-	 			<option value='solid'> Solid </option>
-	 			<option value='double'> Double </option>
-	 			<option value='groove'> Groove </option>
-	 			<option value='ridge'> Ridge </option>
-	 			<option value='inset'> Inset </option>
-	 			<option value='outset'> Outset </option>
-	 			<option value='dotted solid'> Dotted Solid </option>
-	 			<option value="dotted solid double dashed">Dotted solid double dashed</option>
-	 		</select> </br></br>
-	 	</div>
-	 	<div id="hover_div" style=" display:none; position:relative; margin-top: 25px; width:400px;">
-	 		<label id="hoverColor_label" style="font-size:14px;color:#0073aa;">Hover Color: </label> 
-			<input id="HoverCheck" type="checkbox"  style="float:right; margin-right:231px; margin-top:3px; opacity:0; height:20px; width:20px; border-radius:3px;" onchange="ActivateHover()">
-			<input type="color"  disabled="true" id="colorPickerhover" style="float:right; margin-right: 5px;margin-top:2px; height: 23px; padding: 1px 3px;border-radius:3px; " onchange="ColorPicker('col_pick',true)">
-			<input id="selectedHoverColor" disabled="true" type="text" value="#000000" name="selectedHoverColor" style="float:right; border-radius:3px; margin-right:10px; width: 170px; border-radius:3px;" onchange="ColorPicker('col_pick',false)">
-	 	</div>
-	</fieldset>
- 	<fieldset id='font_section' style='box-shadow: 2px -2px 1px 1px #ddd; background-color:white; border:1px solid #0073aa;border-radius:6px;margin-top: 10px;width: 655px;padding: 10px;'>
- 		<legend style="color: #B0AFAF;font-size:16px; color:#0073aa;"> <i>Fonts</i> </legend>
-	 	<div id="fonts_div" style="position: relative; width: 600px; margin: 0 auto 0 0; ">
-		 	<label style='color:#0073aa;'> Select Text Font For Question: </label>
-		 	<select name="Text_Font" id="Text_Font" onchange="ChangeFont('false');" style="margin-left:15px">
-		 		<option value='Abadi MT Condensed Light'> Abadi MT Condensed Light </option>
-				<option value='Aharoni'> Aharoni </option>
-				<option value='Aldhabi'> Aldhabi </option>
-				<option value='Andalus'> Andalus </option>
-				<option value='Angsana New'> Angsana New </option>
-				<option value='AngsanaUPC'> AngsanaUPC </option>
-				<option value='Aparajita'> Aparajita </option>
-				<option value='Arabic Typesetting'> Arabic Typesetting </option>
-				<option value='Arial'> Arial </option>
-				<option value='Arial Black'> Arial Black </option>
-				<option value='Batang'> Batang </option>
-				<option value='BatangChe'> BatangChe </option>
-				<option value='Browallia New'> Browallia New </option>
-				<option value='BrowalliaUPC'> BrowalliaUPC </option>
-				<option value='Calibri'> Calibri </option>
-				<option value='Calibri Light'> Calibri Light </option>
-				<option value='Calisto MT'> Calisto MT </option>
-				<option value='Cambria'> Cambria </option>
-				<option value='Candara'> Candara </option>
-				<option value='Century Gothic'> Century Gothic </option>
-				<option value='Comic Sans MS'> Comic Sans MS </option>
-				<option value='Consolas'> Consolas </option>
-				<option value='Constantia'> Constantia </option>
-				<option value='Copperplate Gothic'> Copperplate Gothic </option>
-				<option value='Copperplate Gothic Light'> Copperplate Gothic Light </option>
-				<option value='Corbel'> Corbel </option>
-				<option value='Cordia New'> Cordia New </option>
-				<option value='CordiaUPC'> CordiaUPC </option>
-				<option value='Courier New'> Courier New </option>
-				<option value='DaunPenh'> DaunPenh </option>
-				<option value='David'> David </option>
-				<option value='DFKai-SB'> DFKai-SB </option>
-				<option value='DilleniaUPC'> DilleniaUPC </option>
-				<option value='DokChampa'> DokChampa </option>
-				<option value='Dotum'> Dotum </option>
-				<option value='DotumChe'> DotumChe </option>
-				<option value='Ebrima'> Ebrima </option>
-				<option value='Estrangelo Edessa'> Estrangelo Edessa </option>
-				<option value='EucrosiaUPC'> EucrosiaUPC </option>
-				<option value='Euphemia'> Euphemia </option>
-				<option value='FangSong'> FangSong </option>
-				<option value='Franklin Gothic Medium'> Franklin Gothic Medium </option>
-				<option value='FrankRuehl'> FrankRuehl </option>
-				<option value='FreesiaUPC'> FreesiaUPC </option>
-				<option value='Gabriola'> Gabriola </option>
-				<option value='Gadugi'> Gadugi </option>
-				<option value='Gautami'> Gautami </option>
-				<option value='Georgia'> Georgia </option>
-				<option value='Gisha'> Gisha </option>
-				<option value='Gulim'> Gulim </option>
-				<option value='GulimChe'> GulimChe </option>
-				<option value='Gungsuh'> Gungsuh </option>
-				<option value='GungsuhChe'> GungsuhChe </option>
-				<option value='Impact'> Impact </option>
-				<option value='IrisUPC'> IrisUPC </option>
-				<option value='Iskoola Pota'> Iskoola Pota </option>
-				<option value='JasmineUPC'> JasmineUPC </option>
-				<option value='KaiTi'> KaiTi </option>
-				<option value='Kalinga'> Kalinga </option>
-				<option value='Kartika'> Kartika </option>
-				<option value='Khmer UI'> Khmer UI </option>
-				<option value='KodchiangUPC'> KodchiangUPC </option>
-				<option value='Kokila'> Kokila </option>
-				<option value='Lao UI'> Lao UI </option>
-				<option value='Latha'> Latha </option>
-				<option value='Leelawadee'> Leelawadee </option>
-				<option value='Levenim MT'> Levenim MT </option>
-				<option value='LilyUPC'> LilyUPC </option>
-				<option value='Lucida Console'> Lucida Console </option>
-				<option value='Lucida Handwriting Italic'> Lucida Handwriting Italic </option>
-				<option value='Lucida Sans Unicode'> Lucida Sans Unicode </option>
-				<option value='Malgun Gothic'> Malgun Gothic </option>
-				<option value='Mangal'> Mangal </option>
-				<option value='Manny ITC'> Manny ITC </option>
-				<option value='Marlett'> Marlett </option>
-				<option value='Meiryo'> Meiryo </option>
-				<option value='Meiryo UI'> Meiryo UI </option>
-				<option value='Microsoft Himalaya'> Microsoft Himalaya </option>
-				<option value='Microsoft JhengHei'> Microsoft JhengHei </option>
-				<option value='Microsoft JhengHei UI'> Microsoft JhengHei UI </option>
-				<option value='Microsoft New Tai Lue'> Microsoft New Tai Lue </option>
-				<option value='Microsoft PhagsPa'> Microsoft PhagsPa </option>
-				<option value='Microsoft Sans Serif'> Microsoft Sans Serif </option>
-				<option value='Microsoft Tai Le'> Microsoft Tai Le </option>
-				<option value='Microsoft Uighur'> Microsoft Uighur </option>
-				<option value='Microsoft YaHei'> Microsoft YaHei </option>
-				<option value='Microsoft YaHei UI'> Microsoft YaHei UI </option>
-				<option value='Microsoft Yi Baiti'> Microsoft Yi Baiti </option>
-				<option value='MingLiU_HKSCS'> MingLiU_HKSCS </option>
-				<option value='MingLiU_HKSCS-ExtB'> MingLiU_HKSCS-ExtB </option>
-				<option value='Miriam'> Miriam </option>
-				<option value='Mongolian Baiti'> Mongolian Baiti </option>
-				<option value='MoolBoran'> MoolBoran </option>
-				<option value='MS UI Gothic'> MS UI Gothic </option>
-				<option value='MV Boli'> MV Boli </option>
-				<option value='Myanmar Text'> Myanmar Text </option>
-				<option value='Narkisim'> Narkisim </option>
-				<option value='Nirmala UI'> Nirmala UI </option>
-				<option value='News Gothic MT'> News Gothic MT </option>
-				<option value='NSimSun'> NSimSun </option>
-				<option value='Nyala'> Nyala </option>
-				<option value='Palatino Linotype'> Palatino Linotype </option>
-				<option value='Plantagenet Cherokee'> Plantagenet Cherokee </option>
-				<option value='Raavi'> Raavi </option>
-				<option value='Rod'> Rod </option>
-				<option value='Sakkal Majalla'> Sakkal Majalla </option>
-				<option value='Segoe Print'> Segoe Print </option>
-				<option value='Segoe Script'> Segoe Script </option>
-				<option value='Segoe UI Symbol'> Segoe UI Symbol </option>
-				<option value='Shonar Bangla'> Shonar Bangla </option>
-				<option value='Shruti'> Shruti </option>
-				<option value='SimHei'> SimHei </option>
-				<option value='SimKai'> SimKai </option>
-				<option value='Simplified Arabic'> Simplified Arabic </option>
-				<option value='SimSun'> SimSun </option>
-				<option value='SimSun-ExtB'> SimSun-ExtB </option>
-				<option value='Sylfaen'> Sylfaen </option>
-				<option value='Tahoma'> Tahoma </option>
-				<option value='Times New Roman'> Times New Roman </option>
-				<option value='Traditional Arabic'> Traditional Arabic </option>
-				<option value='Trebuchet MS'> Trebuchet MS </option>
-				<option value='Tunga'> Tunga </option>
-				<option value='Utsaah'> Utsaah </option>
-				<option value='Vani'> Vani </option>
-				<option value='Vijaya'> Vijaya </option>
-		 	</select> <br> 
-		 	<label style='color:#0073aa;'> Question's Font-Size: </label> <input type="number" min=12 name="fontSize" id="fontSize" value="14" style="margin-left:69px; width:50px;" onchange="ChangeFont('true');" /> <span> px </span> <br>
-		 	
-		 	<label style='color:#0073aa;'> Select Text Font For Answers: </label>
-		 	<select name="Answer_Font" id="Answer_Font" onchange="ChangeFont('hoplo');" style="margin-left:19px">
-		 		<option value='Abadi MT Condensed Light'> Abadi MT Condensed Light </option>
-				<option value='Aharoni'> Aharoni </option>
-				<option value='Aldhabi'> Aldhabi </option>
-				<option value='Andalus'> Andalus </option>
-				<option value='Angsana New'> Angsana New </option>
-				<option value='AngsanaUPC'> AngsanaUPC </option>
-				<option value='Aparajita'> Aparajita </option>
-				<option value='Arabic Typesetting'> Arabic Typesetting </option>
-				<option value='Arial'> Arial </option>
-				<option value='Arial Black'> Arial Black </option>
-				<option value='Batang'> Batang </option>
-				<option value='BatangChe'> BatangChe </option>
-				<option value='Browallia New'> Browallia New </option>
-				<option value='BrowalliaUPC'> BrowalliaUPC </option>
-				<option value='Calibri'> Calibri </option>
-				<option value='Calibri Light'> Calibri Light </option>
-				<option value='Calisto MT'> Calisto MT </option>
-				<option value='Cambria'> Cambria </option>
-				<option value='Candara'> Candara </option>
-				<option value='Century Gothic'> Century Gothic </option>
-				<option value='Comic Sans MS'> Comic Sans MS </option>
-				<option value='Consolas'> Consolas </option>
-				<option value='Constantia'> Constantia </option>
-				<option value='Copperplate Gothic'> Copperplate Gothic </option>
-				<option value='Copperplate Gothic Light'> Copperplate Gothic Light </option>
-				<option value='Corbel'> Corbel </option>
-				<option value='Cordia New'> Cordia New </option>
-				<option value='CordiaUPC'> CordiaUPC </option>
-				<option value='Courier New'> Courier New </option>
-				<option value='DaunPenh'> DaunPenh </option>
-				<option value='David'> David </option>
-				<option value='DFKai-SB'> DFKai-SB </option>
-				<option value='DilleniaUPC'> DilleniaUPC </option>
-				<option value='DokChampa'> DokChampa </option>
-				<option value='Dotum'> Dotum </option>
-				<option value='DotumChe'> DotumChe </option>
-				<option value='Ebrima'> Ebrima </option>
-				<option value='Estrangelo Edessa'> Estrangelo Edessa </option>
-				<option value='EucrosiaUPC'> EucrosiaUPC </option>
-				<option value='Euphemia'> Euphemia </option>
-				<option value='FangSong'> FangSong </option>
-				<option value='Franklin Gothic Medium'> Franklin Gothic Medium </option>
-				<option value='FrankRuehl'> FrankRuehl </option>
-				<option value='FreesiaUPC'> FreesiaUPC </option>
-				<option value='Gabriola'> Gabriola </option>
-				<option value='Gadugi'> Gadugi </option>
-				<option value='Gautami'> Gautami </option>
-				<option value='Georgia'> Georgia </option>
-				<option value='Gisha'> Gisha </option>
-				<option value='Gulim'> Gulim </option>
-				<option value='GulimChe'> GulimChe </option>
-				<option value='Gungsuh'> Gungsuh </option>
-				<option value='GungsuhChe'> GungsuhChe </option>
-				<option value='Impact'> Impact </option>
-				<option value='IrisUPC'> IrisUPC </option>
-				<option value='Iskoola Pota'> Iskoola Pota </option>
-				<option value='JasmineUPC'> JasmineUPC </option>
-				<option value='KaiTi'> KaiTi </option>
-				<option value='Kalinga'> Kalinga </option>
-				<option value='Kartika'> Kartika </option>
-				<option value='Khmer UI'> Khmer UI </option>
-				<option value='KodchiangUPC'> KodchiangUPC </option>
-				<option value='Kokila'> Kokila </option>
-				<option value='Lao UI'> Lao UI </option>
-				<option value='Latha'> Latha </option>
-				<option value='Leelawadee'> Leelawadee </option>
-				<option value='Levenim MT'> Levenim MT </option>
-				<option value='LilyUPC'> LilyUPC </option>
-				<option value='Lucida Console'> Lucida Console </option>
-				<option value='Lucida Handwriting Italic'> Lucida Handwriting Italic </option>
-				<option value='Lucida Sans Unicode'> Lucida Sans Unicode </option>
-				<option value='Malgun Gothic'> Malgun Gothic </option>
-				<option value='Mangal'> Mangal </option>
-				<option value='Manny ITC'> Manny ITC </option>
-				<option value='Marlett'> Marlett </option>
-				<option value='Meiryo'> Meiryo </option>
-				<option value='Meiryo UI'> Meiryo UI </option>
-				<option value='Microsoft Himalaya'> Microsoft Himalaya </option>
-				<option value='Microsoft JhengHei'> Microsoft JhengHei </option>
-				<option value='Microsoft JhengHei UI'> Microsoft JhengHei UI </option>
-				<option value='Microsoft New Tai Lue'> Microsoft New Tai Lue </option>
-				<option value='Microsoft PhagsPa'> Microsoft PhagsPa </option>
-				<option value='Microsoft Sans Serif'> Microsoft Sans Serif </option>
-				<option value='Microsoft Tai Le'> Microsoft Tai Le </option>
-				<option value='Microsoft Uighur'> Microsoft Uighur </option>
-				<option value='Microsoft YaHei'> Microsoft YaHei </option>
-				<option value='Microsoft YaHei UI'> Microsoft YaHei UI </option>
-				<option value='Microsoft Yi Baiti'> Microsoft Yi Baiti </option>
-				<option value='MingLiU_HKSCS'> MingLiU_HKSCS </option>
-				<option value='MingLiU_HKSCS-ExtB'> MingLiU_HKSCS-ExtB </option>
-				<option value='Miriam'> Miriam </option>
-				<option value='Mongolian Baiti'> Mongolian Baiti </option>
-				<option value='MoolBoran'> MoolBoran </option>
-				<option value='MS UI Gothic'> MS UI Gothic </option>
-				<option value='MV Boli'> MV Boli </option>
-				<option value='Myanmar Text'> Myanmar Text </option>
-				<option value='Narkisim'> Narkisim </option>
-				<option value='Nirmala UI'> Nirmala UI </option>
-				<option value='News Gothic MT'> News Gothic MT </option>
-				<option value='NSimSun'> NSimSun </option>
-				<option value='Nyala'> Nyala </option>
-				<option value='Palatino Linotype'> Palatino Linotype </option>
-				<option value='Plantagenet Cherokee'> Plantagenet Cherokee </option>
-				<option value='Raavi'> Raavi </option>
-				<option value='Rod'> Rod </option>
-				<option value='Sakkal Majalla'> Sakkal Majalla </option>
-				<option value='Segoe Print'> Segoe Print </option>
-				<option value='Segoe Script'> Segoe Script </option>
-				<option value='Segoe UI Symbol'> Segoe UI Symbol </option>
-				<option value='Shonar Bangla'> Shonar Bangla </option>
-				<option value='Shruti'> Shruti </option>
-				<option value='SimHei'> SimHei </option>
-				<option value='SimKai'> SimKai </option>
-				<option value='Simplified Arabic'> Simplified Arabic </option>
-				<option value='SimSun'> SimSun </option>
-				<option value='SimSun-ExtB'> SimSun-ExtB </option>
-				<option value='Sylfaen'> Sylfaen </option>
-				<option value='Tahoma'> Tahoma </option>
-				<option value='Times New Roman'> Times New Roman </option>
-				<option value='Traditional Arabic'> Traditional Arabic </option>
-				<option value='Trebuchet MS'> Trebuchet MS </option>
-				<option value='Tunga'> Tunga </option>
-				<option value='Utsaah'> Utsaah </option>
-				<option value='Vani'> Vani </option>
-				<option value='Vijaya'> Vijaya </option>
-		 	</select> <br> 
-		 	<label style='color:#0073aa;'> Answer's Font-Size: </label> <input type="number" min=12 name="AnswerSize" id="AnswerSize" value="14" style="margin-left:79px; width:50px;" onchange="ChangeFont('yupi');" /> <span> px </span>
-
-	 	</div>
- 	</fieldset>
- </form>
- 	<div class='plugins_type' id='plugins_type1' style='padding:0 10px 0 10px; border: 1px solid #0073aa; position: absolute;top: 415px; width: 250px;left: 695px;border-radius:6px;background:#ffffff;'>
-	 	
-		 	<p class='questions_title'style='text-align:center;color:black;'>Question?</p>	
-		 	<div class='votes1'><input class='radio' type='radio'style='float:left;' name="answer"><p class='set_answer' id='ans1' style="margin-left:20px;color:black;width:260px;height:20px;">Answer1</p></div>
-		 	<div class='votes2'><input class='radio' type='radio'style='float:left;' name="answer"><p class='set_answer' id='ans2' style='margin-left:20px;color:black;width:260px;height:20px;'>Answer2</p></div>
-		 	<div class='votes3' style='display:none;'><input class='radio' type='radio' style='float:left;' name="answer"><p class='set_answer' id='ans3' style='margin-left:20px;color:black;width:260px;height:20px;'>Answer3</p></div>
-		 	<div class='votes4' style='display:none;'><input class='radio' type='radio' style='float:left;' name="answer"><p class='set_answer' id='ans4' style='margin-left:20px;color:black;width:260px;height:20px;'>Answer4</p></div>
-		 	<div class='votes5' style='display:none;'><input class='radio' type='radio' style='float:left;' name="answer"><p class='set_answer' id='ans5' style='margin-left:20px;color:black;width:260px;height:20px;'>Answer5</p></div>
-		 	<div class='votes6' style='display:none;'><input class='radio' type='radio' style='float:left;' name="answer"><p class='set_answer' id='ans6' style='margin-left:20px;color:black;width:260px;height:20px;'>Answer6</p></div>
-		 	<div class='votes7' style='display:none;'><input class='radio' type='radio' style='float:left;' name="answer"><p class='set_answer' id='ans7' style='margin-left:20px;color:black;width:260px;height:20px;'>Answer7</p></div>
-		 	<div class='votes8' style='display:none;'><input class='radio' type='radio' style='float:left;' name="answer"><p class='set_answer' id='ans8' style='margin-left:20px;color:black;width:260px;height:20px;'>Answer8</p></div>
-		 	<div class='votes9' style='display:none;'><input class='radio' type='radio' style='float:left;' name="answer"><p class='set_answer' id='ans9' style='margin-left:20px;color:black;width:260px;height:20px;'>Answer9</p></div>
-		 	<div class='votes10' style='display:none;'><input class='radio'type='radio' style='float:left;' name="answer"><p class='set_answer' id='ans10' style='margin-left:20px;color:black;width:260px;height:20px;'>Answer10</p></div>
-		 	<input id='vote_button' type='button'value='Vote' style='background: #000000;width: 62px;color: #ffffff;margin-left: 109px; border-radius: 10px;margin-bottom:10px;'>
-	 
- 	</div>
- 	<div class='plugins_type'id='plugins_type2'style='padding:0 10px 10px 10px; display:none; border: 1px solid #0073aa; position: absolute;top: 415px; width: 250px;left: 695px;border-radius:6px;background:#ffffff;'>
- 		<p class='questions_title'style='text-align:center;color:black;'>Question?</p>	
- 		
- 		<p class='set_answer' id='an1' style='color:black;height:30px; background-color: #49ff78;border-radius:10px; text-align:center;'>Answer1</p>
- 		<p class='set_answer' id='an2' style='color:black;height:30px; background-color: #10ffff;border-radius:10px; text-align:center;'>Answer2</p>
- 		<p class='set_answer' id='an3' style='display:none;color:black;height:30px; background-color: #ffa448;border-radius:10px; text-align:center;'>Answer3</p>
- 		<p class='set_answer' id='an4' style='display:none;color:black;height:30px; background-color: #ffff80;border-radius:10px; text-align:center;'>Answer4</p>
- 		<p class='set_answer' id='an5' style='display:none;color:black;height:30px; background-color: #ff4242;border-radius:10px; text-align:center;'>Answer5</p>
- 		<p class='set_answer' id='an6' style='display:none;color:black;height:30px; background-color: #49ff78;border-radius:10px; text-align:center;'>Answer6</p>
- 		<p class='set_answer' id='an7' style='display:none;color:black;height:30px; background-color: #10ffff;border-radius:10px; text-align:center;'>Answer7</p>
- 		<p class='set_answer' id='an8' style='display:none;color:black;height:30px; background-color: #ffa448;border-radius:10px; text-align:center;'>Answer8</p>
- 		<p class='set_answer' id='an9' style='display:none;color:black;height:30px; background-color: #ff4242;border-radius:10px; text-align:center;'>Answer9</p>
- 		<p class='set_answer' id='an10' style='display:none;color:black;height:30px; background-color: #49ff78;border-radius:10px; text-align:center;'>Answer10</p>
- 	</div>
- 	<div class='plugins_type'id='plugins_type3'style=' display:none; border: 1px solid #0073aa; position: absolute;top: 415px; width: 250px; left: 695px;border-radius:6px;background-color:#ffffff;padding:20px;'>
- 		
- 		<p class='questions_title'style='text-align:center;color:black; background-color:#cfcfcf; margin:10px 10px 10px 10px;'>Question?</p>
- 		<div id='set_file1' style='text-align:center;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/1.jpg" id='file1' style='width:90px; height:66px;'><span class='set_answer' id='set_answer1' style='text-align:center;color:black;'>Answer1</span></div>
- 		<div id='set_file2' style='text-align:center;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/2.jpg" id='file2' style='width:90px; height:66px;'><span class='set_answer' id='set_answer2' style='text-align:center;color:black;'>Answer2</span></div>
- 		<div id='set_file3' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/3.jpg" id='file3' style='width:90px; height:66px;'><span class='set_answer' id='set_answer3' style='text-align:center;color:black;'>Answer3</span></div>
- 		<div id='set_file4' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/4.jpg" id='file4' style='width:90px; height:66px;'><span class='set_answer' id='set_answer4' style='text-align:center;color:black;'>Answer4</span></div>
- 		<div id='set_file5' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/5.jpg" id='file5' style='width:90px; height:66px;'><span class='set_answer' id='set_answer5' style='text-align:center;color:black;'>Answer6</span></div>
- 		<div id='set_file6' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/6.jpg" id='file6' style='width:90px; height:66px;'><span class='set_answer' id='set_answer6' style='text-align:center;color:black;'>Answer6</span></div>
- 		<div id='set_file7' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/7.jpg" id='file7' style='width:90px; height:66px;'><span class='set_answer' id='set_answer7' style='text-align:center;color:black;'>Answer7</span></div>
- 		<div id='set_file8' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/8.jpg" id='file8' style='width:90px; height:66px;'><span class='set_answer' id='set_answer8' style='text-align:center;color:black;'>Answer8</span></div>
- 		<div id='set_file9' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/9.jpg" id='file9' style='width:90px; height:66px;'><span class='set_answer' id='set_answer9' style='text-align:center;color:black;'>Answer9</span></div>
- 		<div id='set_file10' style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/10.jpg" id='file10' style='width:90px; height:66px;'><span class='set_answer' id='set_answer10' style='text-align:center;color:black;'>Answer10</span></div>
- 	</div>
-	 	<div class='plugins_type' id='plugins_type4' style='padding:0 10px 10px 10px; display:none; border: 1px solid #0073aa; position: absolute;top: 415px; width: 250px;left: 695px;border-radius:6px;background:#ffffff;'>
-	 	<p class='questions_title' style='text-align:center;color:black;margin:10px 20px 0 10px;'>Question?</p>
-	 	<div class='set_answer' id='a1' style='border: 1px solid #49ff78;height: 28px;margin-top:10px;'><p class='set_answer' id='answ1' style='float: left;margin: 5px;'>Answer1</p><div id='set_color1'style='float: right;background-color:#49ff78;display: inline-block;height: 28px; width: 32px;'></div></div>
-	 	<div class='set_answer' id='a2' style='border: 1px solid #10ffff;height: 28px;margin-top:10px;'><p class='set_answer' id='answ2' style='float: left;margin: 5px;'>Answer2</p><div id='set_color2'style='float: right;background-color:#10ffff;display: inline-block;height: 28px; width: 32px;'></div></div>
-	 	<div class='set_answer' id='a3' style='display:none;border: 1px solid #ffa448;height: 28px;margin-top:10px;'><p class='set_answer' id='answ3' style='float: left;margin: 5px;'>Answer3</p><div id='set_color3'style='float: right;background-color:#ffa448;display: inline-block;height: 28px; width: 32px;'></div></div>
-	 	<div class='set_answer' id='a4' style='display:none;border: 1px solid #ffff80;height: 28px;margin-top:10px;'><p class='set_answer' id='answ4' style='float: left;margin: 5px;'>Answer4</p><div id='set_color4'style='float: right;background-color:#ffff80;display: inline-block;height: 28px; width: 32px;'></div></div>
-	 	<div class='set_answer' id='a5' style='display:none;border: 1px solid #ff4242;height: 28px;margin-top:10px;'><p class='set_answer' id='answ5' style='float: left;margin: 5px;'>Answer5</p><div id='set_color5'style='float: right;background-color:#ff4242;display: inline-block;height: 28px; width: 32px;'></div></div>
-	 	<div class='set_answer' id='a6' style='display:none;border: 1px solid #49ff78;height: 28px;margin-top:10px;'><p class='set_answer' id='answ6' style='float: left;margin: 5px;'>Answer6</p><div id='set_color6'style='float: right;background-color:#49ff78;display: inline-block;height: 28px; width: 32px;'></div></div>
-	 	<div class='set_answer' id='a7' style='display:none;border: 1px solid #10ffff;height: 28px;margin-top:10px;'><p class='set_answer' id='answ7' style='float: left;margin: 5px;'>Answer7</p><div id='set_color7'style='float: right;background-color:#10ffff;display: inline-block;height: 28px; width: 32px;'></div></div>
-	 	<div class='set_answer' id='a8' style='display:none;border: 1px solid #ffa448;height: 28px;margin-top:10px;'><p class='set_answer' id='answ8' style='float: left;margin: 5px;'>Answer8</p><div id='set_color8'style='float: right;background-color:#ffa448;display: inline-block;height: 28px; width: 32px;'></div></div>
-	 	<div class='set_answer' id='a9' style='display:none;border: 1px solid #ffff80;height: 28px;margin-top:10px;'><p class='set_answer' id='answ9' style='float: left;margin: 5px;'>Answer9</p><div id='set_color9'style='float: right;background-color:#ffff80;display: inline-block;height: 28px; width: 32px;'></div></div>
-	 	<div class='set_answer' id='a10' style='display:none;border: 1px solid #ff4242;height: 28px;margin-top:10px;'><p class='set_answer' id='answ10' style='float: left;margin: 5px;'>Answer10</p><div id='set_color10'style='float: right;background-color:#ff4242;display: inline-block;height: 28px; width: 32px;'></div></div>
- 	</div>
-
+		<fieldset id="Juna_IT_Poll_Answers_Style_Field" class="Juna_IT_Poll_Answers_Style_Field">
+			<legend><i>Answers Style</i></legend>
+			<table class="Juna_IT_Poll_Style_Table">
+				<tr>
+					<td>Font Family:</td>
+					<td>
+						<select name="Juna_IT_Poll_Answer_Font_Family" id="Juna_IT_Poll_Answer_Font_Family" onchange="Juna_IT_Poll_Change_Font('Answer')">
+						 	<?php for($i=0;$i<count($Juna_IT_Poll_Font_Family);$i++){?>
+						 		<option value="<?php echo $Juna_IT_Poll_Font_Family[$i]->Font_family; ?>"><?php echo $Juna_IT_Poll_Font_Family[$i]->Font_family; ?></option>
+						 	<?php } ?>
+					 	</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Font Size:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Answer_Font_Size_Range"  onchange="Juna_IT_Poll_Change_Size('Answer','false')" min='0' max='100' value="14" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Answer_Font_Size_Number" onchange="Juna_IT_Poll_Change_Size('Answer','true')"  min='0' max='100' value="14" name="Juna_IT_Poll_Answer_Font_Size" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+				</tr>
+				<tr>
+					<td>Background Color:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Answer_Bg_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Answer_Bg','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Answer_Bg_Color"  class="Juna_IT_Poll_Input_Color"      value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Answer_Bg','false')" name="Juna_IT_Poll_Input_Answer_Bg_Color"></td>
+				</tr>
+				<tr>
+					<td>Color:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Answer_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#000000" onchange="Juna_IT_Poll_Change_Color('Answer_Color','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Answer_Color"  class="Juna_IT_Poll_Input_Color"      value="#000000" onchange="Juna_IT_Poll_Change_Color('Answer_Color','false')" name="Juna_IT_Poll_Input_Answer_Color"></td>
+				</tr>				
+				<tr>
+					<td>Place Between Answers:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Between_Answer_Range"  onchange="Juna_IT_Poll_Change_Size('Between_Answer','false')" min='0' max='100' value="0" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Between_Answer_Number" onchange="Juna_IT_Poll_Change_Size('Between_Answer','true')"  min='0' max='100' value="0" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+			</table>
+			<table class="Juna_IT_Poll_Style_Table" id="Juna_IT_Poll_Border_Table">
+				<tr>
+					<td>Border Style:</td>
+					<td>
+						<select id="Juna_IT_Poll_Answer_Border_Style" onchange="Juna_IT_Poll_Change_Font('Border_Style_Answer')">
+				 			<option value='none' selected="select">     None                       </option>
+				 			<option value='dotted'>                     Dotted                     </option>
+				 			<option value='dashed'>                     Dashed                     </option>
+				 			<option value='solid'>                      Solid                      </option>
+				 			<option value='double'>                     Double                     </option>
+				 			<option value='groove'>                     Groove                     </option>
+				 			<option value='ridge'>                      Ridge                      </option>
+				 			<option value='inset'>                      Inset                      </option>
+				 			<option value='outset'>                     Outset                     </option>
+				 			<option value='dotted solid'>               Dotted Solid               </option>
+				 			<option value="dotted solid double dashed"> Dotted solid double dashed </option>
+				 		</select>
+					</td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+				<tr>
+					<td>Border Width:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Answer_Border_Width_Range"  onchange="Juna_IT_Poll_Change_Size('Border_Width_Answer','false')" min='0' max='100' value="0" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Answer_Border_Width_Number" onchange="Juna_IT_Poll_Change_Size('Border_Width_Answer','true')"  min='0' max='100' value="0" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+				<tr>
+					<td>Border Radius:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Answer_Border_Radius_Range"  onchange="Juna_IT_Poll_Change_Size('Border_Radius_Answer','false')" min='0' max='100' value="0" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Answer_Border_Radius_Number" onchange="Juna_IT_Poll_Change_Size('Border_Radius_Answer','true')"  min='0' max='100' value="0" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+				<tr>
+					<td>Border Color:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Answer_Border_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#000000" onchange="Juna_IT_Poll_Change_Color('Border_Color_Answer','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Answer_Border_Color"  class="Juna_IT_Poll_Input_Color"      value="#000000" onchange="Juna_IT_Poll_Change_Color('Border_Color_Answer','false')"></td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+			</table>
+			<table class="Juna_IT_Poll_Style_Table" id="Juna_IT_Poll_Image_Style_Table">
+				<tr>
+					<td>Image's width:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Image_Width_Range"  onchange="Juna_IT_Poll_Change_Size('Image_Width','false')" min='0' max='500' value="90" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Image_Width_Number" onchange="Juna_IT_Poll_Change_Size('Image_Width','true')"  min='0' max='500' value="90" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+				</tr>
+				<tr>
+					<td>Image's Height:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Image_Height_Range"  onchange="Juna_IT_Poll_Change_Size('Image_Height','false')" min='0' max='500' value="66" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Image_Height_Number" onchange="Juna_IT_Poll_Change_Size('Image_Height','true')"  min='0' max='500' value="66" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+				</tr>
+				<tr>
+					<td>Image's Border Width:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Image_Border_Width_Range"  onchange="Juna_IT_Poll_Change_Size('Image_Border_Width','false')" min='0' max='100' value="1" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Image_Border_Width_Number" onchange="Juna_IT_Poll_Change_Size('Image_Border_Width','true')"  min='0' max='100' value="1" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+				</tr>
+				<tr>
+					<td>Image's Border Radius:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Image_Border_Radius_Range"  onchange="Juna_IT_Poll_Change_Size('Image_Border_Radius','false')" min='0' max='150' value="0" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Image_Border_Radius_Number" onchange="Juna_IT_Poll_Change_Size('Image_Border_Radius','true')"  min='0' max='150' value="0" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+				</tr>
+				<tr>
+					<td>Div's Border Radius:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Div_Border_Radius_Range"  onchange="Juna_IT_Poll_Change_Size('Div_Border_Radius','false')" min='0' max='200' value="0" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Div_Border_Radius_Number" onchange="Juna_IT_Poll_Change_Size('Div_Border_Radius','true')"  min='0' max='200' value="0" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+				</tr>
+				<tr>
+					<td>Image's Border Color:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Image_Border_Color_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#0073aa" onchange="Juna_IT_Poll_Change_Color('Image_Border_Color','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Image_Border_Color_Color"  class="Juna_IT_Poll_Input_Color"      value="#0073aa" onchange="Juna_IT_Poll_Change_Color('Image_Border_Color','false')"></td>
+				</tr>
+				<tr>
+					<td>Image's Border Style:</td>
+					<td>
+						<select id="Juna_IT_Poll_Image_Border_Style" onchange="Juna_IT_Poll_Change_Font('Border_Style_Image')">
+				 			<option value='none'>                       None                       </option>
+				 			<option value='dotted'>                     Dotted                     </option>
+				 			<option value='dashed'>                     Dashed                     </option>
+				 			<option value='solid' selected="select">    Solid                      </option>
+				 			<option value='double'>                     Double                     </option>
+				 			<option value='groove'>                     Groove                     </option>
+				 			<option value='ridge'>                      Ridge                      </option>
+				 			<option value='inset'>                      Inset                      </option>
+				 			<option value='outset'>                     Outset                     </option>
+				 			<option value='dotted solid'>               Dotted Solid               </option>
+				 			<option value="dotted solid double dashed"> Dotted solid double dashed </option>
+				 		</select>
+					</td>
+				</tr>	
+			</table>		
+		</fieldset>
+					
+		<fieldset id='Juna_IT_Poll_Widget_Style_Field' class="Juna_IT_Poll_Widget_Style_Field">
+			<legend><i> Widget Style</i> </legend>
+			<table class="Juna_IT_Poll_Style_Table">
+				<tr>
+					<td>Width:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Widget_Width_Range"  onchange="Juna_IT_Poll_Change_Size('Widget_Width','false')" min='200' max='1000' value="250" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Widget_Width_Number" onchange="Juna_IT_Poll_Change_Size('Widget_Width','true')"  min='200' max='1000' value="250" name="Juna_IT_Poll_Widget_Width" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+				</tr>				
+				<tr>
+					<td>Background Color:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Background_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Background','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Background_Color"  class="Juna_IT_Poll_Input_Color"      value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Background','false')" name="Juna_IT_Poll_Input_Background_Color"></td>
+				</tr>
+				<tr>
+					<td>Border Width:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Widget_Border_Width_Range"  onchange="Juna_IT_Poll_Change_Size('Widget_Border_Width','false')" min='0' max='100' value="1" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Widget_Border_Width_Number" onchange="Juna_IT_Poll_Change_Size('Widget_Border_Width','true')"  min='0' max='100' value="1" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+				<tr>
+					<td>Border Radius:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Widget_Border_Radius_Range"  onchange="Juna_IT_Poll_Change_Size('Widget_Border_Radius','false')" min='0' max='150' value="6" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Widget_Border_Radius_Number" onchange="Juna_IT_Poll_Change_Size('Widget_Border_Radius','true')"  min='0' max='150' value="6" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+				<tr>
+					<td>Border Color:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Border_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#0073aa" onchange="Juna_IT_Poll_Change_Color('Widget_Border_Color','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Border_Color"  class="Juna_IT_Poll_Input_Color"      value="#0073aa" onchange="Juna_IT_Poll_Change_Color('Widget_Border_Color','false')" name="Juna_IT_Poll_Input_Border_Color"></td>
+				</tr>
+				<tr>
+					<td>Border Style:</td>
+					<td>
+						<select id="Juna_IT_Poll_Widget_Border_Style" onchange="Juna_IT_Poll_Change_Font('Border_Style_Widget')">
+				 			<option value='none'>                       None                       </option>
+				 			<option value='dotted'>                     Dotted                     </option>
+				 			<option value='dashed'>                     Dashed                     </option>
+				 			<option value='solid' selected="select">    Solid                      </option>
+				 			<option value='double'>                     Double                     </option>
+				 			<option value='groove'>                     Groove                     </option>
+				 			<option value='ridge'>                      Ridge                      </option>
+				 			<option value='inset'>                      Inset                      </option>
+				 			<option value='outset'>                     Outset                     </option>
+				 			<option value='dotted solid'>               Dotted Solid               </option>
+				 			<option value="dotted solid double dashed"> Dotted solid double dashed </option>
+				 		</select>
+					</td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>					
+			</table>
+			<table class="Juna_IT_Poll_Style_Table" id="Juna_IT_Poll_Vote_Type_Table">
+				<tr>
+					<td> </td>
+					<td><input type="radio" class="Juna_IT_Poll_Votes_Type_Radio" name="Juna_IT_Poll_Votes_Type_Radio" value="percent" checked>By Percents</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Vote's type:</td>
+					<td><input type="radio" class="Juna_IT_Poll_Votes_Type_Radio" name="Juna_IT_Poll_Votes_Type_Radio" value="vote">By Votes Count</td>
+				</tr>
+				<tr>
+					<td> </td>
+					<td><input type="radio" class="Juna_IT_Poll_Votes_Type_Radio" name="Juna_IT_Poll_Votes_Type_Radio" value="both">Both</td>
+				</tr>
+				<tr>
+					<td>Vote's Color:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Vote_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#000000" onchange="Juna_IT_Poll_Change_Color('Vote_Color','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Vote_Color"  class="Juna_IT_Poll_Input_Color"      value="#000000" onchange="Juna_IT_Poll_Change_Color('Vote_Color','false')" name="Juna_IT_Poll_Input_Vote_Color"></td>
+				</tr>
+			</table>
+			<table class="Juna_IT_Poll_Style_Table" id="Juna_IT_Poll_Vote_Button_Table">
+				<tr>
+					<td>Vote Button Color:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Vote_Button_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#000000" onchange="Juna_IT_Poll_Change_Color('Vote_Button_Color','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Vote_Button_Color"  class="Juna_IT_Poll_Input_Color"      value="#000000" onchange="Juna_IT_Poll_Change_Color('Vote_Button_Color','false')" name="Juna_IT_Poll_Input_Vote_Button_Color"></td>
+				</tr>
+				<tr>
+					<td>Button Text Color:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Vote_Button_Color_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Vote_Button_Color_Color','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Vote_Button_Color_Color"  class="Juna_IT_Poll_Input_Color"      value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Vote_Button_Color_Color','false')" name="Juna_IT_Poll_Input_Vote_Button_Color_Color"></td>
+				</tr>
+				<tr>
+					<td>Button Margin Right:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Margin_Right_Range"  onchange="Juna_IT_Poll_Change_Size('Margin_Right','false')" min='0' max='500' value="20" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Margin_Right_Number" onchange="Juna_IT_Poll_Change_Size('Margin_Right','true')"  min='0' max='500' value="20" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+				<tr>
+					<td>Button Width:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Button_Width_Range"  onchange="Juna_IT_Poll_Change_Size('Button_Width','false')" min='0' max='200' value="62" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Button_Width_Number" onchange="Juna_IT_Poll_Change_Size('Button_Width','true')"  min='0' max='200' value="62" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+				<tr>
+					<td>Button Border Radius:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Button_Border_Radius_Range"  onchange="Juna_IT_Poll_Change_Size('Button_Border_Radius','false')" min='0' max='100' value="10" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Button_Border_Radius_Number" onchange="Juna_IT_Poll_Change_Size('Button_Border_Radius','true')"  min='0' max='100' value="10" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+				<tr>
+					<td>Button Font Family:</td>
+					<td>
+						<select id="Juna_IT_Poll_Button_Font_Family" onchange="Juna_IT_Poll_Change_Font('Button_Font_Family')">
+						 	<?php for($i=0;$i<count($Juna_IT_Poll_Font_Family);$i++){?>
+						 		<option value="<?php echo $Juna_IT_Poll_Font_Family[$i]->Font_family; ?>"><?php echo $Juna_IT_Poll_Font_Family[$i]->Font_family; ?></option>
+						 	<?php } ?>
+					 	</select>
+					</td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+				<tr>
+					<td>Button Font Size:</td>
+					<td><input type="range"  id="Juna_IT_Poll_Button_Font_Size_Range"  onchange="Juna_IT_Poll_Change_Size('Button_Font_Size','false')" min='0' max='100' value="14" step='1'></td>
+					<td><input type="number" id="Juna_IT_Poll_Button_Font_Size_Number" onchange="Juna_IT_Poll_Change_Size('Button_Font_Size','true')"  min='0' max='100' value="14" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+				<tr>
+					<td>Button Text:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Button_Text"  class="Juna_IT_Poll_Input_Text_Color" value="Vote" onchange="Juna_IT_Poll_Change_Button_Text()"></td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+			</table>			
+		</fieldset>		
+	</form>
+</div>
+<!-- Stepan -->
 <?php
-		
-function delete($sql_question)
-{
-	global $wpdb;
-
-	$sql_question=addslashes($sql_question);
-
-	$table_name  =  $wpdb->prefix . "poll_wp_Questions";
-	$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
-	$table_name3 =  $wpdb->prefix . "poll_wp_Results";
-	$table_name4 =  $wpdb->prefix . "poll_wp_Settings";		
-
-	$count=$wpdb->get_var($wpdb->prepare("SELECT count(*) FROM  $table_name WHERE Question= %s", $sql_question));
-
-	$id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Question= %s limit 1",$sql_question));
-
-	if($count!=0)
+	function delete($sql_question)
 	{
+		global $wpdb;		
 
-		$wpdb->query($wpdb->prepare("DELETE FROM $table_name WHERE id= %d", $id));
+		$table_name  =  $wpdb->prefix . "poll_wp_Questions";
+		$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
+		$table_name3 =  $wpdb->prefix . "poll_wp_Results";	
+		$table_name4 =  $wpdb->prefix . "poll_wp_Settings";
+		$table_name5 =  $wpdb->prefix . "poll_wp_position";
+		$table_name6 =  $wpdb->prefix . "poll_wp_font_family";
+		$table_name7 =  $wpdb->prefix . "poll_wp_Parameters";		
 
-		$results=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE QuestionID= %d", $id));
+		$count=$wpdb->get_var($wpdb->prepare("SELECT count(*) FROM $table_name WHERE Juna_IT_Poll_Add_Question_Field= %s", $sql_question));
+		$id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Juna_IT_Poll_Add_Question_Field= %s limit 1",$sql_question));
 
-		for($i=0;$i<count($results);$i++)
-		{		
-			$wpdb->query($wpdb->prepare("DELETE FROM $table_name2 WHERE id= %d", $results[$i]->id));
+		if($count!=0)
+		{
+			$wpdb->query($wpdb->prepare("DELETE FROM $table_name WHERE id= %d", $id));
+			$results=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE Juna_IT_Poll_Add_Question_FieldID= %d", $id));
+
+			for($i=0;$i<count($results);$i++)
+			{		
+				$wpdb->query($wpdb->prepare("DELETE FROM $table_name2 WHERE id= %d", $results[$i]->id));
+			}
+
+			$set_id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name4 WHERE Juna_IT_Poll_Add_Question_FieldID= %d", $id));
+
+			$wpdb->query($wpdb->prepare("DELETE FROM $table_name4 WHERE id= %d",$set_id));
+			$wpdb->query($wpdb->prepare("DELETE FROM $table_name7 WHERE id= %d",$set_id));
+
+			$result_s=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name3 WHERE Juna_IT_Poll_Add_Question_FieldID= %d",$id));
+
+			for($i=0;$i<count($result_s);$i++)
+			{		
+				$wpdb->query($wpdb->prepare("DELETE FROM $table_name3 WHERE id= %d", $result_s[$i]->id));				
+			}
 		}
-
-		$set_id=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name4 WHERE QuestionID= %d", $id));
-
-		$wpdb->query($wpdb->prepare("DELETE FROM $table_name4 WHERE id= %d",$set_id));
-
-		$result_s=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name3 WHERE QuestionID= %d",$id));
-
-		for($i=0;$i<count($result_s);$i++)
-		{		
-			$wpdb->query($wpdb->prepare("DELETE FROM $table_name3 WHERE id= %d", $result_s[$i]->id));				
+		else 
+		{
+			return;
 		}
-
 	}
-	else 
-	{
-		return;
-	}
-	
-}
 ?>

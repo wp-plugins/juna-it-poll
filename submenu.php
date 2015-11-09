@@ -16,13 +16,13 @@
 
 	if($_SERVER["REQUEST_METHOD"]=="POST")
 	{
-		$quest=sanitize_text_field($_POST["Question"]);
+		$quest=sanitize_text_field($_POST["Juna_IT_Poll_Add_Question_Field"]);
 
-		$results=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name3 WHERE QuestionID=(SELECT id FROM $table_name WHERE Question= %s)", $quest));
+		$results=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name3 WHERE Juna_IT_Poll_Add_Question_FieldID=(SELECT id FROM $table_name WHERE Juna_IT_Poll_Add_Question_Field= %s)", $quest));
 		
-		$answers=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE QuestionID=(SELECT id FROM $table_name WHERE Question= %s)", $quest));
+		$answers=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE Juna_IT_Poll_Add_Question_FieldID=(SELECT id FROM $table_name WHERE Juna_IT_Poll_Add_Question_Field= %s)", $quest));
 
-		$quest=sanitize_text_field(stripcslashes($_POST["Question"]));
+		$quest=sanitize_text_field(stripcslashes($_POST["Juna_IT_Poll_Add_Question_Field"]));
 
 	}
 
@@ -94,13 +94,13 @@
 	<br>
 		<img style="float:left;" src="http://juna-it.com/image/icon.png">
 		<Label style="font-size:18px; margin-left:10px;"><i> Select a Question</i></Label> <a href="http://juna-it.com/index.php/features/elements/juna-it-plugin/" target="_blank"><img src="http://juna-it.com/wp-content/uploads/2015/07/juna-logo.png" style="float:right; width:150px;height:70px; margin-right:10px;" <abbr title="Click to get Pro version"></a><br>
-		<select name="Question" onchange="this.form.submit()">
+		<select name="Juna_IT_Poll_Add_Question_Field" onchange="this.form.submit()">
 		<option> Select Question </option>
 			<?php
 				foreach($questions as $q)
 				{											
 					?>
-						<option value="<?php echo $q->Question ?>"> <?php echo $q->Question; ?> </option> 
+						<option value="<?php echo $q->Juna_IT_Poll_Add_Question_Field ?>"> <?php echo $q->Juna_IT_Poll_Add_Question_Field; ?> </option> 
 					<?php
 				}
 			?>
@@ -127,9 +127,9 @@
 				 				<tr>
 				 					<th> <?php echo $i+1; ?> </th>
 				 					<th> 
-				 						<?php echo $answers[$i]->Answer; ?> 
+				 						<?php echo $answers[$i]->Juna_IT_Poll_Answers_Input; ?> 
 				 					</th>
-				 					<th>  <?php echo $results[$i]->Count; ?> </th> 
+				 					<th>  <?php echo $results[$i]->Juna_IT_Poll_Count; ?> </th> 
 				 				</tr> 
 				 			<?php
 				 		}
