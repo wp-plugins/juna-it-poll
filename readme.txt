@@ -130,13 +130,13 @@ Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], w
 
 == Screenshots ==
     
-1.  Standart Poll Version
-2.  Added Poll Page
-22.  Pie Chart Version
-23.  WordPress Juna IT Poll
-24.  WordPress Juna IT Poll
-25.  WordPress Juna IT Poll
-26.  WordPress Juna IT Poll
+1.  Poll admin page
+2.  Poll General options
+22.  Poll General options
+23.  WordPress Poll view 1 - Standart Poll
+24.  WordPress Poll view 2 - Pie Chart
+25.  WordPress Poll view 3 - Video/Image Poll
+26.  WordPress Poll view 3 - Video/Image Poll
 27.  WordPress Juna IT Poll
 28.  WordPress Juna IT Poll
 29.  WordPress Juna IT Poll
