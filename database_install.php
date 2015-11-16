@@ -125,13 +125,11 @@
 		$wpdb->query($wpdb->prepare("INSERT INTO $table_name2 (id, Juna_IT_Poll_Answers_Input, Juna_IT_Poll_Upload_File, Juna_IT_Poll_Input_Add_Answer_Bg, Juna_IT_Poll_Add_Question_FieldID) VALUES (%d, %s, %s, %s, %d)", '', 'Not at All', '', '#F5F5F5', 1));
 		$wpdb->query($wpdb->prepare("INSERT INTO $table_name2 (id, Juna_IT_Poll_Answers_Input, Juna_IT_Poll_Upload_File, Juna_IT_Poll_Input_Add_Answer_Bg, Juna_IT_Poll_Add_Question_FieldID) VALUES (%d, %s, %s, %s, %d)", '', 'Great', '', '#F5F5F5', 1));
 
-		$wpdb->query($wpdb->prepare("INSERT INTO $table_name3 (id, Juna_IT_Poll_Add_Question_FieldID, Juna_IT_Poll_Answers_InputID, Juna_IT_Poll_Count) VALUES (%d, %d, %d, %d)", '', 1, 1, 0));
-		$wpdb->query($wpdb->prepare("INSERT INTO $table_name3 (id, Juna_IT_Poll_Add_Question_FieldID, Juna_IT_Poll_Answers_InputID, Juna_IT_Poll_Count) VALUES (%d, %d, %d, %d)", '', 1, 2, 0));
-		$wpdb->query($wpdb->prepare("INSERT INTO $table_name3 (id, Juna_IT_Poll_Add_Question_FieldID, Juna_IT_Poll_Answers_InputID, Juna_IT_Poll_Count) VALUES (%d, %d, %d, %d)", '', 1, 3, 0));
-		$wpdb->query($wpdb->prepare("INSERT INTO $table_name3 (id, Juna_IT_Poll_Add_Question_FieldID, Juna_IT_Poll_Answers_InputID, Juna_IT_Poll_Count) VALUES (%d, %d, %d, %d)", '', 1, 4, 0));
+		$wpdb->query($wpdb->prepare("INSERT INTO $table_name3 (id, Juna_IT_Poll_Add_Question_FieldID, Juna_IT_Poll_Answers_InputID, Juna_IT_Poll_Count) VALUES (%d, %d, %d, %d)", '', 1, 1, 100));
+		$wpdb->query($wpdb->prepare("INSERT INTO $table_name3 (id, Juna_IT_Poll_Add_Question_FieldID, Juna_IT_Poll_Answers_InputID, Juna_IT_Poll_Count) VALUES (%d, %d, %d, %d)", '', 1, 2, 20));
+		$wpdb->query($wpdb->prepare("INSERT INTO $table_name3 (id, Juna_IT_Poll_Add_Question_FieldID, Juna_IT_Poll_Answers_InputID, Juna_IT_Poll_Count) VALUES (%d, %d, %d, %d)", '', 1, 3, 15));
+		$wpdb->query($wpdb->prepare("INSERT INTO $table_name3 (id, Juna_IT_Poll_Add_Question_FieldID, Juna_IT_Poll_Answers_InputID, Juna_IT_Poll_Count) VALUES (%d, %d, %d, %d)", '', 1, 4, 150));
 		
-		// $wpdb->query($wpdb->prepare("INSERT INTO $table_name4 (id, border_color, bg_color, font_family, font_size, answer_color, answer_hover_color, question_color, vote_button_color, buttons_text_color, widget_div_width, vote_type, vote_color, image_width, image_height, answer_font_family, answer_font_size, image_border_width, image_border_radius, div_border_radius, border_color_image, border_style_image, QuestionID) VALUES (%d, %s, %s, %s, %d, %s, %s, %s, %s, %s, %s, %s, %s, %d, %d, %s, %d, %d, %d, %d, %s, %s, %d)", '', 'Black', '#FFFFFF', 'Consolas', '14', 'rgb(255,0,0)', '', 'rgba(0,0,255,0.5)', 'black', 'white', '200', 'percent', 'white', '', '', 'Consolas', '14', '1', '0', '0', '#0073aa', 'solid', '1'));
-
 		$family = array('Abadi MT Condensed Light','Aharoni','Aldhabi','Andalus','Angsana New',' AngsanaUPC','Aparajita','Arabic Typesetting','Arial','Arial Black',
 			'Batang','BatangChe','Browallia New','BrowalliaUPC','Calibri','Calibri Light','Calisto MT','Cambria','Candara','Century Gothic','Comic Sans MS','Consolas',
 			'Constantia','Copperplate Gothic','Copperplate Gothic Light','Corbel','Cordia New','CordiaUPC','Courier New','DaunPenh','David','DFKai-SB','DilleniaUPC',
@@ -147,5 +145,25 @@
 		{
 			$wpdb->query($wpdb->prepare("INSERT INTO $table_name6 (id, Font_family) VALUES (%d, %s)",  '', $font_family));
 		}
+
+		$wpdb->query($wpdb->prepare("INSERT INTO $table_name4 (id, Juna_IT_Poll_Question_Font_Family, Juna_IT_Poll_Question_Font_Size, 
+			Juna_IT_Poll_Input_Bg_Color, Juna_IT_Poll_Input_Color, Juna_IT_Poll_Question_Border_Style, Juna_IT_Poll_Question_Border_Width, 
+			Juna_IT_Poll_Question_Border_Radius, Juna_IT_Poll_Input_Border_Color, Juna_IT_Poll_Answer_Font_Family, Juna_IT_Poll_Answer_Font_Size, 
+			Juna_IT_Poll_Input_Answer_Bg_Color, Juna_IT_Poll_Input_Answer_Color, Juna_IT_Poll_Answer_Border_Style, Juna_IT_Poll_Answer_Border_Width, 
+			Juna_IT_Poll_Answer_Border_Radius, Juna_IT_Poll_Input_Answer_Border_Color, Juna_IT_Poll_Between_Answer, Juna_IT_Poll_Add_Question_FieldID) 
+		VALUES (%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%d) ", '', 'Gabriola', '25px', 
+		'#ffffff', '#0073aa', 'none', '0px', '0px', '#ffffff', 'Gabriola', '25px', '#ffffff', '#0073aa', 'dotted', '1px', 
+		'7px', '#0073aa', '3px', 1));
+
+		$wpdb->query($wpdb->prepare("INSERT INTO $table_name7 (id, Juna_IT_Poll_Widget_Width, Juna_IT_Poll_Input_Background_Color, 
+			Juna_IT_Poll_Widget_Border_Width, Juna_IT_Poll_Widget_Border_Radius, Juna_IT_Poll_Input_Border_Color, Juna_IT_Poll_Widget_Border_Style, 
+			Juna_IT_Poll_Votes_Type_Radio, Juna_IT_Poll_Input_Vote_Color, Juna_IT_Poll_Input_Vote_Button_Color, 
+			Juna_IT_Poll_Input_Vote_Button_Color_Color, Juna_IT_Poll_Margin_Right, Juna_IT_Poll_Button_Width, 
+			Juna_IT_Poll_Button_Border_Radius, Juna_IT_Poll_Button_Font_Family, Juna_IT_Poll_Button_Font_Size, Juna_IT_Poll_Button_Text, 
+			Juna_IT_Poll_Image_Width, Juna_IT_Poll_Image_Height, Juna_IT_Poll_Image_Border_Width, Juna_IT_Poll_Image_Border_Radius, Juna_IT_Poll_Div_Border_Radius, 
+			Juna_IT_Poll_Input_Image_Border_Color, Juna_IT_Poll_Image_Border_Style, Juna_IT_Poll_Add_Question_FieldID) 
+		VALUES (%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%d) ", '', '300px', '#ffffff', 
+		'1px', '10px', '#0073aa', 'solid', 'percent', '#ff0000', '#0073aa', '#ffffff', '40px', '100px', '15px', 'Arial', '14px', 'VOTE', '', 
+		'', '', '', '', '', '', 1));
 	}
 ?>

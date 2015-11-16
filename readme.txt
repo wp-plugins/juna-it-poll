@@ -4,7 +4,7 @@ Donate link: http://juna-it.com/index.php/features/elements/juna-it-plugin/
 Tags: create poll, create polls, custom poll, custom polls, data collection, democracy, do a poll,easy polls, feedback, flash poll, user polls, free user polls, html poll, online poll, opinion, opinion stage, page poll, plugin, poll, poll builder, poll directory, poll plugin, poll widget,polldaddy polls, polling, Polling System, polls, post poll, post survey, rate, premade polls,questionnaire, responsive, opinionstage, shortcode, sidebar survey, survey, survey form, survey form builder,survey plugin, survey tool, survey widget, surveys, user survey, vote, Votes, voting,voting polls, pol, poll poll, widget, widgets, wordpress poll widget, wordpress poll,  WordPress polls, wordpress survey, feedback, survey, wp polls, wp survey, social, wppolls, bing, booth, statistics, polldaddy, qualaroo, charts, juna it poll, it poll, yop poll, post, posts, debate, research, usability, cache, beautiful poll, create amazing polls, multiple poll, pie chart, image poll, Column Chart, Standard Poll, question answer, responsive poll, awesome poll, video poll, gallery poll, gallery polls, video polls, share poll,
 Requires at least: 3.0.1
 Tested up to: 4.3.1
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -146,6 +146,9 @@ Yes, just post the following syntax in any post / page: [Juna_IT_Poll id="1"], w
 34.  WordPress Juna IT Poll
 
 == Changelog ==
+
+= 1.3.1 =
+* Admin page changed.Corrected all functions in admins page
 
 = 1.3.0 =
 * Admin page changed. 

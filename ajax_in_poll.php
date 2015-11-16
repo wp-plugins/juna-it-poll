@@ -80,33 +80,7 @@
 
 		die();
 	} 
-
-	add_action( 'wp_ajax_Update_votes', 'Update_votes_callback' );
-	add_action( 'wp_ajax_nopriv_Update_votes', 'Update_votes_callback' );
-
-	function Update_votes_callback()
-	{
-		$votes=sanitize_text_field($_POST['foobar']);
-		$data=explode('$#$',$votes);
-		$vote=explode('*&^&*', $data[1]);
-
-		global $wpdb;
-
-		$table_name  =  $wpdb->prefix . "poll_wp_Questions";
-		$table_name2 =  $wpdb->prefix . "poll_wp_Answers";
-		$table_name3 =  $wpdb->prefix . "poll_wp_Results";
-		
-		$selected_quest=$wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE Question= %s", $data[0] ));
-
-		$answers=$wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name2 WHERE QuestionID= %s", $selected_quest));
-
-		for($i=0;$i<count($answers);$i++)
-		{
-			$wpdb->query($wpdb->prepare("UPDATE  $table_name3 set Count= %s WHERE  AnswerID= %d ",$vote[$i], $answers[$i]->id));
-		}
-		
-		die();
-	}
+	
 	add_action( 'wp_ajax_Delete_Juna_IT_Poll_Click', 'Delete_Juna_IT_Poll_Click_Callback' );
 	add_action( 'wp_ajax_nopriv_Delete_Juna_IT_Poll_Click', 'Delete_Juna_IT_Poll_Click_Callback' );
 
@@ -197,11 +171,11 @@
 
 		for($i=0;$i<count($Searched_Juna_IT_Quest);$i++)
 		{
-			for($j=1;$j<strlen($Searched_Juna_IT_Quest[$i]->Question);$j++)
+			for($j=1;$j<strlen($Searched_Juna_IT_Quest[$i]->Juna_IT_Poll_Add_Question_Field);$j++)
 			{
-				if($Search_Juna_IT_Poll_Question==substr(strtolower($Searched_Juna_IT_Quest[$i]->Question),0,$j))
+				if($Search_Juna_IT_Poll_Question==substr(strtolower($Searched_Juna_IT_Quest[$i]->Juna_IT_Poll_Add_Question_Field),0,$j))
 				{
-					echo $Searched_Juna_IT_Quest[$i]->id . "^%^" . $Searched_Juna_IT_Quest[$i]->Question . "^%^" . $Searched_Juna_IT_Quest[$i]->PluginType . ')&*&(';
+					echo $Searched_Juna_IT_Quest[$i]->id . "^%^" . $Searched_Juna_IT_Quest[$i]->Juna_IT_Poll_Add_Question_Field . "^%^" . $Searched_Juna_IT_Quest[$i]->Juna_IT_Poll_Plugin_Type_Text_Readonly . ')&*&(';
 				}
 				else
 				{

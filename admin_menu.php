@@ -71,7 +71,7 @@
 			$Juna_IT_Poll_Input_Background_Color=sanitize_text_field($_POST['Juna_IT_Poll_Input_Background_Color']);
 			$Juna_IT_Poll_Widget_Border_Width='1px';
 			$Juna_IT_Poll_Widget_Border_Radius='6px';
-			$Juna_IT_Poll_Input_Border_Color=sanitize_text_field($_POST['Juna_IT_Poll_Input_Border_Color']);
+			$Juna_IT_Poll_Input_Border_Color_Widget=sanitize_text_field($_POST['Juna_IT_Poll_Input_Border_Color_Widget']);
 			$Juna_IT_Poll_Widget_Border_Style='solid';
 			$Juna_IT_Poll_Votes_Type_Radio=sanitize_text_field($_POST['Juna_IT_Poll_Votes_Type_Radio']);
 			$Juna_IT_Poll_Input_Vote_Color=sanitize_text_field($_POST['Juna_IT_Poll_Input_Vote_Color']);
@@ -99,7 +99,7 @@
 				Juna_IT_Poll_Image_Width, Juna_IT_Poll_Image_Height, Juna_IT_Poll_Image_Border_Width, Juna_IT_Poll_Image_Border_Radius, Juna_IT_Poll_Div_Border_Radius, 
 				Juna_IT_Poll_Input_Image_Border_Color, Juna_IT_Poll_Image_Border_Style, Juna_IT_Poll_Add_Question_FieldID) 
 			VALUES (%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%d) ", '', $Juna_IT_Poll_Widget_Width, $Juna_IT_Poll_Input_Background_Color, 
-			$Juna_IT_Poll_Widget_Border_Width, $Juna_IT_Poll_Widget_Border_Radius, $Juna_IT_Poll_Input_Border_Color, $Juna_IT_Poll_Widget_Border_Style, $Juna_IT_Poll_Votes_Type_Radio, 
+			$Juna_IT_Poll_Widget_Border_Width, $Juna_IT_Poll_Widget_Border_Radius, $Juna_IT_Poll_Input_Border_Color_Widget, $Juna_IT_Poll_Widget_Border_Style, $Juna_IT_Poll_Votes_Type_Radio, 
 			$Juna_IT_Poll_Input_Vote_Color, $Juna_IT_Poll_Input_Vote_Button_Color, $Juna_IT_Poll_Input_Vote_Button_Color_Color, $Juna_IT_Poll_Margin_Right, $Juna_IT_Poll_Button_Width, 
 			$Juna_IT_Poll_Button_Border_Radius, $Juna_IT_Poll_Button_Font_Family, $Juna_IT_Poll_Button_Font_Size, $Juna_IT_Poll_Button_Text, $Juna_IT_Poll_Image_Width, 
 			$Juna_IT_Poll_Image_Height, $Juna_IT_Poll_Image_Border_Width, $Juna_IT_Poll_Image_Border_Radius, $Juna_IT_Poll_Div_Border_Radius, $Juna_IT_Poll_Input_Image_Border_Color, 
@@ -126,7 +126,7 @@
 		<a href="http://juna-it.com" target="_blank"<abbr title="Click to Visit"><img src="http://juna-it.com/image/logo-orange.png" class="Juna_IT_Logo_Orange"></a>
 			<br><br><br><br><br>
 		<span class="Polls_Title_Span">Question:</span> 
-		<input type="text" class="Juna_IT_Poll_search_text_field" id="Juna_IT_Poll_search_text_field" onclick="Juna_IT_Poll_Search_Question()">
+		<input type="text" class="Juna_IT_Poll_search_text_field" id="Juna_IT_Poll_search_text_field" onclick="Juna_IT_Poll_Search_Question()" placeholder="Search">
 		<input type="button" class="Juna_IT_Poll_Reset_button" value="Reset" onclick="Juna_IT_Poll_Reset_Button_Clicked()">
 		<span class="searched_question_does_not_exist" id="searched_question_does_not_exist"></span>
 		<input type="button" class="Juna_IT_Poll_Add_Poll_button" value="Create New Poll" onclick="Juna_IT_Poll_Create_New_Poll_Clicked()">
@@ -170,88 +170,84 @@
 			<span class="Add_Polls_Title_Span">Question:</span> 
 			<input type="text" class="Juna_IT_Poll_Add_Question_Field" id="Juna_IT_Poll_Add_Question_Field" name="Juna_IT_Poll_Add_Question_Field" onclick="Juna_IT_Poll_Add_Question_Field_Click()" required>
 				<br><br><br>
-			<input type="button" value="Choose Poll Type" id="Juna_IT_Poll_Admin_Menu_Button_1" class="Juna_IT_Poll_Choose_Poll_Type_Button">
-			<input type="button" value="Question Style" id="Juna_IT_Poll_Admin_Menu_Button_2" class="Juna_IT_Poll_Question_Style_Button">
-			<input type="button" value="Add Answers" id="Juna_IT_Poll_Admin_Menu_Button_3" class="Juna_IT_Poll_Add_Answers_Button">
-			<input type="button" value="Answers Style" id="Juna_IT_Poll_Admin_Menu_Button_4" class="Juna_IT_Poll_Answers_Style_Button">
-			<input type="button" value="Widget Style" id="Juna_IT_Poll_Admin_Menu_Button_5" class="Juna_IT_Poll_Widget_Style_Button">
+			<input type="button" value="Choose Poll Type" id="Juna_IT_Poll_Admin_Menu_Button_1" class="Juna_IT_Poll_Choose_Poll_Type_Button" onclick="Juna_IT_Poll_Buttons_Clicked(1)">
+			<input type="button" value="Add Answers" id="Juna_IT_Poll_Admin_Menu_Button_2" class="Juna_IT_Poll_Add_Answers_Button" onclick="Juna_IT_Poll_Buttons_Clicked(2)">
+			<input type="button" value="Widget Style" id="Juna_IT_Poll_Admin_Menu_Button_3" class="Juna_IT_Poll_Widget_Style_Button" onclick="Juna_IT_Poll_Buttons_Clicked(3)">
+			<input type="button" value="Question Style" id="Juna_IT_Poll_Admin_Menu_Button_4" class="Juna_IT_Poll_Question_Style_Button" onclick="Juna_IT_Poll_Buttons_Clicked(4)">
+			<input type="button" value="Answers Style" id="Juna_IT_Poll_Admin_Menu_Button_5" class="Juna_IT_Poll_Answers_Style_Button" onclick="Juna_IT_Poll_Buttons_Clicked(5)">
+			<input type="hidden" id="Juna_IT_Poll_Plugin_Type_Text_Readonly" value="1" name="Juna_IT_Poll_Plugin_Type_Text_Readonly">
 			<input type="hidden" id="Juna_IT_Poll_hidden_Field_for_Number" value="1">
-			<input type='submit' id='Juna_IT_Poll_Save_Button' class="Juna_IT_Poll_Save_Button" value='Save Poll' name="Add_new_Juna_IT_Poll_Save_button" />
-
+			<input type='submit' id='Juna_IT_Poll_Save_Button' class="Juna_IT_Poll_Save_Button" value='Save Poll' name="Add_new_Juna_IT_Poll_Save_button"/>
 		</div>
 		<div id="Juna_IT_Poll_Next_Prev_Button_Div" class="Juna_IT_Poll_Next_Prev_Button_Div">
 			<span style="display:none;color:red;margin-left:15px;font-size:16px;" id="Juna_IT_Poll_Free_Span_1">This is the free version of the plugin. Click <a href="http://juna-it.com/index.php/features/elements/juna-it-plugin/" target="_blank"<abbr title="Click to Buy">"GET THE FULL VERSION"</a> for more advanced options.</span><br>
 			<span style="display:none;color:red;margin-left:250px;font-size:16px;" id="Juna_IT_Poll_Free_Span_2"> We appreciate every customer.</span>
 			<span style="display:none;color:red;margin-left:150px;font-size:16px;" id="Juna_IT_Poll_Free_Span_3"> * This Symbols will work only with Full version.<a href="http://juna-it.com/index.php/features/elements/juna-it-plugin/" target="_blank" style="margin-left:5px;"><abbr title="Click to Buy">"GET THE FULL VERSION"</a></span>
-
-			<input type="button" value="Next    >>" class="Juna_IT_Poll_Next_Button" onclick="Juna_IT_Poll_Next_Button()">
-			<input type="button" value="<<    Prev" class="Juna_IT_Poll_Prev_Button" onclick="Juna_IT_Poll_Prev_Button()">
-			<input type="hidden" id="Juna_IT_Poll_Plugin_Type_Text_Readonly" value="1" name="Juna_IT_Poll_Plugin_Type_Text_Readonly">
 		</div><br><br>
 
 		<div class='plugins_type' id='plugins_type1' >
-			<p class='questions_title' style='text-align:center; color:black;'>Question?</p>	
+			<div class='questions_title' style='height:25px;margin-top:10px; text-align:center; color:black;'><span style="width:250px;margin-top:10px;display:block; position:absolute;" class="Juna_IT_Poll_Question_Field_Span">Question?</span></div>	
 			
-			<div class='Juna_IT_Poll_PT1_Div1 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style="height:40px;margin-top:0px;"><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_1'>Answer1</span></div>
-			<div class='Juna_IT_Poll_PT1_Div2 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style="height:40px;margin-top:0px;"><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_2'>Answer2</span></div>
-			<div class='Juna_IT_Poll_PT1_Div3 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_3'>Answer3</span></div>
-			<div class='Juna_IT_Poll_PT1_Div4 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_4'>Answer4</span></div>
-			<div class='Juna_IT_Poll_PT1_Div5 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_5'>Answer5</span></div>
-			<div class='Juna_IT_Poll_PT1_Div6 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_6'>Answer6</span></div>
-			<div class='Juna_IT_Poll_PT1_Div7 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_7'>Answer7</span></div>
-			<div class='Juna_IT_Poll_PT1_Div8 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_8'>Answer8</span></div>
-			<div class='Juna_IT_Poll_PT1_Div9 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_9'>Answer9</span></div>
-			<div class='Juna_IT_Poll_PT1_Div10 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='display:none;height:40px;margin-top:0px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_10'>Answer10</span></div>
+			<div class='Juna_IT_Poll_PT1_Div1 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style="margin-top:0px; height:40px;"><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_1'>Answer1</span></div>
+			<div class='Juna_IT_Poll_PT1_Div2 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style="margin-top:0px; height:40px;"><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_2'>Answer2</span></div>
+			<div class='Juna_IT_Poll_PT1_Div3 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='margin-top:0px; display:none;height:40px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_3'>Answer3</span></div>
+			<div class='Juna_IT_Poll_PT1_Div4 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='margin-top:0px; display:none;height:40px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_4'>Answer4</span></div>
+			<div class='Juna_IT_Poll_PT1_Div5 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='margin-top:0px; display:none;height:40px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_5'>Answer5</span></div>
+			<div class='Juna_IT_Poll_PT1_Div6 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='margin-top:0px; display:none;height:40px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_6'>Answer6</span></div>
+			<div class='Juna_IT_Poll_PT1_Div7 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='margin-top:0px; display:none;height:40px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_7'>Answer7</span></div>
+			<div class='Juna_IT_Poll_PT1_Div8 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='margin-top:0px; display:none;height:40px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_8'>Answer8</span></div>
+			<div class='Juna_IT_Poll_PT1_Div9 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='margin-top:0px; display:none;height:40px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_9'>Answer9</span></div>
+			<div class='Juna_IT_Poll_PT1_Div10 Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' style='margin-top:0px; display:none;height:40px;'><input class='Juna_IT_Poll_Radio' style="margin:9px;" type='radio' name="answer"><span id='Juna_IT_Poll_PT1_Answer_10'>Answer10</span></div>
 			<input id='Juna_IT_Poll_Vote_Button' type='button' value='VOTE' style='background: #000000;width: 62px;color: #ffffff; float:right;padding:0px; margin-right: 20px;height:40px;border:0px; border-radius: 10px;margin-bottom:10px;margin-top:15px;'>
 		</div>
-		<div class='plugins_type' id='plugins_type2' >
-			<p class='questions_title' style='text-align:center;color:black;'>Question?</p>	
+		<div class='plugins_type' id='plugins_type2'>
+			<div class='questions_title' style='height:40px;margin-top:10px; text-align:center;color:black;'><span style="width:250px;margin-top:10px;display:block; position:absolute;" class="Juna_IT_Poll_Question_Field_Span">Question?</span></div>	
 			
-			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_1' style='color:black;height:30px; background-color: #49ff78;border-radius:10px; text-align:center;'>Answer1</p>
-			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_2' style='color:black;height:30px; background-color: #10ffff;border-radius:10px; text-align:center;'>Answer2</p>
-			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_3' style='display:none;color:black;height:30px; background-color: #ffa448;border-radius:10px; text-align:center;'>Answer3</p>
-			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_4' style='display:none;color:black;height:30px; background-color: #ffff80;border-radius:10px; text-align:center;'>Answer4</p>
-			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_5' style='display:none;color:black;height:30px; background-color: #ff4242;border-radius:10px; text-align:center;'>Answer5</p>
-			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_6' style='display:none;color:black;height:30px; background-color: #49ff78;border-radius:10px; text-align:center;'>Answer6</p>
-			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_7' style='display:none;color:black;height:30px; background-color: #10ffff;border-radius:10px; text-align:center;'>Answer7</p>
-			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_8' style='display:none;color:black;height:30px; background-color: #ffa448;border-radius:10px; text-align:center;'>Answer8</p>
-			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_9' style='display:none;color:black;height:30px; background-color: #ff4242;border-radius:10px; text-align:center;'>Answer9</p>
-			<p class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_10' style='display:none;color:black;height:30px; background-color: #49ff78;border-radius:10px; text-align:center;'>Answer10</p>
+			<div  class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_1' style='padding:0px;margin-top:0px; color:black;height:30px; background-color: #f83056;border-radius:10px; text-align:center;'>Answer1</div>
+			<div  class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_2' style='padding:0px;margin-top:0px; color:black;height:30px; background-color: #fd5f05;border-radius:10px; text-align:center;'>Answer2</div>
+			<div  class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_3' style='padding:0px;margin-top:0px; display:none;color:black;height:30px; background-color: #3c5ff4;border-radius:10px; text-align:center;'>Answer3</div>
+			<div  class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_4' style='padding:0px;margin-top:0px; display:none;color:black;height:30px; background-color: #80ff80;border-radius:10px; text-align:center;'>Answer4</div>
+			<div  class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_5' style='padding:0px;margin-top:0px; display:none;color:black;height:30px; background-color: #0080c0;border-radius:10px; text-align:center;'>Answer5</div>
+			<div  class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_6' style='padding:0px;margin-top:0px; display:none;color:black;height:30px; background-color: #c0c0c0;border-radius:10px; text-align:center;'>Answer6</div>
+			<div  class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_7' style='padding:0px;margin-top:0px; display:none;color:black;height:30px; background-color: #00974b;border-radius:10px; text-align:center;'>Answer7</div>
+			<div  class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_8' style='padding:0px;margin-top:0px; display:none;color:black;height:30px; background-color: #00ffff;border-radius:10px; text-align:center;'>Answer8</div>
+			<div  class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_9' style='padding:0px;margin-top:0px; display:none;color:black;height:30px; background-color: #ff0000;border-radius:10px; text-align:center;'>Answer9</div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT2_Answer_10' style='padding:0px;margin-top:0px; display:none;color:black;height:30px; background-color: #ffa350;border-radius:10px; text-align:center;'>Answer10</div>
 		</div>
-		<div class='plugins_type' id='plugins_type3' >
-			<p class='questions_title' style='text-align:center;color:black; background-color:#cfcfcf; margin:10px 10px 10px 10px;'>Question?</p>
+		<div class='plugins_type' id='plugins_type3'>
+			<div class='questions_title' style='height:25px;text-align:center;color:black; background-color:#cfcfcf; margin-top:10px;'><span style="width:250px;margin-top:10px;display:block; position:absolute;" class="Juna_IT_Poll_Question_Field_Span">Question?</span></div>
 			
-			<div id='Juna_IT_Poll_PT3_Div1' class="Juna_IT_Poll_PT3_Div" style='text-align:center;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/1.jpg" id='Juna_IT_Poll_Image_1' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_1' style='text-align:center;color:black;'>Answer1</span></div>
-			<div id='Juna_IT_Poll_PT3_Div2' class="Juna_IT_Poll_PT3_Div" style='text-align:center;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/2.jpg" id='Juna_IT_Poll_Image_2' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_2' style='text-align:center;color:black;'>Answer2</span></div>
-			<div id='Juna_IT_Poll_PT3_Div3' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/3.jpg" id='Juna_IT_Poll_Image_3' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_3' style='text-align:center;color:black;'>Answer3</span></div>
-			<div id='Juna_IT_Poll_PT3_Div4' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/4.jpg" id='Juna_IT_Poll_Image_4' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_4' style='text-align:center;color:black;'>Answer4</span></div>
-			<div id='Juna_IT_Poll_PT3_Div5' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/5.jpg" id='Juna_IT_Poll_Image_5' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_5' style='text-align:center;color:black;'>Answer5</span></div>
-			<div id='Juna_IT_Poll_PT3_Div6' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/6.jpg" id='Juna_IT_Poll_Image_6' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_6' style='text-align:center;color:black;'>Answer6</span></div>
-			<div id='Juna_IT_Poll_PT3_Div7' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/7.jpg" id='Juna_IT_Poll_Image_7' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_7' style='text-align:center;color:black;'>Answer7</span></div>
-			<div id='Juna_IT_Poll_PT3_Div8' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/8.jpg" id='Juna_IT_Poll_Image_8' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_8' style='text-align:center;color:black;'>Answer8</span></div>
-			<div id='Juna_IT_Poll_PT3_Div9' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/9.jpg" id='Juna_IT_Poll_Image_9' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_9' style='text-align:center;color:black;'>Answer9</span></div>
-			<div id='Juna_IT_Poll_PT3_Div10' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:5px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/10.jpg" id='Juna_IT_Poll_Image_10' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_10' style='text-align:center;color:black;'>Answer10</span></div>
+			<div id='Juna_IT_Poll_PT3_Div1' class="Juna_IT_Poll_PT3_Div" style='text-align:center;float:left; margin:0px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/1.jpg" id='Juna_IT_Poll_Image_1' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_1' style='text-align:center;color:black;'>Answer1</span></div>
+			<div id='Juna_IT_Poll_PT3_Div2' class="Juna_IT_Poll_PT3_Div" style='text-align:center;float:left; margin:0px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/2.jpg" id='Juna_IT_Poll_Image_2' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_2' style='text-align:center;color:black;'>Answer2</span></div>
+			<div id='Juna_IT_Poll_PT3_Div3' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:0px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/3.jpg" id='Juna_IT_Poll_Image_3' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_3' style='text-align:center;color:black;'>Answer3</span></div>
+			<div id='Juna_IT_Poll_PT3_Div4' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:0px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/4.jpg" id='Juna_IT_Poll_Image_4' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_4' style='text-align:center;color:black;'>Answer4</span></div>
+			<div id='Juna_IT_Poll_PT3_Div5' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:0px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/5.jpg" id='Juna_IT_Poll_Image_5' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_5' style='text-align:center;color:black;'>Answer5</span></div>
+			<div id='Juna_IT_Poll_PT3_Div6' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:0px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/6.jpg" id='Juna_IT_Poll_Image_6' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_6' style='text-align:center;color:black;'>Answer6</span></div>
+			<div id='Juna_IT_Poll_PT3_Div7' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:0px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/7.jpg" id='Juna_IT_Poll_Image_7' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_7' style='text-align:center;color:black;'>Answer7</span></div>
+			<div id='Juna_IT_Poll_PT3_Div8' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:0px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/8.jpg" id='Juna_IT_Poll_Image_8' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_8' style='text-align:center;color:black;'>Answer8</span></div>
+			<div id='Juna_IT_Poll_PT3_Div9' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:0px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/9.jpg" id='Juna_IT_Poll_Image_9' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_9' style='text-align:center;color:black;'>Answer9</span></div>
+			<div id='Juna_IT_Poll_PT3_Div10' class="Juna_IT_Poll_PT3_Div" style='text-align:center;display:none;float:left; margin:0px 10px 5px 10px;width:90px;border:1px solid #0073aa;padding:2px;'><img src="http://juna-it.com/image/10.jpg" id='Juna_IT_Poll_Image_10' style='width:90px; height:66px;'><span class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT3_Answer_10' style='text-align:center;color:black;'>Answer10</span></div>
 		</div>
-		<div class='plugins_type' id='plugins_type4' >
-			<p class='questions_title' style='text-align:center;color:black;'>Question?</p>
+		<div class='plugins_type' id='plugins_type4'>
+			<div class='questions_title' style='height:25px;margin-top:10px; text-align:center;color:black;'><span style="width:250px;margin-top:10px;display:block; position:absolute;" class="Juna_IT_Poll_Question_Field_Span">Question?</span></div>
 			
-			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div1' style='border: 1px solid #49ff78;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_1' style='float: left;margin: 5px;'>Answer1</p><div id='Juna_IT_Poll_Set_Color_1'style='float: right;background-color:#49ff78;display: inline-block;height: 40px; width: 32px;'></div></div>
-			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div2' style='border: 1px solid #10ffff;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_2' style='float: left;margin: 5px;'>Answer2</p><div id='Juna_IT_Poll_Set_Color_2'style='float: right;background-color:#10ffff;display: inline-block;height: 40px; width: 32px;'></div></div>
-			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div3' style='display:none;border: 1px solid #ffa448;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_3' style='float: left;margin: 5px;'>Answer3</p><div id='Juna_IT_Poll_Set_Color_3'style='float: right;background-color:#ffa448;display: inline-block;height: 40px; width: 32px;'></div></div>
-			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div4' style='display:none;border: 1px solid #ffff80;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_4' style='float: left;margin: 5px;'>Answer4</p><div id='Juna_IT_Poll_Set_Color_4'style='float: right;background-color:#ffff80;display: inline-block;height: 40px; width: 32px;'></div></div>
-			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div5' style='display:none;border: 1px solid #ff4242;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_5' style='float: left;margin: 5px;'>Answer5</p><div id='Juna_IT_Poll_Set_Color_5'style='float: right;background-color:#ff4242;display: inline-block;height: 40px; width: 32px;'></div></div>
-			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div6' style='display:none;border: 1px solid #49ff78;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_6' style='float: left;margin: 5px;'>Answer6</p><div id='Juna_IT_Poll_Set_Color_6'style='float: right;background-color:#49ff78;display: inline-block;height: 40px; width: 32px;'></div></div>
-			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div7' style='display:none;border: 1px solid #10ffff;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_7' style='float: left;margin: 5px;'>Answer7</p><div id='Juna_IT_Poll_Set_Color_7'style='float: right;background-color:#10ffff;display: inline-block;height: 40px; width: 32px;'></div></div>
-			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div8' style='display:none;border: 1px solid #ffa448;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_8' style='float: left;margin: 5px;'>Answer8</p><div id='Juna_IT_Poll_Set_Color_8'style='float: right;background-color:#ffa448;display: inline-block;height: 40px; width: 32px;'></div></div>
-			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div9' style='display:none;border: 1px solid #ffff80;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_9' style='float: left;margin: 5px;'>Answer9</p><div id='Juna_IT_Poll_Set_Color_9'style='float: right;background-color:#ffff80;display: inline-block;height: 40px; width: 32px;'></div></div>
-			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div10' style='display:none;border: 1px solid #ff4242;height: 40px;margin-top:10px;'><p class='Juna_IT_Poll_Answer_Div_P' id='Juna_IT_Poll_PT4_Answer_10' style='float: left;margin: 5px;'>Answer10</p><div id='Juna_IT_Poll_Set_Color_10'style='float: right;background-color:#ff4242;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div1' style='border: 1px solid #f83056;height: 40px;margin-top:0px;'><span class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_PT4_Span_p' id='Juna_IT_Poll_PT4_Answer_1' style='float: left;margin: 10px 0 0 10px;'>Answer1</span><div id='Juna_IT_Poll_Set_Color_1'style='float: right;background-color:#f83056;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div2' style='border: 1px solid #fd5f05;height: 40px;margin-top:0px;'><span class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_PT4_Span_p' id='Juna_IT_Poll_PT4_Answer_2' style='float: left;margin: 10px 0 0 10px;'>Answer2</span><div id='Juna_IT_Poll_Set_Color_2'style='float: right;background-color:#fd5f05;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div3' style='display:none;border: 1px solid #3c5ff4;height: 40px;margin-top:0px;'><span class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_PT4_Span_p' id='Juna_IT_Poll_PT4_Answer_3' style='float: left;margin: 10px 0 0 10px;'>Answer3</span><div id='Juna_IT_Poll_Set_Color_3'style='float: right;background-color:#3c5ff4;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div4' style='display:none;border: 1px solid #80ff80;height: 40px;margin-top:0px;'><span class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_PT4_Span_p' id='Juna_IT_Poll_PT4_Answer_4' style='float: left;margin: 10px 0 0 10px;'>Answer4</span><div id='Juna_IT_Poll_Set_Color_4'style='float: right;background-color:#80ff80;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div5' style='display:none;border: 1px solid #0080c0;height: 40px;margin-top:0px;'><span class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_PT4_Span_p' id='Juna_IT_Poll_PT4_Answer_5' style='float: left;margin: 10px 0 0 10px;'>Answer5</span><div id='Juna_IT_Poll_Set_Color_5'style='float: right;background-color:#0080c0;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div6' style='display:none;border: 1px solid #c0c0c0;height: 40px;margin-top:0px;'><span class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_PT4_Span_p' id='Juna_IT_Poll_PT4_Answer_6' style='float: left;margin: 10px 0 0 10px;'>Answer6</span><div id='Juna_IT_Poll_Set_Color_6'style='float: right;background-color:#c0c0c0;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div7' style='display:none;border: 1px solid #00974b;height: 40px;margin-top:0px;'><span class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_PT4_Span_p' id='Juna_IT_Poll_PT4_Answer_7' style='float: left;margin: 10px 0 0 10px;'>Answer7</span><div id='Juna_IT_Poll_Set_Color_7'style='float: right;background-color:#00974b;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div8' style='display:none;border: 1px solid #00ffff;height: 40px;margin-top:0px;'><span class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_PT4_Span_p' id='Juna_IT_Poll_PT4_Answer_8' style='float: left;margin: 10px 0 0 10px;'>Answer8</span><div id='Juna_IT_Poll_Set_Color_8'style='float: right;background-color:#00ffff;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div9' style='display:none;border: 1px solid #ff0000;height: 40px;margin-top:0px;'><span class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_PT4_Span_p' id='Juna_IT_Poll_PT4_Answer_9' style='float: left;margin: 10px 0 0 10px;'>Answer9</span><div id='Juna_IT_Poll_Set_Color_9'style='float: right;background-color:#ff0000;display: inline-block;height: 40px; width: 32px;'></div></div>
+			<div class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_Answer_Div' id='Juna_IT_Poll_PT4_Div10' style='display:none;border: 1px solid #ffa350;height: 40px;margin-top:0px;'><span class='Juna_IT_Poll_Answer_Div_P Juna_IT_Poll_PT4_Span_p' id='Juna_IT_Poll_PT4_Answer_10' style='float: left;margin: 10px 0 0 10px;'>Answer10</span><div id='Juna_IT_Poll_Set_Color_10'style='float: right;background-color:#ffa350;display: inline-block;height: 40px; width: 32px;'></div></div>
 		</div>
 
 		<fieldset id="Juna_IT_Poll_Select_Poll_Type" class="Juna_IT_Poll_Select_Poll_Type">
 			<legend><i>Poll Type</i> </legend>
 			<fieldset class="Juna_IT_Poll_Image_Class1" onclick="Juna_IT_Poll_Image_Fieldset(1)">
 				<legend class="Juna_IT_Poll_Image_Legend_Class1"><i>Standart Poll</i></legend>
-				<img src="http://juna-it.com/image/standart.png" class='Juna_IT_Poll_Image' >
+				<img src="http://juna-it.com/image/standart.png" class  = 'Juna_IT_Poll_Image'>
 			</fieldset>
 			<fieldset class="Juna_IT_Poll_Image_Class2" onclick="Juna_IT_Poll_Image_Fieldset(2)">
 				<legend class="Juna_IT_Poll_Image_Legend_Class2"><i>Pie Chart</i></legend>
@@ -351,49 +347,229 @@
 			<legend><i>Answers</i></legend> <input type="hidden" id="Juna_IT_Poll_Hidden_Value" name="Juna_IT_Poll_Answers_Count" value="2">
 			<table class="Juna_IT_Poll_Style_Table" id="Juna_IT_Poll_Add_Answer_Table">
 				<tr class="Juna_IT_Poll_Answer_1">
-					<td class="Juna_IT_Poll_Answer_1">Answer 1:</td>
+					<td id="Juna_IT_Poll_Answers_1">Answer 1:</td>
 					<td><input type="text" class="Juna_IT_Poll_Answers_Input" id="Juna_IT_Poll_Answers_Input_1" name="Juna_IT_Poll_Answers_Input_1" onclick="Juna_IT_Poll_Add_Answer(1)"></td>
 				</tr>
 				<tr class="Juna_IT_Poll_Answer_2">
-					<td class="Juna_IT_Poll_Answer_2">Answer 2:</td>
+					<td id="Juna_IT_Poll_Answers_2">Answer 2:</td>
 					<td><input type="text" class="Juna_IT_Poll_Answers_Input" id="Juna_IT_Poll_Answers_Input_2" name="Juna_IT_Poll_Answers_Input_2" onclick="Juna_IT_Poll_Add_Answer(2)"></td>
-				</tr>				
+				</tr>	
+				<tr class="Juna_IT_Poll_Answer_3" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_3">Answer 3:</td>
+					<td><input type="text" class="Juna_IT_Poll_Answers_Input" id="Juna_IT_Poll_Answers_Input_3" name="Juna_IT_Poll_Answers_Input_3" onclick="Juna_IT_Poll_Add_Answer(3)"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_4" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_4">Answer 4:</td>
+					<td><input type="text" class="Juna_IT_Poll_Answers_Input" id="Juna_IT_Poll_Answers_Input_4" name="Juna_IT_Poll_Answers_Input_4" onclick="Juna_IT_Poll_Add_Answer(4)"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_5" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_5">Answer 5:</td>
+					<td><input type="text" class="Juna_IT_Poll_Answers_Input" id="Juna_IT_Poll_Answers_Input_5" name="Juna_IT_Poll_Answers_Input_5" onclick="Juna_IT_Poll_Add_Answer(5)"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_6" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_6">Answer 6:</td>
+					<td><input type="text" class="Juna_IT_Poll_Answers_Input" id="Juna_IT_Poll_Answers_Input_6" name="Juna_IT_Poll_Answers_Input_6" onclick="Juna_IT_Poll_Add_Answer(6)"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_7" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_7">Answer 7:</td>
+					<td><input type="text" class="Juna_IT_Poll_Answers_Input" id="Juna_IT_Poll_Answers_Input_7" name="Juna_IT_Poll_Answers_Input_7" onclick="Juna_IT_Poll_Add_Answer(7)"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_8" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_8">Answer 8:</td>
+					<td><input type="text" class="Juna_IT_Poll_Answers_Input" id="Juna_IT_Poll_Answers_Input_8" name="Juna_IT_Poll_Answers_Input_8" onclick="Juna_IT_Poll_Add_Answer(8)"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_9" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_9">Answer 9:</td>
+					<td><input type="text" class="Juna_IT_Poll_Answers_Input" id="Juna_IT_Poll_Answers_Input_9" name="Juna_IT_Poll_Answers_Input_9" onclick="Juna_IT_Poll_Add_Answer(9)"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_10" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_10">Answer 10:</td>
+					<td><input type="text" class="Juna_IT_Poll_Answers_Input" id="Juna_IT_Poll_Answers_Input_10" name="Juna_IT_Poll_Answers_Input_10" onclick="Juna_IT_Poll_Add_Answer(10)"></td>
+				</tr>					
 			</table>
 			<table class="Juna_IT_Poll_Style_Table" id="Juna_IT_Poll_Add_Answer_Bg_Color_Table">
 				<tr class="Juna_IT_Poll_Answer_1">
-					<td class="Juna_IT_Poll_Answer_1">Background 1:</td>
-					<td><input type="text"  id="Juna_IT_Poll_Add_Answer_Bg_Text1"   class="Juna_IT_Poll_Input_Text_Color" value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg1','true')"></td>
-					<td><input type="color" id="Juna_IT_Poll_Add_Answer_Bg_Color1"  class="Juna_IT_Poll_Input_Color"      value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg1','false')" name="Juna_IT_Poll_Input_Add_Answer_Bg1"></td>
+					<td id="Juna_IT_Poll_Answers_1">Background 1:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Add_Answer_Bg_Text1"   class="Juna_IT_Poll_Input_Text_Color" value="#f83056" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg1','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Add_Answer_Bg_Color1"  class="Juna_IT_Poll_Input_Color"      value="#f83056" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg1','false')" name="Juna_IT_Poll_Input_Add_Answer_Bg1"></td>
 				</tr>
 				<tr class="Juna_IT_Poll_Answer_2">
-					<td class="Juna_IT_Poll_Answer_2">Background 2:</td>
-					<td><input type="text"  id="Juna_IT_Poll_Add_Answer_Bg_Text2"   class="Juna_IT_Poll_Input_Text_Color" value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg2','true')"></td>
-					<td><input type="color" id="Juna_IT_Poll_Add_Answer_Bg_Color2"  class="Juna_IT_Poll_Input_Color"      value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg2','false')" name="Juna_IT_Poll_Input_Add_Answer_Bg2"></td>
+					<td id="Juna_IT_Poll_Answers_2">Background 2:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Add_Answer_Bg_Text2"   class="Juna_IT_Poll_Input_Text_Color" value="#fd5f05" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg2','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Add_Answer_Bg_Color2"  class="Juna_IT_Poll_Input_Color"      value="#fd5f05" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg2','false')" name="Juna_IT_Poll_Input_Add_Answer_Bg2"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_3" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_3">Background 3:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Add_Answer_Bg_Text3"   class="Juna_IT_Poll_Input_Text_Color" value="#3c5ff4" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg3','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Add_Answer_Bg_Color3"  class="Juna_IT_Poll_Input_Color"      value="#3c5ff4" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg3','false')" name="Juna_IT_Poll_Input_Add_Answer_Bg3"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_4" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_4">Background 4:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Add_Answer_Bg_Text4"   class="Juna_IT_Poll_Input_Text_Color" value="#80ff80" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg4','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Add_Answer_Bg_Color4"  class="Juna_IT_Poll_Input_Color"      value="#80ff80" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg4','false')" name="Juna_IT_Poll_Input_Add_Answer_Bg4"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_5" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_5">Background 5:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Add_Answer_Bg_Text5"   class="Juna_IT_Poll_Input_Text_Color" value="#0080c0" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg5','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Add_Answer_Bg_Color5"  class="Juna_IT_Poll_Input_Color"      value="#0080c0" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg5','false')" name="Juna_IT_Poll_Input_Add_Answer_Bg5"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_6" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_6">Background 6:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Add_Answer_Bg_Text6"   class="Juna_IT_Poll_Input_Text_Color" value="#c0c0c0" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg6','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Add_Answer_Bg_Color6"  class="Juna_IT_Poll_Input_Color"      value="#c0c0c0" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg6','false')" name="Juna_IT_Poll_Input_Add_Answer_Bg6"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_7" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_7">Background 7:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Add_Answer_Bg_Text7"   class="Juna_IT_Poll_Input_Text_Color" value="#00974b" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg7','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Add_Answer_Bg_Color7"  class="Juna_IT_Poll_Input_Color"      value="#00974b" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg7','false')" name="Juna_IT_Poll_Input_Add_Answer_Bg7"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_8" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_8">Background 8:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Add_Answer_Bg_Text8"   class="Juna_IT_Poll_Input_Text_Color" value="#00ffff" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg8','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Add_Answer_Bg_Color8"  class="Juna_IT_Poll_Input_Color"      value="#00ffff" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg8','false')" name="Juna_IT_Poll_Input_Add_Answer_Bg8"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_9" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_9">Background 9:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Add_Answer_Bg_Text9"   class="Juna_IT_Poll_Input_Text_Color" value="#ff0000" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg9','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Add_Answer_Bg_Color9"  class="Juna_IT_Poll_Input_Color"      value="#ff0000" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg9','false')" name="Juna_IT_Poll_Input_Add_Answer_Bg9"></td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_10" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_10">Background 10:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Add_Answer_Bg_Text10"   class="Juna_IT_Poll_Input_Text_Color" value="#ffa350" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg10','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Add_Answer_Bg_Color10"  class="Juna_IT_Poll_Input_Color"      value="#ffa350" onchange="Juna_IT_Poll_Change_Color('Add_Answer_Bg10','false')" name="Juna_IT_Poll_Input_Add_Answer_Bg10"></td>
 				</tr>				
 			</table>
 			<table class="Juna_IT_Poll_Style_Table" id="Juna_IT_Poll_Add_Answer_File_Table">
 				<tr class="Juna_IT_Poll_Answer_1">
-					<td class="Juna_IT_Poll_Answer_1">Include File 1:</td>
+					<td id="Juna_IT_Poll_Answers_1">Include File 1:</td>
 					<td>
-						<div id="wp-content-media-buttons" class="wp-media-buttons" >
-													
+						<div id="wp-content-media-buttons" class="wp-media-buttons" >													
 							<a href="#" class="button insert-media add_media" data-editor="hidden_video_src_1" title="Add Media" id = "Juna_IT_Poll_Upload_1"  >
 								<span class="wp-media-buttons-icon"></span> Add Media File
 							</a>
 						</div>
 					</td>
+					<td id="Juna_IT_Poll_OK_Icon_1" style="opacity:0">
+						<img src="http://juna-it.com/image/ok-icon.png">
+					</td>
 				</tr>
 				<tr class="Juna_IT_Poll_Answer_2">
-					<td class="Juna_IT_Poll_Answer_2">Include File 2:</td>
+					<td id="Juna_IT_Poll_Answers_2">Include File 2:</td>
 					<td>
-						<div id="wp-content-media-buttons" class="wp-media-buttons" >
-													
+						<div id="wp-content-media-buttons" class="wp-media-buttons" >													
 							<a href="#" class="button insert-media add_media" data-editor="hidden_video_src_2" title="Add Media" id = "Juna_IT_Poll_Upload_2"  >
 								<span class="wp-media-buttons-icon"></span> Add Media File
 							</a>
 						</div>
 					</td>
-				</tr>				
+					<td id="Juna_IT_Poll_OK_Icon_2" style="opacity:0">
+						<img src="http://juna-it.com/image/ok-icon.png">
+					</td>
+				</tr>	
+				<tr class="Juna_IT_Poll_Answer_3" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_3">Include File 3:</td>
+					<td>
+						<div id="wp-content-media-buttons" class="wp-media-buttons" >													
+							<a href="#" class="button insert-media add_media" data-editor="hidden_video_src_3" title="Add Media" id = "Juna_IT_Poll_Upload_3"  >
+								<span class="wp-media-buttons-icon"></span> Add Media File
+							</a>
+						</div>
+					</td>
+					<td id="Juna_IT_Poll_OK_Icon_3" style="opacity:0">
+						<img src="http://juna-it.com/image/ok-icon.png">
+					</td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_4" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_4">Include File 4:</td>
+					<td>
+						<div id="wp-content-media-buttons" class="wp-media-buttons" >													
+							<a href="#" class="button insert-media add_media" data-editor="hidden_video_src_4" title="Add Media" id = "Juna_IT_Poll_Upload_4"  >
+								<span class="wp-media-buttons-icon"></span> Add Media File
+							</a>
+						</div>
+					</td>
+					<td id="Juna_IT_Poll_OK_Icon_4" style="opacity:0">
+						<img src="http://juna-it.com/image/ok-icon.png">
+					</td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_5" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_5">Include File 5:</td>
+					<td>
+						<div id="wp-content-media-buttons" class="wp-media-buttons" >													
+							<a href="#" class="button insert-media add_media" data-editor="hidden_video_src_5" title="Add Media" id = "Juna_IT_Poll_Upload_5"  >
+								<span class="wp-media-buttons-icon"></span> Add Media File
+							</a>
+						</div>
+					</td>
+					<td id="Juna_IT_Poll_OK_Icon_5" style="opacity:0">
+						<img src="http://juna-it.com/image/ok-icon.png">
+					</td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_6" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_6">Include File 6:</td>
+					<td>
+						<div id="wp-content-media-buttons" class="wp-media-buttons" >													
+							<a href="#" class="button insert-media add_media" data-editor="hidden_video_src_6" title="Add Media" id = "Juna_IT_Poll_Upload_6"  >
+								<span class="wp-media-buttons-icon"></span> Add Media File
+							</a>
+						</div>
+					</td>
+					<td id="Juna_IT_Poll_OK_Icon_6" style="opacity:0">
+						<img src="http://juna-it.com/image/ok-icon.png">
+					</td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_7" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_7">Include File 7:</td>
+					<td>
+						<div id="wp-content-media-buttons" class="wp-media-buttons" >													
+							<a href="#" class="button insert-media add_media" data-editor="hidden_video_src_7" title="Add Media" id = "Juna_IT_Poll_Upload_7"  >
+								<span class="wp-media-buttons-icon"></span> Add Media File
+							</a>
+						</div>
+					</td>
+					<td id="Juna_IT_Poll_OK_Icon_7" style="opacity:0">
+						<img src="http://juna-it.com/image/ok-icon.png">
+					</td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_8" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_8">Include File 8:</td>
+					<td>
+						<div id="wp-content-media-buttons" class="wp-media-buttons" >													
+							<a href="#" class="button insert-media add_media" data-editor="hidden_video_src_8" title="Add Media" id = "Juna_IT_Poll_Upload_8"  >
+								<span class="wp-media-buttons-icon"></span> Add Media File
+							</a>
+						</div>
+					</td>
+					<td id="Juna_IT_Poll_OK_Icon_8" style="opacity:0">
+						<img src="http://juna-it.com/image/ok-icon.png">
+					</td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_9" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_9">Include File 9:</td>
+					<td>
+						<div id="wp-content-media-buttons" class="wp-media-buttons" >													
+							<a href="#" class="button insert-media add_media" data-editor="hidden_video_src_9" title="Add Media" id = "Juna_IT_Poll_Upload_9"  >
+								<span class="wp-media-buttons-icon"></span> Add Media File
+							</a>
+						</div>
+					</td>
+					<td id="Juna_IT_Poll_OK_Icon_9" style="opacity:0">
+						<img src="http://juna-it.com/image/ok-icon.png">
+					</td>
+				</tr>
+				<tr class="Juna_IT_Poll_Answer_10" style="display:none;">
+					<td id="Juna_IT_Poll_Answers_10">Include File 10:</td>
+					<td>
+						<div id="wp-content-media-buttons" class="wp-media-buttons" >													
+							<a href="#" class="button insert-media add_media" data-editor="hidden_video_src_10" title="Add Media" id = "Juna_IT_Poll_Upload_10"  >
+								<span class="wp-media-buttons-icon"></span> Add Media File
+							</a>
+						</div>
+					</td>
+					<td id="Juna_IT_Poll_OK_Icon_10" style="opacity:0">
+						<img src="http://juna-it.com/image/ok-icon.png">
+					</td>
+				</tr>			
 			</table> <br>			
 			<table class="Juna_IT_Poll_Add_Remove_Button_Table">
 				<tr>
@@ -422,12 +598,7 @@
 					<td>Font Size:</td>
 					<td><input type="range"  id="Juna_IT_Poll_Answer_Font_Size_Range"  onchange="Juna_IT_Poll_Change_Size('Answer','false')" min='0' max='100' value="14" step='1'></td>
 					<td><input type="number" id="Juna_IT_Poll_Answer_Font_Size_Number" onchange="Juna_IT_Poll_Change_Size('Answer','true')"  min='0' max='100' value="14" name="Juna_IT_Poll_Answer_Font_Size" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
-				</tr>
-				<tr>
-					<td>Background Color:</td>
-					<td><input type="text"  id="Juna_IT_Poll_Answer_Bg_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Answer_Bg','true')"></td>
-					<td><input type="color" id="Juna_IT_Poll_Answer_Bg_Color"  class="Juna_IT_Poll_Input_Color"      value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Answer_Bg','false')" name="Juna_IT_Poll_Input_Answer_Bg_Color"></td>
-				</tr>
+				</tr>				
 				<tr>
 					<td>Color:</td>
 					<td><input type="text"  id="Juna_IT_Poll_Answer_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#000000" onchange="Juna_IT_Poll_Change_Color('Answer_Color','true')"></td>
@@ -438,6 +609,13 @@
 					<td><input type="range"  id="Juna_IT_Poll_Between_Answer_Range"  onchange="Juna_IT_Poll_Change_Size('Between_Answer','false')" min='0' max='100' value="0" step='1'></td>
 					<td><input type="number" id="Juna_IT_Poll_Between_Answer_Number" onchange="Juna_IT_Poll_Change_Size('Between_Answer','true')"  min='0' max='100' value="0" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
 					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+			</table>
+			<table class="Juna_IT_Poll_Style_Table" id="Juna_IT_Poll_Answer_bg_Table">
+				<tr>
+					<td>Background Color:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Answer_Bg_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Answer_Bg','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Answer_Bg_Color"  class="Juna_IT_Poll_Input_Color"      value="#ffffff" onchange="Juna_IT_Poll_Change_Color('Answer_Bg','false')" name="Juna_IT_Poll_Input_Answer_Bg_Color"></td>
 				</tr>
 			</table>
 			<table class="Juna_IT_Poll_Style_Table" id="Juna_IT_Poll_Border_Table">
@@ -472,6 +650,14 @@
 					<td><input type="number" id="Juna_IT_Poll_Answer_Border_Radius_Number" onchange="Juna_IT_Poll_Change_Size('Border_Radius_Answer','true')"  min='0' max='100' value="0" class="Juna_IT_Poll_Input_Text_Size"/><span class="Juna_IT_Poll_Span_Px">px</span></td>
 					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
 				</tr>
+				<tr>
+					<td>Border Color:</td>
+					<td><input type="text"  id="Juna_IT_Poll_Answer_Border_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#000000" onchange="Juna_IT_Poll_Change_Color('Border_Color_Answer','true')"></td>
+					<td><input type="color" id="Juna_IT_Poll_Answer_Border_Color"  class="Juna_IT_Poll_Input_Color"      value="#000000" onchange="Juna_IT_Poll_Change_Color('Border_Color_Answer','false')"></td>
+					<td><span style='color:red; font-size:16px;margin-left:5px;'>*</span></td>
+				</tr>
+			</table>
+			<table class="Juna_IT_Poll_Style_Table" id="Juna_IT_Poll_Answer_Border_Color_Table">
 				<tr>
 					<td>Border Color:</td>
 					<td><input type="text"  id="Juna_IT_Poll_Answer_Border_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#000000" onchange="Juna_IT_Poll_Change_Color('Border_Color_Answer','true')"></td>
@@ -559,7 +745,7 @@
 				<tr>
 					<td>Border Color:</td>
 					<td><input type="text"  id="Juna_IT_Poll_Border_Text"   class="Juna_IT_Poll_Input_Text_Color" value="#0073aa" onchange="Juna_IT_Poll_Change_Color('Widget_Border_Color','true')"></td>
-					<td><input type="color" id="Juna_IT_Poll_Border_Color"  class="Juna_IT_Poll_Input_Color"      value="#0073aa" onchange="Juna_IT_Poll_Change_Color('Widget_Border_Color','false')" name="Juna_IT_Poll_Input_Border_Color"></td>
+					<td><input type="color" id="Juna_IT_Poll_Border_Color"  class="Juna_IT_Poll_Input_Color"      value="#0073aa" onchange="Juna_IT_Poll_Change_Color('Widget_Border_Color','false')" name="Juna_IT_Poll_Input_Border_Color_Widget"></td>
 				</tr>
 				<tr>
 					<td>Border Style:</td>
