@@ -166,6 +166,7 @@
 	box-shadow: 0px 0px 30px white;
 	margin-left:10px;
 	margin-bottom: 10px;
+	cursor: pointer;
 }
 .Juna_IT_Poll_Choose_Poll_Type_Button
 {
@@ -176,6 +177,7 @@
 	border-radius: 3px;
 	box-shadow: 0px 0px 30px #f68935;
 	margin-left:10px;
+	cursor: pointer;
 	margin-bottom: 10px;
 }
 .Add_Polls_Title_Span
@@ -213,6 +215,7 @@
 	background-color:white;
 	border-radius:6px;
 	border: 1px solid #0073aa;
+	margin-top: 15px;
 }
 .Juna_IT_Poll_Image_Class2,.Juna_IT_Poll_Image_Class3,.Juna_IT_Poll_Image_Class4
 {
@@ -284,6 +287,7 @@ legend
 	color: white; 
 	text-align: center; 
 	background-color: #0073aa;
+	display: none;
 }
 #Juna_IT_Poll_Add_Answer_Table,#Juna_IT_Poll_Add_Answer_Bg_Color_Table,#Juna_IT_Poll_Add_Answer_File_Table
 {
@@ -293,7 +297,7 @@ legend
 {
 	display: none;
 }
-.Juna_IT_Poll_Style_Table td:nth-child(1)
+.Juna_IT_Poll_Style_Table td:nth-child(1),.Juna_IT_Poll_Style_Tabls td:nth-child(1)
 {
 	height: 30px;
 	text-align: center;

@@ -1,31 +1,7 @@
 jQuery(document).ready(function() {	
-	checkbox_selected();
 	JI_upload_video_files();
 	Juna_IT_Poll_Width();
 });
-function checkbox_selected(){
-	jQuery('.it_example_select').click(function(){
-		var id = jQuery(this).attr('id');
-		jQuery('.it_example_select').each(function(){
-		 	var id1 = jQuery(this).attr('id')
-		 	if(id1!=id){
-		 		jQuery(this).attr('checked',false);
-		 	}else{
-		 		jQuery(this).attr('checked', true);
-			}
-		})
-	})
-	jQuery('#it_example_select2').click(function(){
-		var d = jQuery('#position_procent').val();
-		jQuery('#it_example_select2').val('margin-left:'+d+'%');
-	})
-}
-function myF()
-{	
-	var shortcode_id=jQuery('#shortcode_select').val();
-	jQuery('#shortcode_id').val('');
-	jQuery('#shortcode_id').val('[Juna_IT_Poll id="'+shortcode_id+'"]');
-}
 
 function Juna_IT_Poll_Add_Answers(answers_count)
 {
@@ -33,17 +9,17 @@ function Juna_IT_Poll_Add_Answers(answers_count)
 	{
 		if(i<=answers_count)
 		{
-			jQuery(".Juna_IT_Poll_PT1_Div"+i).fadeIn(100);
-			jQuery("#Juna_IT_Poll_PT2_Answer_"+i).fadeIn(100);	
-			jQuery("#Juna_IT_Poll_PT3_Div"+i).fadeIn(100);
-			jQuery("#Juna_IT_Poll_PT4_Div"+i).fadeIn(100);
+			jQuery(".Juna_IT_Poll_PT1_Div"+i).fadeIn();
+			jQuery("#Juna_IT_Poll_PT2_Answer_"+i).fadeIn();	
+			jQuery("#Juna_IT_Poll_PT3_Div"+i).fadeIn();
+			jQuery("#Juna_IT_Poll_PT4_Div"+i).fadeIn();
 		}
 		else
 		{					
-			jQuery(".Juna_IT_Poll_PT1_Div"+i).fadeOut(100);
-			jQuery("#Juna_IT_Poll_PT2_Answer_"+i).fadeOut(100);	
-			jQuery("#Juna_IT_Poll_PT3_Div"+i).fadeOut(100);
-			jQuery("#Juna_IT_Poll_PT4_Div"+i).fadeOut(100);
+			jQuery(".Juna_IT_Poll_PT1_Div"+i).fadeOut();
+			jQuery("#Juna_IT_Poll_PT2_Answer_"+i).fadeOut();	
+			jQuery("#Juna_IT_Poll_PT3_Div"+i).fadeOut();
+			jQuery("#Juna_IT_Poll_PT4_Div"+i).fadeOut();
 		}
 	}		
 }
@@ -83,16 +59,16 @@ function Edit_Juna_IT_Poll(Juna_IT_Poll_id,Juna_IT_Poll_PluginType)
 			var quest_and_set=question_and_params[0].split('%^&^%');
 			// question
 			jQuery('#question_id').val(quest_and_set[0]);
-				jQuery('.questions_title').html(quest_and_set[0]);
+				jQuery('.Juna_IT_Poll_Question_Field_Span').html(quest_and_set[0]);
 				jQuery('#Juna_IT_Poll_Add_Question_Field').val(quest_and_set[0]);
 			// Question font family
 			jQuery('#Juna_IT_Poll_Question_Font_Family').val(quest_and_set[1]);
-				jQuery('.questions_title').css('font-family',quest_and_set[1]);
+				jQuery('.Juna_IT_Poll_Question_Field_Span').css('font-family',quest_and_set[1]);
 			// Question font size
 			var Quest_font_size=quest_and_set[2].split('px');
 			jQuery('#Juna_IT_Poll_Question_Font_Size_Range').val(Quest_font_size[0]);
 			jQuery('#Juna_IT_Poll_Question_Font_Size_Number').val(Quest_font_size[0]);			
-				jQuery('.questions_title').css('font-size',quest_and_set[2]);
+				jQuery('.Juna_IT_Poll_Question_Field_Span').css('font-size',quest_and_set[2]);
 			// Question background color
 			jQuery('#Juna_IT_Poll_Question_Bg_Text').val(quest_and_set[3]);
 			jQuery('#Juna_IT_Poll_Question_Bg_Color').val(quest_and_set[3]);
@@ -100,7 +76,7 @@ function Edit_Juna_IT_Poll(Juna_IT_Poll_id,Juna_IT_Poll_PluginType)
 			//Question color
 			jQuery('#Juna_IT_Poll_Question_Text').val(quest_and_set[4]);
 			jQuery('#Juna_IT_Poll_Question_Color').val(quest_and_set[4]);
-				jQuery('.questions_title').css('color',quest_and_set[4]);
+				jQuery('.Juna_IT_Poll_Question_Field_Span').css('color',quest_and_set[4]);
 			// Question border style
 			jQuery('#Juna_IT_Poll_Question_Border_Style').val(quest_and_set[5]);
 				jQuery('.questions_title').css('border-style',quest_and_set[5]);
@@ -148,6 +124,11 @@ function Edit_Juna_IT_Poll(Juna_IT_Poll_id,Juna_IT_Poll_PluginType)
 			jQuery('#Juna_IT_Poll_Answer_Border_Radius_Range').val(Ans_border_radius[0]);
 			jQuery('#Juna_IT_Poll_Answer_Border_Radius_Number').val(Ans_border_radius[0]);
 				jQuery('.Juna_IT_Poll_Answer_Div').css('border-radius',quest_and_set[15]);
+				for(var i=1;i<=10;i++)
+				{
+					jQuery('#Juna_IT_Poll_Set_Color_'+i).css('border-top-right-radius',quest_and_set[15]);
+					jQuery('#Juna_IT_Poll_Set_Color_'+i).css('border-bottom-right-radius',quest_and_set[15]);
+				}
 			// Answer border color
 			jQuery('#Juna_IT_Poll_Answer_Border_Text').val(quest_and_set[16]);
 			jQuery('#Juna_IT_Poll_Answer_Border_Color').val(quest_and_set[16]);
@@ -162,6 +143,7 @@ function Edit_Juna_IT_Poll(Juna_IT_Poll_id,Juna_IT_Poll_PluginType)
 			var Widget_width=quest_and_set[18].split('px');
 			jQuery('#Juna_IT_Poll_Widget_Width_Range').val(Widget_width[0]);
 			jQuery('#Juna_IT_Poll_Widget_Width_Number').val(Widget_width[0]);			
+				jQuery('.Juna_IT_Poll_Question_Field_Span').css('width',quest_and_set[18]);
 				jQuery('.plugins_type').css('width',quest_and_set[18]);
 			// Widget background color
 			jQuery('#Juna_IT_Poll_Background_Text').val(quest_and_set[19]);
@@ -298,9 +280,7 @@ function Edit_Juna_IT_Poll(Juna_IT_Poll_id,Juna_IT_Poll_PluginType)
 			{
 				if(parseInt(i+1)>2)
 				{
-					jQuery('#Juna_IT_Poll_Add_Answer_Table').append("<tr class='Juna_IT_Poll_Answer_"+parseInt(i+1)+"'><td class='Juna_IT_Poll_Answer_"+parseInt(i+1)+"'>Answer "+parseInt(i+1)+":</td><td><input type='text' class='Juna_IT_Poll_Answers_Input' id='Juna_IT_Poll_Answers_Input_"+parseInt(i+1)+"' name='Juna_IT_Poll_Answers_Input_"+parseInt(i+1)+"' onclick='Juna_IT_Poll_Add_Answer("+parseInt(i+1)+")'></td></tr>");
-					jQuery('#Juna_IT_Poll_Add_Answer_Bg_Color_Table').append("<tr class='Juna_IT_Poll_Answer_"+parseInt(i+1)+"'><td class='Juna_IT_Poll_Answer_"+parseInt(i+1)+"'>Background "+parseInt(i+1)+":</td><td><input type='text'  id='Juna_IT_Poll_Add_Answer_Bg_Text"+parseInt(i+1)+"'   class='Juna_IT_Poll_Input_Text_Color' value='#ffffff' onchange='Juna_IT_Poll_Change_Color('Add_Answer_Bg"+parseInt(i+1)+"','true')'></td><td><input type='color' id='Juna_IT_Poll_Add_Answer_Bg_Color"+parseInt(i+1)+"'  class='Juna_IT_Poll_Input_Color'      value='#ffffff' onchange='Juna_IT_Poll_Change_Color('Add_Answer_Bg"+parseInt(i+1)+"','false')' name='Juna_IT_Poll_Input_Add_Answer_Bg"+parseInt(i+1)+"'></td></tr>");
-					jQuery('#Juna_IT_Poll_Add_Answer_File_Table').append("<tr class='Juna_IT_Poll_Answer_"+parseInt(i+1)+"'><td class='Juna_IT_Poll_Answer_"+parseInt(i+1)+"'>Include File "+parseInt(i+1)+":</td><td><div id='wp-content-media-buttons' class='wp-media-buttons'><a href='#' class='button insert-media add_media' data-editor='hidden_video_src_"+parseInt(i+1)+"' title='Add Media' id='Juna_IT_Poll_Upload_"+parseInt(i+1)+"'><span class='wp-media-buttons-icon'></span> Add Media File</a></div></td></tr>");
+					jQuery('.Juna_IT_Poll_Answer_'+parseInt(i+1)).fadeIn();
 				}	
 				Juna_IT_Poll_Width();	
 
@@ -318,7 +298,7 @@ function Edit_Juna_IT_Poll(Juna_IT_Poll_id,Juna_IT_Poll_PluginType)
 					jQuery('#Juna_IT_Poll_PT2_Answer_'+parseInt(i+1)).css('background-color',answers_and_anssets[2]);
 					jQuery('#Juna_IT_Poll_Set_Color_'+parseInt(i+1)).css('background-color',answers_and_anssets[2]);
 					jQuery('#Juna_IT_Poll_PT4_Div'+parseInt(i+1)).css('border-color',answers_and_anssets[2]);
-				// // file
+				// file
 				if(answers_and_anssets[1]!='none')
 				{
 					jQuery('#Juna_IT_Poll_Upload_Image_'+parseInt(i+1)).val(answers_and_anssets[1]);
@@ -394,14 +374,77 @@ function Juna_IT_Poll_Reset_Button_Clicked()
 	jQuery('.Juna_IT_Poll_Table').show();
 }
 //Stepan//
-function Juna_IT_Poll_Next_Button()
+function Juna_IT_Poll_Buttons_Clicked(Button_Number)
 {
-	var Button_Number=jQuery('#Juna_IT_Poll_hidden_Field_for_Number').val();
-	var Juna_IT_Poll_Plugin_Type_Text_Readonly=jQuery('#Juna_IT_Poll_Plugin_Type_Text_Readonly').val();
-	
-	if(Button_Number!=5)
+	for(var i=1;i<=5;i++)
 	{
-		if(Juna_IT_Poll_Plugin_Type_Text_Readonly!=1)
+		if(i==Button_Number)
+		{
+			jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+i).css('border-color','#f68935');
+			jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+i).css('color','#f68935');
+			jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+i).css('box-shadow','0px 0px 30px #f68935');
+		}
+		else
+		{
+			jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+i).css('border-color','#0073aa');
+			jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+i).css('color','white');
+			jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+i).css('box-shadow','0px 0px 30px white');
+		}
+	}
+	if(Button_Number==1)
+	{
+		jQuery('#Juna_IT_Poll_Question_Style_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Answers_Style_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Widget_Style_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Add_Answers_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Select_Poll_Type').css('display','inline');
+		jQuery('#Juna_IT_Poll_Save_Button').fadeOut();
+		for(var i=1;i<=4;i++)
+		{
+			jQuery('#plugins_type'+i).css('display','none');
+		}
+	}
+	else if(Button_Number==2)
+	{
+		jQuery('#Juna_IT_Poll_Question_Style_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Answers_Style_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Widget_Style_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Add_Answers_Field').css('display','inline');
+		jQuery('#Juna_IT_Poll_Save_Button').fadeIn();
+		jQuery('#Juna_IT_Poll_Select_Poll_Type').css('display','none');		
+	}	
+	else if(Button_Number==3)
+	{
+		jQuery('#Juna_IT_Poll_Question_Style_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Answers_Style_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Widget_Style_Field').css('display','inline');
+		jQuery('#Juna_IT_Poll_Add_Answers_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Save_Button').fadeIn();
+		jQuery('#Juna_IT_Poll_Select_Poll_Type').css('display','none');		
+	}	
+	else if(Button_Number==4)
+	{
+		jQuery('#Juna_IT_Poll_Question_Style_Field').css('display','inline');
+		jQuery('#Juna_IT_Poll_Answers_Style_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Widget_Style_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Add_Answers_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Save_Button').fadeIn();
+		jQuery('#Juna_IT_Poll_Select_Poll_Type').css('display','none');		
+	}
+	else if(Button_Number==5)
+	{
+		jQuery('#Juna_IT_Poll_Question_Style_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Answers_Style_Field').css('display','inline');
+		jQuery('#Juna_IT_Poll_Widget_Style_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Add_Answers_Field').css('display','none');
+		jQuery('#Juna_IT_Poll_Save_Button').fadeIn();
+		jQuery('#Juna_IT_Poll_Select_Poll_Type').css('display','none');	
+	}
+	if(Button_Number!=1)
+	{
+		var Juna_IT_Poll_Plugin_Type=jQuery('#Juna_IT_Poll_Plugin_Type_Text_Readonly').val();
+
+		if(Juna_IT_Poll_Plugin_Type!=1)
 		{
 			jQuery('#Juna_IT_Poll_Free_Span_1').css('display','inline');
 			jQuery('#Juna_IT_Poll_Free_Span_2').css('display','inline');
@@ -415,106 +458,22 @@ function Juna_IT_Poll_Next_Button()
 			jQuery('#Juna_IT_Poll_Free_Span_3').css('display','inline');
 			jQuery('#Juna_IT_Poll_Save_Button').attr('type','submit');
 		}
-		jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+Button_Number+'').css('border-color','#0073aa');
-		jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+Button_Number+'').css('color','white');
-		jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+Button_Number+'').css('box-shadow','0px 0px 30px white');
-		jQuery('#Juna_IT_Poll_hidden_Field_for_Number').val(parseInt(Button_Number)+1);
-		jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+parseInt(parseInt(Button_Number)+1)+'').css('border-color','#f68935');
-		jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+parseInt(parseInt(Button_Number)+1)+'').css('color','#f68935');
-		jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+parseInt(parseInt(Button_Number)+1)+'').css('box-shadow','0px 0px 30px #f68935');
-		if(Button_Number==1)
-		{
-			jQuery('#Juna_IT_Poll_Question_Style_Field').css('display','inline');
-			jQuery('#Juna_IT_Poll_Answers_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Widget_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Add_Answers_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Select_Poll_Type').css('display','none');			
-		}
-		else if(Button_Number==2)
-		{
-			jQuery('#Juna_IT_Poll_Question_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Answers_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Widget_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Add_Answers_Field').css('display','inline');
-			jQuery('#Juna_IT_Poll_Select_Poll_Type').css('display','none');		
-		}	
-		else if(Button_Number==3)
-		{
-			jQuery('#Juna_IT_Poll_Question_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Answers_Style_Field').css('display','inline');
-			jQuery('#Juna_IT_Poll_Widget_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Add_Answers_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Select_Poll_Type').css('display','none');		
-		}	
-		else if(Button_Number==4)
-		{
-			jQuery('#Juna_IT_Poll_Question_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Answers_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Widget_Style_Field').css('display','inline');
-			jQuery('#Juna_IT_Poll_Add_Answers_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Select_Poll_Type').css('display','none');		
-		}	
-		var Juna_IT_Poll_Plugin_Type=jQuery('#Juna_IT_Poll_Plugin_Type_Text_Readonly').val();
 		for(var i=1;i<=4;i++)
 		{
 			if(i==Juna_IT_Poll_Plugin_Type)
 			{
-				jQuery('#plugins_type'+i+'').css('display','inline');
+				jQuery('#plugins_type'+i).css('display','inline');
 			}
 			else
 			{
-				jQuery('#plugins_type'+i+'').css('display','none');
+				jQuery('#plugins_type'+i).css('display','none');
 			}
 		}
 	}
-}
-function Juna_IT_Poll_Prev_Button()
-{
-	var Button_Number=jQuery('#Juna_IT_Poll_hidden_Field_for_Number').val();
-	if(Button_Number!=1)
+	else
 	{
-
-		jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+Button_Number+'').css('border-color','#0073aa');
-		jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+Button_Number+'').css('color','white');
-		jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+Button_Number+'').css('box-shadow','0px 0px 30px white');
-		jQuery('#Juna_IT_Poll_hidden_Field_for_Number').val(parseInt(Button_Number)-1);
-		jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+parseInt(parseInt(Button_Number)-1)+'').css('border-color','#f68935');
-		jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+parseInt(parseInt(Button_Number)-1)+'').css('color','#f68935');
-		jQuery('#Juna_IT_Poll_Admin_Menu_Button_'+parseInt(parseInt(Button_Number)-1)+'').css('box-shadow','0px 0px 30px #f68935');
-		if(Button_Number==5)
-		{
-			jQuery('#Juna_IT_Poll_Question_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Answers_Style_Field').css('display','inline');
-			jQuery('#Juna_IT_Poll_Widget_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Add_Answers_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Select_Poll_Type').css('display','none');			
-		}
-		if(Button_Number==4)
-		{
-			jQuery('#Juna_IT_Poll_Question_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Answers_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Widget_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Add_Answers_Field').css('display','inline');
-			jQuery('#Juna_IT_Poll_Select_Poll_Type').css('display','none');			
-		}
-		if(Button_Number==3)
-		{
-			jQuery('#Juna_IT_Poll_Question_Style_Field').css('display','inline');
-			jQuery('#Juna_IT_Poll_Answers_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Widget_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Add_Answers_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Select_Poll_Type').css('display','none');			
-		}
-		if(Button_Number==2)
-		{
-			jQuery('#Juna_IT_Poll_Question_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Answers_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Widget_Style_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Add_Answers_Field').css('display','none');
-			jQuery('#Juna_IT_Poll_Select_Poll_Type').css('display','inline');	
-			jQuery('.plugins_type').css('display','none');		
-		}		
-	}
+		jQuery('.plugins_type').css('display','none');
+	}	
 }
 function Juna_IT_Poll_Image_Fieldset(number)
 {
@@ -539,6 +498,8 @@ function Juna_IT_Poll_Image_Fieldset(number)
 		jQuery('#Juna_IT_Poll_Add_Answer_Bg_Color_Table').css('display','none');
 		jQuery('#Juna_IT_Poll_Add_Answer_File_Table').css('display','none');
 		jQuery('#Juna_IT_Poll_Border_Table').css('display','inline');
+		jQuery('#Juna_IT_Poll_Answer_bg_Table').css('display','inline');
+		jQuery('#Juna_IT_Poll_Answer_Border_Color_Table').css('display','inline');
 	}
 	else if(number==2)
 	{
@@ -547,7 +508,9 @@ function Juna_IT_Poll_Image_Fieldset(number)
 		jQuery('#Juna_IT_Poll_Image_Style_Table').css('display','none');
 		jQuery('#Juna_IT_Poll_Add_Answer_Bg_Color_Table').css('display','inline');
 		jQuery('#Juna_IT_Poll_Add_Answer_File_Table').css('display','none');
-		jQuery('#Juna_IT_Poll_Border_Table').css('display','inline');		
+		jQuery('#Juna_IT_Poll_Border_Table').css('display','inline');	
+		jQuery('#Juna_IT_Poll_Answer_Border_Color_Table').css('display','inline');
+		jQuery('#Juna_IT_Poll_Answer_bg_Table').css('display','none');
 	}	
 	else if(number==3)
 	{
@@ -556,6 +519,8 @@ function Juna_IT_Poll_Image_Fieldset(number)
 		jQuery('#Juna_IT_Poll_Image_Style_Table').css('display','inline');
 		jQuery('#Juna_IT_Poll_Add_Answer_Bg_Color_Table').css('display','none');
 		jQuery('#Juna_IT_Poll_Add_Answer_File_Table').css('display','inline');
+		jQuery('#Juna_IT_Poll_Answer_bg_Table').css('display','inline');
+		jQuery('#Juna_IT_Poll_Answer_Border_Color_Table').css('display','none');
 		jQuery('#Juna_IT_Poll_Border_Table').css('display','none');		
 	}
 	else
@@ -565,9 +530,12 @@ function Juna_IT_Poll_Image_Fieldset(number)
 		jQuery('#Juna_IT_Poll_Image_Style_Table').css('display','none');
 		jQuery('#Juna_IT_Poll_Add_Answer_Bg_Color_Table').css('display','inline');
 		jQuery('#Juna_IT_Poll_Add_Answer_File_Table').css('display','none');
+		jQuery('#Juna_IT_Poll_Answer_bg_Table').css('display','inline');
+		jQuery('#Juna_IT_Poll_Answer_Border_Color_Table').css('display','none');
 		jQuery('#Juna_IT_Poll_Border_Table').css('display','inline');		
 	}	
 	jQuery('#Juna_IT_Poll_Plugin_Type_Text_Readonly').val(number);
+	Juna_IT_Poll_Buttons_Clicked(2);
 }
 function Juna_IT_Poll_Change_Button_Text()
 {
@@ -589,11 +557,11 @@ function Juna_IT_Poll_Add_Question_Field_Click()
 		var Juna_IT_Poll_Add_Question_Field=jQuery('#Juna_IT_Poll_Add_Question_Field').val();
 		if(Juna_IT_Poll_Add_Question_Field!='')
 		{
-			jQuery('.questions_title').html(Juna_IT_Poll_Add_Question_Field);
+			jQuery('.Juna_IT_Poll_Question_Field_Span').html(Juna_IT_Poll_Add_Question_Field);
 		}
 		else
 		{
-			jQuery('.questions_title').html('Question?');
+			jQuery('.Juna_IT_Poll_Question_Field_Span').html('Question?');
 		}
 	},100)
 }
@@ -622,7 +590,7 @@ function Juna_IT_Poll_Change_Font(Change_What)
 	if(Change_What=='Question')
 	{
 		var Juna_IT_Poll_Font=jQuery('#Juna_IT_Poll_Question_Font_Family').val();
-		jQuery('.questions_title').css('font-family',Juna_IT_Poll_Font);
+		jQuery('.Juna_IT_Poll_Question_Field_Span').css('font-family',Juna_IT_Poll_Font);
 	}
 	else if(Change_What=='Border_Style')
 	{
@@ -666,7 +634,7 @@ function Juna_IT_Poll_Change_Size(What_Size,type)
 		{
 			var Juna_IT_Poll_Font_size=jQuery('#Juna_IT_Poll_Question_Font_Size_Number').val();
 			jQuery('#Juna_IT_Poll_Question_Font_Size_Range').val(Juna_IT_Poll_Font_size);
-			jQuery('.questions_title').css('font-size',Juna_IT_Poll_Font_size+'px');
+			jQuery('.Juna_IT_Poll_Question_Field_Span').css('font-size',Juna_IT_Poll_Font_size+'px');
 		}
 		else if(What_Size=='Border_Width')
 		{
@@ -697,6 +665,11 @@ function Juna_IT_Poll_Change_Size(What_Size,type)
 			var Juna_IT_Poll_Font_size=jQuery('#Juna_IT_Poll_Answer_Border_Radius_Number').val();
 			jQuery('#Juna_IT_Poll_Answer_Border_Radius_Range').val(Juna_IT_Poll_Font_size);
 			jQuery('.Juna_IT_Poll_Answer_Div_P').css('border-radius',Juna_IT_Poll_Font_size+'px');
+			for(var i=1;i<=10;i++)
+			{
+				jQuery('#Juna_IT_Poll_Set_Color_'+i).css('border-top-right-radius',Juna_IT_Poll_Font_size+'px');
+				jQuery('#Juna_IT_Poll_Set_Color_'+i).css('border-bottom-right-radius',Juna_IT_Poll_Font_size+'px');
+			}
 		}
 		else if(What_Size=='Between_Answer')
 		{
@@ -704,12 +677,14 @@ function Juna_IT_Poll_Change_Size(What_Size,type)
 			jQuery('#Juna_IT_Poll_Between_Answer_Range').val(Juna_IT_Poll_Font_size);
 			jQuery('.Juna_IT_Poll_Answer_Div_P').css('margin-top',Juna_IT_Poll_Font_size+'px');
 			jQuery('.Juna_IT_Poll_PT3_Div').css('margin-top',Juna_IT_Poll_Font_size+'px');
+			jQuery('.Juna_IT_Poll_PT4_Span_p').css('margin','5px');
 		}
 		else if(What_Size=='Widget_Width')
 		{
 			var Juna_IT_Poll_Font_size=jQuery('#Juna_IT_Poll_Widget_Width_Number').val();
 			jQuery('#Juna_IT_Poll_Widget_Width_Range').val(Juna_IT_Poll_Font_size);
 			jQuery('.plugins_type').css('width',Juna_IT_Poll_Font_size+'px');
+			jQuery('.Juna_IT_Poll_Question_Field_Span').css('width',Juna_IT_Poll_Font_size+'px');
 		}
 		else if(What_Size=='Widget_Border_Width')
 		{
@@ -800,7 +775,7 @@ function Juna_IT_Poll_Change_Size(What_Size,type)
 		{
 			var Font_size=jQuery('#Juna_IT_Poll_Question_Font_Size_Range').val();
 			jQuery('#Juna_IT_Poll_Question_Font_Size_Number').val(Font_size);
-			jQuery('.questions_title').css('font-size',Font_size+'px');
+			jQuery('.Juna_IT_Poll_Question_Field_Span').css('font-size',Font_size+'px');
 		}
 		else if(What_Size=='Border_Width')
 		{
@@ -831,6 +806,11 @@ function Juna_IT_Poll_Change_Size(What_Size,type)
 			var Juna_IT_Poll_Font_size=jQuery('#Juna_IT_Poll_Answer_Border_Radius_Range').val();
 			jQuery('#Juna_IT_Poll_Answer_Border_Radius_Number').val(Juna_IT_Poll_Font_size);
 			jQuery('.Juna_IT_Poll_Answer_Div_P').css('border-radius',Juna_IT_Poll_Font_size+'px');
+			for(var i=1;i<=10;i++)
+			{
+				jQuery('#Juna_IT_Poll_Set_Color_'+i).css('border-top-right-radius',Juna_IT_Poll_Font_size+'px');
+				jQuery('#Juna_IT_Poll_Set_Color_'+i).css('border-bottom-right-radius',Juna_IT_Poll_Font_size+'px');
+			}
 		}
 		else if(What_Size=='Between_Answer')
 		{
@@ -838,11 +818,13 @@ function Juna_IT_Poll_Change_Size(What_Size,type)
 			jQuery('#Juna_IT_Poll_Between_Answer_Number').val(Juna_IT_Poll_Font_size);
 			jQuery('.Juna_IT_Poll_Answer_Div_P').css('margin-top',Juna_IT_Poll_Font_size+'px');
 			jQuery('.Juna_IT_Poll_PT3_Div').css('margin-top',Juna_IT_Poll_Font_size+'px');
+			jQuery('.Juna_IT_Poll_PT4_Span_p').css('margin','5px');
 		}
 		else if(What_Size=='Widget_Width')
 		{
 			var Juna_IT_Poll_Font_size=jQuery('#Juna_IT_Poll_Widget_Width_Range').val();
 			jQuery('#Juna_IT_Poll_Widget_Width_Number').val(Juna_IT_Poll_Font_size);
+			jQuery('.Juna_IT_Poll_Question_Field_Span').css('width',Juna_IT_Poll_Font_size+'px');
 			jQuery('.plugins_type').css('width',Juna_IT_Poll_Font_size+'px');
 		}
 		else if(What_Size=='Widget_Border_Width')
@@ -978,7 +960,7 @@ function Juna_IT_Poll_Change_Color(pickerID,type)
 		{
 			var Question_Color=jQuery('#Juna_IT_Poll_Question_Color').val();
 			jQuery('#Juna_IT_Poll_Question_Text').val(Question_Color);
-			jQuery('.questions_title').css('color',Question_Color);
+			jQuery('.Juna_IT_Poll_Question_Field_Span').css('color',Question_Color);
 		}	
 		else if(pickerID=='Border_Color')
 		{
@@ -1045,16 +1027,16 @@ function Juna_IT_Poll_Change_Color(pickerID,type)
 		}
 		for(var i=1;i<=10;i++)
 		{
-			if(pickerID=='Add_Answer_Bg'+i+'')
+			if(pickerID=='Add_Answer_Bg'+i)
 			{
-				var Add_Answer_Bg=jQuery('#Juna_IT_Poll_Add_Answer_Bg_Color'+i+'').val();
-				jQuery('#Juna_IT_Poll_Add_Answer_Bg_Text'+i+'').val(Add_Answer_Bg);
+				var Add_Answer_Bg=jQuery('#Juna_IT_Poll_Add_Answer_Bg_Color'+i).val();
+				jQuery('#Juna_IT_Poll_Add_Answer_Bg_Text'+i).val(Add_Answer_Bg);
 				
-				jQuery('#Juna_IT_Poll_PT2_Answer_'+i+'').css('background-color',Add_Answer_Bg);
-				jQuery('#Juna_IT_Poll_Set_Color_'+i+'').css('background-color',Add_Answer_Bg);
-				jQuery('#Juna_IT_Poll_PT4_Div'+i+'').css('border-color',Add_Answer_Bg);
+				jQuery('#Juna_IT_Poll_PT2_Answer_'+i).css('background-color',Add_Answer_Bg);
+				jQuery('#Juna_IT_Poll_Set_Color_'+i).css('background-color',Add_Answer_Bg);
+				jQuery('#Juna_IT_Poll_PT4_Div'+i).css('border-color',Add_Answer_Bg);
 			}
-		}
+		}		
 	}
 	else
 	{
@@ -1092,7 +1074,7 @@ function Juna_IT_Poll_Change_Color(pickerID,type)
 			if(Question_Color[0]=="#")
 			{
 				jQuery('#Juna_IT_Poll_Question_Color').val(Question_Color);
-				jQuery('.questions_title').css('color',Question_Color);		
+				jQuery('.Juna_IT_Poll_Question_Field_Span').css('color',Question_Color);		
 			}	
 			else
 			{
@@ -1102,7 +1084,7 @@ function Juna_IT_Poll_Change_Color(pickerID,type)
 					if(k[0]==Question_Color)
 					{	
 						jQuery('#Juna_IT_Poll_Question_Color').val(k[1]);
-						jQuery('.questions_title').css('color',k[1]);	
+						jQuery('.Juna_IT_Poll_Question_Field_Span').css('color',k[1]);	
 						break;
 					}
 					else
@@ -1390,16 +1372,16 @@ function Juna_IT_Poll_Change_Color(pickerID,type)
 		}
 		for(var i=1;i<=10;i++)
 		{
-			if(pickerID=='Add_Answer_Bg'+i+'')
+			if(pickerID=='Add_Answer_Bg'+i)
 			{
-				var Add_Answer_Bg=jQuery('#Juna_IT_Poll_Add_Answer_Bg_Text'+i+'').val().toLowerCase();
+				var Add_Answer_Bg=jQuery('#Juna_IT_Poll_Add_Answer_Bg_Text'+i).val().toLowerCase();
 
 				if(Add_Answer_Bg[0]=="#")
 				{
-					jQuery('#Juna_IT_Poll_Add_Answer_Bg_Color'+i+'').val(Add_Answer_Bg);
-					jQuery('#Juna_IT_Poll_PT2_Answer_'+i+'').css('background-color',Add_Answer_Bg);
-					jQuery('#Juna_IT_Poll_Set_Color_'+i+'').css('background-color',Add_Answer_Bg);
-					jQuery('#Juna_IT_Poll_PT4_Div'+i+'').css('border-color',Add_Answer_Bg);
+					jQuery('#Juna_IT_Poll_Add_Answer_Bg_Color'+i).val(Add_Answer_Bg);
+					jQuery('#Juna_IT_Poll_PT2_Answer_'+i).css('background-color',Add_Answer_Bg);
+					jQuery('#Juna_IT_Poll_Set_Color_'+i).css('background-color',Add_Answer_Bg);
+					jQuery('#Juna_IT_Poll_PT4_Div'+i).css('border-color',Add_Answer_Bg);
 				}	
 				else
 				{
@@ -1409,10 +1391,10 @@ function Juna_IT_Poll_Change_Color(pickerID,type)
 						if(k[0]==Add_Answer_Bg)
 						{	
 
-							jQuery('#Juna_IT_Poll_Add_Answer_Bg_Color'+i+'').val(k[1]);
-							jQuery('#Juna_IT_Poll_PT2_Answer_'+i+'').css('background-color',k[1]);
-							jQuery('#Juna_IT_Poll_Set_Color_'+i+'').css('background-color',k[1]);
-							jQuery('#Juna_IT_Poll_PT4_Div'+i+'').css('border-color',k[1]);
+							jQuery('#Juna_IT_Poll_Add_Answer_Bg_Color'+i).val(k[1]);
+							jQuery('#Juna_IT_Poll_PT2_Answer_'+i).css('background-color',k[1]);
+							jQuery('#Juna_IT_Poll_Set_Color_'+i).css('background-color',k[1]);
+							jQuery('#Juna_IT_Poll_PT4_Div'+i).css('border-color',k[1]);
 							break;
 						}
 						else
@@ -1434,20 +1416,15 @@ function Juna_IT_Poll_Add_Answer_Button_Click()
 
 	if(Juna_IT_Poll_Answers_Count<10)
 	{
-		jQuery('#Juna_IT_Poll_Add_Answer_Table').append("<tr class='Juna_IT_Poll_Answer_"+Juna_IT_Poll_Answers_Count+"'><td class='Juna_IT_Poll_Answer_"+Juna_IT_Poll_Answers_Count+"'>Answer "+Juna_IT_Poll_Answers_Count+":</td><td><input type='text' class='Juna_IT_Poll_Answers_Input' id='Juna_IT_Poll_Answers_Input_"+Juna_IT_Poll_Answers_Count+"' name='Juna_IT_Poll_Answers_Input_"+Juna_IT_Poll_Answers_Count+"' onclick='Juna_IT_Poll_Add_Answer("+Juna_IT_Poll_Answers_Count+")'></td></tr>");
-		jQuery('#Juna_IT_Poll_Add_Answer_Bg_Color_Table').append("<tr class='Juna_IT_Poll_Answer_"+Juna_IT_Poll_Answers_Count+"'><td class='Juna_IT_Poll_Answer_"+Juna_IT_Poll_Answers_Count+"'>Background "+Juna_IT_Poll_Answers_Count+":</td><td><input type='text'  id='Juna_IT_Poll_Add_Answer_Bg_Text"+Juna_IT_Poll_Answers_Count+"'   class='Juna_IT_Poll_Input_Text_Color' value='#ffffff' onchange='Juna_IT_Poll_Change_Color('Add_Answer_Bg"+Juna_IT_Poll_Answers_Count+"','true')'></td><td><input type='color' id='Juna_IT_Poll_Add_Answer_Bg_Color"+Juna_IT_Poll_Answers_Count+"'  class='Juna_IT_Poll_Input_Color'      value='#ffffff' onchange='Juna_IT_Poll_Change_Color('Add_Answer_Bg"+Juna_IT_Poll_Answers_Count+"','false')' name='Juna_IT_Poll_Input_Add_Answer_Bg"+Juna_IT_Poll_Answers_Count+"'></td></tr>");
-		jQuery('#Juna_IT_Poll_Add_Answer_File_Table').append("<tr class='Juna_IT_Poll_Answer_"+Juna_IT_Poll_Answers_Count+"'><td class='Juna_IT_Poll_Answer_"+Juna_IT_Poll_Answers_Count+"'>Include File "+Juna_IT_Poll_Answers_Count+":</td><td><div id='wp-content-media-buttons' class='wp-media-buttons'><a href='#' class='button insert-media add_media' data-editor='hidden_video_src_"+Juna_IT_Poll_Answers_Count+"' title='Add Media' id='Juna_IT_Poll_Upload_"+Juna_IT_Poll_Answers_Count+"'><span class='wp-media-buttons-icon'></span> Add Media File</a></div></td></tr>");
+		jQuery('.Juna_IT_Poll_Answer_'+Juna_IT_Poll_Answers_Count).fadeIn();
 		jQuery('#Juna_IT_Poll_Remove_Answer_Button').css('display','inline');
-
 	}
 	else
 	{
-		jQuery('#Juna_IT_Poll_Add_Answer_Table').append("<tr class='Juna_IT_Poll_Answer_"+Juna_IT_Poll_Answers_Count+"'><td class='Juna_IT_Poll_Answer_"+Juna_IT_Poll_Answers_Count+"'>Answer "+Juna_IT_Poll_Answers_Count+":</td><td><input type='text' class='Juna_IT_Poll_Answers_Input' id='Juna_IT_Poll_Answers_Input_"+Juna_IT_Poll_Answers_Count+"' name='Juna_IT_Poll_Answers_Input_"+Juna_IT_Poll_Answers_Count+"' onclick='Juna_IT_Poll_Add_Answer("+Juna_IT_Poll_Answers_Count+")'></td></tr>");
-		jQuery('#Juna_IT_Poll_Add_Answer_Bg_Color_Table').append("<tr class='Juna_IT_Poll_Answer_"+Juna_IT_Poll_Answers_Count+"'><td class='Juna_IT_Poll_Answer_"+Juna_IT_Poll_Answers_Count+"'>Background "+Juna_IT_Poll_Answers_Count+":</td><td><input type='text'  id='Juna_IT_Poll_Add_Answer_Bg_Text"+Juna_IT_Poll_Answers_Count+"'   class='Juna_IT_Poll_Input_Text_Color' value='#ffffff' onchange='Juna_IT_Poll_Change_Color('Add_Answer_Bg"+Juna_IT_Poll_Answers_Count+"','true')'></td><td><input type='color' id='Juna_IT_Poll_Add_Answer_Bg_Color"+Juna_IT_Poll_Answers_Count+"'  class='Juna_IT_Poll_Input_Color'      value='#ffffff' onchange='Juna_IT_Poll_Change_Color('Add_Answer_Bg"+Juna_IT_Poll_Answers_Count+"','false')' name='Juna_IT_Poll_Input_Add_Answer_Bg"+Juna_IT_Poll_Answers_Count+"'></td></tr>");
-		jQuery('#Juna_IT_Poll_Add_Answer_File_Table').append("<tr class='Juna_IT_Poll_Answer_"+Juna_IT_Poll_Answers_Count+"'><td class='Juna_IT_Poll_Answer_"+Juna_IT_Poll_Answers_Count+"'>Include File "+Juna_IT_Poll_Answers_Count+":</td><td><div id='wp-content-media-buttons' class='wp-media-buttons'><a href='#' class='button insert-media add_media' data-editor='hidden_video_src_"+Juna_IT_Poll_Answers_Count+"' title='Add Media' id='Juna_IT_Poll_Upload_"+Juna_IT_Poll_Answers_Count+"'><span class='wp-media-buttons-icon'></span> Add Media File</a></div></td></tr>");
+		jQuery('.Juna_IT_Poll_Answer_'+Juna_IT_Poll_Answers_Count).fadeIn();
 		jQuery('#Juna_IT_Poll_Add_Answer_Button').css('display','none');
 	}
-	Juna_IT_Poll_Width();	
+	Juna_IT_Poll_Width();
 }
 function Juna_IT_Poll_Remove_Answer_Button_Click()
 {
@@ -1457,36 +1434,28 @@ function Juna_IT_Poll_Remove_Answer_Button_Click()
 	{
 		if(i<Juna_IT_Poll_Answers_Count)
 		{
-			jQuery(".Juna_IT_Poll_PT1_Div"+i).fadeIn(100);
-			jQuery("#Juna_IT_Poll_PT2_Answer_"+i).fadeIn(100);	
-			jQuery("#Juna_IT_Poll_PT3_Div"+i).fadeIn(100);
-			jQuery("#Juna_IT_Poll_PT4_Div"+i).fadeIn(100);
+			jQuery(".Juna_IT_Poll_PT1_Div"+i).fadeIn();
+			jQuery("#Juna_IT_Poll_PT2_Answer_"+i).fadeIn();	
+			jQuery("#Juna_IT_Poll_PT3_Div"+i).fadeIn();
+			jQuery("#Juna_IT_Poll_PT4_Div"+i).fadeIn();
 		}
 		else
 		{					
-			jQuery(".Juna_IT_Poll_PT1_Div"+i).fadeOut(100);
-			jQuery("#Juna_IT_Poll_PT2_Answer_"+i).fadeOut(100);	
-			jQuery("#Juna_IT_Poll_PT3_Div"+i).fadeOut(100);
-			jQuery("#Juna_IT_Poll_PT4_Div"+i).fadeOut(100);
+			jQuery(".Juna_IT_Poll_PT1_Div"+i).fadeOut();
+			jQuery("#Juna_IT_Poll_PT2_Answer_"+i).fadeOut();	
+			jQuery("#Juna_IT_Poll_PT3_Div"+i).fadeOut();
+			jQuery("#Juna_IT_Poll_PT4_Div"+i).fadeOut();
 		}
 	}		
 
 	if(Juna_IT_Poll_Answers_Count>3)
 	{
-		jQuery(".Juna_IT_Poll_Answer_"+Juna_IT_Poll_Answers_Count+"").remove();
-		jQuery("#Juna_IT_Poll_Answers_Input_"+Juna_IT_Poll_Answers_Count+"").remove();
-		jQuery("#Juna_IT_Poll_Add_Answer_Bg_Text"+Juna_IT_Poll_Answers_Count+"").remove();
-		jQuery("#Juna_IT_Poll_Add_Answer_Bg_Color"+Juna_IT_Poll_Answers_Count+"").remove();
-		jQuery("#Juna_IT_Poll_Upload_"+Juna_IT_Poll_Answers_Count+"").remove();	
+		jQuery('.Juna_IT_Poll_Answer_'+Juna_IT_Poll_Answers_Count).fadeOut();
 		jQuery('#Juna_IT_Poll_Add_Answer_Button').css('display','inline');
 	}
 	else
 	{
-		jQuery(".Juna_IT_Poll_Answer_"+Juna_IT_Poll_Answers_Count+"").remove();
-		jQuery("#Juna_IT_Poll_Answers_Input_"+Juna_IT_Poll_Answers_Count+"").remove();
-		jQuery("#Juna_IT_Poll_Add_Answer_Bg_Text"+Juna_IT_Poll_Answers_Count+"").remove();
-		jQuery("#Juna_IT_Poll_Add_Answer_Bg_Color"+Juna_IT_Poll_Answers_Count+"").remove();
-		jQuery("#Juna_IT_Poll_Upload_"+Juna_IT_Poll_Answers_Count+"").remove();		
+		jQuery('.Juna_IT_Poll_Answer_'+Juna_IT_Poll_Answers_Count).fadeOut();
 		jQuery('#Juna_IT_Poll_Remove_Answer_Button').css('display','none');
 	}
 
@@ -1498,51 +1467,15 @@ function Juna_IT_Poll_Width()
 	var Juna_IT_Poll_Window_width=jQuery(window).width();
 
 	jQuery('.Juna_IT_Poll_Add_Question_Field').css('width',Juna_IT_Poll_Window_width*0.28+'px');
-	jQuery('.Juna_IT_Poll_Select_Poll_Type').css('width',Juna_IT_Poll_Window_width-200+'px');
-	jQuery('.Juna_IT_Poll_Image').css('width',Juna_IT_Poll_Window_width*0.39+'px');
-	jQuery('.Juna_IT_Poll_Image_Class2').css('width',Juna_IT_Poll_Window_width*0.32+'px');
-	jQuery('.Juna_IT_Poll_Image_Class3').css('width',Juna_IT_Poll_Window_width*0.32+'px');
-	jQuery('.Juna_IT_Poll_Image_Class4').css('width',Juna_IT_Poll_Window_width*0.32+'px');
+	jQuery('.Juna_IT_Poll_Select_Poll_Type').css('width','1180px');
+	jQuery('.Juna_IT_Poll_Image').css('width','250px');
 	jQuery('.Juna_IT_Poll_Style_Table td:nth-child(1)').css('width',Juna_IT_Poll_Window_width*0.14+'px');
 	jQuery('.Juna_IT_Poll_Style_Table td:nth-child(2)').css('width',Juna_IT_Poll_Window_width*0.113+'px');
 	jQuery('.Juna_IT_Poll_Answers_Input').css('width',Juna_IT_Poll_Window_width*0.17+'px');
 }
 function JI_upload_video_files()
 {  
-	jQuery('#Juna_IT_Poll_Add_Answer_Button').click(function(){
-		var count = jQuery('#Juna_IT_Poll_Hidden_Value').val();
-		for(var i = 1; i <= count; i++)
-		{
-			jQuery('#Juna_IT_Poll_Upload_'+i).click(function(){
-				var id = jQuery(this).attr('id');
-				var num = id.split('Juna_IT_Poll_Upload_');
-				var nIntervId = setInterval(function(){
-					var code = jQuery('#hidden_video_src_'+num[1]).val();
-					jQuery('.hidden_video_src_'+num[1]).html(code);	
-					var img = jQuery('.hidden_video_src_'+num[1]).find('img');
-					var src = img.attr('src');
-						if(jQuery('#hidden_video_src_'+num[1]).val()=='')
-						{
-							jQuery('#Juna_IT_Poll_Upload_Image_'+num[1]).val(src);
-							if(jQuery('#Juna_IT_Poll_Upload_Image_'+num[1]).val().length>0)
-							{
-								clearInterval(nIntervId);
-							}
-						}
-						else
-						{
-							jQuery('#hidden_video_src_'+num[1]).val('');
-							jQuery('#Juna_IT_Poll_Upload_Image_'+num[1]).val(src);
-							if(jQuery('#Juna_IT_Poll_Upload_Image_'+num[1]).val().length>0)
-							{
-								clearInterval(nIntervId);
-							}
-						}
-				},2000)
-			})
-		}
-	})	
-	for(var i = 1; i <= 2; i++)
+	for(var i = 1; i <= 10; i++)
 	{
 		jQuery('#Juna_IT_Poll_Upload_'+i).click(function(){
 			var id = jQuery(this).attr('id');
@@ -1557,19 +1490,20 @@ function JI_upload_video_files()
 						jQuery('#Juna_IT_Poll_Upload_Image_'+num[1]).val(src);
 						if(jQuery('#Juna_IT_Poll_Upload_Image_'+num[1]).val().length>0)
 						{
+							jQuery('#Juna_IT_Poll_OK_Icon_'+num[1]).css('opacity',1);
 							clearInterval(nIntervId);
 						}
 					}
 					else
-					{
-						jQuery('#hidden_video_src_'+num[1]).val('');
+					{						
 						jQuery('#Juna_IT_Poll_Upload_Image_'+num[1]).val(src);
 						if(jQuery('#Juna_IT_Poll_Upload_Image_'+num[1]).val().length>0)
 						{
+							jQuery('#Juna_IT_Poll_OK_Icon_'+num[1]).css('opacity',1);
 							clearInterval(nIntervId);
 						}
 					}
-			},2000)
-		})
+			},1000)
+		})		
 	}
 }

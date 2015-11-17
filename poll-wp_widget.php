@@ -79,8 +79,7 @@
  		 		border-width:<?php echo Juna_IT_Poll_Get_Settings('Juna_IT_Poll_Question_Border_Width', $instance); ?>; 
  		 		border-radius:<?php echo Juna_IT_Poll_Get_Settings('Juna_IT_Poll_Question_Border_Radius', $instance); ?>; 
  		 		border-color:<?php echo Juna_IT_Poll_Get_Settings('Juna_IT_Poll_Input_Border_Color', $instance); ?>;">
- 		 			<span style="display:block;position:absolute; width:<?php echo Juna_IT_Poll_Get_Params('Juna_IT_Poll_Widget_Width', $instance); ?>;" id="JunaITPollQuestion"><?php echo $Question; ?>
- 		 			</span>
+ 		 			<span style="display:block;position:absolute; width:<?php echo Juna_IT_Poll_Get_Params('Juna_IT_Poll_Widget_Width', $instance); ?>;" id="JunaITPollQuestion"><?php echo $Question;?></span>
  		 	</div>
  		 				 		
  		 		<?php
