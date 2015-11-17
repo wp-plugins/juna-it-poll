@@ -5,7 +5,7 @@
 		var f=cook.indexOf("customer");
 		if(cook.indexOf("customer")>=0)
 		{			
-			var quest=jQuery('#ActiveQuestion').html();
+			var quest=jQuery('#JunaITPollQuestion').html();
 			if(cook.indexOf(quest.trim())<0)
 			{				
 				return false;
@@ -111,7 +111,7 @@
 	})
 function Vote_Click()
 {
-	var Active_question=document.getElementById('ActiveQuestion').innerHTML;
+	var Active_question=document.getElementById('JunaITPollQuestion').innerHTML;
 	var x;		
 	jQuery(':radio').each(function() {
 		if(jQuery(this).is(':checked'))
