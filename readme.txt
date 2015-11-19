@@ -109,7 +109,6 @@ Every site is different so we've got a few different ways to add Voice Polls to 
 * Tested by the famous  wordpress themes - Poll
 * It lets you to create or interfere the inquiry any time if you find that it is necessary - Poll
 
-https://www.youtube.com/watch?v=dOTYWDvjYws
 
 1. If you think, that you found a bug in our [WordPress Juna IT Poll](http://juna-it.com/index.php/features/elements/juna-it-plugin/) plugin or have any question contact us at [junait.com@gmail.com](mailto:junait.com@gmail.com). - poll
 
