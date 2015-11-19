@@ -33,7 +33,7 @@ Juna IT Poll - You can use WordPress Juna IT Poll for explaining what your users
 https://www.youtube.com/watch?v=wPpQhk1CAn8
 
 
-> #### Wordpress Poll Demo Version
+> #### Wordpress Poll Demo Version.
 >
 >[Pie Chart / Demo Version - 1](http://juna-it.com/index.php/poll-demo2)
 >
