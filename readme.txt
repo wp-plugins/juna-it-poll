@@ -60,6 +60,10 @@ https://www.youtube.com/watch?v=wPpQhk1CAn8
 >[Video/Image Poll / Demo Version - 5](http://juna-it.com/index.php/video-image-version-5).
 
 
+### Juna IT - Poll Video/Image Demonstration 
+
+https://www.youtube.com/watch?v=IF67IKV2kZE
+
 
 > #### Wordpress Poll Demo Version
 >
