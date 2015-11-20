@@ -26,7 +26,7 @@ Juna IT Poll - You can use WordPress Juna IT Poll for explaining what your users
 >
 >[Standart Poll / Demo Version - 4](http://juna-it.com/index.php/standart-version-4)
 >
->[Standart Poll / Demo Version - 5](http://juna-it.com/index.php/standart-version-5).
+>[Standart Poll / Demo Version - 5](http://juna-it.com/index.php/standart-version-5)
 
 ### Juna IT - Poll Standart Demonstration
 
