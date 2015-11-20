@@ -143,7 +143,6 @@ function Edit_Juna_IT_Poll(Juna_IT_Poll_id,Juna_IT_Poll_PluginType)
 			var Widget_width=quest_and_set[18].split('px');
 			jQuery('#Juna_IT_Poll_Widget_Width_Range').val(Widget_width[0]);
 			jQuery('#Juna_IT_Poll_Widget_Width_Number').val(Widget_width[0]);			
-				jQuery('.Juna_IT_Poll_Question_Field_Span').css('width',quest_and_set[18]);
 				jQuery('.plugins_type').css('width',quest_and_set[18]);
 			// Widget background color
 			jQuery('#Juna_IT_Poll_Background_Text').val(quest_and_set[19]);
@@ -684,7 +683,6 @@ function Juna_IT_Poll_Change_Size(What_Size,type)
 			var Juna_IT_Poll_Font_size=jQuery('#Juna_IT_Poll_Widget_Width_Number').val();
 			jQuery('#Juna_IT_Poll_Widget_Width_Range').val(Juna_IT_Poll_Font_size);
 			jQuery('.plugins_type').css('width',Juna_IT_Poll_Font_size+'px');
-			jQuery('.Juna_IT_Poll_Question_Field_Span').css('width',Juna_IT_Poll_Font_size+'px');
 		}
 		else if(What_Size=='Widget_Border_Width')
 		{
@@ -824,7 +822,6 @@ function Juna_IT_Poll_Change_Size(What_Size,type)
 		{
 			var Juna_IT_Poll_Font_size=jQuery('#Juna_IT_Poll_Widget_Width_Range').val();
 			jQuery('#Juna_IT_Poll_Widget_Width_Number').val(Juna_IT_Poll_Font_size);
-			jQuery('.Juna_IT_Poll_Question_Field_Span').css('width',Juna_IT_Poll_Font_size+'px');
 			jQuery('.plugins_type').css('width',Juna_IT_Poll_Font_size+'px');
 		}
 		else if(What_Size=='Widget_Border_Width')
