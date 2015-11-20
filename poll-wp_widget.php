@@ -71,7 +71,7 @@
  		 		border-color:<?php echo Juna_IT_Poll_Get_Params('Juna_IT_Poll_Input_Border_Color', $instance); ?>; 
  		 		border-style:<?php echo Juna_IT_Poll_Get_Params('Juna_IT_Poll_Widget_Border_Style', $instance); ?>;">
 
- 		 	<div id="ActiveQuestion" class="Question" style="height:40px;margin-top:10px;text-align:center; font-family:<?php echo Juna_IT_Poll_Get_Settings('Juna_IT_Poll_Question_Font_Family', $instance); ?>; 
+ 		 	<div id="ActiveQuestion" class="Question" style="padding:5px; margin-top:10px;text-align:center; font-family:<?php echo Juna_IT_Poll_Get_Settings('Juna_IT_Poll_Question_Font_Family', $instance); ?>; 
  		 		font-size:<?php echo Juna_IT_Poll_Get_Settings('Juna_IT_Poll_Question_Font_Size', $instance); ?>; 
  		 		background-color:<?php echo Juna_IT_Poll_Get_Settings('Juna_IT_Poll_Input_Bg_Color', $instance); ?>; 
  		 		color:<?php echo Juna_IT_Poll_Get_Settings('Juna_IT_Poll_Input_Color', $instance); ?>; 
@@ -79,7 +79,7 @@
  		 		border-width:<?php echo Juna_IT_Poll_Get_Settings('Juna_IT_Poll_Question_Border_Width', $instance); ?>; 
  		 		border-radius:<?php echo Juna_IT_Poll_Get_Settings('Juna_IT_Poll_Question_Border_Radius', $instance); ?>; 
  		 		border-color:<?php echo Juna_IT_Poll_Get_Settings('Juna_IT_Poll_Input_Border_Color', $instance); ?>;">
- 		 			<span style="display:block;position:absolute; width:<?php echo Juna_IT_Poll_Get_Params('Juna_IT_Poll_Widget_Width', $instance); ?>;" id="JunaITPollQuestion"><?php echo $Question;?></span>
+ 		 			<span style="line-height: 25px; word-wrap: break-word;display:block;position:relative; width:<?php echo Juna_IT_Poll_Get_Params('Juna_IT_Poll_Widget_Width', $instance); ?>;" id="JunaITPollQuestion"><?php echo $Question; ?></span>
  		 	</div>
  		 				 		
  		 		<?php
