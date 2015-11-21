@@ -43,7 +43,7 @@ https://www.youtube.com/watch?v=wPpQhk1CAn8
 >
 >[Pie Chart / Demo Version - 4](http://juna-it.com/index.php/pie-version-4)
 >
->[Pie Chart / Demo Version - 5](http://juna-it.com/index.php/pie-version-5).
+>[Pie Chart / Demo Version - 5](http://juna-it.com/index.php/pie-version-5)
 
 
 
