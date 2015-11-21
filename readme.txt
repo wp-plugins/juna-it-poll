@@ -76,6 +76,10 @@ https://www.youtube.com/watch?v=IF67IKV2kZE
 >
 >[Column Chart / Demo Version - 5](http://juna-it.com/index.php/column-chart-version-5)
 
+### Juna IT - Column Chart Demonstration
+
+https://www.youtube.com/watch?v=PJ_HD7Mv3BY
+
 ### Juna IT Poll
 
 WordPress Plugin is an instrument for understanding visitor 's opinions. You can use this poll plugin for explaining what your users think about your web-page or a new page and or about any question. 
