@@ -17,7 +17,7 @@ Juna IT Poll - You can use WordPress Juna IT Poll for explaining what your users
 * [Wordpress Juna IT Poll -All Poll Version](http://juna-it.com/index.php/features/elements/juna-it-plugin)
 
 > #### Wordpress Poll Demo Version
->
+
 >[Standart Poll / Demo Version - 1](http://juna-it.com/index.php/poll-demo1/)
 >
 >[Standart Poll / Demo Version - 2](http://juna-it.com/index.php/standart-version-2/)
@@ -34,7 +34,7 @@ https://www.youtube.com/watch?v=wPpQhk1CAn8
 
 
 #### Wordpress Poll Demo Version.
->
+
 >[Pie Chart / Demo Version - 1](http://juna-it.com/index.php/poll-demo2)
 >
 >[Pie Chart / Demo Version - 2](http://juna-it.com/index.php/pie-version-2)
@@ -48,7 +48,7 @@ https://www.youtube.com/watch?v=wPpQhk1CAn8
 
 
 > #### Wordpress Poll Demo Version
->
+
 >[Video/Image Poll / Demo Version - 1](http://juna-it.com/index.php/poll-demo3)
 >
 >[Video/Image Poll / Demo Version - 2](http://juna-it.com/index.php/video-image-version-2)
@@ -65,7 +65,7 @@ https://www.youtube.com/watch?v=wPpQhk1CAn8
 https://www.youtube.com/watch?v=IF67IKV2kZE
 
 #### Wordpress Poll Demo Version
->
+
 >[Column Chart / Demo Version - 1](http://juna-it.com/index.php/poll-demo4)
 >
 >[Column Chart / Demo Version - 2](http://juna-it.com/index.php/column-chart-version-2)
